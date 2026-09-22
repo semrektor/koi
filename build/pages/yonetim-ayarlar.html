@@ -1,0 +1,148 @@
+<!--title: Site Ayarları | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: ayarlar-->
+<!--pagetitle: Site Ayarları-->
+<!--pagesub: İletişim bilgileri, sosyal medya ve SEO ayarları.-->
+
+<div class="admin-note">
+  <svg aria-hidden="true"><use href="#i-info"></use></svg>
+  <div><strong style="font-weight:400">Taslak panel.</strong> Buradaki alanlar sitedeki iletişim bölümlerini, footer bilgilerini ve arama motoru görünümünü besler. WordPress kurulumundan sonra tek noktadan güncellenebilecektir.</div>
+</div>
+
+<form data-ayar-form>
+  <div class="editor-grid">
+    <div>
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">İletişim Bilgileri</h2></div>
+        <div class="panel__body">
+          <div class="form-grid">
+            <div class="field">
+              <label for="a-tel">Telefon</label>
+              <input id="a-tel" name="telefon" type="tel" value="+90 (000) 000 00 00">
+            </div>
+            <div class="field">
+              <label for="a-wa">WhatsApp Numarası</label>
+              <input id="a-wa" name="whatsapp" type="tel" value="+90 (000) 000 00 00">
+            </div>
+            <div class="field">
+              <label for="a-mail">E-posta</label>
+              <input id="a-mail" name="eposta" type="email" value="info@koimerkezi.com">
+            </div>
+            <div class="field">
+              <label for="a-mail2">İkincil E-posta</label>
+              <input id="a-mail2" name="eposta2" type="email" value="iletisim@koimerkezi.com">
+            </div>
+            <div class="field field--full">
+              <label for="a-adres">Açık Adres</label>
+              <input id="a-adres" name="adres" type="text" value="Şerifali Mah. — Ümraniye / İstanbul">
+            </div>
+            <div class="field field--full">
+              <label for="a-harita">Google Maps Bağlantısı</label>
+              <input id="a-harita" name="harita" type="url" placeholder="https://maps.app.goo.gl/...">
+            </div>
+            <div class="field">
+              <label for="a-saat1">Hafta İçi Çalışma Saatleri</label>
+              <input id="a-saat1" name="saat1" type="text" value="09:00 – 19:00">
+            </div>
+            <div class="field">
+              <label for="a-saat2">Hafta Sonu</label>
+              <input id="a-saat2" name="saat2" type="text" value="Program takvimine göre">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">Sosyal Medya</h2></div>
+        <div class="panel__body">
+          <div class="form-grid">
+            <div class="field">
+              <label for="a-ig">Instagram</label>
+              <input id="a-ig" name="instagram" type="text" value="@koiworld">
+            </div>
+            <div class="field">
+              <label for="a-fb">Facebook</label>
+              <input id="a-fb" name="facebook" type="text" placeholder="Sayfa bağlantısı">
+            </div>
+            <div class="field">
+              <label for="a-yt">YouTube</label>
+              <input id="a-yt" name="youtube" type="text" placeholder="Kanal bağlantısı">
+            </div>
+            <div class="field">
+              <label for="a-li">LinkedIn</label>
+              <input id="a-li" name="linkedin" type="text" placeholder="Sayfa bağlantısı">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">SEO ve Takip Kodları</h2></div>
+        <div class="panel__body">
+          <div class="field" style="margin-bottom:16px">
+            <label for="a-seo-baslik">Site Meta Başlığı</label>
+            <input id="a-seo-baslik" name="seoBaslik" type="text" value="KOI | Çocuk ve Aile Gelişim Merkezi — Ümraniye, İstanbul">
+          </div>
+          <div class="field" style="margin-bottom:16px">
+            <label for="a-seo-aciklama">Site Meta Açıklaması</label>
+            <textarea id="a-seo-aciklama" name="seoAciklama" style="min-height:90px">KOI; psikolojik danışmanlık, oyun terapisi, oyun grupları ve aile atölyelerini bir araya getiren bütüncül bir çocuk ve aile gelişim merkezidir.</textarea>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="a-ga">Google Analytics ID</label>
+              <input id="a-ga" name="ga" type="text" placeholder="G-XXXXXXXXXX">
+            </div>
+            <div class="field">
+              <label for="a-gsc">Search Console Doğrulama</label>
+              <input id="a-gsc" name="gsc" type="text" placeholder="google-site-verification=...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">Kaydet</h2></div>
+        <div class="panel__body">
+          <p class="muted" style="font-size:.86rem">Değişiklikler kaydedildiğinde sitenin ilgili bölümleri güncellenir.</p>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">
+            <button class="btn btn--primary" type="submit">Ayarları Kaydet<svg aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+            <a class="btn btn--ghost" href="index.html" target="_blank">Siteyi Önizle</a>
+          </div>
+          <p class="form-note" data-ayar-not></p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">Site Durumu</h2></div>
+        <div class="panel__body">
+          <ul style="display:flex;flex-direction:column;gap:14px;font-size:.88rem;color:var(--koi-muted)">
+            <li style="display:flex;justify-content:space-between;gap:12px"><span>SSL sertifikası</span><span class="status status--bekliyor">Kurulumda</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px"><span>Otomatik yedekleme</span><span class="status status--bekliyor">Kurulumda</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px"><span>Google Analytics</span><span class="status status--bekliyor">Bağlanacak</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px"><span>Search Console</span><span class="status status--bekliyor">Bağlanacak</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px"><span>Site haritası</span><span class="status status--tamam">Hazır</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">Kullanıcılar</h2></div>
+        <div class="panel__body">
+          <ul style="display:flex;flex-direction:column;gap:14px;font-size:.88rem">
+            <li style="display:flex;align-items:center;gap:12px">
+              <span class="admin-user__avatar" style="width:32px;height:32px;font-size:.8rem">EB</span>
+              <span>Elif Bilsel<br><span class="muted" style="font-size:.78rem">Yönetici</span></span>
+            </li>
+            <li style="display:flex;align-items:center;gap:12px">
+              <span class="admin-user__avatar" style="width:32px;height:32px;font-size:.8rem;background:var(--koi-olive-300)">KE</span>
+              <span>KOI Ekip<br><span class="muted" style="font-size:.78rem">Editör</span></span>
+            </li>
+          </ul>
+          <a class="btn btn--ghost btn--sm" href="#" style="margin-top:18px" data-yeni="kullanici">Kullanıcı Ekle</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

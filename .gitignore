@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.claude/
+
+# Musteri belgeleri ve calisma dosyalari (kisisel veri icerebilir)
+*.pdf
+WhatsApp Image*
+hatalı görsel yerler/

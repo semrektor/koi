@@ -1,0 +1,32 @@
+<!--title: Blog Yazıları | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: blog-->
+<!--pagetitle: Blog Yazıları-->
+<!--pagesub: Yazı ekleyin, düzenleyin veya yayından kaldırın.-->
+<!--topaction: <a class="btn btn--primary btn--sm" href="yonetim-yazi.html">Yeni Yazı<svg aria-hidden="true"><use href="#i-plus"></use></svg></a>-->
+
+<div class="admin-note">
+  <svg aria-hidden="true"><use href="#i-info"></use></svg>
+  <div><strong style="font-weight:400">Taslak panel.</strong> Yeni yazı ekleyip düzenleyebilir, durumunu değiştirebilirsiniz. Kayıtlar şimdilik tarayıcınızda tutulur; WordPress kurulumundan sonra sitede canlı yayınlanacaktır.</div>
+</div>
+
+<div class="panel">
+  <div class="panel__head">
+    <h2>Tüm Yazılar</h2>
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="filters" style="margin:0" data-admin-filter="blog">
+        <button type="button" data-f="all" class="is-active">Tümü</button>
+        <button type="button" data-f="yayinda">Yayında</button>
+        <button type="button" data-f="taslak">Taslak</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel__body--flush">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Başlık</th><th>Kategori</th><th>Durum</th><th>Tarih</th><th style="text-align:right">İşlem</th></tr>
+      </thead>
+      <tbody data-list="blog"></tbody>
+    </table>
+  </div>
+</div>

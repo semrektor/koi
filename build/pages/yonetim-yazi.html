@@ -1,0 +1,109 @@
+<!--title: Yazı Düzenle | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: blog-->
+<!--pagetitle: Yazı Düzenle-->
+<!--pagesub: Başlığı, içeriği ve yayın bilgilerini düzenleyin.-->
+<!--topaction: <a class="btn btn--ghost btn--sm" href="yonetim-blog.html">Vazgeç</a>-->
+
+<form data-yazi-form>
+  <div class="editor-grid">
+    <div>
+      <div class="panel">
+        <div class="panel__body">
+          <div class="field" style="margin-bottom:18px">
+            <label for="y-baslik">Yazı Başlığı</label>
+            <input id="y-baslik" name="baslik" type="text" placeholder="Örn. Çocuklarda Uyku Düzeni" required>
+          </div>
+          <div class="field" style="margin-bottom:18px">
+            <label for="y-ozet">Kısa Özet</label>
+            <input id="y-ozet" name="ozet" type="text" placeholder="Listelerde görünecek bir iki cümlelik açıklama">
+          </div>
+
+          <label for="y-icerik" style="display:block;margin-bottom:8px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--koi-muted)">İçerik</label>
+          <div class="editor-toolbar" role="toolbar" aria-label="Metin biçimlendirme">
+            <button type="button" data-ins="## " title="Başlık"><strong>H2</strong></button>
+            <button type="button" data-ins="### " title="Alt başlık"><strong>H3</strong></button>
+            <button type="button" data-ins="**kalın**" title="Kalın"><strong>B</strong></button>
+            <button type="button" data-ins="*italik*" title="İtalik"><em>I</em></button>
+            <button type="button" data-ins="- " title="Madde listesi">• Liste</button>
+            <button type="button" data-ins="> " title="Alıntı">" Alıntı</button>
+            <button type="button" data-ins="[bağlantı](https://)" title="Bağlantı">Bağlantı</button>
+            <button type="button" data-ins="![görsel](assets/img/)" title="Görsel">Görsel</button>
+          </div>
+          <textarea class="editor-area" id="y-icerik" name="icerik" placeholder="Yazınızı buraya yazın…"></textarea>
+          <p class="form-note" style="margin-top:12px">Biçimlendirme için basit işaretler kullanabilirsiniz. WordPress kurulumunda burada görsel editör (Gutenberg) yer alacaktır.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">Yayın</h2></div>
+        <div class="panel__body">
+          <div class="field" style="margin-bottom:16px">
+            <label for="y-durum">Durum</label>
+            <select id="y-durum" name="durum">
+              <option value="taslak">Taslak</option>
+              <option value="yayinda">Yayında</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:16px">
+            <label for="y-kategori">Kategori</label>
+            <select id="y-kategori" name="kategori">
+              <option>Ebeveynlik</option>
+              <option>Oyun ve Gelişim</option>
+              <option>Duygular</option>
+              <option>Okul</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:16px">
+            <label for="y-yazar">Yazar</label>
+            <select id="y-yazar" name="yazar">
+              <option>Elif Bilsel</option>
+              <option>KOI Uzman Ekibi</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="y-tarih">Yayın Tarihi</label>
+            <input id="y-tarih" name="tarih" type="date">
+          </div>
+          <div style="margin-top:22px;display:flex;flex-direction:column;gap:10px">
+            <button class="btn btn--primary" type="submit">Kaydet<svg aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+            <button class="btn btn--ghost" type="button" data-onizleme>Önizle</button>
+          </div>
+          <p class="form-note" data-kayit-not></p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">Kapak Görseli</h2></div>
+        <div class="panel__body">
+          <div class="upload-box">
+            <svg aria-hidden="true"><use href="#i-upload"></use></svg>
+            <div>Görseli buraya sürükleyin veya <a href="#" style="color:var(--koi-terra)">bilgisayarınızdan seçin</a></div>
+            <div style="margin-top:8px;font-size:.78rem">JPG veya PNG · önerilen 1600×900</div>
+          </div>
+          <div class="field" style="margin-top:16px">
+            <label for="y-alt">Görsel Açıklaması (SEO)</label>
+            <input id="y-alt" name="alt" type="text" placeholder="Görselde ne var?">
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head"><h2 style="font-size:1.05rem">SEO</h2></div>
+        <div class="panel__body">
+          <div class="field" style="margin-bottom:16px">
+            <label for="y-seo-baslik">Meta Başlık</label>
+            <input id="y-seo-baslik" name="seoBaslik" type="text" placeholder="Arama sonucunda görünecek başlık">
+          </div>
+          <div class="field">
+            <label for="y-seo-aciklama">Meta Açıklama</label>
+            <textarea id="y-seo-aciklama" name="seoAciklama" style="min-height:96px" placeholder="150-160 karakter önerilir"></textarea>
+          </div>
+          <p class="form-note">URL: <span style="color:var(--koi-olive)">koimerkezi.com/blog/<span data-slug-onizleme>yazi-basligi</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

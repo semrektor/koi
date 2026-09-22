@@ -1,0 +1,258 @@
+/* =========================================================
+   KOI Yönetim Paneli — taslak arayüz
+   Site tasarım sistemiyle aynı paleti kullanır.
+   ========================================================= */
+
+.admin-body{
+  background:#F2EEE6;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:262px 1fr;
+}
+
+/* ---------- Giriş ekranı ---------- */
+.login-wrap{
+  min-height:100vh; display:grid; grid-template-columns:1.05fr .95fr;
+  background:var(--koi-ivory);
+}
+.login-visual{
+  position:relative; overflow:hidden;
+  background:var(--koi-olive-700);
+  display:flex; align-items:flex-end; padding:clamp(28px,4vw,56px);
+}
+.login-visual img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:.5; filter:saturate(.9);
+}
+.login-visual__text{ position:relative; z-index:1; color:#E8E5DC; max-width:38ch; }
+.login-visual__text h2{ color:#F4EFE6; font-size:clamp(1.6rem,2.4vw,2.3rem); }
+.login-visual__text p{ color:#B9B8AC; font-size:.95rem; }
+.login-panel{
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(28px,5vw,72px);
+}
+.login-card{ width:min(420px,100%); margin-inline:auto; }
+.login-card .brand__logo{ height:74px; margin-bottom:34px; }
+.login-hint{
+  margin-top:22px; padding:14px 16px; border-radius:var(--radius-s);
+  background:var(--koi-cream); border:1px solid var(--koi-linen);
+  font-size:.82rem; color:var(--koi-muted);
+}
+
+/* ---------- Yan menü ---------- */
+.admin-side{
+  background:var(--koi-olive-700); color:#B9B8AC;
+  display:flex; flex-direction:column; gap:8px;
+  padding:24px 18px; position:sticky; top:0; height:100vh; overflow-y:auto;
+}
+.admin-side__brand{ padding:6px 10px 20px; border-bottom:1px solid rgba(244,239,230,.14); margin-bottom:12px; }
+.admin-side__brand img{ height:60px; width:auto; }
+.admin-nav{ display:flex; flex-direction:column; gap:3px; }
+.admin-nav__label{
+  font-size:.62rem; letter-spacing:.22em; text-transform:uppercase;
+  color:#7E8473; padding:16px 12px 8px;
+}
+.admin-nav a{
+  display:flex; align-items:center; gap:12px;
+  padding:11px 12px; border-radius:var(--radius-s);
+  font-size:.9rem; color:#C3C2B7;
+  transition:background .25s var(--ease), color .25s var(--ease);
+}
+.admin-nav a svg{ width:17px; height:17px; flex:none; opacity:.8; }
+.admin-nav a:hover{ background:rgba(244,239,230,.07); color:#F4EFE6; }
+.admin-nav a[aria-current="page"]{ background:var(--koi-terra); color:#fff; }
+.admin-nav a[aria-current="page"] svg{ opacity:1; }
+.admin-side__foot{ margin-top:auto; padding-top:18px; border-top:1px solid rgba(244,239,230,.14); }
+
+/* ---------- Üst bar ---------- */
+.admin-main{ min-width:0; display:flex; flex-direction:column; }
+.admin-top{
+  background:var(--koi-ivory); border-bottom:1px solid var(--koi-linen);
+  padding:18px clamp(20px,3vw,38px);
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  position:sticky; top:0; z-index:20;
+}
+.admin-top h1{ font-size:1.5rem; margin:0; }
+.admin-top__sub{ font-size:.8rem; color:var(--koi-muted); margin-top:3px; }
+.admin-top__actions{ display:flex; align-items:center; gap:12px; }
+.admin-user{
+  display:flex; align-items:center; gap:10px;
+  font-size:.85rem; color:var(--koi-muted);
+}
+.admin-user__avatar{
+  width:36px; height:36px; border-radius:50%; flex:none;
+  background:var(--koi-olive); color:#F4EFE6;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:.95rem;
+}
+.admin-content{ padding:clamp(20px,3vw,38px); }
+
+/* ---------- Demo uyarısı ---------- */
+.admin-note{
+  display:flex; gap:12px; align-items:flex-start;
+  background:rgba(196,118,79,.10); border:1px solid rgba(196,118,79,.28);
+  border-radius:var(--radius-s); padding:14px 18px; margin-bottom:26px;
+  font-size:.86rem; color:#8A5334;
+}
+.admin-note svg{ width:18px; height:18px; flex:none; margin-top:2px; }
+
+/* ---------- İstatistik kartları ---------- */
+.stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:30px; }
+.stat{
+  background:#fff; border:1px solid var(--koi-linen); border-radius:var(--radius-m);
+  padding:22px 24px;
+}
+.stat__label{
+  font-size:.68rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--koi-muted); margin-bottom:10px; display:block;
+}
+.stat__value{ font-family:var(--font-display); font-size:2.1rem; color:var(--koi-olive); line-height:1; }
+.stat__delta{ font-size:.78rem; color:var(--koi-olive-300); margin-top:8px; }
+
+/* ---------- Panel kutusu ---------- */
+.panel{
+  background:#fff; border:1px solid var(--koi-linen);
+  border-radius:var(--radius-m); overflow:hidden; margin-bottom:24px;
+}
+.panel__head{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px 24px; border-bottom:1px solid var(--koi-linen);
+}
+.panel__head h2{ font-size:1.18rem; margin:0; }
+.panel__body{ padding:24px; }
+.panel__body--flush{ padding:0; }
+
+/* ---------- Tablo ---------- */
+.admin-table{ width:100%; border-collapse:collapse; font-size:.9rem; }
+.admin-table th{
+  text-align:left; padding:13px 24px; background:var(--koi-cream);
+  font-family:var(--font-body); font-weight:400; font-size:.68rem;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--koi-muted);
+  border-bottom:1px solid var(--koi-linen);
+}
+.admin-table td{
+  padding:15px 24px; border-bottom:1px solid var(--koi-linen); color:var(--koi-muted);
+  vertical-align:middle;
+}
+.admin-table tr:last-child td{ border-bottom:0; }
+.admin-table tr:hover td{ background:#FDFBF7; }
+.admin-table .t-title{ color:var(--koi-ink); font-size:.95rem; }
+.admin-table .t-title small{ display:block; color:var(--koi-muted); font-size:.78rem; margin-top:3px; }
+.row-actions{ display:flex; gap:8px; justify-content:flex-end; }
+.icon-btn{
+  width:32px; height:32px; border-radius:var(--radius-s);
+  border:1px solid var(--koi-linen); background:#fff;
+  display:inline-flex; align-items:center; justify-content:center; color:var(--koi-muted);
+  transition:all .25s var(--ease);
+}
+.icon-btn svg{ width:15px; height:15px; }
+.icon-btn:hover{ border-color:var(--koi-olive-300); color:var(--koi-olive); }
+.icon-btn--danger:hover{ border-color:#C0563F; color:#C0563F; }
+
+.status{
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:.76rem; padding:5px 12px; border-radius:100px;
+}
+.status::before{ content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.status--yayinda{ background:rgba(124,138,108,.16); color:#4E5C41; }
+.status--taslak{ background:rgba(110,108,99,.14); color:#6E6C63; }
+.status--yeni{ background:rgba(196,118,79,.14); color:#A85B35; }
+.status--bekliyor{ background:rgba(196,118,79,.14); color:#A85B35; }
+.status--tamam{ background:rgba(124,138,108,.16); color:#4E5C41; }
+
+/* ---------- Editör ---------- */
+.editor-grid{ display:grid; grid-template-columns:1fr 320px; gap:24px; align-items:start; }
+.editor-toolbar{
+  display:flex; gap:6px; flex-wrap:wrap; padding:10px 14px;
+  border:1px solid var(--koi-linen); border-bottom:0;
+  border-radius:var(--radius-s) var(--radius-s) 0 0; background:var(--koi-cream);
+}
+.editor-toolbar button{
+  min-width:34px; height:32px; padding:0 10px; border-radius:4px;
+  border:1px solid transparent; background:transparent; color:var(--koi-muted);
+  font-size:.85rem; transition:all .2s var(--ease);
+}
+.editor-toolbar button:hover{ background:#fff; border-color:var(--koi-linen); color:var(--koi-olive); }
+.editor-area{
+  width:100%; min-height:420px; padding:22px 24px;
+  border:1px solid var(--koi-linen); border-radius:0 0 var(--radius-s) var(--radius-s);
+  background:#fff; font-family:var(--font-body); font-size:.98rem; font-weight:300;
+  line-height:1.8; color:var(--koi-ink); resize:vertical;
+}
+.editor-area:focus{ outline:none; border-color:var(--koi-olive-300); }
+.upload-box{
+  border:1px dashed var(--koi-linen); border-radius:var(--radius-s);
+  padding:26px; text-align:center; color:var(--koi-muted); font-size:.85rem;
+  background:var(--koi-cream);
+}
+.upload-box svg{ width:26px; height:26px; margin-bottom:10px; color:var(--koi-olive-300); }
+
+/* ---------- Mesaj listesi ---------- */
+.msg{
+  display:grid; grid-template-columns:44px 1fr auto; gap:16px;
+  padding:18px 24px; border-bottom:1px solid var(--koi-linen);
+}
+.msg:last-child{ border-bottom:0; }
+.msg__avatar{
+  width:44px; height:44px; border-radius:50%;
+  background:var(--koi-cream); border:1px solid var(--koi-linen);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); color:var(--koi-olive);
+}
+.msg__name{ color:var(--koi-ink); font-size:.95rem; }
+.msg__meta{ font-size:.78rem; color:var(--koi-muted); margin-top:3px; }
+.msg__text{ font-size:.88rem; color:var(--koi-muted); margin-top:8px; }
+.msg__side{ text-align:right; display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+
+/* ---------- Galeri ızgarası ---------- */
+.admin-gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.admin-gallery figure{ margin:0; }
+.admin-gallery img{
+  width:100%; aspect-ratio:4/3; object-fit:cover;
+  border-radius:var(--radius-s); border:1px solid var(--koi-linen);
+}
+.admin-gallery figcaption{
+  font-size:.78rem; color:var(--koi-muted); margin-top:8px;
+  display:flex; justify-content:space-between; align-items:center; gap:8px;
+}
+
+/* ---------- Mobil ---------- */
+.admin-side-toggle{
+  display:none; width:42px; height:42px; border-radius:var(--radius-s);
+  border:1px solid var(--koi-linen); background:#fff;
+  align-items:center; justify-content:center;
+}
+.admin-side-toggle svg{ width:18px; height:18px; color:var(--koi-olive); }
+
+@media (max-width:1100px){
+  .stat-grid{ grid-template-columns:repeat(2,1fr); }
+  .editor-grid{ grid-template-columns:1fr; }
+  .admin-gallery{ grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:900px){
+  .admin-body{ grid-template-columns:1fr; }
+  .admin-side{
+    position:fixed; inset:0 auto 0 0; width:262px; z-index:60;
+    transform:translateX(-100%); transition:transform .35s var(--ease);
+  }
+  .admin-side.is-open{ transform:none; }
+  .admin-side-toggle{ display:inline-flex; }
+  .login-wrap{ grid-template-columns:1fr; }
+  .login-visual{ min-height:230px; }
+}
+@media (max-width:680px){
+  .panel__head{ flex-wrap:wrap; align-items:flex-start; }
+  .panel__head .filters{ width:100%; }
+  .stat-grid{ grid-template-columns:1fr; }
+  .admin-gallery{ grid-template-columns:repeat(2,1fr); }
+  .admin-top{ flex-wrap:wrap; }
+  .admin-user span{ display:none; }
+  .admin-table thead{ display:none; }
+  .admin-table tr{ display:block; padding:14px 18px; border-bottom:1px solid var(--koi-linen); }
+  .admin-table td{ display:flex; justify-content:space-between; gap:14px; padding:6px 0; border:0; }
+  .admin-table td::before{
+    content:attr(data-th); font-size:.66rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--koi-olive-300);
+  }
+  .row-actions{ justify-content:flex-start; }
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /yonetim
+Disallow: /yonetim-giris.html
+
+Sitemap: https://koimerkezi.com/sitemap.xml

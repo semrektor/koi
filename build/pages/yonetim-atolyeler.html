@@ -1,0 +1,42 @@
+<!--title: Atölye ve Programlar | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: atolyeler-->
+<!--pagetitle: Atölye ve Programlar-->
+<!--pagesub: Atölye takvimini, kontenjanları ve oyun grubu programını yönetin.-->
+<!--topaction: <a class="btn btn--primary btn--sm" href="#" data-yeni="atolye">Yeni Program<svg aria-hidden="true"><use href="#i-plus"></use></svg></a>-->
+
+<div class="admin-note">
+  <svg aria-hidden="true"><use href="#i-info"></use></svg>
+  <div><strong style="font-weight:400">Taslak panel.</strong> Program eklediğinizde sitedeki atölye takvimi ve kart listesi güncellenir; kontenjan dolduğunda durum otomatik olarak "Dolu" görünür.</div>
+</div>
+
+<div class="panel">
+  <div class="panel__head">
+    <h2>Atölye ve Seminerler</h2>
+    <div class="filters" style="margin:0" data-admin-filter="atolye">
+      <button type="button" data-f="all" class="is-active">Tümü</button>
+      <button type="button" data-f="yayinda">Yayında</button>
+      <button type="button" data-f="taslak">Taslak</button>
+    </div>
+  </div>
+  <div class="panel__body--flush">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Program</th><th>Tür</th><th>Tarih</th><th>Kontenjan</th><th>Durum</th><th style="text-align:right">İşlem</th></tr>
+      </thead>
+      <tbody data-list="atolye"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel__head"><h2>Oyun Grubu Haftalık Programı</h2></div>
+  <div class="panel__body--flush">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Gün</th><th>Sabah Seansı</th><th>Öğleden Sonra</th><th>Kontenjan</th><th style="text-align:right">İşlem</th></tr>
+      </thead>
+      <tbody data-list="oyungrubu"></tbody>
+    </table>
+  </div>
+</div>

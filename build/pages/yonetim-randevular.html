@@ -1,0 +1,30 @@
+<!--title: Randevu Talepleri | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: randevular-->
+<!--pagetitle: Randevu Talepleri-->
+<!--pagesub: Site formlarından gelen başvurular burada toplanır.-->
+<!--topaction: <a class="btn btn--ghost btn--sm" href="#" data-disa-aktar">Dışa Aktar (CSV)</a>-->
+
+<div class="admin-note">
+  <svg aria-hidden="true"><use href="#i-info"></use></svg>
+  <div><strong style="font-weight:400">Taslak panel.</strong> Kurulum sonrası iletişim, randevu ve atölye formlarından gelen talepler bu ekranda listelenecek; aynı anda kurumsal e-posta adresinize de iletilecektir.</div>
+</div>
+
+<div class="panel">
+  <div class="panel__head">
+    <h2>Gelen Talepler</h2>
+    <div class="filters" style="margin:0" data-admin-filter="randevu">
+      <button type="button" data-f="all" class="is-active">Tümü</button>
+      <button type="button" data-f="yeni">Yeni</button>
+      <button type="button" data-f="tamam">Yanıtlandı</button>
+    </div>
+  </div>
+  <div class="panel__body--flush">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Ad Soyad</th><th>Konu</th><th>İletişim</th><th>Durum</th><th>Tarih</th><th style="text-align:right">İşlem</th></tr>
+      </thead>
+      <tbody data-list="randevu"></tbody>
+    </table>
+  </div>
+</div>

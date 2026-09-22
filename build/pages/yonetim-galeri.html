@@ -1,0 +1,30 @@
+<!--title: Galeri | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: galeri-->
+<!--pagetitle: Galeri-->
+<!--pagesub: Merkez, atölye ve etkinlik görsellerini yönetin.-->
+<!--topaction: <a class="btn btn--primary btn--sm" href="#" data-yukle>Görsel Yükle<svg aria-hidden="true"><use href="#i-plus"></use></svg></a>-->
+
+<div class="admin-note">
+  <svg aria-hidden="true"><use href="#i-info"></use></svg>
+  <div><strong style="font-weight:400">Taslak panel.</strong> Görseller şu an temsili olarak yerleştirilmiştir. Çekim sonrası bu ekrandan yükleyeceğiniz fotoğraflar, seçtiğiniz kategoriye göre galeri sayfasında yayınlanacaktır.</div>
+</div>
+
+<div class="panel">
+  <div class="panel__body">
+    <div class="upload-box" style="margin-bottom:24px">
+      <svg aria-hidden="true"><use href="#i-upload"></use></svg>
+      <div>Görselleri buraya sürükleyin veya <a href="#" style="color:var(--koi-terra)">bilgisayarınızdan seçin</a></div>
+      <div style="margin-top:8px;font-size:.78rem">JPG veya PNG · en fazla 5 MB · çoklu seçim yapılabilir</div>
+    </div>
+
+    <div class="filters" data-admin-filter="galeri">
+      <button type="button" data-f="all" class="is-active">Tümü</button>
+      <button type="button" data-f="mekan">Mekân</button>
+      <button type="button" data-f="atolye">Atölye</button>
+      <button type="button" data-f="etkinlik">Etkinlik</button>
+    </div>
+
+    <div class="admin-gallery" data-list="galeri"></div>
+  </div>
+</div>

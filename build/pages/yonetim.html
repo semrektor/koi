@@ -1,0 +1,94 @@
+<!--title: Panel Özeti | KOI Yönetim-->
+<!--layout: admin-->
+<!--nav: yonetim-->
+<!--pagetitle: Panel Özeti-->
+<!--pagesub: Hoş geldiniz. Sitenizin güncel durumu aşağıda.-->
+<!--topaction: <a class="btn btn--primary btn--sm" href="yonetim-yazi.html">Yeni Yazı<svg aria-hidden="true"><use href="#i-plus"></use></svg></a>-->
+
+<div class="admin-note">
+  <svg aria-hidden="true"><use href="#i-info"></use></svg>
+  <div><strong style="font-weight:400">Taslak panel.</strong> Bu ekran, teslim sonrası kullanacağınız yönetim arayüzünün tasarım önizlemesidir. Yaptığınız değişiklikler şimdilik yalnızca tarayıcınızda saklanır; WordPress kurulumundan sonra gerçek veriyle çalışacaktır.</div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat">
+    <span class="stat__label">Yayındaki Yazı</span>
+    <div class="stat__value" data-stat="yazi">5</div>
+    <p class="stat__delta">2 taslak bekliyor</p>
+  </div>
+  <div class="stat">
+    <span class="stat__label">Bu Hafta Randevu</span>
+    <div class="stat__value" data-stat="randevu">8</div>
+    <p class="stat__delta">3 yanıtlanmayı bekliyor</p>
+  </div>
+  <div class="stat">
+    <span class="stat__label">Aktif Program</span>
+    <div class="stat__value" data-stat="program">10</div>
+    <p class="stat__delta">4 oyun grubu, 6 atölye</p>
+  </div>
+  <div class="stat">
+    <span class="stat__label">Galeri Görseli</span>
+    <div class="stat__value" data-stat="galeri">12</div>
+    <p class="stat__delta">Son yükleme: bu hafta</p>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel__head">
+    <h2>Son Randevu Talepleri</h2>
+    <a class="link-arrow" href="yonetim-randevular.html">Tümünü Gör<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+  </div>
+  <div class="panel__body--flush">
+    <div class="msg">
+      <div class="msg__avatar">AY</div>
+      <div>
+        <div class="msg__name">Ayşe Yılmaz</div>
+        <div class="msg__meta">Oyun Grupları · WhatsApp tercih ediyor · 05xx xxx xx xx</div>
+        <p class="msg__text">Merhaba, 3,5 yaşındaki kızım için oyun grubu kontenjanını öğrenmek istiyorum.</p>
+      </div>
+      <div class="msg__side">
+        <span class="status status--yeni">Yeni</span>
+        <span class="msg__meta">2 saat önce</span>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg__avatar">MD</div>
+      <div>
+        <div class="msg__name">Mehmet Demir</div>
+        <div class="msg__meta">Aile Danışmanlığı · Telefon tercih ediyor</div>
+        <p class="msg__text">Hafta içi akşam saatlerinde görüşme mümkün mü?</p>
+      </div>
+      <div class="msg__side">
+        <span class="status status--yeni">Yeni</span>
+        <span class="msg__meta">5 saat önce</span>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg__avatar">SK</div>
+      <div>
+        <div class="msg__name">Selin Kaya</div>
+        <div class="msg__meta">Ebeveyn Atölyesi · E-posta tercih ediyor</div>
+        <p class="msg__text">Cumartesi atölyesine iki kişi katılabilir miyiz?</p>
+      </div>
+      <div class="msg__side">
+        <span class="status status--tamam">Yanıtlandı</span>
+        <span class="msg__meta">Dün</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel__head">
+    <h2>Son Blog Yazıları</h2>
+    <a class="link-arrow" href="yonetim-blog.html">Tümünü Gör<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+  </div>
+  <div class="panel__body--flush">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Başlık</th><th>Kategori</th><th>Durum</th><th>Tarih</th><th></th></tr>
+      </thead>
+      <tbody data-list="ozet-blog"></tbody>
+    </table>
+  </div>
+</div>
