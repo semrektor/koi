@@ -235,8 +235,8 @@ p:last-child{ margin-bottom:0; }
   gap:28px; min-height:86px;
 }
 .brand{ display:flex; align-items:center; gap:13px; }
-.brand__logo{ height:62px; width:auto; flex:none; }
-.brand__logo--footer{ height:76px; }
+.brand__logo{ height:66px; width:auto; flex:none; }
+.brand__logo--footer{ height:84px; }
 .brand__mark{ width:52px; height:52px; color:var(--koi-olive); flex:none; }
 .brand__text{ display:flex; flex-direction:column; line-height:1; }
 .brand__name{
