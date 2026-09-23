@@ -97,7 +97,9 @@ Kırık bağlantı, eksik meta etiketi, `alt` niteliği olmayan görsel, etikets
 
 **İkonlar** — Sayfaya gömülü ince çizgi SVG seti; harici ikon kütüphanesi yok.
 
-**Logo** — Orijinal KOI logosundan hazırlandı: `logo.png` (açık zeminler için), `logo-acik.png` (koyu zeminler ve panel için), `favicon.png`. Kaynak logonun vektör (SVG/AI) hâli iletildiğinde daha keskin bir sürümle değiştirilebilir.
+**Logo** — Orijinal KOI logosundan hazırlandı: `logo.webp` (açık zeminler), `logo-acik.webp` (koyu zeminler ve panel), `favicon.png`. WebP formatı sayesinde ikisi toplam 104 KB (PNG hâli 300 KB idi). Kaynak logonun vektör (SVG/AI) hâli iletildiğinde daha keskin bir sürümle değiştirilebilir.
+
+**Uzman portreleri** — Fotoğraf çekimi yapılana kadar, uzman kartlarında baş harflerden oluşan monogram görünür (örn. "EB", "KOI"). Yapay zekâ ile üretilmiş insan yüzü kullanılmadı; gerçek uzman izlenimi vermemesi için bilinçli bir tercih.
 
 **Görseller** — Canva ile üretilmiş 7 temsili görsel, 2200×1238 / 1400×1750 piksel, JPG (toplam 1.9 MB):
 
@@ -111,7 +113,9 @@ Kırık bağlantı, eksik meta etiketi, `alt` niteliği olmayan görsel, etikets
 | `blog-masa.jpg` | Defter, kalem, çay |
 | `yaprak.jpg` | Yaprak gölgeleri |
 
-**Bunlar geçici temsili görsellerdir.** Profesyonel çekim sonrası aynı dosya adlarıyla değiştirmek yeterlidir.
+Her görselin bir de **900 piksellik küçük varyantı** var (`*-sm.jpg`). Sayfalar `srcset` ile sunulur: telefonda küçük, büyük ekranda tam çözünürlük yüklenir. Mobilde ana sayfanın görsel yükü **585 KB**.
+
+**Bunlar geçici temsili görsellerdir.** Profesyonel çekim sonrası aynı dosya adlarıyla değiştirmek yeterlidir — yeni görselin küçük varyantını da üretmeyi unutmayın.
 
 ---
 
@@ -130,7 +134,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Konu | Durum |
 |---|---|
 | Duyarlı tasarım | 375 / 768 / 1300 / 1440 genişliklerinde test edildi |
-| Sayfa ağırlığı | Görseller optimize JPG; lazy-loading etkin |
+| Sayfa ağırlığı | `srcset` ile duyarlı görseller, lazy-loading, WebP logo — mobilde ana sayfa 585 KB |
 | SEO | Her sayfada benzersiz `title` + `meta description`, tek `h1`, Open Graph etiketleri, SEO uyumlu URL'ler |
 | Site haritası | `sitemap.xml` otomatik üretiliyor (32 genel sayfa) |
 | robots.txt | Hazır; yönetim paneli arama motorlarına kapalı |
@@ -149,7 +153,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | E-posta | `info@koimerkezi.com` — domain seçimine bağlı |
 | Açık adres / Google Maps | Ruhsat ve adres kesinleşince canlı harita gömülecek |
 | Uzman isimleri | Elif Bilsel dışındakiler "Uzman İsmi" olarak duruyor |
-| Uzman portreleri | Boş bırakıldı — yapay zekâ ile üretilmiş insan yüzü kullanılmadı |
+| Uzman portreleri | Monogram gösteriliyor — çekim sonrası fotoğraflar eklenecek |
 | Veli yorumları | Örnek metin; gerçek yorumlarla değiştirilecek |
 | Yaş grupları, takvim, kontenjan | Taslak veri |
 | KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek |

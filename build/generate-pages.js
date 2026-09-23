@@ -39,9 +39,22 @@ const INDEX = {};
 });
 Object.assign(INDEX, SABIT);
 
+/* Gorsellerin tam cozunurlukteki genisligi; srcset icin kullanilir */
+const GENISLIK = {
+  karsilama: 2200, "hero-kemer": 1400, "oyun-odasi": 2200,
+  danismanlik: 1400, "atolye-masa": 2200, "blog-masa": 2200, yaprak: 2200,
+};
+
+/* Kucuk alanlarda 900px varyant, buyuk alanlarda tam cozunurluk sunulur */
+const imgEtiket = (name, ekSinif) =>
+  '<img class="media__img" src="assets/img/' + name + '.jpg"' +
+  ' srcset="assets/img/' + name + '-sm.jpg 900w, assets/img/' + name + ".jpg " + (GENISLIK[name] || 2200) + 'w"' +
+  ' sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw"' +
+  ' alt="' + (ALT[name] || "") + '" loading="lazy">';
+
 const media = (name, cls, label) =>
   '<div class="media ' + cls + ' has-img" data-label="' + label + '">' +
-  '<img class="media__img" src="assets/img/' + name + '.jpg" alt="' + (ALT[name] || "") + '" loading="lazy"></div>';
+  imgEtiket(name) + "</div>";
 
 const arrow = '<svg aria-hidden="true"><use href="#i-arrow"></use></svg>';
 

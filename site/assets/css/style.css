@@ -172,6 +172,24 @@ p:last-child{ margin-bottom:0; }
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; object-position:center;
 }
+/* Uzman portresi henuz cekilmemis alanlar: bas harflerden monogram.
+   Yapay zeka ile uretilmis yuz kullanilmaz; cekim sonrasi gorsel gelir. */
+.media--mono{
+  background-image:
+    radial-gradient(120% 100% at 70% 15%, rgba(227,169,133,.30) 0%, rgba(227,169,133,0) 62%),
+    linear-gradient(160deg, #EFE8DC 0%, #E4DACA 58%, #D8CCB8 100%);
+  display:flex; align-items:center; justify-content:center;
+}
+.media--mono::before{
+  content:attr(data-mono);
+  font-family:var(--font-display); font-size:clamp(2.6rem,5vw,3.6rem);
+  letter-spacing:.12em; color:var(--koi-olive); opacity:.26; line-height:1;
+  padding-left:.12em;
+}
+.media--mono::after{
+  content:attr(data-label);
+  color:rgba(58,69,47,.34); font-size:.58rem;
+}
 .media.has-img::after{ display:none; }
 .media.has-img .media__mark{ display:none; }
 /* Koyu bantlardaki gorsellere marka tonu */

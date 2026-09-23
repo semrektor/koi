@@ -15,11 +15,13 @@ const PAGES = path.join(__dirname, "pages");
 /* Etikete gore gorsel secimi (ilk eslesen kazanir) */
 const RULES = [
   [/portre|kurucu/i, null], // insan gorseli uretilmedi - bos birak
+  [/öne çıkan/i, "karsilama"], // blog one cikan yazi: yazinin kendi gorseli
   [/karşılama|iç mekân|bekleme|genel görünüm/i, "karsilama"],
-  [/oyun odası|seans/i, "oyun-odasi"],
-  [/danışmanlık/i, "danismanlik"],
-  [/atölye|çalışma alanı|malzeme|etkinlik|seminer|açılış|buluşma/i, "atolye-masa"],
+  [/oyun odası|seans|çocuk-aile|buluşma/i, "oyun-odasi"],
+  [/danışmanlık|seminer/i, "danismanlik"],
+  [/atölye|çalışma alanı|malzeme/i, "atolye-masa"],
   [/kapak/i, "blog-masa"],
+  [/etkinlik|açılış/i, "hero-kemer"],
   [/detay|bitki|yaprak/i, "yaprak"],
 ];
 
@@ -28,6 +30,19 @@ const FALLBACK = ["oyun-odasi", "danismanlik", "atolye-masa", "blog-masa", "kars
 
 /* Dikey/kemerli alanlarda tercih edilen dikey gorseller */
 const PORTRAIT_IMG = { karsilama: "hero-kemer", "oyun-odasi": "oyun-odasi", danismanlik: "danismanlik" };
+
+/* Gorsellerin tam cozunurlukteki genisligi; srcset icin kullanilir */
+const GENISLIK = {
+  karsilama: 2200, "hero-kemer": 1400, "oyun-odasi": 2200,
+  danismanlik: 1400, "atolye-masa": 2200, "blog-masa": 2200, yaprak: 2200,
+};
+
+/* Kucuk alanlarda 900px varyant, buyuk alanlarda tam cozunurluk sunulur */
+const imgEtiket = (name) =>
+  '<img class="media__img" src="assets/img/' + name + '.jpg"' +
+  ' srcset="assets/img/' + name + '-sm.jpg 900w, assets/img/' + name + ".jpg " + (GENISLIK[name] || 2200) + 'w"' +
+  ' sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw"' +
+  ' alt="' + (ALT[name] || "") + '" loading="lazy">';
 
 const ALT = {
   karsilama: "KOI merkezinin karşılama alanı",
@@ -42,6 +57,10 @@ const ALT = {
 let fallbackIndex = 0;
 
 function pick(label, classes) {
+  /* Monogram alanlari (uzman portreleri) bos kalir */
+  if (/media--mono/.test(classes)) return null;
+  /* One cikan yazi: detay sayfasindaki kapakla ayni gorsel kullanilir */
+  if (/öne çıkan/i.test(label)) return "karsilama";
   for (const [re, img] of RULES) {
     if (re.test(label)) {
       if (img === null) return null;
@@ -86,11 +105,8 @@ files.forEach((file) => {
         label +
         '"' +
         tail +
-        '><img class="media__img" src="assets/img/' +
-        img +
-        '.jpg" alt="' +
-        (ALT[img] || "") +
-        '" loading="lazy">'
+        ">" +
+        imgEtiket(img)
       );
     }
   );
