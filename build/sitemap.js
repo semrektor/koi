@@ -8,7 +8,7 @@ const fs = require("fs");
 const path = require("path");
 
 const OUT = path.join(__dirname, "..", "site");
-const BASE = (process.argv[2] || "https://koimerkezi.com").replace(/\/$/, "");
+const BASE = (process.argv[2] || "https://koiedu.netlify.app").replace(/\/$/, "");
 
 /* Arama motorlarina acilmayacak sayfalar */
 const HARIC = /^(yonetim|404)/;

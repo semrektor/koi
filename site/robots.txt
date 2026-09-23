@@ -3,4 +3,4 @@ Allow: /
 Disallow: /yonetim
 Disallow: /yonetim-giris.html
 
-Sitemap: https://koimerkezi.com/sitemap.xml
+Sitemap: https://koiedu.netlify.app/sitemap.xml

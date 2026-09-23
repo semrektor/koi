@@ -235,8 +235,8 @@ p:last-child{ margin-bottom:0; }
   gap:28px; min-height:86px;
 }
 .brand{ display:flex; align-items:center; gap:13px; }
-.brand__logo{ height:66px; width:auto; flex:none; }
-.brand__logo--footer{ height:84px; }
+.brand__logo{ height:62px; width:auto; flex:none; }
+.brand__logo--footer{ height:76px; }
 .brand__mark{ width:52px; height:52px; color:var(--koi-olive); flex:none; }
 .brand__text{ display:flex; flex-direction:column; line-height:1; }
 .brand__name{
@@ -332,6 +332,24 @@ p:last-child{ margin-bottom:0; }
 .split--reverse .split__media{ order:2; }
 .split--narrow{ grid-template-columns:.9fr 1.1fr; }
 .split__body{ max-width:54ch; }
+/* "KOI Nedir?" - referans tasarimdaki serbest duran suluboya koi */
+.koi-about{
+  display:grid; grid-template-columns:1.25fr .75fr; align-items:center;
+  gap:clamp(28px,5vw,80px);
+}
+.koi-about__art{ position:relative; display:flex; justify-content:center; }
+.koi-about__art img{
+  width:min(100%, 320px); height:auto;
+}
+.koi-about__art::before{
+  content:""; position:absolute; inset:8% 6%; z-index:-1; border-radius:50%;
+  background:radial-gradient(closest-side, rgba(227,169,133,.22), rgba(227,169,133,0));
+}
+@media (max-width:960px){
+  .koi-about{ grid-template-columns:1fr; }
+  .koi-about__art img{ width:min(60%, 240px); }
+}
+
 .quote-card{
   background:var(--koi-cream); border:1px solid var(--koi-linen);
   border-radius:var(--radius-m); padding:clamp(26px,3.4vw,44px);

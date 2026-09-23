@@ -97,7 +97,9 @@ Kırık bağlantı, eksik meta etiketi, `alt` niteliği olmayan görsel, etikets
 
 **İkonlar** — Sayfaya gömülü ince çizgi SVG seti; harici ikon kütüphanesi yok.
 
-**Logo** — Orijinal KOI logosundan hazırlandı: `logo.webp` (açık zeminler), `logo-acik.webp` (koyu zeminler ve panel), `favicon.png`. WebP formatı sayesinde ikisi toplam 104 KB (PNG hâli 300 KB idi). Kaynak logonun vektör (SVG/AI) hâli iletildiğinde daha keskin bir sürümle değiştirilebilir.
+**Logo** — Müşterinin orijinal KOI logosu (koi balığı + yay + yapraklar): `logo.webp` (açık zeminler), `logo-acik.webp` (koyu zeminler ve panel), `favicon.png`. Denenen alternatif yatay logo `build/logo-alternatif.png` olarak saklanıyor, sitede kullanılmıyor.
+
+**Koi işareti** — Hakkımızda sayfasındaki "KOI Nedir?" bölümünde, orijinal logodaki koi işareti (yay + balık + yapraklar) harflerden ayrıştırılarak şeffaf zeminli `koi-isaret.webp` olarak kullanıldı.
 
 **Uzman portreleri** — Fotoğraf çekimi yapılana kadar, uzman kartlarında baş harflerden oluşan monogram görünür (örn. "EB", "KOI"). Yapay zekâ ile üretilmiş insan yüzü kullanılmadı; gerçek uzman izlenimi vermemesi için bilinçli bir tercih.
 
@@ -150,7 +152,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Alan | Durum |
 |---|---|
 | Telefon / WhatsApp | `+90 (000) 000 00 00` — netleşince güncellenecek |
-| E-posta | `info@koimerkezi.com` — domain seçimine bağlı |
+| E-posta | `info@alanadi.com` — örnek; domain seçimine bağlı |
 | Açık adres / Google Maps | Ruhsat ve adres kesinleşince canlı harita gömülecek |
 | Uzman isimleri | Elif Bilsel dışındakiler "Uzman İsmi" olarak duruyor |
 | Uzman portreleri | Monogram gösteriliyor — çekim sonrası fotoğraflar eklenecek |
@@ -158,7 +160,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Yaş grupları, takvim, kontenjan | Taslak veri |
 | KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek |
 | Ücret bilgisi | Gösterilmiyor (müşteri kararına bırakıldı) |
-| Sosyal medya | Yalnızca Instagram (@koiworld) bağlı; diğer hesaplar açılınca eklenecek |
+| Sosyal medya | Örnek bağlantı (instagram.com, @kullaniciadi) — gerçek hesaplar açılınca eklenecek |
 
 ---
 
