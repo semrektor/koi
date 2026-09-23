@@ -103,7 +103,7 @@ dosyalar.forEach((f) => {
   [...sayfalar[f].matchAll(/href="([^"#?]+\.html)"/g)].forEach((m) => baglananlar.add(m[1]));
 });
 dosyalar.forEach((f) => {
-  if (f === "index.html") return;
+  if (f === "index.html" || f === "404.html") return; // 404 dogal olarak baglanti almaz
   if (!baglananlar.has(f)) uyarilar.push("yetim sayfa (hicbir yerden baglanmiyor): " + f);
 });
 

@@ -11,7 +11,7 @@ const OUT = path.join(__dirname, "..", "site");
 const BASE = (process.argv[2] || "https://koimerkezi.com").replace(/\/$/, "");
 
 /* Arama motorlarina acilmayacak sayfalar */
-const HARIC = /^yonetim/;
+const HARIC = /^(yonetim|404)/;
 
 /* Oncelik: ana sayfa > ust sayfalar > detay sayfalari */
 function oncelik(slug) {
