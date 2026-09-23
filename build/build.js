@@ -27,6 +27,34 @@ function meta(src, key, fallback) {
   return m ? m[1].trim() : fallback;
 }
 
+/* ---------- Varlik surumleme ----------
+   assets/ altindaki dosyalar uzun sureli onbelleklenir. Ayni adla
+   guncellenen bir gorsel ziyaretcide eski haliyle kalmasin diye her
+   referansa dosya icerigine dayali kisa bir surum eklenir:
+   assets/img/logo.webp -> assets/img/logo.webp?v=8c9e82 */
+const crypto = require("crypto");
+const surumOnbellek = new Map();
+
+function varlikSurumu(gorecelYol) {
+  if (surumOnbellek.has(gorecelYol)) return surumOnbellek.get(gorecelYol);
+  const tam = path.join(OUT, gorecelYol);
+  let s = "";
+  try {
+    s = crypto.createHash("md5").update(fs.readFileSync(tam)).digest("hex").slice(0, 8);
+  } catch (e) {
+    s = ""; // dosya yoksa surum eklenmez
+  }
+  surumOnbellek.set(gorecelYol, s);
+  return s;
+}
+
+function surumle(html) {
+  return html.replace(/(assets\/[A-Za-z0-9._\/-]+\.(?:webp|png|jpg|jpeg|svg|css|js))(?=["'\s,)])/g, (tam, yol) => {
+    const s = varlikSurumu(yol);
+    return s ? yol + "?v=" + s : yol;
+  });
+}
+
 const files = fs.readdirSync(PAGES).filter((f) => f.endsWith(".html"));
 let count = 0;
 
@@ -60,11 +88,21 @@ files.forEach((file) => {
 
   fs.writeFileSync(
     path.join(OUT, slug + ".html"),
-    page + "\n" + body.trim() + "\n\n" + layout.foot,
+    surumle(page + "\n" + body.trim() + "\n\n" + layout.foot),
     "utf8"
   );
   count++;
   console.log("  ok  site/" + slug + ".html");
+});
+
+/* Derleme disinda tutulan sayfa (giris ekrani) da surumlenir */
+const ELLE = ["yonetim-giris.html"];
+ELLE.forEach((f) => {
+  const p = path.join(OUT, f);
+  if (!fs.existsSync(p)) return;
+  const ham = fs.readFileSync(p, "utf8").replace(/(assets\/[A-Za-z0-9._\/-]+\.(?:webp|png|jpg|jpeg|svg|css|js))\?v=[a-f0-9]+/g, "$1");
+  fs.writeFileSync(p, surumle(ham), "utf8");
+  console.log("  ok  site/" + f + " (surumlendi)");
 });
 
 console.log("\n" + count + " sayfa derlendi.");
