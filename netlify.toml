@@ -3,7 +3,7 @@
 
 [build]
   publish = "site"
-  command = "node build/generate-pages.js && node build/apply-images.js && node build/build.js"
+  command = "node build/generate-pages.js && node build/apply-images.js && node build/build.js && node build/sitemap.js"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -14,6 +14,19 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+    # Scriptler yalnizca kendi alan adimizdan; satir ici script yok.
+    # style-src 'unsafe-inline': taslakta style="" nitelikleri kullaniliyor
+    # (WordPress temasinda CSS dosyasina tasinip kaldirilabilir).
+    # Google Maps gomuldugunde frame-src'ye https://www.google.com eklenmeli.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+
+# Yonetim paneli arama motorlarina kapali (meta etiketine ek olarak baslik)
+[[headers]]
+  for = "/yonetim*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
 
 [[headers]]
   for = "/assets/img/*"

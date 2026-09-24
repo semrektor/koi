@@ -141,11 +141,23 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Site haritası | `sitemap.xml` otomatik üretiliyor (32 genel sayfa) |
 | robots.txt | Hazır; yönetim paneli arama motorlarına kapalı |
 | Erişilebilirlik | Tüm görsellerde `alt`, form alanlarında `label`, `aria` etiketleri, klavye erişimi |
-| Güvenlik başlıkları | `netlify.toml` içinde tanımlı |
-| SSL | Netlify/WordPress kurulumunda etkinleştirilecek |
+| Güvenlik başlıkları | CSP (satır içi script yasak), HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy; panelde X-Robots-Tag — `netlify.toml` |
+| HTTPS | Netlify: http → https 301 yönlendirmesi, HSTS preload |
 | Analytics / Search Console | Kurulum aşamasında bağlanacak |
 
 ---
+
+## Güvenlik notları (taslak)
+
+- **Yönetim paneli girişi ( / ) yalnızca tanıtım amaçlıdır.** Doğrulama tarayıcıda yapılır ve atlatılabilir; panelde gerçek veri olmadığı için risk yoktur. WordPress aşamasında sunucu taraflı oturum, güçlü parola ve 2FA ile değiştirilecektir — bu yapı canlı bir sisteme taşınmamalıdır.
+- Panel, kayıtlı verileri ekrana basarken HTML kaçışı ve bağlantı doğrulaması uygular.
+-  yalnızca  üzerinde dinler. Görsel kaydetme aracı varsayılan kapalıdır ( ile açılır), CSRF ve boyut sınırı korumalıdır.
+- KOI - teslim oncesi kontrol
+  Sayfa sayisi : 43
+  Hata         : 0
+  Uyari        : 0
+
+Tum kritik kontroller gecti. satır içi script,  bağlantısı ve  eksikliğini de hata olarak yakalar.
 
 ## Taslakta bilinçli olarak yer tutucu bırakılanlar
 

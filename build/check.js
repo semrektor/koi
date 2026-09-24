@@ -77,6 +77,16 @@ dosyalar.forEach((f) => {
   /* 9. Yonetim sayfalari arama motoruna kapali olmali */
   if (yonetim && !/name="robots" content="noindex/.test(s)) hata(f, "yonetim sayfasinda noindex yok");
 
+  /* 9b. CSP uyumu: script-src 'self' satir ici script ve olay niteliklerini engeller */
+  if (/<script(?![^>]*\bsrc=)[^>]*>/i.test(s)) hata(f, "satir ici <script> (CSP tarafindan engellenir)");
+  if (/\son(click|load|error|submit|change|input|mouseover)\s*=/i.test(s)) hata(f, "satir ici olay niteligi (onclick= vb., CSP engeller)");
+  if (/href="javascript:/i.test(s)) hata(f, "javascript: baglantisi");
+
+  /* 9c. Yeni sekmede acilan baglantilar sayfaya erisemesin */
+  [...s.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)].forEach((m) => {
+    if (!/rel="[^"]*noopener/.test(m[0])) hata(f, "target=_blank baglantida rel=noopener yok");
+  });
+
   /* 10. Taslak artiklari */
   if (/lorem ipsum/i.test(s)) hata(f, "Lorem ipsum metni kalmis");
   if (/<!--\s*(title|desc|nav|layout|pagetitle|pagesub|topaction|generated)/.test(s))

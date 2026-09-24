@@ -8,3 +8,11 @@ Thumbs.db
 *.pdf
 WhatsApp Image*
 hatalı görsel yerler/
+
+# Ortam degiskenleri ve gizli ayarlar (WordPress asamasinda eklenecek)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+wp-config.php

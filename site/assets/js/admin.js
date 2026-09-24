@@ -128,6 +128,15 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   };
+  /* Baglanti yalnizca site ici bir .html sayfasiysa kabul edilir
+     (javascript:, data: vb. semalari engeller) */
+  var guvenliSayfa = function (u) {
+    return /^[a-z0-9-]+\.html$/i.test(String(u || "")) ? u : "";
+  };
+  /* Gorsel adi yalnizca harf/rakam/tire olabilir */
+  var guvenliAd = function (u) {
+    return /^[a-z0-9-]+$/i.test(String(u || "")) ? u : "";
+  };
   var ikon = function (id) { return '<svg aria-hidden="true"><use href="#' + id + '"></use></svg>'; };
   var durumRozet = function (d) {
     var ad = { yayinda: "Yayında", taslak: "Taslak", yeni: "Yeni", tamam: "Yanıtlandı" };
@@ -143,7 +152,7 @@
   var CIZ = {
     blog: function (x) {
       return (
-        '<tr data-id="' + x.id + '" data-durum="' + x.durum + '">' +
+        '<tr data-id="' + esc(x.id) + '" data-durum="' + esc(x.durum) + '">' +
         '<td data-th="Başlık" class="t-title">' + esc(x.baslik) + "<small>" + esc(x.ozet || "") + "</small></td>" +
         '<td data-th="Kategori">' + esc(x.kategori) + "</td>" +
         '<td data-th="Durum">' + durumRozet(x.durum) + "</td>" +
@@ -168,7 +177,7 @@
     },
     randevu: function (x) {
       return (
-        '<tr data-id="' + x.id + '" data-durum="' + x.durum + '">' +
+        '<tr data-id="' + esc(x.id) + '" data-durum="' + esc(x.durum) + '">' +
         '<td data-th="Ad Soyad" class="t-title">' + esc(x.ad) + "</td>" +
         '<td data-th="Konu">' + esc(x.konu) + "</td>" +
         '<td data-th="İletişim">' + esc(x.iletisim) + "</td>" +
@@ -182,11 +191,11 @@
     },
     hizmet: function (x) {
       return (
-        '<tr data-id="' + x.id + '" data-durum="' + x.durum + '">' +
+        '<tr data-id="' + esc(x.id) + '" data-durum="' + esc(x.durum) + '">' +
         '<td data-th="Hizmet" class="t-title">' + esc(x.baslik) + "</td>" +
         '<td data-th="Kategori">' + esc(x.kategori) + "</td>" +
         '<td data-th="Durum">' + durumRozet(x.durum) + "</td>" +
-        '<td data-th="Sayfa">' + (x.sayfa ? '<a href="' + x.sayfa + '" target="_blank" style="color:var(--koi-terra)">Görüntüle</a>' : "—") + "</td>" +
+        '<td data-th="Sayfa">' + (guvenliSayfa(x.sayfa) ? '<a href="' + guvenliSayfa(x.sayfa) + '" target="_blank" rel="noopener" style="color:var(--koi-terra)">Görüntüle</a>' : "—") + "</td>" +
         '<td data-th="İşlem"><div class="row-actions">' +
         '<button class="icon-btn" type="button" data-eylem="duzenle" title="Düzenle">' + ikon("i-pen") + "</button>" +
         '<button class="icon-btn" type="button" data-eylem="durum" title="Yayın durumunu değiştir">' + ikon("i-eye") + "</button>" +
@@ -195,7 +204,7 @@
     },
     atolye: function (x) {
       return (
-        '<tr data-id="' + x.id + '" data-durum="' + x.durum + '">' +
+        '<tr data-id="' + esc(x.id) + '" data-durum="' + esc(x.durum) + '">' +
         '<td data-th="Program" class="t-title">' + esc(x.baslik) + "</td>" +
         '<td data-th="Tür">' + esc(x.tur) + "</td>" +
         '<td data-th="Tarih">' + esc(x.tarih) + "</td>" +
@@ -210,7 +219,7 @@
     },
     oyungrubu: function (x) {
       return (
-        '<tr data-id="' + x.id + '">' +
+        '<tr data-id="' + esc(x.id) + '">' +
         '<td data-th="Gün" class="t-title">' + esc(x.gun) + "</td>" +
         '<td data-th="Sabah">' + esc(x.sabah) + "</td>" +
         '<td data-th="Öğleden Sonra">' + esc(x.ogleden) + "</td>" +
@@ -221,7 +230,7 @@
     },
     uzman: function (x) {
       return (
-        '<tr data-id="' + x.id + '" data-durum="' + x.durum + '">' +
+        '<tr data-id="' + esc(x.id) + '" data-durum="' + esc(x.durum) + '">' +
         '<td data-th="Ad Soyad" class="t-title">' + esc(x.ad) + "</td>" +
         '<td data-th="Unvan">' + esc(x.unvan) + "</td>" +
         '<td data-th="Uzmanlık">' + esc(x.uzmanlik) + "</td>" +
@@ -244,8 +253,8 @@
       govde.innerHTML = kaynak
         .map(function (x) {
           return (
-            '<figure data-id="' + x.id + '" data-kat="' + x.kat + '">' +
-            '<img src="assets/img/' + x.src + '.jpg" alt="' + esc(x.ad) + '" loading="lazy">' +
+            '<figure data-id="' + esc(x.id) + '" data-kat="' + esc(x.kat) + '">' +
+            '<img src="assets/img/' + guvenliAd(x.src) + '.jpg" alt="' + esc(x.ad) + '" loading="lazy">' +
             "<figcaption><span>" + esc(x.ad) + "</span>" +
             '<button class="icon-btn icon-btn--danger" type="button" data-eylem="sil" title="Kaldır">' + ikon("i-trash") + "</button>" +
             "</figcaption></figure>"
