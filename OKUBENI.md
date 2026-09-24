@@ -160,7 +160,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Yaş grupları, takvim, kontenjan | Taslak veri |
 | KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek |
 | Ücret bilgisi | Gösterilmiyor (müşteri kararına bırakıldı) |
-| Sosyal medya | Örnek bağlantı (instagram.com, @kullaniciadi) — gerçek hesaplar açılınca eklenecek |
+| Sosyal medya | Instagram @koiworld bağlı; diğer hesaplar açılınca eklenecek |
 
 ---
 
