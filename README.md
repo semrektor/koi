@@ -1,6 +1,6 @@
 # KOI | Çocuk ve Aile Gelişim Merkezi
 
-Ümraniye/Şerifali'de açılacak KOI Çocuk ve Aile Gelişim Merkezi için hazırlanan kurumsal web sitesi taslağı ve yönetim paneli önizlemesi.
+Ümraniye/Necip Fazıl'da açılacak KOI Çocuk ve Aile Gelişim Merkezi için hazırlanan kurumsal web sitesi taslağı ve yönetim paneli önizlemesi.
 
 Markaya özel, sıfırdan tasarlanmış statik site. Müşteri onayından sonra WordPress'e (özel tema) aktarılacaktır.
 
