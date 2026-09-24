@@ -149,15 +149,10 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 
 ## Güvenlik notları (taslak)
 
-- **Yönetim paneli girişi ( / ) yalnızca tanıtım amaçlıdır.** Doğrulama tarayıcıda yapılır ve atlatılabilir; panelde gerçek veri olmadığı için risk yoktur. WordPress aşamasında sunucu taraflı oturum, güçlü parola ve 2FA ile değiştirilecektir — bu yapı canlı bir sisteme taşınmamalıdır.
+- **Yönetim paneli girişi (`admin` / `admin`) yalnızca tanıtım amaçlıdır.** Doğrulama tarayıcıda yapılır ve atlatılabilir; panelde gerçek veri olmadığı için risk yoktur. WordPress aşamasında sunucu taraflı oturum, güçlü parola ve 2FA ile değiştirilecektir — bu yapı canlı bir sisteme taşınmamalıdır.
 - Panel, kayıtlı verileri ekrana basarken HTML kaçışı ve bağlantı doğrulaması uygular.
--  yalnızca  üzerinde dinler. Görsel kaydetme aracı varsayılan kapalıdır ( ile açılır), CSRF ve boyut sınırı korumalıdır.
-- KOI - teslim oncesi kontrol
-  Sayfa sayisi : 43
-  Hata         : 0
-  Uyari        : 0
-
-Tum kritik kontroller gecti. satır içi script,  bağlantısı ve  eksikliğini de hata olarak yakalar.
+- `build/serve.js` yalnızca `127.0.0.1` üzerinde dinler. Görsel kaydetme aracı varsayılan kapalıdır (`KOI_ARAC=1` ile açılır), CSRF ve boyut sınırı korumalıdır. Canlıyla aynı CSP'yi gönderir.
+- `node build/check.js` satır içi script, `javascript:` bağlantısı ve `rel=noopener` eksikliğini de hata olarak yakalar.
 
 ## Taslakta bilinçli olarak yer tutucu bırakılanlar
 
