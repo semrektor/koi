@@ -16,3 +16,6 @@ hatalı görsel yerler/
 *.pem
 *.key
 wp-config.php
+
+# Musteriye gonderilen belgeler (repoya girmez)
+belgeler/
