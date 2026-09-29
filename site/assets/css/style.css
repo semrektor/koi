@@ -350,6 +350,20 @@ p:last-child{ margin-bottom:0; }
   .koi-about__art img{ width:min(60%, 240px); }
 }
 
+/* Vizyon ve misyon kartlari (Hakkimizda) */
+.vm-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(18px,2.4vw,32px); }
+.vm-card{
+  background:var(--koi-cream); border:1px solid var(--koi-linen);
+  border-radius:var(--radius-m); padding:clamp(28px,3.6vw,48px);
+  border-top:3px solid var(--koi-terra);
+}
+.vm-card .eyebrow{ margin-bottom:16px; }
+.vm-card__text{
+  font-family:var(--font-display); font-size:clamp(1.2rem,1.9vw,1.5rem);
+  line-height:1.5; color:var(--koi-olive); margin:0;
+}
+@media (max-width:760px){ .vm-grid{ grid-template-columns:1fr; } }
+
 .quote-card{
   background:var(--koi-cream); border:1px solid var(--koi-linen);
   border-radius:var(--radius-m); padding:clamp(26px,3.4vw,44px);

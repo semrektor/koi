@@ -164,6 +164,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Uzman isimleri | Elif Bilsel dışındakiler "Uzman İsmi" olarak duruyor |
 | Uzman portreleri | Monogram gösteriliyor — çekim sonrası fotoğraflar eklenecek |
 | Veli yorumları | Örnek metin; gerçek yorumlarla değiştirilecek |
+| Vizyon / misyon | Hakkımızda sayfasında taslak metin; müşteri onayıyla kesinleşecek |
 | Yaş grupları, takvim, kontenjan | Taslak veri |
 | KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek |
 | Ücret bilgisi | Gösterilmiyor (müşteri kararına bırakıldı) |
