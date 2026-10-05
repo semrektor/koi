@@ -176,8 +176,33 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 
 **Alan adı ve barındırma:** `koiailem.com` · Hostinger Business paketi (müşterinin hesabı; ajans erişimi hesap paylaşımıyla). Günlük yedek, test ortamı ve kurumsal e-posta pakete dahil.
 
-- Ortak `head`/`footer` parçaları `header.php` / `footer.php` karşılığı olacak şekilde ayrıldı.
-- Hizmet, atölye ve blog içerikleri tek kaynaktan (`build/content/`) besleniyor; bu yapı doğrudan özel içerik tipine (CPT) karşılık gelir.
-- Blog yapısı standart WordPress yazı/kategori mantığına birebir oturuyor.
-- Yönetim paneli tasarımı, WordPress yönetici arayüzünün nasıl sadeleştirileceğini gösteren bir referanstır.
-- Meta başlık/açıklama alanları her sayfada tanımlı (`build/pages/*.html` başındaki yorum satırları).
+### WordPress teması (`wordpress/koi/`)
+
+Tema, taslakla aynı kaynaklardan üretilir; tasarım birebir aynıdır.
+
+```bash
+node build/wp-tema.js      # wordpress/koi klasörünü üretir
+node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPress'e yüklenecek dosya)
+```
+
+| Kaynak | Temadaki karşılığı |
+|---|---|
+| `build/partials/head.html`, `foot.html` | `header.php`, `footer.php` |
+| `build/pages/*.html` (sayfa gövdeleri) | `sayfalar/*.php` |
+| `build/content/*.js` | `veri/icerik.json` (kurulum sihirbazı içeri aktarır) |
+| `build/wp/` | Elle yazılan PHP: içerik türleri, şablonlar, formlar, ayarlar |
+
+> `wordpress/koi/` üretilmiş çıktıdır. PHP değişiklikleri `build/wp/` altında, sayfa metinleri `build/pages/` altında yapılır.
+
+**Kurulum (WordPress panelinde):**
+1. Görünüm → Temalar → Yeni Ekle → Tema Yükle → `koi-tema.zip` → Etkinleştir
+2. Görünüm → KOI Kurulum → "İçerikleri Oluştur" (sayfalar, 7 hizmet, 6 atölye, 7 örnek yazı; anasayfa ve kalıcı bağlantılar ayarlanır)
+3. Görünüm → Özelleştir → KOI İletişim Bilgileri (telefon, WhatsApp, e-posta, adres, form alıcısı)
+
+**Müşterinin panelden yönetebildikleri:** blog yazıları (Yazılar), Hizmetler, Atölyeler (başlık, metin, özet, görsel, kısa bilgi kutusu), iletişim bilgileri, formlardan gelen Bilgi Talepleri.
+
+**Henüz tema dosyasında duranlar:** Hakkımızda, Oyun Grupları, Uzmanlarımız, Galeri ve yasal metin sayfalarının gövdeleri. Müşteri formu geldiğinde metinler güncellenecek; uzmanlar ve galeri panelden yönetilebilir hale getirilecek.
+
+**Formlar:** harici eklenti yok. Gönderimler "Bilgi Talepleri" altına kaydedilir ve e-postayla bildirilir. Bal küpü alanı ve saatlik gönderim sınırı var.
+
+**Deneme:** tema WordPress Playground üzerinde (WordPress 7.1, PHP 8.2) kurulup tüm sayfalar ve form akışı denendi. Gerçek sunucuda (Hostinger) henüz denenmedi.

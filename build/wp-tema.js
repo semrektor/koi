@@ -175,7 +175,8 @@ function ilgiliListe(slugs) {
       for (const [tur, onek] of Object.entries(TUR_ONEKI)) {
         if (s.startsWith(onek)) return tur + ":" + s.slice(onek.length);
       }
-      return "";
+      /* Hizmet/atolye/yazi degilse bir sayfadir (or. oyun-gruplari) */
+      return SAYFALAR.some((p) => p.anahtar === s) ? "page:" + s : "";
     })
     .filter(Boolean)
     .join(",");

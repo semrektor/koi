@@ -63,6 +63,8 @@ add_action( 'init', 'koi_talep_turu' );
 function koi_form_gizli( $tur ) {
 	echo '<input type="hidden" name="action" value="koi_talep">';
 	echo '<input type="hidden" name="koi_tur" value="' . esc_attr( $tur ) . '">';
+	/* Gonderimden sonra ziyaretci ayni sayfaya doner */
+	wp_referer_field();
 	/* Bal kupu: gercek ziyaretci bu alani gormez ve doldurmaz */
 	echo '<p class="koi-bal" aria-hidden="true"><label>Bu alanı boş bırakın<input type="text" name="web_sitesi" tabindex="-1" autocomplete="off"></label></p>';
 }

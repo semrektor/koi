@@ -135,6 +135,8 @@ function koi_icerik_kur() {
 	}
 
 	/* Genel ayarlar */
+	update_option( 'blogname', 'KOI Çocuk ve Aile Gelişim Merkezi' );
+	update_option( 'blogdescription', 'Çocukların, ebeveynlerin ve ailelerin iyi olma halini destekleyen bütüncül bir gelişim merkezi.' );
 	update_option( 'default_comment_status', 'closed' );
 	update_option( 'default_ping_status', 'closed' );
 	if ( ! get_option( 'timezone_string' ) ) {
@@ -176,7 +178,7 @@ function koi_kurulum_sayfasi() {
 		}
 	}
 
-	echo '<p>Bu işlem sitenin sayfalarını, hizmetleri, atölyeleri ve örnek blog yazılarını oluşturur; anasayfayı ve kalıcı bağlantıları ayarlar.</p>';
+	echo '<p>Bu işlem sitenin sayfalarını, hizmetleri, atölyeleri ve örnek blog yazılarını oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar.</p>';
 	echo '<p>Var olan içeriğe dokunmaz. Aynı adrese sahip bir sayfa ya da yazı varsa atlanır, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
 	if ( get_option( 'koi_kurulum_tamam' ) ) {
 		echo '<p><strong>Kurulum daha önce çalıştırıldı.</strong> İletişim bilgilerini <a href="' . esc_url( admin_url( 'customize.php?autofocus[section]=koi_iletisim' ) ) . '">Görünüm → Özelleştir → KOI İletişim Bilgileri</a> altından güncelleyebilirsiniz.</p>';
