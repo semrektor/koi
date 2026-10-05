@@ -150,6 +150,9 @@ function koi_icerik_kur() {
 	}
 	koi_icerik_turleri();
 	flush_rewrite_rules();
+	/* Kategori adresleri (/blog/category/..) yeni yapiyi ancak bir sonraki istekte
+	   alir. Kurallar o istekte yeniden uretilsin diye kayitli kopya silinir. */
+	delete_option( 'rewrite_rules' );
 
 	update_option( 'koi_kurulum_tamam', KOI_SURUM );
 	return $rapor;
