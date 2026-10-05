@@ -4,7 +4,7 @@
 
 Markaya özel, sıfırdan tasarlanmış statik site. Müşteri onayından sonra WordPress'e (özel tema) aktarılacaktır.
 
-**42 sayfa** · duyarlı tasarım · hazır tema kullanılmadı
+**43 sayfa** · duyarlı tasarım · hazır tema kullanılmadı
 
 ## Hızlı başlangıç
 

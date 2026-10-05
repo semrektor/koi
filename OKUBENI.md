@@ -2,7 +2,7 @@
 
 Statik HTML/CSS tasarım taslağı ve yönetim paneli önizlemesi. Müşteri onayından sonra WordPress'e (özel tema) aktarılacaktır.
 
-**42 sayfa** · mobil/tablet/masaüstü uyumlu · sıfırdan tasarlanmış · hazır tema kullanılmadı
+**43 sayfa** · mobil/tablet/masaüstü uyumlu · sıfırdan tasarlanmış · hazır tema kullanılmadı
 
 ---
 
@@ -43,7 +43,7 @@ Ardından `http://localhost:5173` adresini açın.
 Galeri · KVKK Aydınlatma Metni · Gizlilik Politikası · Çerez Politikası
 
 ### Yönetim paneli (10)
-Giriş · Panel Özeti · Randevu Talepleri · Blog Yazıları · Yazı Düzenle · Hizmetler · Atölye ve Programlar · Galeri · Uzman Kadrosu · Site Ayarları
+Giriş · Panel Özeti · Bilgi Talepleri · Blog Yazıları · Yazı Düzenle · Hizmetler · Atölye ve Programlar · Galeri · Uzman Kadrosu · Site Ayarları
 
 ---
 
@@ -159,20 +159,22 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Alan | Durum |
 |---|---|
 | Telefon / WhatsApp | `+90 (000) 000 00 00` — netleşince güncellenecek |
-| E-posta | `info@alanadi.com` — örnek; domain seçimine bağlı |
+| E-posta | `info@koiailem.com`, `iletisim@koiailem.com` — alan adı alındı; posta kutuları henüz açılmadı, adresler müşteri onayıyla kesinleşecek |
 | Açık adres / Google Maps | Ruhsat ve adres kesinleşince canlı harita gömülecek |
 | Uzman isimleri | Elif Bilsel dışındakiler "Uzman İsmi" olarak duruyor |
 | Uzman portreleri | Monogram gösteriliyor — çekim sonrası fotoğraflar eklenecek |
 | Veli yorumları | Örnek metin; gerçek yorumlarla değiştirilecek |
 | Vizyon / misyon | Hakkımızda sayfasında taslak metin; müşteri onayıyla kesinleşecek |
 | Yaş grupları, takvim, kontenjan | Taslak veri |
-| KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek |
+| KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek. Barındırma yurt dışında olduğu için KVKK metninde yurt dışı aktarım paragrafı var |
 | Ücret bilgisi | Gösterilmiyor (müşteri kararına bırakıldı) |
 | Sosyal medya | Instagram @koiworld bağlı; diğer hesaplar açılınca eklenecek |
 
 ---
 
 ## WordPress aşamasına hazırlık
+
+**Alan adı ve barındırma:** `koiailem.com` · Hostinger Business paketi (müşterinin hesabı; ajans erişimi hesap paylaşımıyla). Günlük yedek, test ortamı ve kurumsal e-posta pakete dahil.
 
 - Ortak `head`/`footer` parçaları `header.php` / `footer.php` karşılığı olacak şekilde ayrıldı.
 - Hizmet, atölye ve blog içerikleri tek kaynaktan (`build/content/`) besleniyor; bu yapı doğrudan özel içerik tipine (CPT) karşılık gelir.
