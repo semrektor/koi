@@ -128,7 +128,7 @@ function yanPanel(item, tur) {
     .map((x) => '          <li><a href="' + x.slug + '.html">' + x.baslik + "</a></li>")
     .join("\n");
 
-  const ctaBaslik = tur === "hizmet" ? "Randevu Oluşturun" : "Yerinizi Ayırtın";
+  const ctaBaslik = tur === "hizmet" ? "Bilgi Alın" : "Yerinizi Ayırtın";
   const ctaMetin =
     tur === "hizmet"
       ? "Süreç hakkında konuşmak ve uygun saatleri belirlemek için ön başvuru formunu doldurabilirsiniz."
@@ -253,7 +253,7 @@ function blogSayfasi(item) {
     "        <h3>Bir Uzmanla Konuşun</h3>\n" +
     "        <p>Bu konuda zorlanıyorsanız, kısa bir ön görüşmeyle başlayabiliriz.</p>\n" +
     '        <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px">\n' +
-    '          <a class="btn btn--terra" href="iletisim.html">Randevu Talebi' + arrow + "</a>\n" +
+    '          <a class="btn btn--terra" href="iletisim.html">Bilgi Al' + arrow + "</a>\n" +
     '          <a class="btn btn--light" href="https://wa.me/900000000000">WhatsApp</a>\n' +
     "        </div>\n      </div>\n\n" +
     '      <div class="sidebar-card reveal">\n' +

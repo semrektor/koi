@@ -1,0 +1,54 @@
+{
+ "404": {
+  "seo_baslik": "Sayfa Bulunamadı | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": ""
+ },
+ "index": {
+  "seo_baslik": "KOI | Çocuk ve Aile Gelişim Merkezi — Ümraniye, İstanbul",
+  "aciklama": "KOI; psikolojik danışmanlık, oyun terapisi, oyun grupları ve aile atölyelerini bir araya getiren bütüncül bir çocuk ve aile gelişim merkezidir."
+ },
+ "hakkimizda": {
+  "seo_baslik": "Hakkımızda | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI'nin kuruluş hikâyesi, bütüncül yaklaşımı ve danışmanlık, oyun ve atölye deneyimini bir araya getiren farkı."
+ },
+ "hizmetler": {
+  "seo_baslik": "Hizmetler ve Danışmanlık | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "Bireysel ve aile danışmanlığı, oyun terapisi, ebeveyn programları, seminer ve atölyeler. KOI'nin tüm hizmetlerini inceleyin."
+ },
+ "oyun-gruplari": {
+  "seo_baslik": "Oyun Grupları | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "Yaş ve gelişim dönemine göre ayrıştırılmış, seans başına en fazla 6 çocukla yürütülen oyun grupları. Haftanın 5 günü, günde 2 seans."
+ },
+ "atolyeler": {
+  "seo_baslik": "Atölyeler ve Seminerler | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "Çocuk, ebeveyn ve çocuk-aile katılımlı tematik atölyeler; hafta sonu seminer ve workshop programları."
+ },
+ "uzmanlarimiz": {
+  "seo_baslik": "Uzmanlarımız | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI'nin psikolojik danışmanlık, oyun terapisi, aile danışmanlığı ve gelişim alanlarında eğitim almış uzman kadrosu."
+ },
+ "blog": {
+  "seo_baslik": "Blog | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "Gelişim, ebeveynlik, oyun ve aile ilişkileri üzerine KOI uzmanlarının kaleminden yazılar."
+ },
+ "iletisim": {
+  "seo_baslik": "İletişim ve Bilgi Talebi | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI Çocuk ve Aile Gelişim Merkezi ile iletişime geçin; bilgi talebi ve ön başvuru formu, adres, telefon ve WhatsApp bilgileri."
+ },
+ "galeri": {
+  "seo_baslik": "Galeri | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI merkezinden mekân, atölye ve etkinlik görselleri."
+ },
+ "kvkk": {
+  "seo_baslik": "KVKK Aydınlatma Metni | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI Çocuk ve Aile Gelişim Merkezi kişisel verilerin korunması ve işlenmesine ilişkin aydınlatma metni."
+ },
+ "gizlilik": {
+  "seo_baslik": "Gizlilik Politikası | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI Çocuk ve Aile Gelişim Merkezi gizlilik politikası; toplanan bilgiler, kullanım amaçları ve haklarınız."
+ },
+ "cerez": {
+  "seo_baslik": "Çerez Politikası | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI Çocuk ve Aile Gelişim Merkezi çerez politikası; kullanılan çerez türleri ve tercihlerinizi nasıl yönetebileceğiniz."
+ }
+}

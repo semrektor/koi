@@ -1,0 +1,30 @@
+/* KOI - WordPress'e ozgu ekler. Tasarim sistemi style.css icindedir. */
+
+/* Yonetici cubugu acikken yapiskan header onun altinda kalsin */
+.admin-bar .site-header{ top:32px; }
+@media (max-width:782px){ .admin-bar .site-header{ top:46px; } }
+@media (max-width:600px){ .admin-bar .site-header{ top:0; } }
+
+/* Editorden gelen icerik */
+.prose > *:first-child{ margin-top:0; }
+.prose blockquote p{ margin:0; }
+.prose blockquote cite{ display:block; margin-top:.8em; font-size:.82rem; font-style:normal; color:var(--koi-muted); }
+.prose img{ max-width:100%; height:auto; border-radius:var(--radius-s); }
+.prose figure{ margin:1.6em 0; }
+.prose figcaption{ font-size:.8rem; color:var(--koi-muted); margin-top:.6em; }
+.prose ol{ margin:0 0 1.2em; padding-left:1.2em; color:var(--koi-muted); }
+.prose a{ text-decoration:underline; text-underline-offset:3px; }
+
+/* Form durum mesajlari */
+.form-note--ok{ color:var(--koi-olive); font-size:.92rem; padding:14px 18px; border:1px solid rgba(58,69,47,.25); border-radius:var(--radius-s); background:rgba(58,69,47,.06); }
+.form-note--hata{ color:#A8432C; font-size:.92rem; padding:14px 18px; border:1px solid rgba(192,86,63,.3); border-radius:var(--radius-s); background:rgba(192,86,63,.08); }
+
+/* Bal kupu alani: ziyaretci gormez */
+.koi-bal{ position:absolute !important; left:-9999px !important; width:1px; height:1px; overflow:hidden; }
+
+/* Arsiv sayfalama */
+.koi-sayfalama{ margin-top:48px; }
+.koi-sayfalama .nav-links{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.koi-sayfalama .page-numbers{ display:inline-flex; min-width:40px; height:40px; padding:0 14px; align-items:center; justify-content:center; border:1px solid var(--koi-linen); border-radius:999px; font-size:.86rem; color:var(--koi-olive); }
+.koi-sayfalama .page-numbers.current{ background:var(--koi-olive); border-color:var(--koi-olive); color:#fff; }
+.screen-reader-text{ position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
