@@ -196,6 +196,30 @@ function koi_talep_isle() {
 add_action( 'admin_post_nopriv_koi_talep', 'koi_talep_isle' );
 add_action( 'admin_post_koi_talep', 'koi_talep_isle' );
 
+/* ---------- Gonderen adresi ----------
+   WordPress varsayilan olarak var olmayan "wordpress@alanadi" adresinden gonderir;
+   alici sunucular (Gmail vb.) bu iletileri reddeder. Kurumsal e-posta sitenin
+   alan adindaysa iletiler o adresten gonderilir. Posta kutusunun barindirma
+   panelinde acilmis olmasi gerekir. */
+function koi_posta_gonderen( $adres ) {
+	$kurumsal = koi_ayar( 'eposta' );
+	$alan     = preg_replace( '/^www\./', '', (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+	if ( $alan && is_email( $kurumsal ) ) {
+		$son = '@' . strtolower( $alan );
+		if ( substr( strtolower( $kurumsal ), -strlen( $son ) ) === $son ) {
+			return $kurumsal;
+		}
+	}
+	return $adres;
+}
+add_filter( 'wp_mail_from', 'koi_posta_gonderen' );
+
+function koi_posta_gonderen_adi( $ad ) {
+	$site = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
+	return '' !== $site ? $site : $ad;
+}
+add_filter( 'wp_mail_from_name', 'koi_posta_gonderen_adi' );
+
 /* ---------- Yonetim paneli gorunumu ---------- */
 function koi_talep_sutunlari( $sutunlar ) {
 	return array(
