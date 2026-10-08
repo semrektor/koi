@@ -201,7 +201,7 @@ function koi_icerik_kur( $guncelle = false ) {
 	   alir. Kurallar o istekte yeniden uretilsin diye kayitli kopya silinir. */
 	delete_option( 'rewrite_rules' );
 
-	update_option( 'koi_kurulum_tamam', KOI_SURUM );
+	update_option( 'koi_kurulum_tamam', KOI_ICERIK_SURUM );
 	return $rapor;
 }
 
@@ -246,7 +246,8 @@ function koi_kurulum_sayfasi() {
 	echo '<p>Tema sürümü: <strong>' . esc_html( KOI_SURUM ) . '</strong>';
 	$kurulu = get_option( 'koi_kurulum_tamam' );
 	if ( $kurulu ) {
-		echo ' · İçerik sürümü: <strong>' . esc_html( $kurulu ) . '</strong>';
+		echo ' · Sitedeki içerik sürümü: <strong>' . esc_html( $kurulu ) . '</strong>';
+		echo version_compare( (string) $kurulu, KOI_ICERIK_SURUM, '<' ) ? ' (temadaki: ' . esc_html( KOI_ICERIK_SURUM ) . ' — güncelleme bekliyor)' : ' (güncel)';
 	}
 	echo '</p>';
 
@@ -280,7 +281,7 @@ function koi_kurulum_uyarisi() {
 	$adres  = esc_url( admin_url( 'themes.php?page=koi-kurulum' ) );
 	if ( ! $kurulu ) {
 		echo '<div class="notice notice-info"><p>KOI teması etkin. Sayfaları ve içerikleri oluşturmak için <a href="' . $adres . '">KOI Kurulum</a> sayfasını açın.</p></div>';
-	} elseif ( version_compare( (string) $kurulu, KOI_SURUM, '<' ) ) {
+	} elseif ( version_compare( (string) $kurulu, KOI_ICERIK_SURUM, '<' ) ) {
 		echo '<div class="notice notice-info"><p>KOI teması güncellendi. Yeni sayfaları eklemek ve içerikleri güncellemek için <a href="' . $adres . '">KOI Kurulum</a> sayfasını açın.</p></div>';
 	}
 }

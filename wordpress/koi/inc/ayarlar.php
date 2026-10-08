@@ -14,6 +14,7 @@ function koi_ayar_alanlari() {
 		'eposta'      => array( 'E-posta', 'info@koiailem.com', 'email', 'sanitize_email' ),
 		'adres'       => array( 'Kısa adres (alt bilgide görünür)', 'Necip Fazıl Mah. — Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
 		'acik_adres'  => array( 'Açık adres (İletişim ve KVKK sayfalarında görünür)', 'Necip Fazıl Mah. Hamza Yerlikaya Bulvarı, Narlı Bahçe Evleri Sitesi B Blok No: 70 BF, 34773 Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
+		'harita'      => array( 'Google Haritalar bağlantısı (İletişim sayfasındaki "Haritada Aç")', 'https://maps.app.goo.gl/dXk6ys7BLWuNJpgq5', 'url', 'esc_url_raw' ),
 		'saat1'       => array( 'Çalışma saatleri (1. satır)', 'Hafta içi 09:00 – 19:00', 'text', 'sanitize_text_field' ),
 		'saat2'       => array( 'Çalışma saatleri (2. satır)', 'Hafta sonu: program ve randevu durumuna göre', 'text', 'sanitize_text_field' ),
 		'instagram'   => array( 'Instagram adresi', 'https://www.instagram.com/koiworld/', 'url', 'esc_url_raw' ),

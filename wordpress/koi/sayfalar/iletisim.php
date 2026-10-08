@@ -121,7 +121,7 @@
       <div class="map-frame__pin">
         <svg aria-hidden="true"><use href="#i-pin"></use></svg>
         <span>Narlı Bahçe Evleri — Necip Fazıl Mah., Ümraniye</span>
-        <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Narl%C4%B1%20Bah%C3%A7e%20Evleri%20Sitesi%2C%20Hamza%20Yerlikaya%20Bulvar%C4%B1%2C%20Necip%20Faz%C4%B1l%20Mah.%2C%2034773%20%C3%9Cmraniye%20%C4%B0stanbul" target="_blank" rel="noopener">Google Haritalar'da Aç<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="link-arrow" href="<?php echo esc_url( koi_ayar( 'harita' ) ); ?>" target="_blank" rel="noopener">Google Haritalar'da Aç<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
       </div>
     </div>
   </div>
