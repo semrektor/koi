@@ -2,7 +2,7 @@
 
 Statik HTML/CSS tasarım taslağı ve yönetim paneli önizlemesi. Müşteri onayından sonra WordPress'e (özel tema) aktarılacaktır.
 
-**43 sayfa** · mobil/tablet/masaüstü uyumlu · sıfırdan tasarlanmış · hazır tema kullanılmadı
+**37 sayfa** · mobil/tablet/masaüstü uyumlu · sıfırdan tasarlanmış · hazır tema kullanılmadı
 
 ---
 
@@ -32,15 +32,15 @@ Ardından `http://localhost:5173` adresini açın.
 | Blog | `blog.html` |
 | İletişim | `iletisim.html` |
 
-### Detay sayfaları (20) — her biri kendi içeriğiyle
+### Detay sayfaları (13) — her biri kendi içeriğiyle
 **Hizmetler (7):** Çocuk ve Ergen Danışmanlığı · Oyun Terapisi · Aile ve Ebeveyn Danışmanlığı · Anne, Hamilelik ve Yenidoğan · Eğitim ve Akademik Gelişim · Seminer ve Workshoplar · Kurum ve Okul İş Birlikleri
 
-**Atölyeler (6):** Duygu Kutusu · Sınırlar ve Güvenli Bağ · Birlikte Oynuyoruz · Hikâye ve Hayal · Okula Uyum Süreci · Yenidoğan ve İlk Yıl
+**Atölyeler (6):** Duygularla Tanışmak · Sınırlar, Bağ ve Güven · Birlikte Oyun, Birlikte Bağ · Hikâye, Hayal ve Yaratıcılık · Okula Uyum ve Yeni Başlangıçlar · İlk Yıl: Anne-Bebek Yolculuğu
 
-**Blog (7):** Yeni Başlangıçlar · Oyun Gruplarının Yeri · Sınırlar ve Güvenli Bağ · Kaygı ve Duygu Düzenleme · Küçük Değişiklikler · Okula Uyum · Kardeş İlişkileri
+**Blog:** müşteri kendi yazılarını hazırlayacak; taslaktaki 7 örnek yazı sitede yer almıyor (`build/content/arsiv/blog-ornek.js`). Yazı yokken blog sayfası "çok yakında" durumunu gösterir, ana sayfadaki blog bölümü gizlenir.
 
-### Diğer (4)
-Galeri · KVKK Aydınlatma Metni · Gizlilik Politikası · Çerez Politikası
+### Diğer (5)
+Galeri · Sık Sorulan Sorular · KVKK Aydınlatma Metni · Gizlilik Politikası · Çerez Politikası
 
 ### Yönetim paneli (10)
 Giriş · Panel Özeti · Bilgi Talepleri · Blog Yazıları · Yazı Düzenle · Hizmetler · Atölye ve Programlar · Galeri · Uzman Kadrosu · Site Ayarları
@@ -138,7 +138,7 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 | Duyarlı tasarım | 375 / 768 / 1300 / 1440 genişliklerinde test edildi |
 | Sayfa ağırlığı | `srcset` ile duyarlı görseller, lazy-loading, WebP logo — mobilde ana sayfa 585 KB |
 | SEO | Her sayfada benzersiz `title` + `meta description`, tek `h1`, Open Graph etiketleri, SEO uyumlu URL'ler |
-| Site haritası | `sitemap.xml` otomatik üretiliyor (32 genel sayfa) |
+| Site haritası | `sitemap.xml` otomatik üretiliyor (26 genel sayfa) |
 | robots.txt | Hazır; yönetim paneli arama motorlarına kapalı |
 | Erişilebilirlik | Tüm görsellerde `alt`, form alanlarında `label`, `aria` etiketleri, klavye erişimi |
 | Güvenlik başlıkları | CSP (satır içi script yasak), HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy; panelde X-Robots-Tag — `netlify.toml` |
@@ -154,21 +154,26 @@ Panel verileri şimdilik tarayıcının yerel deposunda tutulur; WordPress kurul
 - `build/serve.js` yalnızca `127.0.0.1` üzerinde dinler. Görsel kaydetme aracı varsayılan kapalıdır (`KOI_ARAC=1` ile açılır), CSRF ve boyut sınırı korumalıdır. Canlıyla aynı CSP'yi gönderir.
 - `node build/check.js` satır içi script, `javascript:` bağlantısı ve `rel=noopener` eksikliğini de hata olarak yakalar.
 
-## Taslakta bilinçli olarak yer tutucu bırakılanlar
+## Müşteri formu (8 Ekim 2026) ve açık kalanlar
+
+Müşterinin doldurduğu içerik formu işlendi: slogan, vizyon/misyon, "KOI Nedir?" metni, sık sorulan sorular, başvuru adımları, açık adres, ticari unvan ve MERSİS, atölye adları, oyun grubu tablosu, hizmet bilgi kutuları, kurucu ortak biyografileri. Veli yorumları ve örnek blog yazıları kaldırıldı; çerez bildirimi eklendi.
 
 | Alan | Durum |
 |---|---|
-| Telefon / WhatsApp | `+90 (000) 000 00 00` — netleşince güncellenecek |
-| E-posta | `info@koiailem.com`, `iletisim@koiailem.com` — alan adı alındı; posta kutuları henüz açılmadı, adresler müşteri onayıyla kesinleşecek |
-| Açık adres / Google Maps | Ruhsat ve adres kesinleşince canlı harita gömülecek |
-| Uzman isimleri | Elif Bilsel dışındakiler "Uzman İsmi" olarak duruyor |
+| Telefon / WhatsApp | `+90 (000) 000 00 00` — müşteri açılış öncesi kesinleştirecek. **Yayın öncesi mutlaka güncellenmeli** |
+| E-posta | `info@koiailem.com` — posta kutusu henüz açılmadı |
+| Çalışma saatleri | Formdaki haliyle; müşteri açılış öncesi kesinleştirecek |
+| Google Maps | Müşteri bağlantı vermedi; İletişim sayfasında adres aramasına giden bağlantı var |
+| Instagram | @koiworld bağlı; müşteri formda kesin kullanıcı adının sonradan belirleneceğini yazdı |
+| Hizmet ve atölye metinleri | Taslak metinler duruyor; müşteri "KOI içerik yönüne göre yeniden yazılacak" dedi, yeni metin iletmedi |
+| Dilek Şevik biyografisi | Müşteri birinci tekil şahıs yazdı; sitede üçüncü tekil şahsa çevrildi — onay alınmalı |
+| Diğer uzmanlar | Bilgileri doğrulanınca eklenecek; sayfada "Ekibimiz Büyüyor" notu var |
 | Uzman portreleri | Monogram gösteriliyor — çekim sonrası fotoğraflar eklenecek |
-| Veli yorumları | Örnek metin; gerçek yorumlarla değiştirilecek |
-| Vizyon / misyon | Hakkımızda sayfasında taslak metin; müşteri onayıyla kesinleşecek |
-| Yaş grupları, takvim, kontenjan | Taslak veri |
-| KVKK / gizlilik / çerez metinleri | Sayfalar hazır; metinler hukuk danışmanlığı sonrası kesinleşecek. Barındırma yurt dışında olduğu için KVKK metninde yurt dışı aktarım paragrafı var |
-| Ücret bilgisi | Gösterilmiyor (müşteri kararına bırakıldı) |
-| Sosyal medya | Instagram @koiworld bağlı; diğer hesaplar açılınca eklenecek |
+| Görseller | Temsili görseller müşteri onayıyla yayında; çekim sonrası değiştirilecek |
+| Veli yorumları | Açılış sonrası, yazılı izinli gerçek yorumlarla eklenecek |
+| Blog | Açılışta üç yazı planlanıyor; müşteri hazırlayacak |
+| KVKK / gizlilik / çerez metinleri | Taslak; müşterinin hukukçusu kontrol edecek. Saklama süresi hukukçuyla belirlenecek |
+| Ücret bilgisi | Gösterilmiyor; "bilgi için iletişime geçin" |
 
 ---
 

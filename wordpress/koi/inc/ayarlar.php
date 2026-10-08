@@ -12,10 +12,10 @@ function koi_ayar_alanlari() {
 		'telefon'     => array( 'Telefon (sitede görünen hali)', '+90 (000) 000 00 00', 'text', 'sanitize_text_field' ),
 		'whatsapp'    => array( 'WhatsApp numarası (yalnızca rakam, 90 ile başlar)', '900000000000', 'text', 'sanitize_text_field' ),
 		'eposta'      => array( 'E-posta', 'info@koiailem.com', 'email', 'sanitize_email' ),
-		'eposta2'     => array( 'İkinci e-posta', 'iletisim@koiailem.com', 'email', 'sanitize_email' ),
-		'adres'       => array( 'Adres', 'Necip Fazıl Mah. — Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
+		'adres'       => array( 'Kısa adres (alt bilgide görünür)', 'Necip Fazıl Mah. — Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
+		'acik_adres'  => array( 'Açık adres (İletişim ve KVKK sayfalarında görünür)', 'Necip Fazıl Mah. Hamza Yerlikaya Bulvarı, Narlı Bahçe Evleri Sitesi B Blok No: 70 BF, 34773 Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
 		'saat1'       => array( 'Çalışma saatleri (1. satır)', 'Hafta içi 09:00 – 19:00', 'text', 'sanitize_text_field' ),
-		'saat2'       => array( 'Çalışma saatleri (2. satır)', 'Hafta sonu: program takvimine göre', 'text', 'sanitize_text_field' ),
+		'saat2'       => array( 'Çalışma saatleri (2. satır)', 'Hafta sonu: program ve randevu durumuna göre', 'text', 'sanitize_text_field' ),
 		'instagram'   => array( 'Instagram adresi', 'https://www.instagram.com/koiworld/', 'url', 'esc_url_raw' ),
 		'form_eposta' => array( 'Form başvurularının gideceği e-posta (boşsa site yöneticisi)', '', 'email', 'sanitize_email' ),
 	);

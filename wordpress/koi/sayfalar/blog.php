@@ -11,6 +11,7 @@
   </div>
 </section>
 
+<?php if ( koi_yazi_var() ) : ?>
 <section class="section section--tight">
   <div class="container container--wide">
 <?php koi_one_cikan_yazi(); ?>
@@ -38,24 +39,32 @@
     </div>
   </div>
 </section>
+<?php endif; ?>
 
+<?php if ( ! koi_yazi_var() ) : ?>
 <section class="section">
   <div class="container container--wide">
-    <div class="cta-band__inner reveal" style="border-radius:var(--radius-m);text-align:center;align-items:center">
-      <span class="eyebrow eyebrow--center">Bülten</span>
-      <h2>Yeni Yazılardan Haberdar Olun</h2>
-      <p class="lead">Ayda bir, uzmanlarımızın yazıları ve yaklaşan atölye takvimi e-posta kutunuza gelsin.</p>
-      <form style="width:min(520px,100%);margin-top:10px" id="talep-formu" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-<?php koi_form_gizli( 'bulten' ); ?>
-        <div class="form-grid" style="grid-template-columns:1fr auto;align-items:end">
-          <div class="field">
-            <label for="bulten-mail">E-posta adresiniz</label>
-            <input id="bulten-mail" name="eposta" type="email" placeholder="ornek@eposta.com" required>
-          </div>
-          <button class="btn btn--primary" type="submit">Abone Ol</button>
-        </div>
-        <?php koi_form_notu( '' ); ?>
-      </form>
+    <div class="section-head center reveal">
+      <span class="eyebrow eyebrow--center">Çok Yakında</span>
+      <h2>İlk Yazılarımız Yolda</h2>
+      <p class="lead">Oyun, ebeveynlik ve çocuğun gelişim yolculuğu üzerine yazılarımız açılışla birlikte burada olacak.</p>
     </div>
+  </div>
+</section>
+<?php endif; ?>
+
+<section class="cta-band">
+  <div class="media media--olive cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy"></div>
+  <div class="cta-band__inner reveal">
+    <span class="eyebrow">Bilgi Al</span>
+    <h2>Bir Uzmanla Konuşmak İster misiniz?</h2>
+    <p class="lead">Aklınızdaki soruyu bize iletin; ihtiyacınıza uygun yolu birlikte belirleyelim.</p>
+    <div class="cta-band__row">
+      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Alın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>">WhatsApp'tan Yazın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </div>
+  </div>
+  <div class="media cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy">
+    <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
   </div>
 </section>

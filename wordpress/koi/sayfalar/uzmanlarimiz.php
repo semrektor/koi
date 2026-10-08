@@ -7,28 +7,44 @@
       </nav>
       <h1>Yolculuğunuzda<br>Yanınızdaki Ekip</h1>
     </div>
-    <p class="lead">Her uzmanımız kendi alanında çalışırken, süreçler ekip içinde birlikte değerlendirilir. Ailenin gördüğü, tek ve bütüncül bir plandır.</p>
+    <p class="lead">Çocuğu, ebeveyni ve aileyi birlikte ele alan; danışmanlık, oyun ve gelişim deneyimini aynı çatı altında buluşturan bir ekip.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container container--wide split">
     <div class="split__media reveal">
-      <div class="media media--arch media--tall media--mono" data-label="Kurucu portresi — çekim sonrası eklenecek" data-mono="EB">
+      <div class="media media--arch media--tall media--mono" data-label="Portre — çekim sonrası eklenecek" data-mono="EB">
         <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
       </div>
     </div>
     <div class="split__body reveal">
-      <span class="eyebrow">Kurucu</span>
+      <span class="eyebrow">Kurucu Ortak</span>
       <h2>Elif Bilsel</h2>
-      <p class="expert__role" style="margin-bottom:20px">Psikolojik Danışman · Kurucu Ortak</p>
-      <p>Aile danışmanlığı, çocuk merkezli oyun terapisi ve cinsel terapi alanlarında eğitim aldı. Çocuğun gelişimini ailesinden ayrı düşünmeyen bütüncül bir yaklaşımla çalışıyor.</p>
-      <p>KOI'yi; danışmanlık, oyun ve atölye deneyiminin birbirinden kopmadan tek bir bütün olarak sunulabileceği bir merkez fikriyle kurdu.</p>
-      <ul class="tagline-stack">
-        <li>Aile danışmanlığı</li>
-        <li>Çocuk merkezli oyun terapisi</li>
-        <li>Cinsel terapi eğitimi</li>
-      </ul>
+      <p class="expert__role" style="margin-bottom:20px">Psikolojik Danışman · Aile Danışmanı · Çocuk Merkezli Oyun Terapisi Uygulayıcısı</p>
+      <p>Elif Bilsel, psikolojik danışmanlık alanındaki çalışmalarını çocuk, ebeveyn ve aileyi birlikte ele alan bütüncül bir yaklaşımla sürdürmektedir. Eğitim hayatı ve mesleki deneyimi boyunca özellikle çocukların gelişimsel, sosyal-duygusal ve akademik ihtiyaçlarıyla çalışmış; ailelerle iş birliğini danışmanlık sürecinin önemli bir parçası olarak görmüştür.</p>
+      <p>KOI'nin kuruluşunda, danışmanlık yaklaşımını oyun ve gelişim deneyimleriyle aynı çatı altında buluşturmayı amaçlamaktadır.</p>
+
+      <div class="prose">
+        <h3>Uzmanlık Alanları</h3>
+        <p>Çocuk ve ergen gelişimi, aile ve ebeveyn danışmanlığı, çocuk merkezli oyun terapisi, eğitim ortamlarında psikolojik danışmanlık ve gelişim takibi.</p>
+        <h3>Eğitim ve Sertifikalar</h3>
+        <ul>
+          <li>Psikolojik Danışmanlık ve Rehberlik (PDR) lisans</li>
+          <li>Marmara Üniversitesi Aile Danışmanlığı eğitimi</li>
+          <li>APT onaylı çocuk merkezli oyun terapisi eğitimi</li>
+          <li>Cinsel terapi eğitimi</li>
+          <li>Eğitim ve okul ortamında çocuklarla çalışma deneyimi</li>
+        </ul>
+        <h3>Yürüttüğü Hizmetler</h3>
+        <ul>
+          <li><a href="<?php echo esc_url( koi_url( 'hizmet-cocuk-ergen-danismanligi' ) ); ?>">Çocuk ve Ergen Danışmanlığı</a></li>
+          <li><a href="<?php echo esc_url( koi_url( 'hizmet-oyun-terapisi' ) ); ?>">Oyun Terapisi</a></li>
+          <li><a href="<?php echo esc_url( koi_url( 'hizmet-aile-ebeveyn-danismanligi' ) ); ?>">Aile ve Ebeveyn Danışmanlığı</a></li>
+          <li><a href="<?php echo esc_url( koi_url( 'hizmet-akademik-gelisim' ) ); ?>">Eğitim ve Akademik Gelişim</a></li>
+          <li><a href="<?php echo esc_url( koi_url( 'hizmet-seminer-workshop' ) ); ?>">Seminer ve Atölyeler</a></li>
+        </ul>
+      </div>
       <div style="margin-top:30px">
         <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Al<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
       </div>
@@ -37,68 +53,34 @@
 </section>
 
 <section class="section section--cream">
-  <div class="container container--wide">
-    <div class="section-head section-head--split reveal">
-      <div>
-        <span class="eyebrow">Kadromuz</span>
-        <h2>Uzmanlarımız</h2>
+  <div class="container container--wide split split--reverse">
+    <div class="split__media reveal">
+      <div class="media media--arch media--tall media--mono" data-label="Portre — çekim sonrası eklenecek" data-mono="DŞ">
+        <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
       </div>
-      <p class="lead">Kadro; uzmanların isim, unvan ve özgeçmişleri kesinleştikçe bu alanda yayınlanacaktır.</p>
     </div>
-    <div class="cards cards--4">
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="EB"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Elif Bilsel</h3>
-        <p class="expert__role">Psikolojik Danışman</p>
-        <p class="expert__text">Aile danışmanlığı, çocuk merkezli oyun terapisi ve cinsel terapi eğitimi.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Klinik Psikolog</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Çocuk Gelişim Uzmanı</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Dil ve Konuşma Terapisti</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Atölye Eğitmeni</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Ergen Danışmanı</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Eğitim Danışmanı</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
-      <article class="expert reveal">
-        <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <h3 class="expert__name">Uzman İsmi</h3>
-        <p class="expert__role">Yenidoğan Danışmanı</p>
-        <p class="expert__text">Uzmanlık alanı, eğitimleri ve çalışma yaklaşımı bu alanda yer alacaktır.</p>
-      </article>
+    <div class="split__body reveal">
+      <span class="eyebrow">Kurucu Ortak</span>
+      <h2>Dilek Şevik</h2>
+      <p class="expert__role" style="margin-bottom:20px">Kurucu Ortak</p>
+      <p>Dilek Şevik, eğitim sektöründe uzun yıllardır çocuklar, aileler ve eğitim kurumlarıyla birlikte çalışmaktadır. Türkiye'nin önde gelen eğitim kurumlarında yöneticilik ve koordinatörlük görevleri üstlenmiş; farklı eğitim modelleri ve kurum yapıları içinde kurum işleyişi, veli ilişkileri, ekip koordinasyonu ve kurumsal iletişim süreçlerinde aktif sorumluluk almıştır.</p>
+      <p>Yıllar içinde binlerce veliyle birebir görüşerek, ailelerin çocukları için okul ve eğitim modeli seçerken yaşadığı zorlukları, beklentilerini ve karar süreçlerini yakından gözlemlemiş; çocuğun gelişim özellikleri, ilgi alanları, yetenekleri ve ihtiyaçları ile eğitim ortamının birbirini desteklemesi gerektiği üzerine çalışmıştır.</p>
+      <p>Bu deneyimler ona, eğitimin yalnızca akademik bir süreç olmadığını; çocuğu, aileyi, eğitimciyi ve kurumu bir bütün olarak görmeyi gerektirdiğini öğretmiştir. Bu anlayışla KOI'yi; oyun, gelişim, danışmanlık ve atölye çalışmalarını bir araya getiren, çocuk ve aile odaklı bir merkez olarak hayata geçirmiştir.</p>
     </div>
   </div>
 </section>
 
 <section class="section">
+  <div class="container container--wide">
+    <div class="section-head center reveal">
+      <span class="eyebrow eyebrow--center">Kadromuz</span>
+      <h2>Ekibimiz Büyüyor</h2>
+      <p class="lead">Uzman kadromuz, açılış dönemiyle birlikte bu sayfada tanıtılacaktır.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
   <div class="container container--wide">
     <div class="section-head center reveal">
       <span class="eyebrow eyebrow--center">Çalışma İlkelerimiz</span>

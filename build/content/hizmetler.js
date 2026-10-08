@@ -12,11 +12,11 @@ module.exports = [
     lead: "Çocuğun ve ergenin kendi hızında ilerleyebileceği, yargılanmadan konuşabileceği güvenli bir alan. Süreç aileyle birlikte planlanır, birlikte değerlendirilir.",
     gorsel: "danismanlik",
     bilgi: [
-      ["Yaş aralığı", "6 – 18 yaş"],
-      ["Seans süresi", "45 – 50 dakika"],
-      ["Sıklık", "Haftada 1 seans (planlamaya göre)"],
-      ["Katılım", "Bireysel + düzenli ebeveyn görüşmeleri"],
-      ["Konum", "Yüz yüze / Ümraniye"],
+      ["Kimler için", "Çocuk ve ergen"],
+      ["Seans süresi", "Uzman değerlendirmesine göre"],
+      ["Format", "Bireysel görüşme"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {
@@ -57,11 +57,11 @@ module.exports = [
     lead: "Çocuğun kendi dili olan oyun üzerinden duygularını ifade etmesini, anlamlandırmasını ve düzenlemesini destekleyen çocuk merkezli bir süreç.",
     gorsel: "oyun-odasi",
     bilgi: [
-      ["Yaş aralığı", "3 – 12 yaş"],
-      ["Seans süresi", "45 – 50 dakika"],
-      ["Sıklık", "Haftada 1 seans (planlamaya göre)"],
-      ["Katılım", "Bireysel + ebeveyn görüşmeleri"],
-      ["Konum", "Yüz yüze / Ümraniye"],
+      ["Kimler için", "Çocuk"],
+      ["Seans süresi", "Uzman değerlendirmesine göre"],
+      ["Format", "Bireysel / oyun temelli"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {
@@ -102,11 +102,11 @@ module.exports = [
     lead: "Çocuğun içinde büyüdüğü ilişki ortamı değiştiğinde, çocuk da değişir. Bu nedenle bazı süreçler doğrudan ebeveynle çalışılarak ilerler.",
     gorsel: "danismanlik",
     bilgi: [
-      ["Katılım", "Anne, baba veya her ikisi"],
-      ["Seans süresi", "50 – 60 dakika"],
-      ["Sıklık", "Haftada 1 veya iki haftada 1"],
-      ["Kapsam", "Ebeveynlik, iletişim, sınırlar"],
-      ["Konum", "Yüz yüze / Ümraniye"],
+      ["Kimler için", "Ebeveyn / aile"],
+      ["Seans süresi", "Uzman değerlendirmesine göre"],
+      ["Format", "Bireysel / aile görüşmesi"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {
@@ -136,7 +136,7 @@ module.exports = [
       },
     ],
     alinti: "Ebeveyn sakinleştiğinde, çocuk da çoğu zaman sakinleşir.",
-    ilgili: ["hizmet-anne-yenidogan", "hizmet-oyun-terapisi", "atolye-sinirlar-guvenli-bag"],
+    ilgili: ["hizmet-anne-yenidogan", "hizmet-oyun-terapisi", "atolye-sinirlar-bag-guven"],
   },
   {
     slug: "hizmet-anne-yenidogan",
@@ -147,11 +147,11 @@ module.exports = [
     lead: "Bir bebeğin doğumu, aynı zamanda bir annenin ve bir ailenin de yeniden kurulmasıdır. Bu geçiş dönemi desteklenmeyi hak eder.",
     gorsel: "karsilama",
     bilgi: [
-      ["Dönem", "Hamilelik – doğum sonrası ilk yıl"],
-      ["Seans süresi", "50 dakika"],
-      ["Katılım", "Anne, gerektiğinde eş ile birlikte"],
-      ["Kapsam", "Uyum, bağlanma, iyi olma hali"],
-      ["Konum", "Yüz yüze / Ümraniye"],
+      ["Kimler için", "Anne / ebeveyn"],
+      ["Seans süresi", "Uzman değerlendirmesine göre"],
+      ["Format", "Danışmanlık / destek görüşmesi"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {
@@ -181,7 +181,7 @@ module.exports = [
       },
     ],
     alinti: "Anne desteklendiğinde, bebek de desteklenmiş olur.",
-    ilgili: ["hizmet-aile-ebeveyn-danismanligi", "atolye-yenidogan-ilk-yil", "hizmet-oyun-terapisi"],
+    ilgili: ["hizmet-aile-ebeveyn-danismanligi", "atolye-ilk-yil-anne-bebek", "hizmet-oyun-terapisi"],
   },
   {
     slug: "hizmet-akademik-gelisim",
@@ -192,11 +192,11 @@ module.exports = [
     lead: "Akademik zorlanma çoğu zaman yalnızca ders çalışmayla ilgili değildir. Motivasyon, dikkat, kaygı ve özgüven bu resmin içindedir.",
     gorsel: "blog-masa",
     bilgi: [
-      ["Yaş aralığı", "7 – 18 yaş"],
-      ["Görüşme süresi", "45 – 50 dakika"],
-      ["Sıklık", "İhtiyaca göre planlanır"],
-      ["Katılım", "Öğrenci + ebeveyn görüşmeleri"],
-      ["Konum", "Yüz yüze / Ümraniye"],
+      ["Kimler için", "Çocuk / ergen / ebeveyn"],
+      ["Seans süresi", "İhtiyaca göre"],
+      ["Format", "Değerlendirme / danışmanlık"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {
@@ -236,11 +236,11 @@ module.exports = [
     lead: "Bilgiyi paylaşmak kadar, o bilgiyi günlük hayatta uygulanabilir hale getirmek önemlidir. Programlarımız bu yüzden uygulamalı ilerler.",
     gorsel: "atolye-masa",
     bilgi: [
-      ["Katılımcı", "Ebeveynler ve eğitimciler"],
-      ["Süre", "90 dakika – 2 saat"],
-      ["Zaman", "Hafta sonları"],
-      ["Kontenjan", "Sınırlı — ön kayıtlı"],
-      ["Konum", "Yüz yüze / Ümraniye"],
+      ["Kimler için", "Çocuk / ebeveyn / çocuk + aile"],
+      ["Seans süresi", "Programa göre"],
+      ["Format", "Grup çalışması"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {
@@ -280,11 +280,11 @@ module.exports = [
     lead: "Bir çocuğun gelişimi yalnızca evde değil; okulda, sınıfta ve akran grubunda da şekillenir. Kurumlarla kurulan iş birliği bu nedenle önemlidir.",
     gorsel: "karsilama",
     bilgi: [
-      ["Kapsam", "Okul, kreş, kurum"],
-      ["Format", "Seminer, atölye, süpervizyon"],
-      ["Süre", "Programa göre planlanır"],
-      ["Katılımcı", "Eğitimci, yönetici, veli"],
-      ["Planlama", "Kurumla birlikte"],
+      ["Kimler için", "Okul / kurum / eğitim paydaşları"],
+      ["Seans süresi", "Projeye göre"],
+      ["Format", "Seminer / eğitim / danışmanlık"],
+      ["Konum", "Ümraniye, İstanbul"],
+      ["Ücret", "Bilgi için iletişime geçin"],
     ],
     bolumler: [
       {

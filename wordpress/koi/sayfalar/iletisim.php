@@ -20,19 +20,23 @@
       <ul class="info-list">
         <li>
           <svg aria-hidden="true"><use href="#i-pin"></use></svg>
-          <div><strong>Adres</strong><span><?php echo esc_html( koi_ayar( 'adres' ) ); ?><br><span class="muted" style="font-size:.84rem">Açık adres, ruhsat süreci tamamlandığında güncellenecektir.</span></span></div>
+          <div><strong>Adres</strong><span><?php echo esc_html( koi_ayar( 'acik_adres' ) ); ?></span></div>
         </li>
         <li>
           <svg aria-hidden="true"><use href="#i-phone"></use></svg>
           <div><strong>Telefon / WhatsApp</strong><span><a href="<?php echo esc_url( koi_tel_url() ); ?>"><?php echo esc_html( koi_ayar( 'telefon' ) ); ?></a></span></div>
         </li>
         <li>
+          <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+          <div><strong>Ulaşım ve Otopark</strong><span>Açık otopark mevcuttur. Necip Fazıl metro istasyonu 8–12 dakika, Dudullu metro istasyonu 10 dakika mesafededir.</span></div>
+        </li>
+        <li>
           <svg aria-hidden="true"><use href="#i-mail"></use></svg>
-          <div><strong>E-posta</strong><span><a href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>"><?php echo esc_html( koi_ayar( 'eposta' ) ); ?></a><br><a href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta2' ) ); ?>"><?php echo esc_html( koi_ayar( 'eposta2' ) ); ?></a></span></div>
+          <div><strong>E-posta</strong><span><a href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>"><?php echo esc_html( koi_ayar( 'eposta' ) ); ?></a></span></div>
         </li>
         <li>
           <svg aria-hidden="true"><use href="#i-clock"></use></svg>
-          <div><strong>Çalışma Saatleri</strong><span><?php echo esc_html( koi_ayar( 'saat1' ) ); ?><br>Hafta sonu: seminer ve atölye programına göre</span></div>
+          <div><strong>Çalışma Saatleri</strong><span><?php echo esc_html( koi_ayar( 'saat1' ) ); ?><br><?php echo esc_html( koi_ayar( 'saat2' ) ); ?></span></div>
         </li>
         <li>
           <svg aria-hidden="true"><use href="#i-ig"></use></svg>
@@ -70,6 +74,9 @@
             <option>Oyun Terapisi</option>
             <option>Aile ve Ebeveyn Danışmanlığı</option>
             <option>Anne, Hamilelik ve Yenidoğan Danışmanlığı</option>
+            <option>Eğitim ve Akademik Gelişim</option>
+            <option>Seminer ve Workshoplar</option>
+            <option>Kurum ve Okul İş Birlikleri</option>
             <option>Oyun Grupları</option>
             <option>Atölye / Seminer</option>
             <option>Diğer</option>
@@ -110,11 +117,11 @@
       <span class="eyebrow">Konum</span>
       <h2>Bizi Nasıl Bulursunuz?</h2>
     </div>
-    <div class="map-frame reveal" role="img" aria-label="Harita alanı — Google Maps yerleşimi">
+    <div class="map-frame reveal">
       <div class="map-frame__pin">
         <svg aria-hidden="true"><use href="#i-pin"></use></svg>
-        <span>Google Maps — Ümraniye / Necip Fazıl</span>
-        <span class="muted" style="letter-spacing:0;text-transform:none;font-size:.82rem">Kesin adres netleştiğinde canlı harita buraya yerleştirilecektir.</span>
+        <span>Narlı Bahçe Evleri — Necip Fazıl Mah., Ümraniye</span>
+        <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Narl%C4%B1%20Bah%C3%A7e%20Evleri%20Sitesi%2C%20Hamza%20Yerlikaya%20Bulvar%C4%B1%2C%20Necip%20Faz%C4%B1l%20Mah.%2C%2034773%20%C3%9Cmraniye%20%C4%B0stanbul" target="_blank" rel="noopener">Google Haritalar'da Aç<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
       </div>
     </div>
   </div>
@@ -131,21 +138,22 @@
     </div>
     <div class="accordion reveal">
       <div class="accordion__item is-open">
-        <button class="accordion__trigger" type="button" aria-expanded="true">Başvuruma ne kadar sürede dönüş yapılıyor?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
-        <div class="accordion__panel">Başvurular mesai saatleri içinde sırayla değerlendirilir ve genellikle aynı gün ya da ertesi iş günü içinde dönüş yapılır.</div>
+        <button class="accordion__trigger" type="button" aria-expanded="true">Randevu ve ön başvuru nasıl yapılır?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
+        <div class="accordion__panel"><p>KOI'ye web sitesindeki iletişim/ön başvuru formu veya WhatsApp üzerinden ulaşabilirsiniz.</p><p>İlk iletişimde çocuğunuzun yaşı, ihtiyaç alanı ve almak istediğiniz hizmet hakkında kısaca bilgi alınır. Ardından uygun uzman, hizmet ve görüşme zamanı konusunda yönlendirme yapılır.</p><p>Randevu oluşturulmadan önce ihtiyaç ve süreç hakkında bilgi almak için de bizimle iletişime geçebilirsiniz.</p></div>
       </div>
       <div class="accordion__item">
-        <button class="accordion__trigger" type="button" aria-expanded="false">Görüşme için ön ödeme gerekiyor mu?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
-        <div class="accordion__panel">Görüşme planlamak için ön ödeme gerekmez. Atölye ve grup programlarında kontenjan sınırlı olduğu için kayıt onayı ayrıca iletilir.</div>
+        <button class="accordion__trigger" type="button" aria-expanded="false">İlk görüşme nasıl ilerliyor?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
+        <div class="accordion__panel"><p>İlk görüşme, öncelikle çocuğunuzun ve ailenizin ihtiyaçlarını anlamaya yönelik bir ön değerlendirme ve tanışma süreci olarak ilerler.</p><p>Çocuğun gelişim öyküsü, mevcut ihtiyaçlar, aile ve okul yaşamı gibi konular ele alınır. İhtiyaca göre danışmanlık, oyun terapisi, oyun grubu veya farklı bir çalışma önerilebilir.</p><p>Amaç, her aileyi tek bir programa yönlendirmek değil; ihtiyaca uygun yolu birlikte belirlemektir.</p></div>
       </div>
       <div class="accordion__item">
-        <button class="accordion__trigger" type="button" aria-expanded="false">Görüşmeler yüz yüze mi yapılıyor?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
-        <div class="accordion__panel">Hizmetlerimiz başlangıçta yüz yüze planlanmaktadır. İhtiyaca göre çevrim içi görüşme seçeneği ileride değerlendirilecektir.</div>
+        <button class="accordion__trigger" type="button" aria-expanded="false">Çocuğum için danışmanlık mı, oyun grubu mu, atölye mi uygun?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
+        <div class="accordion__panel"><p>Bunu yalnızca yaşa bakarak belirlemek her zaman doğru değildir.</p><p>Çocuğun gelişimsel özellikleri, ihtiyaçları, sosyal becerileri, duygusal durumu ve ailenin beklentileri birlikte değerlendirilir. Ön görüşme sonrasında çocuğunuz için danışmanlık, oyun terapisi, oyun grubu veya atölye seçeneklerinden hangisinin daha uygun olduğu konusunda yönlendirme yapılabilir.</p><p>Amacımız belirli bir hizmeti sunmak değil, çocuğun ihtiyacına uygun olan alanı belirlemektir.</p></div>
       </div>
       <div class="accordion__item">
-        <button class="accordion__trigger" type="button" aria-expanded="false">Paylaştığım bilgiler nasıl korunuyor?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
-        <div class="accordion__panel">Form üzerinden yalnızca başvurunuz için gerekli bilgiler toplanır. Veriler KVKK kapsamında işlenir ve üçüncü kişilerle paylaşılmaz.</div>
+        <button class="accordion__trigger" type="button" aria-expanded="false">Ücret bilgisi nasıl alabilirim?<svg aria-hidden="true"><use href="#i-plus"></use></svg></button>
+        <div class="accordion__panel"><p>Ücretler hizmete, uzmana ve programa göre değiştiği için sitede sabit fiyat yayınlamıyoruz. Güncel bilgi için iletişim formunu doldurabilir veya bize ulaşabilirsiniz.</p></div>
       </div>
     </div>
+    <p class="reveal" style="margin-top:30px"><a class="link-arrow" href="<?php echo esc_url( koi_url( 'sss' ) ); ?>">Tüm Sorular<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a></p>
   </div>
 </section>

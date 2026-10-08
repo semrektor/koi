@@ -31,45 +31,112 @@
   <div class="container container--wide">
     <div class="section-head section-head--split reveal">
       <div>
-        <span class="eyebrow">Takvim</span>
-        <h2>Yaklaşan Programlar</h2>
+        <span class="eyebrow">Program</span>
+        <h2>Açılış Dönemi Atölye ve Seminerleri</h2>
       </div>
-      <p class="lead">Kontenjanlar sınırlıdır; katılım için ön kayıt gerekmektedir.</p>
+      <p class="lead">Tarihler açılış takvimiyle birlikte duyurulacaktır.</p>
     </div>
     <div class="reveal" style="overflow-x:auto">
       <table class="schedule">
         <thead>
-          <tr><th>Tarih</th><th>Program</th><th>Katılım</th><th>Durum</th></tr>
+          <tr><th>Atölye / Seminer</th><th>Katılımcı</th><th>Tarih ve Saat</th><th>Süre</th><th>Kontenjan</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td data-th="Tarih">Cumartesi · 10:30</td>
-            <td data-th="Program">Duygu Kutusu — Çocuk Atölyesi (4-7 yaş)</td>
-            <td data-th="Katılım">Çocuk</td>
-            <td data-th="Durum"><span class="badge">Kayıt açık</span></td>
+            <td data-th="Atölye / seminer">Duygularla Tanışmak</td>
+            <td data-th="Katılımcı">Çocuk · 4–7 yaş</td>
+            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
+            <td data-th="Süre">Programa göre</td>
+            <td data-th="Kontenjan">Program kapasitesine göre</td>
           </tr>
           <tr>
-            <td data-th="Tarih">Cumartesi · 14:00</td>
-            <td data-th="Program">Sınırlar ve Güvenli Bağ — Ebeveyn Atölyesi</td>
-            <td data-th="Katılım">Ebeveyn</td>
-            <td data-th="Durum"><span class="badge">Kayıt açık</span></td>
+            <td data-th="Atölye / seminer">Sınırlar, Bağ ve Güven</td>
+            <td data-th="Katılımcı">Ebeveyn</td>
+            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
+            <td data-th="Süre">Programa göre</td>
+            <td data-th="Kontenjan">Program kapasitesine göre</td>
           </tr>
           <tr>
-            <td data-th="Tarih">Pazar · 11:00</td>
-            <td data-th="Program">Birlikte Oynuyoruz — Çocuk-Aile Buluşması</td>
-            <td data-th="Katılım">Çocuk + Ebeveyn</td>
-            <td data-th="Durum"><span class="badge badge--olive">Son kontenjan</span></td>
+            <td data-th="Atölye / seminer">Birlikte Oyun, Birlikte Bağ</td>
+            <td data-th="Katılımcı">Çocuk + aile</td>
+            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
+            <td data-th="Süre">Programa göre</td>
+            <td data-th="Kontenjan">Program kapasitesine göre</td>
           </tr>
           <tr>
-            <td data-th="Tarih">Pazar · 15:00</td>
-            <td data-th="Program">Okula Uyum Süreci — Seminer</td>
-            <td data-th="Katılım">Ebeveyn</td>
-            <td data-th="Durum"><span class="badge">Kayıt açık</span></td>
+            <td data-th="Atölye / seminer">Hikâye, Hayal ve Yaratıcılık</td>
+            <td data-th="Katılımcı">Çocuk · 5–8 yaş</td>
+            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
+            <td data-th="Süre">Programa göre</td>
+            <td data-th="Kontenjan">Program kapasitesine göre</td>
+          </tr>
+          <tr>
+            <td data-th="Atölye / seminer">Okula Uyum ve Yeni Başlangıçlar</td>
+            <td data-th="Katılımcı">Ebeveyn</td>
+            <td data-th="Tarih ve saat">Dönemsel</td>
+            <td data-th="Süre">Programa göre</td>
+            <td data-th="Kontenjan">Program kapasitesine göre</td>
+          </tr>
+          <tr>
+            <td data-th="Atölye / seminer">İlk Yıl: Anne-Bebek Yolculuğu</td>
+            <td data-th="Katılımcı">Anne / ebeveyn</td>
+            <td data-th="Tarih ve saat">Dönemsel</td>
+            <td data-th="Süre">Programa göre</td>
+            <td data-th="Kontenjan">Program kapasitesine göre</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="muted" style="margin-top:22px;font-size:.82rem">Takvim taslak amaçlıdır. Yayın sonrası atölye ve seminerler yönetim panelinden eklenip güncellenebilecektir.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--wide">
+    <div class="section-head section-head--split reveal">
+      <div>
+        <span class="eyebrow">Başvuru</span>
+        <h2>Başvuru Nasıl Yapılır?</h2>
+      </div>
+      <p class="lead">İlk bilgi talebinden kayda kadar süreç beş adımda ilerler.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item reveal">
+        <div class="timeline__when">01</div>
+        <div class="timeline__what">
+          <h3>Bilgi Talebi</h3>
+          <p>Hizmet, oyun grubu veya atölye için form ya da WhatsApp üzerinden bilgi talep edersiniz.</p>
+        </div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__when">02</div>
+        <div class="timeline__what">
+          <h3>İhtiyacın Netleşmesi</h3>
+          <p>KOI ekibi ihtiyacı ve uygun programı sizinle birlikte netleştirir.</p>
+        </div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__when">03</div>
+        <div class="timeline__what">
+          <h3>Gün, Saat ve Kontenjan</h3>
+          <p>Uygun gün, saat ve kontenjan kesinleştirilir.</p>
+        </div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__when">04</div>
+        <div class="timeline__what">
+          <h3>Ön Görüşme</h3>
+          <p>Gerekli bir ön görüşme ya da değerlendirme varsa planlanır.</p>
+        </div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__when">05</div>
+        <div class="timeline__what">
+          <h3>Kayıt</h3>
+          <p>Kayıt ve ödeme bilgileri KOI tarafından sizinle paylaşılır.</p>
+        </div>
+      </div>
+    </div>
+    <p class="muted reveal" style="margin-top:22px;font-size:.86rem">Danışmanlık hizmetlerinde ilk görüşme öncesinde ihtiyaç değerlendirmesi yapılabilir.</p>
   </div>
 </section>
 

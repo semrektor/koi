@@ -25,7 +25,7 @@
  },
  "uzmanlarimiz": {
   "seo_baslik": "Uzmanlarımız | KOI Çocuk ve Aile Gelişim Merkezi",
-  "aciklama": "KOI'nin psikolojik danışmanlık, oyun terapisi, aile danışmanlığı ve gelişim alanlarında eğitim almış uzman kadrosu."
+  "aciklama": "KOI'nin kurucu ekibi: psikolojik danışmanlık, aile danışmanlığı ve çocuk merkezli oyun terapisi ile eğitim kurumlarında uzun yıllara dayanan deneyim."
  },
  "blog": {
   "seo_baslik": "Blog | KOI Çocuk ve Aile Gelişim Merkezi",
@@ -38,6 +38,10 @@
  "galeri": {
   "seo_baslik": "Galeri | KOI Çocuk ve Aile Gelişim Merkezi",
   "aciklama": "KOI merkezinden mekân, atölye ve etkinlik görselleri."
+ },
+ "sss": {
+  "seo_baslik": "Sık Sorulan Sorular | KOI Çocuk ve Aile Gelişim Merkezi",
+  "aciklama": "KOI nedir, oyun grubu ile oyun terapisi arasındaki fark, ilk görüşme, ebeveyn katılımı, kontenjan ve ön başvuru hakkında sık sorulan sorular."
  },
  "kvkk": {
   "seo_baslik": "KVKK Aydınlatma Metni | KOI Çocuk ve Aile Gelişim Merkezi",

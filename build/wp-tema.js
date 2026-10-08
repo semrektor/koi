@@ -33,6 +33,7 @@ const SAYFALAR = [
   { anahtar: "blog", slug: "blog", baslik: "Blog" },
   { anahtar: "iletisim", slug: "iletisim", baslik: "İletişim" },
   { anahtar: "galeri", slug: "galeri", baslik: "Galeri" },
+  { anahtar: "sss", slug: "sss", baslik: "Sık Sorulan Sorular" },
   { anahtar: "kvkk", slug: "kvkk", baslik: "KVKK Aydınlatma Metni" },
   { anahtar: "gizlilik", slug: "gizlilik", baslik: "Gizlilik Politikası" },
   { anahtar: "cerez", slug: "cerez", baslik: "Çerez Politikası" },
@@ -41,7 +42,7 @@ const SAYFALAR = [
 const EK_GOVDELER = ["404"];
 
 /* Sayfadaki formun turu (inc/formlar.php ile ayni anahtarlar) */
-const FORM_TURU = { iletisim: "iletisim", "oyun-gruplari": "oyun-grubu", blog: "bulten" };
+const FORM_TURU = { iletisim: "iletisim", "oyun-gruplari": "oyun-grubu" };
 
 const KORUMA = "<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>\n";
 
@@ -79,18 +80,29 @@ const DEGISIMLER = [
   ['href="https://wa.me/900000000000"', 'href="<?php echo esc_url( koi_wa_url() ); ?>"'],
   ['href="tel:+900000000000"', 'href="<?php echo esc_url( koi_tel_url() ); ?>"'],
   ['href="mailto:info@koiailem.com"', "href=\"<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>\""],
-  ['href="mailto:iletisim@koiailem.com"', "href=\"<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta2' ) ); ?>\""],
   ['href="https://www.instagram.com/koiworld/"', "href=\"<?php echo esc_url( koi_ayar( 'instagram' ) ); ?>\""],
   ["+90 (000) 000 00 00", "<?php echo esc_html( koi_ayar( 'telefon' ) ); ?>"],
   [">info@koiailem.com<", "><?php echo esc_html( koi_ayar( 'eposta' ) ); ?><"],
-  [">iletisim@koiailem.com<", "><?php echo esc_html( koi_ayar( 'eposta2' ) ); ?><"],
+  ["E-posta: info@koiailem.com", "E-posta: <?php echo esc_html( koi_ayar( 'eposta' ) ); ?>"],
+  [
+    "Necip Fazıl Mah. Hamza Yerlikaya Bulvarı, Narlı Bahçe Evleri Sitesi B Blok No: 70 BF, 34773 Ümraniye / İstanbul",
+    "<?php echo esc_html( koi_ayar( 'acik_adres' ) ); ?>",
+  ],
   ["Necip Fazıl Mah. — Ümraniye / İstanbul", "<?php echo esc_html( koi_ayar( 'adres' ) ); ?>"],
   ["Hafta içi 09:00 – 19:00", "<?php echo esc_html( koi_ayar( 'saat1' ) ); ?>"],
-  ["Hafta sonu: program takvimine göre", "<?php echo esc_html( koi_ayar( 'saat2' ) ); ?>"],
+  ["Hafta sonu: program ve randevu durumuna göre", "<?php echo esc_html( koi_ayar( 'saat2' ) ); ?>"],
 ];
 
 function phpLestir(html, anahtar) {
   if (html.includes("<?")) throw new Error(anahtar + ": govdede '<?' var; PHP'ye cevrilemez");
+
+  /* Kosullu bloklar (build.js'teki EGER isaretleri) */
+  const KOSUL = { "yazi-var": "koi_yazi_var()", "yazi-yok": "! koi_yazi_var()" };
+  html = html.replace(/<!--EGER:([a-z-]+)-->/g, (tam, ad) => {
+    if (!KOSUL[ad]) throw new Error(anahtar + ": bilinmeyen kosul " + ad);
+    return "<?php if ( " + KOSUL[ad] + " ) : ?>";
+  });
+  html = html.replace(/<!--\/EGER:[a-z-]+-->/g, "<?php endif; ?>");
 
   /* Kart bloklari veritabanindan gelir */
   html = html.replace(/[ \t]*<!--CARDS:([a-z0-9-]+)-->[\s\S]*?<!--\/CARDS:\1-->/g, "<?php koi_kartlar( '$1' ); ?>");
@@ -115,7 +127,6 @@ function phpLestir(html, anahtar) {
     const sade = metin.replace(/\s*Taslak önizleme:[\s\S]*$/, "").trim();
     return "<?php koi_form_notu( " + phpMetin(sade) + " ); ?>";
   });
-  html = html.replace('id="bulten-mail" type="email"', 'id="bulten-mail" name="eposta" type="email"');
 
   /* Yonetim paneli baglantisi temada yer almaz (giris: /wp-admin) */
   html = html.replace(/\s*<a href="yonetim-giris\.html">[^<]*<\/a>/g, "");
@@ -169,6 +180,21 @@ function filtreAdlari(dosya) {
 }
 
 const TUR_ONEKI = { hizmet: "hizmet-", atolye: "atolye-", post: "blog-" };
+
+/* Adresi degisen kayitlar: yeni adres -> onceki adres. Kurulumun guncelleme
+   adimi, onceki surumle olusturulmus kaydi bulup yeniden adlandirir. */
+const ESKI_SLUG = {
+  atolye: {
+    "duygularla-tanismak": "duygu-kutusu",
+    "sinirlar-bag-guven": "sinirlar-guvenli-bag",
+    "birlikte-oyun-birlikte-bag": "birlikte-oynuyoruz",
+    "hikaye-hayal-yaraticilik": "hikaye-hayal",
+    "okula-uyum-yeni-baslangiclar": "okula-uyum",
+    "ilk-yil-anne-bebek": "yenidogan-ilk-yil",
+  },
+};
+/* Onceki surumun olusturdugu, artik sitede yer almayan ornek yazilar */
+const KALDIRILAN = { post: require("./content/arsiv/blog-ornek").map((x) => x.slug.slice(TUR_ONEKI.post.length)) };
 function ilgiliListe(slugs) {
   return (slugs || [])
     .map((s) => {
@@ -183,8 +209,10 @@ function ilgiliListe(slugs) {
 }
 
 function kayit(x, tur, terimAdlari) {
+  const slug = x.slug.slice(TUR_ONEKI[tur].length);
   return {
-    slug: x.slug.slice(TUR_ONEKI[tur].length),
+    slug,
+    eski_slug: (ESKI_SLUG[tur] || {})[slug] || "",
     baslik: x.baslik,
     kisa: x.kisa,
     lead: x.lead || "",
@@ -222,7 +250,7 @@ yaz(
     "Theme Name: KOI",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.1.0",
+    "Version: 0.2.0",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
     "Text Domain: koi",
@@ -232,6 +260,9 @@ yaz(
     "",
   ].join("\n")
 );
+
+/* Temalar ekranindaki onizleme gorseli */
+fs.copyFileSync(path.join(SITE, "assets", "img", "karsilama-sm.jpg"), path.join(CIKTI, "screenshot.jpg"));
 
 /* 4. header.php / footer.php */
 const head = fs.readFileSync(path.join(__dirname, "partials", "head.html"), "utf8");
@@ -279,6 +310,7 @@ yaz(
   JSON.stringify(
     {
       sayfalar: SAYFALAR,
+      kaldirilan: KALDIRILAN,
       hizmetler: hizmetler.map((x) => kayit(x, "hizmet", filtreAdlari("hizmetler.html"))),
       atolyeler: atolyeler.map((x) => kayit(x, "atolye", filtreAdlari("atolyeler.html"))),
       blog: blog.map((x) => kayit(x, "post", filtreAdlari("blog.html"))),
@@ -289,7 +321,7 @@ yaz(
 );
 
 /* 7. Kontrol: PHP'ye cevrilmemis taslak kalintisi kalmasin */
-const KALINTI = [/\.html["#]/, /data-demo-form/, /Taslak önizleme/, /wa\.me\/9000/, /["\s,(]assets\/(img|css|js)\//, /CARDS:/];
+const KALINTI = [/\.html["#]/, /EGER:/, /data-demo-form/, /Taslak önizleme/, /wa\.me\/9000/, /["\s,(]assets\/(img|css|js)\//, /CARDS:/];
 let sorun = 0;
 (function tara(d) {
   for (const f of fs.readdirSync(d, { withFileTypes: true })) {

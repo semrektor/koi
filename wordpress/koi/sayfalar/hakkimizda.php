@@ -20,14 +20,12 @@
     </div>
     <div class="split__body reveal">
       <span class="eyebrow">Hikâyemiz</span>
-      <h2>Güvenli Bir Alan,<br>Özgür Bir Keşif</h2>
-      <p>KOI; çocukların gelişimini ve ailelerin ihtiyaçlarını birlikte ele alan, danışmanlık ile oyun ve atölye deneyimlerini aynı çatı altında buluşturan bir merkez olarak kurgulandı.</p>
-      <p>Amacımız; ailelerin kendilerini güvende hissedeceği, çocukların ise özgürce keşfedebileceği sıcak ama nitelikli bir alan ve marka deneyimi oluşturmak.</p>
-      <p>KOI'nin farkı; danışmanlık ve gelişim odaklı hizmetlerle oyun ve atölye deneyimini birbirinden koparmadan, tek bir bütün olarak sunmasıdır.</p>
-      <div class="quote-card" style="margin-top:32px">
-        <blockquote>"Daha bilinçli ebeveynler, daha mutlu çocuklar, daha güçlü aileler."</blockquote>
-        <cite>KOI Manifestosu</cite>
-      </div>
+      <h2>KOI Nasıl Doğdu?</h2>
+      <p class="lead">KOI, çocukların ve ailelerin gelişim yolculuğuna farklı bir yerden bakma fikriyle ortaya çıktı.</p>
+      <p>Yıllar boyunca çocuklarla, ailelerle ve eğitim kurumlarıyla çalışırken aynı ihtiyacı farklı şekillerde gözlemledik: Bir çocuğu anlamak, yalnızca çocuğa bakmakla mümkün değildi. Çocuğun gelişimi; ailesi, ilişkileri, eğitim ortamı, duygusal dünyası ve içinde bulunduğu koşullarla birlikte ele alındığında anlam kazanıyordu.</p>
+      <p>Bir tarafta çocukların gelişimini destekleyen oyun ve deneyim alanlarına, diğer tarafta ebeveynlerin danışmanlık ve rehberliğe duyduğu ihtiyaç vardı. Biz bu iki alanın birbirinden ayrı düşünülmemesi gerektiğine inandık.</p>
+      <p><em>KOI böyle doğdu.</em></p>
+      <p>KOI; psikolojik danışmanlık, aile ve ebeveyn çalışmaları, oyun, gelişim programları ve atölyeleri aynı çatı altında buluşturan çocuk ve aile odaklı bir gelişim merkezidir.</p>
     </div>
   </div>
 </section>
@@ -37,8 +35,14 @@
     <div class="reveal">
       <span class="eyebrow">İsmimiz</span>
       <h2>KOI Nedir?</h2>
-      <p class="lead">Koi, Uzak Doğu kültüründe akıntıya karşı yüzebilen, sabırla büyüyen ve zamanla dönüşen bir balık olarak bilinir. Sebatın, değişimin ve iyi bir geleceğe duyulan inancın sembolüdür.</p>
-      <p>İsmimizi bu anlamdan aldık: her çocuğun ve her ailenin kendi hızında, kendi yolunda büyüyebileceğine inanıyoruz. KOI; danışmanlık, oyun ve atölye deneyimini bir araya getirerek bu yolculuğa eşlik eden bir alan.</p>
+      <p class="lead">KOI ismini seçerken bu yaklaşımın sembolünden ilham aldık. Koi balığı; akıntının yönüne rağmen ilerlemesi, dönüşüm ve dayanıklılıkla ilişkilendirilen güçlü bir sembol.</p>
+      <p>Ancak bizim için mesele yalnızca akıntıya karşı yüzmek değil. Bazen ilerlemek, önce durup ne olduğunu anlamaktır. Bazen değişim, başka bir yerden bakmakla başlar.</p>
+      <p>Bu nedenle KOI'de her çocuğu, her ebeveyni ve her aileyi kendi ihtiyaçları ve ritmi içinde ele alıyoruz. Hazır kalıplar sunmak yerine; dinlemeye, anlamaya ve ihtiyaca uygun alanı birlikte oluşturmaya önem veriyoruz.</p>
+      <p>Çünkü bizim için gelişim tek bir doğruya ulaşmak değil; kişinin kendisini, ilişkilerini ve ihtiyaçlarını daha iyi tanıyabilmesine alan açmak.</p>
+      <p>KOI; çocuğun, ailenin ve profesyonelin aynı yerde buluşabildiği; danışmanlık, oyun ve deneyimin birbirini tamamladığı bir alan. Ve bu alanın temelinde tek bir inanç var:</p>
+      <div class="quote-card" style="margin:28px 0">
+        <blockquote>Her çocuğun kendi ritmi vardır. Her ailenin kendi hikâyesi. Bizim işimiz, onları gerçekten görebilecek alanı açmak.</blockquote>
+      </div>
       <ul class="tagline-stack">
         <li>Denge</li>
         <li>Bağlantı</li>
@@ -55,11 +59,11 @@
   <div class="container container--wide vm-grid">
     <article class="vm-card reveal">
       <span class="eyebrow">Vizyonumuz</span>
-      <p class="vm-card__text">Çocukların ve ailelerin kendi hızlarında, güvenle büyüyebildiği; danışmanlık, oyun ve atölye deneyimini tek bir bütün olarak sunan, bölgesinde güvenle anılan bir gelişim merkezi olmak.</p>
+      <p class="vm-card__text">Çocukların kendi ritimlerinde büyüyebildiği, ebeveynlerin bu yolculukta yalnız bırakılmadığı; danışmanlık, oyun ve deneyimi aynı çatı altında buluşturan, güven veren ve çağdaş bir çocuk ve aile gelişim merkezi olmak.</p>
     </article>
     <article class="vm-card reveal">
       <span class="eyebrow">Misyonumuz</span>
-      <p class="vm-card__text">Çocukların duygusal, sosyal ve bilişsel gelişimini; ebeveynlerin de bu yolculuktaki rolünü bilimsel temelli, sıcak ve kişiye özel bir yaklaşımla desteklemek. Danışmanlığı, oyun gruplarını ve atölyeleri her ailenin ihtiyacına göre bir araya getirmek.</p>
+      <p class="vm-card__text">KOI; çocukların duygusal, sosyal ve gelişimsel ihtiyaçlarını, ebeveynlerin ihtiyaçları ve aile içindeki ilişkilerle birlikte ele alır. Bilimsel temelli danışmanlık yaklaşımını oyun, atölye ve gelişim deneyimleriyle bir araya getirerek her aile için güvenli, nitelikli ve özenli bir alan oluşturur.</p>
     </article>
   </div>
 </section>
@@ -150,7 +154,7 @@
       <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Yaş gruplarına göre düzenlenmiş oyun ve atölye alanları</span></li>
       <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Bireysel görüşmeler için sessiz danışmanlık odaları</span></li>
       <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Ebeveynler için rahat bir bekleme ve paylaşım alanı</span></li>
-      <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Ümraniye / Necip Fazıl'da ulaşımı kolay konum</span></li>
+      <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Necip Fazıl ve Dudullu metro istasyonlarına yakın konum, açık otopark</span></li>
     </ul>
     <div style="margin-top:34px">
       <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>">Galeriyi Gör<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
@@ -168,10 +172,10 @@
     <div class="split__body reveal">
       <span class="eyebrow">Ekibimiz</span>
       <h2>Arkasında Uzmanlık<br>Olan Bir Yaklaşım</h2>
-      <p>Kurucu ekibimiz ve uzmanlarımız; psikolojik danışmanlık, çocuk merkezli oyun terapisi, aile danışmanlığı ve gelişim alanlarında eğitim almış profesyonellerden oluşur.</p>
+      <p>Kurucu ekibimiz; psikolojik danışmanlık, aile danışmanlığı ve çocuk merkezli oyun terapisi alanındaki uzmanlığı, eğitim kurumlarında uzun yıllara dayanan yöneticilik deneyimiyle bir araya getiriyor.</p>
       <p>Her uzmanımız kendi alanında çalışırken, süreçler ekip içinde birlikte değerlendirilir. Böylece ailenin gördüğü tek bir bütüncül plan olur.</p>
       <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Uzman Kadromuz<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Ekibimizi Tanıyın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
         <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bize Ulaşın</a>
       </div>
     </div>

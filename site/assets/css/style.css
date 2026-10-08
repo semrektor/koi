@@ -602,6 +602,8 @@ p:last-child{ margin-bottom:0; }
 .accordion__item.is-open .accordion__trigger svg{ transform:rotate(45deg); }
 .accordion__panel{ display:none; padding:0 0 26px; max-width:74ch; color:var(--koi-muted); font-size:.94rem; }
 .accordion__item.is-open .accordion__panel{ display:block; }
+.accordion__panel p{ margin:0 0 .9em; }
+.accordion__panel p:last-child{ margin-bottom:0; }
 
 /* ---------- 25. Zaman cizelgesi ---------- */
 .timeline{ display:flex; flex-direction:column; gap:0; }
@@ -677,6 +679,24 @@ p:last-child{ margin-bottom:0; }
 .wa-float:hover{ transform:translateY(-3px); }
 .wa-float svg{ width:22px; height:22px; flex:none; }
 .wa-float span{ font-size:.85rem; letter-spacing:.02em; }
+
+/* ---------- 28b. Cerez bildirimi ---------- */
+.cookie-bar{
+  position:fixed; left:22px; bottom:22px; z-index:85;
+  width:min(440px, calc(100vw - 44px));
+  display:flex; align-items:center; gap:18px;
+  padding:18px 20px; border-radius:var(--radius-m);
+  background:var(--koi-ivory); border:1px solid var(--koi-linen);
+  box-shadow:0 18px 44px -22px rgba(58,69,47,.45);
+}
+.cookie-bar[hidden]{ display:none; }
+.cookie-bar p{ margin:0; font-size:.84rem; color:var(--koi-muted); }
+.cookie-bar a{ color:var(--koi-olive); border-bottom:1px solid var(--koi-linen); }
+.cookie-bar .btn{ flex:none; }
+@media (max-width:700px){
+  /* Dar ekranda WhatsApp dugmesinin ustunde, tam genislikte durur */
+  .cookie-bar{ left:12px; right:12px; bottom:84px; width:auto; }
+}
 
 /* ---------- 29. Animasyon ----------
    Not: gizleme yalnizca JS calisirken uygulanir (html.js).

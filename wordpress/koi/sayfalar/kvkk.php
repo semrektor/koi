@@ -15,12 +15,17 @@
   <div class="container container--wide with-sidebar">
     <div class="prose reveal">
       <div class="quote-card" style="margin-bottom:2.5em">
-        <p style="font-family:var(--font-body);font-style:normal;font-size:.92rem;color:var(--koi-muted)"><strong style="font-weight:400;color:var(--koi-olive)">Taslak metin.</strong> Bu sayfadaki içerik yer tutucu niteliğindedir. Nihai metin, hukuk danışmanlığı alındıktan ve kurumsal bilgiler (unvan, adres, vergi dairesi, VERBİS kaydı) kesinleştikten sonra yayınlanacaktır.</p>
+        <p style="font-family:var(--font-body);font-style:normal;font-size:.92rem;color:var(--koi-muted)"><strong style="font-weight:400;color:var(--koi-olive)">Taslak metin.</strong> Bu metin hukuk danışmanı incelemesinden sonra kesinleşecektir.</p>
       </div>
 
       <h2>1. Veri Sorumlusu</h2>
-      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca kişisel verileriniz; veri sorumlusu sıfatıyla KOI Çocuk ve Aile Gelişim Merkezi tarafından aşağıda açıklanan kapsamda işlenmektedir.</p>
-      <p>Unvan, açık adres ve iletişim bilgileri kurumsal kayıt süreci tamamlandığında bu bölümde yer alacaktır.</p>
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca kişisel verileriniz; veri sorumlusu sıfatıyla KOİ Çocuk ve Aile Gelişim Merkezi Ltd. Şti. ("KOI") tarafından aşağıda açıklanan kapsamda işlenmektedir.</p>
+      <ul>
+        <li>Unvan: KOİ Çocuk ve Aile Gelişim Merkezi Ltd. Şti.</li>
+        <li>MERSİS No: 0195096650500001</li>
+        <li>Adres: <?php echo esc_html( koi_ayar( 'acik_adres' ) ); ?></li>
+        <li>E-posta: <?php echo esc_html( koi_ayar( 'eposta' ) ); ?></li>
+      </ul>
 
       <h2>2. İşlenen Kişisel Veriler</h2>
       <p>Merkezimizle iletişime geçmeniz, randevu talebi oluşturmanız veya programlarımıza başvurmanız durumunda aşağıdaki veriler işlenebilmektedir:</p>
@@ -57,7 +62,7 @@
 
       <h2>8. İlgili Kişinin Hakları</h2>
       <p>KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme amacını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini isteme, silinmesini veya yok edilmesini isteme ve işlenmesine itiraz etme haklarına sahipsiniz.</p>
-      <p>Taleplerinizi merkezimizin iletişim kanalları üzerinden iletebilirsiniz.</p>
+      <p>Taleplerinizi <a href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>"><?php echo esc_html( koi_ayar( 'eposta' ) ); ?></a> adresine iletebilirsiniz.</p>
     </div>
 
     <aside>

@@ -3,14 +3,14 @@
   <section class="hero">
     <div class="container container--wide hero__grid">
       <div class="hero__copy">
-        <span class="eyebrow">Ümraniye / Necip Fazıl · İstanbul</span>
-        <h1 class="hero__title">Daha Dengeli<br>Yarınlar <em>Mümkün</em></h1>
+        <span class="eyebrow">KOI · Çocuk ve Aile Gelişim Merkezi</span>
+        <h1 class="hero__title">İyi İnsanlar,<br>İyi Hikâyeler <em>Büyütür.</em></h1>
         <p class="lead">Çocukların, ebeveynlerin ve ailelerin iyi olma halini destekleyen bütüncül bir gelişim merkezi. Danışmanlık, oyun ve atölye deneyimini aynı çatı altında buluşturuyoruz.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'hakkimizda' ) ); ?>">KOI'yi Keşfet<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
           <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Al</a>
         </div>
-        <p class="hero__note">Küçük adımlar, büyük dönüşümler</p>
+        <p class="hero__note">Ümraniye · İstanbul</p>
       </div>
       <div class="hero__visual">
         <div class="media media--arch hero__media has-img" data-label="Merkez karşılama alanı — çekim yapılacak"><img class="media__img" src="<?php koi_v(); ?>img/hero-kemer.jpg" srcset="<?php koi_v(); ?>img/hero-kemer-sm.jpg 900w, <?php koi_v(); ?>img/hero-kemer.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinde kemerli dinlenme alanı" loading="lazy">
@@ -46,7 +46,7 @@
     <div class="container container--wide split split--narrow">
       <div class="split__media reveal">
         <div class="quote-card">
-          <blockquote>"Daha bilinçli ebeveynler, daha mutlu çocuklar, daha güçlü aileler."</blockquote>
+          <blockquote>"Her çocuğun kendi ritmi vardır. Her ailenin kendi hikâyesi."</blockquote>
           <cite>KOI Yaklaşımı</cite>
         </div>
         <div class="media media--soft media--ratio-3-2 has-img" style="margin-top:22px" data-label="Atölye / çalışma alanı"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy">
@@ -56,8 +56,8 @@
       <div class="split__body reveal">
         <span class="eyebrow">Hakkımızda</span>
         <h2>KOI Nedir?</h2>
-        <p>KOI; çocukların, ebeveynlerin ve ailelerin yaşam yolculuğunda yanlarında olmayı amaçlayan bütüncül bir gelişim merkezidir. Psikolojik danışmanlık, aile danışmanlığı, oyun temelli çalışmalar ve atölyelerle her yaştan bireyin potansiyelini destekleyen güvenli ve ilham verici bir alan sunar.</p>
-        <p>Farkımız; danışmanlık ve gelişim odaklı hizmetlerle oyun ve atölye deneyimini birbirinden koparmadan, tek bir bütün olarak sunmamızdır.</p>
+        <p>KOI; psikolojik danışmanlık, aile ve ebeveyn çalışmaları, oyun, gelişim programları ve atölyeleri aynı çatı altında buluşturan çocuk ve aile odaklı bir gelişim merkezidir.</p>
+        <p>Her çocuğu, her ebeveyni ve her aileyi kendi ihtiyaçları ve ritmi içinde ele alıyoruz. Hazır kalıplar sunmak yerine; dinlemeye, anlamaya ve ihtiyaca uygun alanı birlikte oluşturmaya önem veriyoruz.</p>
         <ul class="tagline-stack">
           <li>Denge</li>
           <li>Bağlantı</li>
@@ -146,78 +146,34 @@
     <div class="container container--wide">
       <div class="section-head section-head--split reveal">
         <div>
-          <span class="eyebrow">Uzman Kadromuz</span>
+          <span class="eyebrow">Ekibimiz</span>
           <h2>Yolculuğunuzda<br>Yanınızdayız</h2>
         </div>
-        <p class="lead">Alanında eğitim almış uzmanlarla, bilimsel ve şefkatli bir yaklaşım.</p>
+        <p class="lead">Danışmanlık yaklaşımını oyun ve gelişim deneyimiyle buluşturan kurucu ekibimiz. Uzman kadromuz açılış dönemiyle birlikte tanıtılacak.</p>
       </div>
       <div class="cards cards--4">
         <article class="expert reveal">
           <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="EB"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
           <h3 class="expert__name">Elif Bilsel</h3>
-          <p class="expert__role">Psikolojik Danışman</p>
-          <p class="expert__text">Aile danışmanlığı, çocuk merkezli oyun terapisi ve cinsel terapi eğitimi.</p>
+          <p class="expert__role">Psikolojik Danışman · Aile Danışmanı</p>
+          <p class="expert__text">Çocuk ve ergen gelişimi, aile ve ebeveyn danışmanlığı, çocuk merkezli oyun terapisi.</p>
         </article>
         <article class="expert reveal">
-          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-          <h3 class="expert__name">Uzman İsmi</h3>
-          <p class="expert__role">Çocuk Gelişim Uzmanı</p>
-          <p class="expert__text">Uzmanlık alanı ve kısa özgeçmiş metni bu alanda yer alacaktır.</p>
-        </article>
-        <article class="expert reveal">
-          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-          <h3 class="expert__name">Uzman İsmi</h3>
-          <p class="expert__role">Klinik Psikolog</p>
-          <p class="expert__text">Uzmanlık alanı ve kısa özgeçmiş metni bu alanda yer alacaktır.</p>
-        </article>
-        <article class="expert reveal">
-          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="KOI"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-          <h3 class="expert__name">Uzman İsmi</h3>
-          <p class="expert__role">Atölye Eğitmeni</p>
-          <p class="expert__text">Uzmanlık alanı ve kısa özgeçmiş metni bu alanda yer alacaktır.</p>
+          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="DŞ"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
+          <h3 class="expert__name">Dilek Şevik</h3>
+          <p class="expert__role">Kurucu Ortak</p>
+          <p class="expert__text">Eğitim kurumlarında yöneticilik ve koordinatörlük; veli ilişkileri ve kurumsal iletişim.</p>
         </article>
       </div>
       <div style="margin-top:44px" class="reveal">
-        <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Tüm Kadroyu Gör<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Ekibimizi Tanıyın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- ============ REFERANSLAR ============ -->
-  <section class="section">
-    <div class="container container--wide">
-      <div class="section-head center reveal">
-        <span class="eyebrow eyebrow--center">Aileler Ne Diyor?</span>
-        <h2>Güvenle Başlayan Yolculuklar</h2>
-      </div>
-      <div class="testimonials">
-        <figure class="testimonial reveal">
-          <div class="testimonial__stars" aria-label="5 üzerinden 5">
-            <svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg>
-          </div>
-          <p>Kızımın kendini ifade etme biçimi tamamen değişti. Süreç boyunca biz de ebeveyn olarak desteklendik.</p>
-          <figcaption class="testimonial__author">A. Yılmaz — Ebeveyn</figcaption>
-        </figure>
-        <figure class="testimonial reveal">
-          <div class="testimonial__stars" aria-label="5 üzerinden 5">
-            <svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg>
-          </div>
-          <p>Oyun grubundaki küçük kontenjan sayesinde oğlum kendini çok rahat hissetti. Ortam gerçekten sıcak.</p>
-          <figcaption class="testimonial__author">M. Demir — Ebeveyn</figcaption>
-        </figure>
-        <figure class="testimonial reveal">
-          <div class="testimonial__stars" aria-label="5 üzerinden 5">
-            <svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg>
-          </div>
-          <p>Ebeveyn atölyesinden sonra evdeki iletişim dilimiz değişti. Uygulanabilir, gerçekçi öneriler aldık.</p>
-          <figcaption class="testimonial__author">S. Kaya — Ebeveyn</figcaption>
-        </figure>
-      </div>
-      <p class="muted" style="margin-top:26px;font-size:.78rem">* Yorumlar taslak amaçlı örnek metinlerdir; yayın öncesi gerçek veli yorumlarıyla değiştirilecektir.</p>
-    </div>
-  </section>
 
   <!-- ============ BLOG ============ -->
+<?php if ( koi_yazi_var() ) : ?>
   <section class="section section--cream">
     <div class="container container--wide">
       <div class="section-head section-head--split reveal">
@@ -232,6 +188,7 @@
       </div>
     </div>
 </section>
+<?php endif; ?>
 
   <!-- ============ GALERI ============ -->
   <section class="section section--tight">
@@ -241,7 +198,7 @@
           <span class="eyebrow">Galeri</span>
           <h2>Merkezimizden</h2>
         </div>
-        <p class="lead">Açılış öncesi profesyonel çekimlerle güncellenecek görsel alanları.</p>
+        <p class="lead">Mekânımızın ruhunu yansıtan temsili görseller. Merkezimiz açıldığında kendi fotoğraflarımızla güncellenecek.</p>
       </div>
       <div class="gallery reveal">
         <div class="media media--span2 media--row2 has-img" data-label="Karşılama alanı"><img class="media__img" src="<?php koi_v(); ?>img/karsilama.jpg" srcset="<?php koi_v(); ?>img/karsilama-sm.jpg 900w, <?php koi_v(); ?>img/karsilama.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinin karşılama alanı" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>

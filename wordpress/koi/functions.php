@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.1.0' );
+define( 'KOI_SURUM', '0.2.0' );
 define( 'KOI_DIR', get_template_directory() );
 define( 'KOI_URI', get_template_directory_uri() );
 
@@ -129,6 +129,16 @@ function koi_aktif( $anahtar ) {
 	if ( $anahtar === koi_nav_anahtari() ) {
 		echo ' aria-current="page"';
 	}
+}
+
+/* Yayinda en az bir blog yazisi var mi? (Blog bolumleri buna gore gosterilir) */
+function koi_yazi_var() {
+	static $var = null;
+	if ( null === $var ) {
+		$sayi = wp_count_posts( 'post' );
+		$var  = isset( $sayi->publish ) && (int) $sayi->publish > 0;
+	}
+	return $var;
 }
 
 /* Taslaktan gelen sayfa govdesini (sayfalar/<anahtar>.php) basar */

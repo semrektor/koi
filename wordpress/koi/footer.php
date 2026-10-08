@@ -23,6 +23,7 @@
           <li><a href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Uzmanlarımız</a></li>
           <li><a href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>">Galeri</a></li>
           <li><a href="<?php echo esc_url( koi_url( 'blog' ) ); ?>">Blog</a></li>
+          <li><a href="<?php echo esc_url( koi_url( 'sss' ) ); ?>">Sık Sorulan Sorular</a></li>
           <li><a href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">İletişim</a></li>
         </ul>
       </div>
@@ -53,7 +54,7 @@
   </div>
   <div class="container container--wide">
     <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> KOI Çocuk ve Aile Gelişim Merkezi. Tüm hakları saklıdır.</span>
+      <span>&copy; <span data-year>2026</span> KOI Çocuk ve Aile Gelişim Merkezi. Tüm hakları saklıdır.<br>KOİ Çocuk ve Aile Gelişim Merkezi Ltd. Şti. · MERSİS No: 0195096650500001</span>
       <div class="footer-legal">
         <a href="<?php echo esc_url( koi_url( 'kvkk' ) ); ?>">KVKK Aydınlatma Metni</a>
         <a href="<?php echo esc_url( koi_url( 'gizlilik' ) ); ?>">Gizlilik Politikası</a>
@@ -62,6 +63,11 @@
     </div>
   </div>
 </footer>
+
+<div class="cookie-bar" id="cerez-bandi" role="region" aria-label="Çerez bildirimi" hidden>
+  <p>Bu site yalnızca temel işlevleri için gerekli çerezleri kullanır. Ayrıntılar için <a href="<?php echo esc_url( koi_url( 'cerez' ) ); ?>">Çerez Politikası</a>'nı inceleyebilirsiniz.</p>
+  <button class="btn btn--primary btn--sm" type="button" data-cerez-kabul>Anladım</button>
+</div>
 
 <a class="wa-float" href="<?php echo esc_url( koi_wa_url() ); ?>" aria-label="WhatsApp ile iletişime geçin">
   <svg aria-hidden="true"><use href="#i-wa"></use></svg><span>WhatsApp</span>

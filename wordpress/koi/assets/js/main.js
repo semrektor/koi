@@ -106,7 +106,33 @@
     });
   });
 
-  /* 7. Yil */
+  /* 7. Cerez bildirimi: bir kez "Anladim" denince tekrar gosterilmez */
+  var cerezBandi = document.getElementById("cerez-bandi");
+  if (cerezBandi) {
+    var cerezAnahtari = "koi-cerez-bildirimi";
+    var goruldu = false;
+    try {
+      goruldu = window.localStorage.getItem(cerezAnahtari) === "1";
+    } catch (e) {
+      goruldu = false;
+    }
+    if (!goruldu) {
+      cerezBandi.hidden = false;
+      var cerezDugme = cerezBandi.querySelector("[data-cerez-kabul]");
+      if (cerezDugme) {
+        cerezDugme.addEventListener("click", function () {
+          cerezBandi.hidden = true;
+          try {
+            window.localStorage.setItem(cerezAnahtari, "1");
+          } catch (e) {
+            /* Depolama kapaliysa bildirim bu oturumda gizlenir */
+          }
+        });
+      }
+    }
+  }
+
+  /* 8. Yil */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });

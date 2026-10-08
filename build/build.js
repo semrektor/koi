@@ -55,6 +55,22 @@ function surumle(html) {
   });
 }
 
+/* ---------- Kosullu bloklar ----------
+   <!--EGER:yazi-var--> ... <!--/EGER:yazi-var-->  yalnizca blog yazisi varken,
+   <!--EGER:yazi-yok--> ... <!--/EGER:yazi-yok-->  yalnizca hic yazi yokken basilir.
+   WordPress temasinda ayni isaretler PHP kosuluna cevrilir (wp-tema.js). */
+const KOSULLAR = (() => {
+  const yaziVar = require("./content/blog").length > 0;
+  return { "yazi-var": yaziVar, "yazi-yok": !yaziVar };
+})();
+
+function kosullar(html) {
+  return html.replace(/<!--EGER:([a-z-]+)-->([\s\S]*?)<!--\/EGER:\1-->\s*/g, (tam, ad, icerik) => {
+    if (!(ad in KOSULLAR)) throw new Error("Bilinmeyen kosul: " + ad);
+    return KOSULLAR[ad] ? icerik : "";
+  });
+}
+
 const files = fs.readdirSync(PAGES).filter((f) => f.endsWith(".html"));
 let count = 0;
 
@@ -67,9 +83,11 @@ files.forEach((file) => {
   const navKey = meta(src, "nav", slug);
   const layoutKey = meta(src, "layout", "site");
   const layout = LAYOUTS[layoutKey] || LAYOUTS.site;
-  const body = src
-    .replace(/<!--\s*(title|desc|nav|layout|pagetitle|pagesub|topaction):[\s\S]*?-->\s*/g, "")
-    .replace(/<!--generated-->\s*/g, "");
+  const body = kosullar(
+    src
+      .replace(/<!--\s*(title|desc|nav|layout|pagetitle|pagesub|topaction):[\s\S]*?-->\s*/g, "")
+      .replace(/<!--generated-->\s*/g, "")
+  );
 
   let page = layout.head.replace(/\{\{TITLE\}\}/g, title).replace(/\{\{DESC\}\}/g, desc);
 

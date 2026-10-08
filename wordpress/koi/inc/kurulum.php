@@ -1,17 +1,33 @@
 <?php
 /**
- * Ilk kurulum: Gorunum > KOI Kurulum.
- * Sayfalari, hizmetleri, atolyeleri ve ornek blog yazilarini olusturur.
- * Var olan icerige dokunmaz; guvenle tekrar calistirilabilir.
+ * Kurulum ve icerik guncelleme: Gorunum > KOI Kurulum.
+ *
+ * "Icerikleri Olustur"  : eksik sayfalari, hizmetleri ve atolyeleri olusturur;
+ *                         var olan icerige dokunmaz, guvenle tekrar calistirilabilir.
+ * "Icerikleri Guncelle" : temayla gelen icerigi var olan kayitlarin uzerine yazar,
+ *                         adresi degisen kayitlari yeniden adlandirir ve artik
+ *                         kullanilmayan ornek yazilari cop kutusuna tasir.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function koi_kurulum_kayit( $kayit, $tur, $sira ) {
-	if ( get_page_by_path( $kayit['slug'], OBJECT, $tur ) ) {
-		return 0;
+/* Kaydi yeni ya da onceki adresinden bulur */
+function koi_kurulum_bul( $kayit, $tur ) {
+	$var = get_page_by_path( $kayit['slug'], OBJECT, $tur );
+	if ( ! $var && ! empty( $kayit['eski_slug'] ) ) {
+		$var = get_page_by_path( $kayit['eski_slug'], OBJECT, $tur );
 	}
+	return $var;
+}
+
+/* Donus: 'eklendi', 'guncellendi' ya da '' (dokunulmadi) */
+function koi_kurulum_kayit( $kayit, $tur, $sira, $guncelle = false ) {
+	$var = koi_kurulum_bul( $kayit, $tur );
+	if ( $var && ! $guncelle ) {
+		return '';
+	}
+
 	$dizi = array(
 		'post_type'      => $tur,
 		'post_status'    => 'publish',
@@ -23,13 +39,18 @@ function koi_kurulum_kayit( $kayit, $tur, $sira ) {
 		'comment_status' => 'closed',
 		'ping_status'    => 'closed',
 	);
-	if ( 'post' === $tur ) {
-		/* Yazilar taslaktaki sirayla gorunsun diye tarihler birer hafta arayla verilir */
-		$dizi['post_date'] = gmdate( 'Y-m-d H:i:s', time() - $sira * WEEK_IN_SECONDS + (int) ( (float) get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) );
+	if ( $var ) {
+		$dizi['ID'] = $var->ID;
+		$kimlik     = wp_update_post( wp_slash( $dizi ), true );
+	} else {
+		if ( 'post' === $tur ) {
+			/* Yazilar taslaktaki sirayla gorunsun diye tarihler birer hafta arayla verilir */
+			$dizi['post_date'] = gmdate( 'Y-m-d H:i:s', time() - $sira * WEEK_IN_SECONDS + (int) ( (float) get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) );
+		}
+		$kimlik = wp_insert_post( wp_slash( $dizi ), true );
 	}
-	$kimlik = wp_insert_post( wp_slash( $dizi ), true );
 	if ( is_wp_error( $kimlik ) || ! $kimlik ) {
-		return 0;
+		return '';
 	}
 
 	$taksonomi = koi_taksonomi( $tur );
@@ -55,15 +76,17 @@ function koi_kurulum_kayit( $kayit, $tur, $sira ) {
 	foreach ( $metalar as $anahtar => $deger ) {
 		if ( '' !== $deger ) {
 			update_post_meta( $kimlik, $anahtar, wp_slash( $deger ) );
+		} else {
+			delete_post_meta( $kimlik, $anahtar );
 		}
 	}
 	if ( ! empty( $kayit['one_cikan'] ) ) {
 		stick_post( $kimlik );
 	}
-	return 1;
+	return $var ? 'guncellendi' : 'eklendi';
 }
 
-function koi_icerik_kur() {
+function koi_icerik_kur( $guncelle = false ) {
 	$dosya = KOI_DIR . '/veri/icerik.json';
 	$veri  = file_exists( $dosya ) ? json_decode( (string) file_get_contents( $dosya ), true ) : null;
 	if ( ! is_array( $veri ) || empty( $veri['sayfalar'] ) ) {
@@ -71,10 +94,12 @@ function koi_icerik_kur() {
 	}
 
 	$rapor = array(
-		'sayfa'  => 0,
-		'hizmet' => 0,
-		'atolye' => 0,
-		'yazi'   => 0,
+		'sayfa'      => 0,
+		'hizmet'     => 0,
+		'atolye'     => 0,
+		'yazi'       => 0,
+		'guncelleme' => 0,
+		'kaldirilan' => 0,
 	);
 
 	/* WordPress'in ornek icerigi cop kutusuna (geri alinabilir) */
@@ -85,7 +110,7 @@ function koi_icerik_kur() {
 		}
 	}
 
-	/* Sayfalar */
+	/* Sayfalar: govdeleri temadan gelir, burada yalnizca eksik olanlar olusturulur */
 	$kimlikler = array();
 	foreach ( $veri['sayfalar'] as $sayfa ) {
 		$var = get_page_by_path( $sayfa['slug'], OBJECT, 'page' );
@@ -121,17 +146,39 @@ function koi_icerik_kur() {
 	}
 
 	/* Icerikler */
-	$sira = 0;
-	foreach ( $veri['hizmetler'] as $kayit ) {
-		$rapor['hizmet'] += koi_kurulum_kayit( $kayit, 'hizmet', $sira++ );
+	$turler = array(
+		'hizmetler' => array( 'hizmet', 'hizmet' ),
+		'atolyeler' => array( 'atolye', 'atolye' ),
+		'blog'      => array( 'post', 'yazi' ),
+	);
+	foreach ( $turler as $anahtar => $tur ) {
+		if ( empty( $veri[ $anahtar ] ) ) {
+			continue;
+		}
+		$sira = 0;
+		foreach ( $veri[ $anahtar ] as $kayit ) {
+			$sonuc = koi_kurulum_kayit( $kayit, $tur[0], $sira++, $guncelle );
+			if ( 'eklendi' === $sonuc ) {
+				$rapor[ $tur[1] ]++;
+			} elseif ( 'guncellendi' === $sonuc ) {
+				$rapor['guncelleme']++;
+			}
+		}
 	}
-	$sira = 0;
-	foreach ( $veri['atolyeler'] as $kayit ) {
-		$rapor['atolye'] += koi_kurulum_kayit( $kayit, 'atolye', $sira++ );
-	}
-	$sira = 0;
-	foreach ( $veri['blog'] as $kayit ) {
-		$rapor['yazi'] += koi_kurulum_kayit( $kayit, 'post', $sira++ );
+
+	/* Artik kullanilmayan ornek icerik (yalnizca guncellemede; cop kutusundan geri alinabilir) */
+	if ( $guncelle && ! empty( $veri['kaldirilan'] ) && is_array( $veri['kaldirilan'] ) ) {
+		foreach ( $veri['kaldirilan'] as $tur => $adresler ) {
+			if ( ! post_type_exists( $tur ) ) {
+				continue;
+			}
+			foreach ( (array) $adresler as $adres ) {
+				$kayit = get_page_by_path( sanitize_title( $adres ), OBJECT, $tur );
+				if ( $kayit && 'trash' !== $kayit->post_status && wp_trash_post( $kayit->ID ) ) {
+					$rapor['kaldirilan']++;
+				}
+			}
+		}
 	}
 
 	/* Genel ayarlar */
@@ -170,36 +217,71 @@ function koi_kurulum_sayfasi() {
 	}
 	echo '<div class="wrap"><h1>KOI Kurulum</h1>';
 
+	$sonuc = null;
 	if ( isset( $_POST['koi_kur'] ) && check_admin_referer( 'koi_kurulum' ) ) {
-		$sonuc = koi_icerik_kur();
-		if ( is_wp_error( $sonuc ) ) {
-			echo '<div class="notice notice-error"><p>' . esc_html( $sonuc->get_error_message() ) . '</p></div>';
+		$sonuc = koi_icerik_kur( false );
+	} elseif ( isset( $_POST['koi_guncelle'] ) && check_admin_referer( 'koi_kurulum' ) ) {
+		if ( empty( $_POST['koi_onay'] ) ) {
+			echo '<div class="notice notice-warning"><p>Güncelleme için onay kutusunu işaretleyin.</p></div>';
 		} else {
-			echo '<div class="notice notice-success"><p>' . esc_html(
-				sprintf( 'Kurulum tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı eklendi.', $sonuc['sayfa'], $sonuc['hizmet'], $sonuc['atolye'], $sonuc['yazi'] )
-			) . '</p></div>';
+			$sonuc = koi_icerik_kur( true );
 		}
 	}
-
-	echo '<p>Bu işlem sitenin sayfalarını, hizmetleri, atölyeleri ve örnek blog yazılarını oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar.</p>';
-	echo '<p>Var olan içeriğe dokunmaz. Aynı adrese sahip bir sayfa ya da yazı varsa atlanır, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
-	if ( get_option( 'koi_kurulum_tamam' ) ) {
-		echo '<p><strong>Kurulum daha önce çalıştırıldı.</strong> İletişim bilgilerini <a href="' . esc_url( admin_url( 'customize.php?autofocus[section]=koi_iletisim' ) ) . '">Görünüm → Özelleştir → KOI İletişim Bilgileri</a> altından güncelleyebilirsiniz.</p>';
+	if ( is_wp_error( $sonuc ) ) {
+		echo '<div class="notice notice-error"><p>' . esc_html( $sonuc->get_error_message() ) . '</p></div>';
+	} elseif ( is_array( $sonuc ) ) {
+		echo '<div class="notice notice-success"><p>' . esc_html(
+			sprintf(
+				'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
+				$sonuc['sayfa'],
+				$sonuc['hizmet'],
+				$sonuc['atolye'],
+				$sonuc['yazi'],
+				$sonuc['guncelleme'],
+				$sonuc['kaldirilan']
+			)
+		) . '</p></div>';
 	}
+
+	echo '<p>Tema sürümü: <strong>' . esc_html( KOI_SURUM ) . '</strong>';
+	$kurulu = get_option( 'koi_kurulum_tamam' );
+	if ( $kurulu ) {
+		echo ' · İçerik sürümü: <strong>' . esc_html( $kurulu ) . '</strong>';
+	}
+	echo '</p>';
+
 	echo '<form method="post">';
 	wp_nonce_field( 'koi_kurulum' );
-	submit_button( 'İçerikleri Oluştur', 'primary', 'koi_kur' );
-	echo '</form></div>';
+
+	echo '<h2>İçerikleri Oluştur</h2>';
+	echo '<p>Eksik sayfaları, hizmetleri ve atölyeleri oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar. Var olan içeriğe dokunmaz, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
+	submit_button( 'İçerikleri Oluştur', 'primary', 'koi_kur', false );
+
+	echo '<h2 style="margin-top:2.5em">İçerikleri Güncelle</h2>';
+	echo '<p>Hizmet ve atölyeleri temayla gelen son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
+	echo '<p><strong>Dikkat:</strong> Hizmet ve atölyelerde panelden yaptığınız metin değişikliklerinin üzerine yazılır. Kendi eklediğiniz hizmet, atölye ve yazılara dokunulmaz.</p>';
+	echo '<p><label><input type="checkbox" name="koi_onay" value="1"> Panelden yapılan değişikliklerin üzerine yazılacağını anladım.</label></p>';
+	submit_button( 'İçerikleri Güncelle', 'secondary', 'koi_guncelle', false );
+	echo '</form>';
+
+	echo '<p style="margin-top:2.5em">İletişim bilgileri: <a href="' . esc_url( admin_url( 'customize.php?autofocus[section]=koi_iletisim' ) ) . '">Görünüm → Özelleştir → KOI İletişim Bilgileri</a></p>';
+	echo '</div>';
 }
 
 function koi_kurulum_uyarisi() {
-	if ( get_option( 'koi_kurulum_tamam' ) || ! current_user_can( 'manage_options' ) ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
 	$ekran = get_current_screen();
 	if ( $ekran && 'appearance_page_koi-kurulum' === $ekran->id ) {
 		return;
 	}
-	echo '<div class="notice notice-info"><p>KOI teması etkin. Sayfaları ve içerikleri oluşturmak için <a href="' . esc_url( admin_url( 'themes.php?page=koi-kurulum' ) ) . '">KOI Kurulum</a> sayfasını açın.</p></div>';
+	$kurulu = get_option( 'koi_kurulum_tamam' );
+	$adres  = esc_url( admin_url( 'themes.php?page=koi-kurulum' ) );
+	if ( ! $kurulu ) {
+		echo '<div class="notice notice-info"><p>KOI teması etkin. Sayfaları ve içerikleri oluşturmak için <a href="' . $adres . '">KOI Kurulum</a> sayfasını açın.</p></div>';
+	} elseif ( version_compare( (string) $kurulu, KOI_SURUM, '<' ) ) {
+		echo '<div class="notice notice-info"><p>KOI teması güncellendi. Yeni sayfaları eklemek ve içerikleri güncellemek için <a href="' . $adres . '">KOI Kurulum</a> sayfasını açın.</p></div>';
+	}
 }
 add_action( 'admin_notices', 'koi_kurulum_uyarisi' );
