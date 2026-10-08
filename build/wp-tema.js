@@ -112,6 +112,11 @@ function phpLestir(html, anahtar) {
     const once = html;
     html = html.replace(/[ \t]*<article class="split reveal"[\s\S]*?<\/article>/, "<?php koi_one_cikan_yazi(); ?>");
     if (html === once) throw new Error("blog: one cikan yazi blogu bulunamadi");
+
+    /* Kategori filtresi panelde tanimli kategorilerden uretilir */
+    const filtreOnce = html;
+    html = html.replace(/[ \t]*<div class="filters reveal" data-filter-group data-filter-target="#blog-listesi"[\s\S]*?<\/div>/, "<?php koi_blog_filtreleri(); ?>");
+    if (html === filtreOnce) throw new Error("blog: kategori filtresi bulunamadi");
   }
 
   /* Formlar: taslak isareti yerine gercek gonderim */

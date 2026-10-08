@@ -258,6 +258,20 @@ function koi_kartlar( $kimlik ) {
 	echo $cikti; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- parcalar uretilirken kacislandi.
 }
 
+/* Blog sayfasindaki kategori filtresi: yazisi olan kategorilerden uretilir */
+function koi_blog_filtreleri() {
+	$kategoriler = get_categories( array( 'hide_empty' => true ) );
+	if ( count( $kategoriler ) < 2 ) {
+		return;
+	}
+	echo '<div class="filters reveal" data-filter-group data-filter-target="#blog-listesi" role="group" aria-label="Kategori filtresi">';
+	echo '<button type="button" data-filter="all" class="is-active">Tümü</button>';
+	foreach ( $kategoriler as $kategori ) {
+		echo '<button type="button" data-filter="' . esc_attr( $kategori->slug ) . '">' . esc_html( $kategori->name ) . '</button>';
+	}
+	echo '</div>';
+}
+
 /* Blog sayfasinin ustundeki one cikan yazi */
 function koi_one_cikan_yazi() {
 	$post = koi_one_cikan();

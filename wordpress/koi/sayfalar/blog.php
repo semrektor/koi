@@ -26,13 +26,7 @@
 
 <section class="section section--tight">
   <div class="container container--wide">
-    <div class="filters reveal" data-filter-group data-filter-target="#blog-listesi" role="group" aria-label="Kategori filtresi">
-      <button type="button" data-filter="all" class="is-active">Tümü</button>
-      <button type="button" data-filter="ebeveynlik">Ebeveynlik</button>
-      <button type="button" data-filter="oyun">Oyun ve Gelişim</button>
-      <button type="button" data-filter="duygu">Duygular</button>
-      <button type="button" data-filter="okul">Okul</button>
-    </div>
+<?php koi_blog_filtreleri(); ?>
 
     <div class="cards cards--3" id="blog-listesi">
 <?php koi_kartlar( 'blog-listesi' ); ?>
