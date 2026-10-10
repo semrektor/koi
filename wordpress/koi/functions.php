@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.2.2' );
+define( 'KOI_SURUM', '0.2.3' );
 /* Kurulumun olusturdugu icerigin surumu; veri/icerik.json degistiginde artirilir */
 define( 'KOI_ICERIK_SURUM', '0.2.0' );
 define( 'KOI_DIR', get_template_directory() );

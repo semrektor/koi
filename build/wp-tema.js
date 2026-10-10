@@ -256,7 +256,7 @@ yaz(
     "Theme Name: KOI",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.2.2",
+    "Version: 0.2.3",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
     "Text Domain: koi",

@@ -189,7 +189,24 @@ function koi_talep_isle() {
 	if ( ! empty( $veri['eposta'] ) && is_email( $veri['eposta'] ) ) {
 		$basliklar[] = 'Reply-To: ' . $veri['eposta'];
 	}
-	wp_mail( $alici, '[KOI] Yeni talep: ' . $kim, implode( "\n", $satirlar ), $basliklar );
+	/* Bildirimin sonucu talebe yazilir; panelde "E-posta bildirimi" satirinda gorunur.
+	   Basarili sonuc, iletinin posta sunucusuna teslim edildigini gosterir;
+	   alicinin kutusuna ulastigini garanti etmez. */
+	$posta_hatasi = '';
+	$hata_yakala  = function ( $hata ) use ( &$posta_hatasi ) {
+		if ( is_wp_error( $hata ) ) {
+			$posta_hatasi = $hata->get_error_message();
+		}
+	};
+	add_action( 'wp_mail_failed', $hata_yakala );
+	$gonderildi = wp_mail( $alici, '[KOI] Yeni talep: ' . $kim, implode( "\n", $satirlar ), $basliklar );
+	remove_action( 'wp_mail_failed', $hata_yakala );
+
+	update_post_meta( $kimlik, 'koi_posta_alici', $alici );
+	update_post_meta( $kimlik, 'koi_posta', $gonderildi ? 'teslim' : 'hata' );
+	if ( ! $gonderildi ) {
+		update_post_meta( $kimlik, 'koi_posta_hatasi', wp_slash( '' !== $posta_hatasi ? $posta_hatasi : 'Sunucu iletiyi kabul etmedi.' ) );
+	}
 
 	koi_talep_donus( 'ok' );
 }
@@ -267,6 +284,19 @@ function koi_talep_kutusu( $post ) {
 		}
 		echo '<tr><th scope="row">' . esc_html( $alan[0] ) . '</th><td>' . nl2br( esc_html( $deger ) ) . '</td></tr>';
 	}
+	$posta = (string) get_post_meta( $post->ID, 'koi_posta', true );
+	if ( '' !== $posta ) {
+		$alici = (string) get_post_meta( $post->ID, 'koi_posta_alici', true );
+		echo '<tr><th scope="row">E-posta bildirimi</th><td>';
+		if ( 'teslim' === $posta ) {
+			echo esc_html( $alici . ' adresine gönderilmek üzere posta sunucusuna teslim edildi.' );
+		} else {
+			echo '<strong>' . esc_html( $alici . ' adresine gönderilemedi.' ) . '</strong><br>';
+			echo esc_html( 'Hata: ' . (string) get_post_meta( $post->ID, 'koi_posta_hatasi', true ) );
+		}
+		echo '</td></tr>';
+	}
+
 	$durum = (string) get_post_meta( $post->ID, 'koi_durum', true );
 	echo '<tr><th scope="row"><label for="koi_durum">Durum</label></th><td><select id="koi_durum" name="koi_durum">';
 	echo '<option value="yeni"' . selected( 'tamam' !== $durum, true, false ) . '>Yeni</option>';
