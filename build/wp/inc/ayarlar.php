@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function koi_ayar_alanlari() {
 	return array(
 		'telefon'     => array( 'Telefon (sitede görünen hali)', '+90 (000) 000 00 00', 'text', 'sanitize_text_field' ),
-		'whatsapp'    => array( 'WhatsApp numarası (yalnızca rakam, 90 ile başlar)', '900000000000', 'text', 'sanitize_text_field' ),
+		'whatsapp'    => array( 'WhatsApp numarası (yalnızca rakam, 90 ile başlar)', '905313415086', 'text', 'sanitize_text_field' ),
 		'eposta'      => array( 'E-posta', 'info@koiailem.com', 'email', 'sanitize_email' ),
 		'adres'       => array( 'Kısa adres (alt bilgide görünür)', 'Necip Fazıl Mah. — Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
 		'acik_adres'  => array( 'Açık adres (İletişim ve KVKK sayfalarında görünür)', 'Necip Fazıl Mah. Hamza Yerlikaya Bulvarı, Narlı Bahçe Evleri Sitesi B Blok No: 70 BF, 34773 Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),

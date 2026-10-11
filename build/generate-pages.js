@@ -150,7 +150,7 @@ function yanPanel(item, tur) {
     "        <p>" + ctaMetin + "</p>\n" +
     '        <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px">\n' +
     '          <a class="btn btn--terra" href="iletisim.html">' + ctaButon + arrow + "</a>\n" +
-    '          <a class="btn btn--light" href="https://wa.me/900000000000">WhatsApp</a>\n' +
+    '          <a class="btn btn--light" href="https://wa.me/905313415086">WhatsApp</a>\n' +
     "        </div>\n" +
     "      </div>\n\n" +
     '      <div class="sidebar-card reveal">\n' +
@@ -254,7 +254,7 @@ function blogSayfasi(item) {
     "        <p>Bu konuda zorlanıyorsanız, kısa bir ön görüşmeyle başlayabiliriz.</p>\n" +
     '        <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px">\n' +
     '          <a class="btn btn--terra" href="iletisim.html">Bilgi Al' + arrow + "</a>\n" +
-    '          <a class="btn btn--light" href="https://wa.me/900000000000">WhatsApp</a>\n' +
+    '          <a class="btn btn--light" href="https://wa.me/905313415086">WhatsApp</a>\n' +
     "        </div>\n      </div>\n\n" +
     '      <div class="sidebar-card reveal">\n' +
     "        <h3>Kategoriler</h3>\n        <ul>\n" + kategoriler + "\n        </ul>\n      </div>\n" +

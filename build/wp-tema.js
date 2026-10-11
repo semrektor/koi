@@ -77,7 +77,7 @@ const phpMetin = (t) => "'" + String(t).replace(/\\/g, "\\\\").replace(/'/g, "\\
 /* ---------- HTML -> PHP sablonu ---------- */
 const DEGISIMLER = [
   /* Iletisim bilgileri Ozellestirici'den okunur */
-  ['href="https://wa.me/900000000000"', 'href="<?php echo esc_url( koi_wa_url() ); ?>"'],
+  ['href="https://wa.me/905313415086"', 'href="<?php echo esc_url( koi_wa_url() ); ?>"'],
   ['href="tel:+900000000000"', 'href="<?php echo esc_url( koi_tel_url() ); ?>"'],
   ['href="mailto:info@koiailem.com"', "href=\"<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>\""],
   ['href="https://www.instagram.com/koiworld/"', "href=\"<?php echo esc_url( koi_ayar( 'instagram' ) ); ?>\""],
@@ -257,7 +257,7 @@ yaz(
     "Theme Name: KOI",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.2.4",
+    "Version: 0.2.5",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
     "Text Domain: koi",
@@ -328,7 +328,7 @@ yaz(
 );
 
 /* 7. Kontrol: PHP'ye cevrilmemis taslak kalintisi kalmasin */
-const KALINTI = [/\.html["#]/, /EGER:/, /data-demo-form/, /Taslak önizleme/, /wa\.me\/9000/, /["\s,(]assets\/(img|css|js)\//, /CARDS:/];
+const KALINTI = [/\.html["#]/, /EGER:/, /data-demo-form/, /Taslak önizleme/, /wa\.me\/90/, /["\s,(]assets\/(img|css|js)\//, /CARDS:/];
 let sorun = 0;
 (function tara(d) {
   for (const f of fs.readdirSync(d, { withFileTypes: true })) {
