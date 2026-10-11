@@ -18,8 +18,8 @@
     # Scriptler yalnizca kendi alan adimizdan; satir ici script yok.
     # style-src 'unsafe-inline': taslakta style="" nitelikleri kullaniliyor
     # (WordPress temasinda CSS dosyasina tasinip kaldirilabilir).
-    # Google Maps gomuldugunde frame-src'ye https://www.google.com eklenmeli.
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    # frame-src: Iletisim sayfasindaki gomulu Google Haritalar icin yalnizca google.com'a izin verilir.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
 
 # Yonetim paneli arama motorlarina kapali (meta etiketine ek olarak baslik)
 [[headers]]

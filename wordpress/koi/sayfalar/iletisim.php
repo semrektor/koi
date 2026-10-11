@@ -117,13 +117,14 @@
       <span class="eyebrow">Konum</span>
       <h2>Bizi Nasıl Bulursunuz?</h2>
     </div>
-    <div class="map-frame reveal">
+    <div class="map-frame reveal" data-harita="<?php echo esc_url( koi_ayar( 'harita_gomme' ) ); ?>" data-harita-baslik="KOI Çocuk ve Aile Gelişim Merkezi — Google Haritalar">
       <div class="map-frame__pin">
         <svg aria-hidden="true"><use href="#i-pin"></use></svg>
         <span>Narlı Bahçe Evleri — Necip Fazıl Mah., Ümraniye</span>
         <a class="link-arrow" href="<?php echo esc_url( koi_ayar( 'harita' ) ); ?>" target="_blank" rel="noopener">Google Haritalar'da Aç<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
       </div>
     </div>
+    <p class="map-link"><a class="link-arrow" href="<?php echo esc_url( koi_ayar( 'harita' ) ); ?>" target="_blank" rel="noopener">Yol Tarifi İçin Google Haritalar'da Aç<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a></p>
   </div>
 </section>
 

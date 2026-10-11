@@ -132,7 +132,38 @@
     }
   }
 
-  /* 8. Yil */
+  /* 8. Gomulu harita: cerceve gorunume yaklasinca Google Haritalar yuklenir.
+     JS kapaliysa yer tutucu ve "Google Haritalar'da Ac" baglantisi kalir. */
+  document.querySelectorAll(".map-frame[data-harita]").forEach(function (cerceve) {
+    var adres = cerceve.getAttribute("data-harita") || "";
+    if (!/^https:\/\/(www\.google\.com\/maps|maps\.google\.com\/)/.test(adres)) return;
+    var yukle = function () {
+      var harita = document.createElement("iframe");
+      harita.src = adres;
+      harita.title = cerceve.getAttribute("data-harita-baslik") || "Harita";
+      harita.loading = "lazy";
+      harita.referrerPolicy = "no-referrer-when-downgrade";
+      harita.allowFullscreen = true;
+      cerceve.appendChild(harita);
+      cerceve.classList.add("has-map");
+    };
+    if ("IntersectionObserver" in window) {
+      var gozcu = new IntersectionObserver(
+        function (girdiler) {
+          if (girdiler[0].isIntersecting) {
+            gozcu.disconnect();
+            yukle();
+          }
+        },
+        { rootMargin: "400px 0px" }
+      );
+      gozcu.observe(cerceve);
+    } else {
+      yukle();
+    }
+  });
+
+  /* 9. Yil */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
