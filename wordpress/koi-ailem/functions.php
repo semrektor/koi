@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.5.0' );
+define( 'KOI_SURUM', '0.5.1' );
 /* Kurulumun olusturdugu icerigin surumu; veri/icerik.json degistiginde artirilir */
 define( 'KOI_ICERIK_SURUM', '0.4.0' );
 define( 'KOI_DIR', get_template_directory() );
@@ -234,3 +234,31 @@ function koi_meta_aciklama() {
 	echo '<meta property="og:locale" content="tr_TR">' . "\n";
 }
 add_action( 'wp_head', 'koi_meta_aciklama', 2 );
+
+/* ---------- Sayfa onbellegi ----------
+   Liste sayfalari (Oyun Gruplari, SSS, Uzmanlarimiz, Galeri...) baska kayitlardan
+   uretilir. Bir kayit degistiginde onbellek eklentisi bu sayfalari kendiliginden
+   yenilemez ve ziyaretci eski hali gormeye devam eder. Bu yuzden icerik ya da ayar
+   degistiginde tum sayfa onbellegi temizlenir (LiteSpeed Cache kurulu degilse
+   hicbir sey yapmaz). */
+function koi_onbellegi_temizle() {
+	do_action( 'litespeed_purge_all' );
+}
+
+function koi_kayit_degisti( $post_id ) {
+	if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
+		return;
+	}
+	$turler = array( 'post', 'page', 'hizmet', 'atolye', 'uzman', 'galeri_gorsel', 'oyun_grubu', 'sss' );
+	if ( in_array( get_post_type( $post_id ), $turler, true ) ) {
+		koi_onbellegi_temizle();
+	}
+}
+add_action( 'save_post', 'koi_kayit_degisti' );
+add_action( 'trashed_post', 'koi_kayit_degisti' );
+add_action( 'untrashed_post', 'koi_kayit_degisti' );
+add_action( 'before_delete_post', 'koi_kayit_degisti' );
+add_action( 'customize_save_after', 'koi_onbellegi_temizle' );
+add_action( 'created_term', 'koi_onbellegi_temizle' );
+add_action( 'edited_term', 'koi_onbellegi_temizle' );
+add_action( 'delete_term', 'koi_onbellegi_temizle' );

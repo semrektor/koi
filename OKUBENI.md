@@ -203,14 +203,16 @@ node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPres
 
 **Kurulum (WordPress panelinde):**
 1. Görünüm → Temalar → Yeni Ekle → Tema Yükle → `koi-tema.zip` → Etkinleştir
-2. Görünüm → KOI Kurulum → "İçerikleri Oluştur" (sayfalar, 7 hizmet, 6 atölye, 2 uzman, 12 temsili galeri görseli; anasayfa ve kalıcı bağlantılar ayarlanır)
+2. Görünüm → KOI Kurulum → "İçerikleri Oluştur" (sayfalar, 7 hizmet, 6 atölye, 2 uzman, 12 temsili galeri görseli, 4 oyun grubu, 12 soru; anasayfa ve kalıcı bağlantılar ayarlanır)
 3. Görünüm → Özelleştir → KOI İletişim Bilgileri (telefon, WhatsApp, e-posta, adres, form alıcısı)
 
-**Müşterinin panelden yönetebildikleri:** blog yazıları (Yazılar), Hizmetler, Atölyeler (başlık, metin, özet, görsel, kısa bilgi kutusu), Uzmanlar (portre, unvan, biyografi, uzmanlık, eğitim, yürüttüğü hizmetler; "geniş profil" işaretliyse Uzmanlarımız sayfasında büyük profil, değilse kart), Galeri (fotoğraf, kategori, sıra), iletişim bilgileri, formlardan gelen Bilgi Talepleri.
+**Müşterinin panelden yönetebildikleri:** blog yazıları (Yazılar), Hizmetler, Atölyeler (başlık, metin, özet, görsel, kısa bilgi kutusu), Uzmanlar (portre, unvan, biyografi, uzmanlık, eğitim, yürüttüğü hizmetler; "geniş profil" işaretliyse Uzmanlarımız sayfasında büyük profil, değilse kart), Galeri (fotoğraf, kategori, sıra), Oyun Grupları (yaş, açıklama, gün-saat, kontenjan, ebeveyn katılımı; kartlar, program tablosu ve başvuru formundaki liste bunlardan üretilir), Sık Sorulan Sorular (soru, cevap, bölüm, Hizmetler ve İletişim sayfalarında gösterilip gösterilmeyeceği), her sayfanın üst başlığı ve giriş metni (Sayfalar → ilgili sayfa → KOI Sayfa Ayrıntıları), iletişim bilgileri, formlardan gelen Bilgi Talepleri.
+
+Atölyeler sayfasındaki program tablosu her atölyenin "Kısa bilgi kutusu" alanındaki `Katılımcı`, `Tarih ve saat`, `Süre` ve `Kontenjan` satırlarından üretilir. İletişim formundaki hizmet listesi hizmet kayıtlarından, filtre düğmeleri kategorilerden gelir. İçerik ya da ayar değiştiğinde LiteSpeed sayfa önbelleği kendiliğinden temizlenir.
 
 Uzman ve galeri kayıtları taslakta `build/content/uzmanlar.js` ve `build/content/galeri.js` dosyalarından üretilir; WordPress'te kurulum bu kayıtları bir kez oluşturur, sonrası panelden yönetilir.
 
-**Tema dosyasında duranlar:** Ana sayfa, Hakkımızda, Oyun Grupları, SSS ve yasal metin sayfalarının sabit metinleri. Bunlar `build/pages/` altında değiştirilip tema yeniden üretilerek güncellenir.
+**Tema dosyasında duranlar:** Ana sayfa ve Hakkımızda metinleri, yasal metinler, Oyun Grupları sayfasındaki "Neden Küçük Gruplar?" ve "Seans İçinde Neler Oluyor?" bölümleri, başvuru adımları, bölüm başlıkları ve üst menü. Bunlar `build/pages/` altında değiştirilip tema yeniden üretilerek güncellenir.
 
 **Formlar:** harici form eklentisi yok. Gönderimler "Bilgi Talepleri" altına kaydedilir ve e-postayla bildirilir; her talepte bildirimin sonucu görünür. E-posta gönderimi WP Mail SMTP eklentisiyle `info@koiailem.com` kutusu üzerinden yapılır.
 
