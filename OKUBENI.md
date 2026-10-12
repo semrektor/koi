@@ -203,12 +203,14 @@ node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPres
 
 **Kurulum (WordPress panelinde):**
 1. Görünüm → Temalar → Yeni Ekle → Tema Yükle → `koi-tema.zip` → Etkinleştir
-2. Görünüm → KOI Kurulum → "İçerikleri Oluştur" (sayfalar, 7 hizmet, 6 atölye, 7 örnek yazı; anasayfa ve kalıcı bağlantılar ayarlanır)
+2. Görünüm → KOI Kurulum → "İçerikleri Oluştur" (sayfalar, 7 hizmet, 6 atölye, 2 uzman, 12 temsili galeri görseli; anasayfa ve kalıcı bağlantılar ayarlanır)
 3. Görünüm → Özelleştir → KOI İletişim Bilgileri (telefon, WhatsApp, e-posta, adres, form alıcısı)
 
-**Müşterinin panelden yönetebildikleri:** blog yazıları (Yazılar), Hizmetler, Atölyeler (başlık, metin, özet, görsel, kısa bilgi kutusu), iletişim bilgileri, formlardan gelen Bilgi Talepleri.
+**Müşterinin panelden yönetebildikleri:** blog yazıları (Yazılar), Hizmetler, Atölyeler (başlık, metin, özet, görsel, kısa bilgi kutusu), Uzmanlar (portre, unvan, biyografi, uzmanlık, eğitim, yürüttüğü hizmetler; "geniş profil" işaretliyse Uzmanlarımız sayfasında büyük profil, değilse kart), Galeri (fotoğraf, kategori, sıra), iletişim bilgileri, formlardan gelen Bilgi Talepleri.
 
-**Henüz tema dosyasında duranlar:** Hakkımızda, Oyun Grupları, Uzmanlarımız, Galeri ve yasal metin sayfalarının gövdeleri. Müşteri formu geldiğinde metinler güncellenecek; uzmanlar ve galeri panelden yönetilebilir hale getirilecek.
+Uzman ve galeri kayıtları taslakta `build/content/uzmanlar.js` ve `build/content/galeri.js` dosyalarından üretilir; WordPress'te kurulum bu kayıtları bir kez oluşturur, sonrası panelden yönetilir.
+
+**Tema dosyasında duranlar:** Ana sayfa, Hakkımızda, Oyun Grupları, SSS ve yasal metin sayfalarının sabit metinleri. Bunlar `build/pages/` altında değiştirilip tema yeniden üretilerek güncellenir.
 
 **Formlar:** harici form eklentisi yok. Gönderimler "Bilgi Talepleri" altına kaydedilir ve e-postayla bildirilir; her talepte bildirimin sonucu görünür. E-posta gönderimi WP Mail SMTP eklentisiyle `info@koiailem.com` kutusu üzerinden yapılır.
 
