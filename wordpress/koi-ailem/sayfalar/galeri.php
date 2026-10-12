@@ -13,26 +13,10 @@
 
 <section class="section">
   <div class="container container--wide">
-    <div class="filters reveal" data-filter-group data-filter-target="#galeri-listesi" role="group" aria-label="Galeri filtresi">
-      <button type="button" data-filter="all" class="is-active">Tümü</button>
-      <button type="button" data-filter="mekan">Mekân</button>
-      <button type="button" data-filter="atolye">Atölyeler</button>
-      <button type="button" data-filter="etkinlik">Etkinlikler</button>
-    </div>
+<?php koi_filtreler( 'galeri_kategori', '#galeri-listesi', 'Galeri filtresi' ); ?>
 
     <div class="gallery reveal" id="galeri-listesi">
-      <div class="media media--span2 media--row2 has-img" data-cat="mekan" data-label="Karşılama alanı"><img class="media__img" src="<?php koi_v(); ?>img/karsilama.jpg" srcset="<?php koi_v(); ?>img/karsilama-sm.jpg 900w, <?php koi_v(); ?>img/karsilama.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinin karşılama alanı" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-      <div class="media has-img" data-cat="mekan" data-label="Oyun odası"><img class="media__img" src="<?php koi_v(); ?>img/oyun-odasi.jpg" srcset="<?php koi_v(); ?>img/oyun-odasi-sm.jpg 900w, <?php koi_v(); ?>img/oyun-odasi.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI oyun grubu odası" loading="lazy"></div>
-      <div class="media media--olive has-img" data-cat="mekan" data-label="Danışmanlık odası"><img class="media__img" src="<?php koi_v(); ?>img/danismanlik.jpg" srcset="<?php koi_v(); ?>img/danismanlik-sm.jpg 900w, <?php koi_v(); ?>img/danismanlik.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI danışmanlık odası" loading="lazy"></div>
-      <div class="media media--olive has-img" data-cat="atolye" data-label="Atölye alanı"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy"></div>
-      <div class="media has-img" data-cat="mekan" data-label="Bekleme alanı"><img class="media__img" src="<?php koi_v(); ?>img/karsilama.jpg" srcset="<?php koi_v(); ?>img/karsilama-sm.jpg 900w, <?php koi_v(); ?>img/karsilama.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinin karşılama alanı" loading="lazy"></div>
-      <div class="media has-img" data-cat="atolye" data-label="Malzeme detayı"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy"></div>
-      <div class="media media--olive media--row2 has-img" data-cat="atolye" data-label="Atölye anı"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-      <div class="media media--span2 has-img" data-cat="etkinlik" data-label="Açılış etkinliği"><img class="media__img" src="<?php koi_v(); ?>img/hero-kemer.jpg" srcset="<?php koi_v(); ?>img/hero-kemer-sm.jpg 900w, <?php koi_v(); ?>img/hero-kemer.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinde kemerli dinlenme alanı" loading="lazy"></div>
-      <div class="media has-img" data-cat="etkinlik" data-label="Seminer"><img class="media__img" src="<?php koi_v(); ?>img/danismanlik.jpg" srcset="<?php koi_v(); ?>img/danismanlik-sm.jpg 900w, <?php koi_v(); ?>img/danismanlik.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI danışmanlık odası" loading="lazy"></div>
-      <div class="media has-img" data-cat="mekan" data-label="Detay — bitki"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy"></div>
-      <div class="media media--olive has-img" data-cat="etkinlik" data-label="Çocuk-aile buluşması"><img class="media__img" src="<?php koi_v(); ?>img/oyun-odasi.jpg" srcset="<?php koi_v(); ?>img/oyun-odasi-sm.jpg 900w, <?php koi_v(); ?>img/oyun-odasi.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI oyun grubu odası" loading="lazy"></div>
-      <div class="media media--span2 has-img" data-cat="mekan" data-label="Mekân genel görünüm"><img class="media__img" src="<?php koi_v(); ?>img/karsilama.jpg" srcset="<?php koi_v(); ?>img/karsilama-sm.jpg 900w, <?php koi_v(); ?>img/karsilama.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinin karşılama alanı" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
+<?php koi_kartlar( 'galeri-listesi' ); ?>
     </div>
 
     <p class="muted" style="margin-top:28px;font-size:.82rem">Çocuklara ait görseller yalnızca gerekli yayın izinleri alınarak kullanılacaktır.</p>

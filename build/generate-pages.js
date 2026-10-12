@@ -14,6 +14,8 @@ const GENERATED_MARK = "<!--generated-->\n";
 const hizmetler = require("./content/hizmetler");
 const atolyeler = require("./content/atolyeler");
 const blog = require("./content/blog");
+const uzmanlar = require("./content/uzmanlar");
+const galeri = require("./content/galeri");
 
 const ALT = {
   karsilama: "KOI merkezinin karşılama alanı",
@@ -377,6 +379,103 @@ function anasayfaBlog() {
     .join("\n");
 }
 
+/* ---------- Ekip ---------- */
+const yaprakIsareti = '<svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>';
+
+/* Portre yokken gosterilen bas harfler: "Elif Bilsel" -> "EB" */
+function basHarfler(ad) {
+  const p = ad.trim().split(/\s+/);
+  return (p[0][0] + (p.length > 1 ? p[p.length - 1][0] : "")).toLocaleUpperCase("tr");
+}
+
+function uzmanKarti(u) {
+  return (
+        '        <article class="expert reveal">\n' +
+        '          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="' + basHarfler(u.ad) + '">' + yaprakIsareti + "</div>\n" +
+        '          <h3 class="expert__name">' + u.ad + "</h3>\n" +
+        '          <p class="expert__role">' + (u.unvanKisa || u.unvan) + "</p>\n" +
+        '          <p class="expert__text">' + u.kisa + "</p>\n" +
+        "        </article>"
+  );
+}
+
+function anasayfaUzmanlar() {
+  return uzmanlar.slice(0, 4).map(uzmanKarti).join("\n");
+}
+
+/* Uzmanlarimiz sayfasi: genis profiller, ardindan diger uzmanlarin kartlari */
+function uzmanProfilleri() {
+  const genis = uzmanlar.filter((u) => u.genis);
+  const diger = uzmanlar.filter((u) => !u.genis);
+
+  const profiller = genis.map((u, i) => {
+    const tek = i % 2 === 1;
+    let govde = '      <span class="eyebrow">' + u.etiket + "</span>\n      <h2>" + u.ad + "</h2>\n";
+    if (u.unvan && u.unvan !== u.etiket) govde += '      <p class="expert__role" style="margin-bottom:20px">' + u.unvan + "</p>\n";
+    u.bio.forEach((t) => (govde += "      <p>" + t + "</p>\n"));
+
+    const ek = [];
+    if (u.alanlar) ek.push("        <h3>Uzmanlık Alanları</h3>\n        <p>" + u.alanlar + "</p>");
+    if (u.egitim.length) {
+      ek.push("        <h3>Eğitim ve Sertifikalar</h3>\n        <ul>\n" + u.egitim.map((e) => "          <li>" + e + "</li>").join("\n") + "\n        </ul>");
+    }
+    if (u.hizmetler.length) {
+      ek.push(
+        "        <h3>Yürüttüğü Hizmetler</h3>\n        <ul>\n" +
+          u.hizmetler.map((s) => '          <li><a href="' + s + '.html">' + INDEX[s].baslik + "</a></li>").join("\n") +
+          "\n        </ul>"
+      );
+    }
+    if (ek.length) govde += '      <div class="prose">\n' + ek.join("\n") + "\n      </div>\n";
+    if (u.hizmetler.length) {
+      govde += '      <div style="margin-top:30px">\n        <a class="btn btn--primary" href="iletisim.html">Bilgi Al' + arrow + "</a>\n      </div>\n";
+    }
+
+    return (
+      '<section class="section' + (tek ? " section--cream" : "") + '">\n' +
+      '  <div class="container container--wide split' + (tek ? " split--reverse" : "") + '">\n' +
+      '    <div class="split__media reveal">\n' +
+      '      <div class="media media--arch media--tall media--mono" data-label="Portre — çekim sonrası eklenecek" data-mono="' + basHarfler(u.ad) + '">\n' +
+      "        " + yaprakIsareti + "\n      </div>\n" +
+      "    </div>\n" +
+      '    <div class="split__body reveal">\n' + govde + "    </div>\n" +
+      "  </div>\n</section>"
+    );
+  });
+
+  const krem = genis.length % 2 === 1 ? " section--cream" : "";
+  const son = diger.length
+    ? '<section class="section' + krem + '">\n' +
+      '  <div class="container container--wide">\n' +
+      '    <div class="section-head center reveal">\n' +
+      '      <span class="eyebrow eyebrow--center">Kadromuz</span>\n' +
+      "      <h2>Uzmanlarımız</h2>\n    </div>\n" +
+      '    <div class="cards cards--4">\n' + diger.map(uzmanKarti).join("\n") + "\n    </div>\n" +
+      "  </div>\n</section>"
+    : '<section class="section' + krem + '">\n' +
+      '  <div class="container container--wide">\n' +
+      '    <div class="section-head center reveal">\n' +
+      '      <span class="eyebrow eyebrow--center">Kadromuz</span>\n' +
+      "      <h2>Ekibimiz Büyüyor</h2>\n" +
+      '      <p class="lead">Uzman kadromuz, açılış dönemiyle birlikte bu sayfada tanıtılacaktır.</p>\n' +
+      "    </div>\n  </div>\n</section>";
+
+  return profiller.concat(son).join("\n\n");
+}
+
+/* ---------- Galeri ---------- */
+function galeriOgeleri(liste) {
+  return liste
+    .map((g, i) => {
+      const desen = galeri.desen[i % galeri.desen.length];
+      return (
+        '      <div class="media' + (desen ? " " + desen : "") + ' has-img" data-cat="' + g.cat + '" data-label="' + g.baslik + '">' +
+        imgEtiket(g.gorsel) + "</div>"
+      );
+    })
+    .join("\n");
+}
+
 /* ---------- Yazma ---------- */
 let yazilan = 0;
 hizmetler.forEach((x) => {
@@ -397,9 +496,13 @@ const BLOKLAR = {
   "hizmetler.html": { id: "hizmet-listesi", html: () => hizmetKartlari() + "\n\n" + grupKartlari() },
   "atolyeler.html": { id: "atolye-listesi", html: atolyeKartlari },
   "blog.html": { id: "blog-listesi", html: () => blogKartlari("blog-yeni-baslangiclar") },
+  "uzmanlarimiz.html": { id: "uzman-profilleri", html: uzmanProfilleri },
+  "galeri.html": { id: "galeri-listesi", html: () => galeriOgeleri(galeri.gorseller) },
   "index.html": [
     { id: "hizmet-kartlari", html: anasayfaKartlari },
     { id: "blog-kartlari", html: anasayfaBlog },
+    { id: "uzman-kartlari", html: anasayfaUzmanlar },
+    { id: "galeri-anasayfa", html: () => galeriOgeleri(galeri.gorseller.slice(0, 5)) },
   ],
 };
 

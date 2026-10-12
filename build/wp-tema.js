@@ -21,6 +21,8 @@ const CIKTI = path.join(KOK, "wordpress", "koi-ailem");
 const hizmetler = require("./content/hizmetler");
 const atolyeler = require("./content/atolyeler");
 const blog = require("./content/blog");
+const uzmanlar = require("./content/uzmanlar");
+const galeri = require("./content/galeri");
 
 /* WordPress sayfasi olacak govdeler: anahtar (taslak dosya adi) -> sayfa bilgisi */
 const SAYFALAR = [
@@ -121,6 +123,15 @@ function phpLestir(html, anahtar) {
     if (html === filtreOnce) throw new Error("blog: kategori filtresi bulunamadi");
   }
 
+  if (anahtar === "galeri") {
+    const filtreOnce = html;
+    html = html.replace(
+      /[ \t]*<div class="filters reveal" data-filter-group data-filter-target="#galeri-listesi"[\s\S]*?<\/div>/,
+      "<?php koi_filtreler( 'galeri_kategori', '#galeri-listesi', 'Galeri filtresi' ); ?>"
+    );
+    if (html === filtreOnce) throw new Error("galeri: filtre bulunamadi");
+  }
+
   /* Formlar: taslak isareti yerine gercek gonderim */
   const tur = FORM_TURU[anahtar];
   html = html.replace(/<form([^>]*?)\sdata-demo-form([^>]*)>/g, (tam, a, b) => {
@@ -187,6 +198,14 @@ function filtreAdlari(dosya) {
 }
 
 const TUR_ONEKI = { hizmet: "hizmet-", atolye: "atolye-", post: "blog-" };
+
+/* Basliktan adres uretir: "Karşılama alanı" -> "karsilama-alani" */
+function adresYap(t) {
+  const harita = { "ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u", "â": "a", "î": "i", "û": "u" };
+  return String(t).toLocaleLowerCase("tr")
+    .replace(/[çğıöşüâîû]/g, (c) => harita[c])
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
 
 /* Adresi degisen kayitlar: yeni adres -> onceki adres. Kurulumun guncelleme
    adimi, onceki surumle olusturulmus kaydi bulup yeniden adlandirir. */
@@ -257,7 +276,7 @@ yaz(
     "Theme Name: KOI Çocuk ve Aile",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.3.2",
+    "Version: 0.4.0",
     "Update URI: https://koiailem.com/",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
@@ -336,6 +355,31 @@ yaz(
       hizmetler: hizmetler.map((x) => kayit(x, "hizmet", filtreAdlari("hizmetler.html"))),
       atolyeler: atolyeler.map((x) => kayit(x, "atolye", filtreAdlari("atolyeler.html"))),
       blog: blog.map((x) => kayit(x, "post", filtreAdlari("blog.html"))),
+      uzmanlar: uzmanlar.map((u) => ({
+        slug: u.slug,
+        baslik: u.ad,
+        kisa: "",
+        icerik: blokHtml([{ p: u.bio }]),
+        meta: {
+          koi_etiket: u.etiket,
+          koi_unvan: u.unvan,
+          koi_unvan_kisa: u.unvanKisa || "",
+          koi_kisa: u.kisa,
+          koi_genis: u.genis ? "1" : "",
+          koi_alanlar: u.alanlar,
+          koi_egitim: u.egitim.join("\n"),
+          koi_hizmetler: u.hizmetler.map((s) => s.slice(TUR_ONEKI.hizmet.length)).join(","),
+        },
+      })),
+      galeri: galeri.gorseller.map((g) => ({
+        slug: adresYap(g.baslik),
+        baslik: g.baslik,
+        kisa: "",
+        icerik: "",
+        cat: g.cat,
+        terim: galeri.kategoriler[g.cat],
+        gorsel: g.gorsel,
+      })),
     },
     null,
     1

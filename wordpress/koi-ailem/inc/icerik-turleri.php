@@ -1,13 +1,14 @@
 <?php
 /**
- * Icerik turleri: Hizmetler ve Atolyeler. Blog yazilari WordPress'in kendi
- * "Yazilar" bolumunu kullanir.
+ * Icerik turleri: Hizmetler, Atolyeler, Uzmanlar ve Galeri. Blog yazilari
+ * WordPress'in kendi "Yazilar" bolumunu kullanir.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 function koi_icerik_turleri() {
+	/* Kendi sayfasi olan turler */
 	$ortak = array(
 		'public'       => true,
 		'show_in_rest' => true,
@@ -61,6 +62,64 @@ function koi_icerik_turleri() {
 		)
 	);
 
+	/* Kendi sayfasi olmayan, baska sayfalarin icinde listelenen turler */
+	$liste = array(
+		'public'              => false,
+		'show_ui'             => true,
+		'show_in_rest'        => true,
+		'exclude_from_search' => true,
+		'has_archive'         => false,
+		'rewrite'             => false,
+	);
+
+	register_post_type(
+		'uzman',
+		array_merge(
+			$liste,
+			array(
+				'labels'        => array(
+					'name'                  => 'Uzmanlar',
+					'singular_name'         => 'Uzman',
+					'add_new'               => 'Yeni Ekle',
+					'add_new_item'          => 'Yeni Uzman Ekle',
+					'edit_item'             => 'Uzmanı Düzenle',
+					'all_items'             => 'Tüm Uzmanlar',
+					'search_items'          => 'Uzman Ara',
+					'featured_image'        => 'Portre fotoğrafı',
+					'set_featured_image'    => 'Portre fotoğrafı seç',
+					'remove_featured_image' => 'Portre fotoğrafını kaldır',
+				),
+				'supports'      => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+				'menu_icon'     => 'dashicons-groups',
+				'menu_position' => 23,
+			)
+		)
+	);
+
+	register_post_type(
+		'galeri_gorsel',
+		array_merge(
+			$liste,
+			array(
+				'labels'        => array(
+					'name'                  => 'Galeri',
+					'singular_name'         => 'Galeri Görseli',
+					'add_new'               => 'Yeni Ekle',
+					'add_new_item'          => 'Yeni Görsel Ekle',
+					'edit_item'             => 'Görseli Düzenle',
+					'all_items'             => 'Tüm Görseller',
+					'search_items'          => 'Görsel Ara',
+					'featured_image'        => 'Fotoğraf',
+					'set_featured_image'    => 'Fotoğraf seç',
+					'remove_featured_image' => 'Fotoğrafı kaldır',
+				),
+				'supports'      => array( 'title', 'thumbnail', 'page-attributes' ),
+				'menu_icon'     => 'dashicons-format-gallery',
+				'menu_position' => 24,
+			)
+		)
+	);
+
 	$taksonomi = array(
 		'hierarchical'      => true,
 		'public'            => false,
@@ -95,14 +154,42 @@ function koi_icerik_turleri() {
 			)
 		)
 	);
+	register_taxonomy(
+		'galeri_kategori',
+		'galeri_gorsel',
+		array_merge(
+			$taksonomi,
+			array(
+				'labels' => array(
+					'name'          => 'Galeri Kategorileri',
+					'singular_name' => 'Galeri Kategorisi',
+				),
+			)
+		)
+	);
 }
 add_action( 'init', 'koi_icerik_turleri' );
 
-/* ---------- Ek alanlar ---------- */
+/* Baslik alanindaki yonlendirici yazi */
+function koi_baslik_ipucu( $metin, $post ) {
+	if ( 'uzman' === $post->post_type ) {
+		return 'Ad Soyad';
+	}
+	if ( 'galeri_gorsel' === $post->post_type ) {
+		return 'Görselin kısa adı (örn. Oyun odası)';
+	}
+	return $metin;
+}
+add_filter( 'enter_title_here', 'koi_baslik_ipucu', 10, 2 );
+
+/* ---------- Ek alanlar ----------
+   anahtar => [etiket, aciklama, tur]   tur: text | textarea | checkbox | hizmetler */
 function koi_ek_alanlar( $tur ) {
-	$alanlar = array(
-		'koi_lead' => array( 'Giriş metni', 'Başlığın yanında görünen 1–2 cümlelik özet.', 'textarea' ),
-	);
+	$alanlar = array();
+
+	if ( in_array( $tur, array( 'hizmet', 'atolye', 'post' ), true ) ) {
+		$alanlar['koi_lead'] = array( 'Giriş metni', 'Başlığın yanında görünen 1–2 cümlelik özet.', 'textarea' );
+	}
 	if ( 'hizmet' === $tur || 'atolye' === $tur ) {
 		$alanlar['koi_etiket'] = array( 'Üst etiket', 'Başlığın üstünde görünür. Örn. "Çocuk Atölyesi · 4-7 Yaş". Boşsa kategori adı kullanılır.', 'text' );
 		$alanlar['koi_bilgi']  = array( 'Kısa bilgi kutusu', 'Her satıra bir bilgi: "Yaş aralığı: 6 – 18 yaş"', 'textarea' );
@@ -113,11 +200,21 @@ function koi_ek_alanlar( $tur ) {
 	if ( 'post' === $tur ) {
 		$alanlar['koi_yazar'] = array( 'Yazar adı', 'Yazıda görünecek ad. Boşsa kullanıcı adınız kullanılır.', 'text' );
 	}
+	if ( 'uzman' === $tur ) {
+		$alanlar['koi_etiket']     = array( 'Üst etiket', 'Adın üstünde görünen kısa etiket. Örn. "Kurucu Ortak", "Uzman".', 'text' );
+		$alanlar['koi_unvan']      = array( 'Unvan', 'Örn. "Psikolojik Danışman · Aile Danışmanı".', 'text' );
+		$alanlar['koi_unvan_kisa'] = array( 'Kısa unvan', 'Kartlarda görünür. Boşsa unvan kullanılır.', 'text' );
+		$alanlar['koi_kisa']       = array( 'Kısa tanıtım', 'Kartlarda görünen bir cümlelik tanıtım.', 'textarea' );
+		$alanlar['koi_genis']      = array( 'Geniş profil', 'Uzmanlarımız sayfasında fotoğraf ve biyografiyle geniş profil olarak göster. İşaretli değilse kart olarak listelenir.', 'checkbox' );
+		$alanlar['koi_alanlar']    = array( 'Uzmanlık alanları', 'Geniş profilde görünür.', 'textarea' );
+		$alanlar['koi_egitim']     = array( 'Eğitim ve sertifikalar', 'Her satıra bir madde. Geniş profilde liste olarak görünür.', 'textarea' );
+		$alanlar['koi_hizmetler']  = array( 'Yürüttüğü hizmetler', 'Geniş profilde bağlantı olarak görünür.', 'hizmetler' );
+	}
 	return $alanlar;
 }
 
 function koi_meta_kutulari() {
-	foreach ( array( 'hizmet', 'atolye', 'post' ) as $tur ) {
+	foreach ( array( 'hizmet', 'atolye', 'post', 'uzman' ) as $tur ) {
 		add_meta_box( 'koi_ayrintilar', 'KOI Sayfa Ayrıntıları', 'koi_meta_kutusu', $tur, 'normal', 'high' );
 	}
 }
@@ -125,13 +222,34 @@ add_action( 'add_meta_boxes', 'koi_meta_kutulari' );
 
 function koi_meta_kutusu( $post ) {
 	wp_nonce_field( 'koi_meta_kaydet', 'koi_meta_nonce' );
+	if ( 'uzman' === $post->post_type ) {
+		echo '<p class="description">Biyografiyi yukarıdaki yazı alanına, portre fotoğrafını sağdaki "Portre fotoğrafı" kutusuna ekleyin. Fotoğraf yoksa baş harfler gösterilir. Sıralama için sağdaki "Sıra" alanını kullanın (küçük sayı önce görünür).</p>';
+	}
 	foreach ( koi_ek_alanlar( $post->post_type ) as $anahtar => $alan ) {
 		$deger = (string) get_post_meta( $post->ID, $anahtar, true );
-		echo '<p><label for="' . esc_attr( $anahtar ) . '"><strong>' . esc_html( $alan[0] ) . '</strong></label><br>';
+		$kimlik = esc_attr( $anahtar );
+
+		if ( 'checkbox' === $alan[2] ) {
+			echo '<p><label><input type="checkbox" name="' . $kimlik . '" value="1"' . checked( '1', $deger, false ) . '> <strong>' . esc_html( $alan[0] ) . '</strong></label>';
+			echo '<br><span class="description">' . esc_html( $alan[1] ) . '</span></p>';
+			continue;
+		}
+
+		if ( 'hizmetler' === $alan[2] ) {
+			$secili = array_filter( array_map( 'trim', explode( ',', $deger ) ) );
+			echo '<p><strong>' . esc_html( $alan[0] ) . '</strong><br>';
+			foreach ( koi_kayitlar( 'hizmet' ) as $hizmet ) {
+				echo '<label style="display:block;margin:4px 0"><input type="checkbox" name="' . $kimlik . '[]" value="' . esc_attr( $hizmet->post_name ) . '"' . checked( in_array( $hizmet->post_name, $secili, true ), true, false ) . '> ' . esc_html( get_the_title( $hizmet ) ) . '</label>';
+			}
+			echo '<span class="description">' . esc_html( $alan[1] ) . '</span></p>';
+			continue;
+		}
+
+		echo '<p><label for="' . $kimlik . '"><strong>' . esc_html( $alan[0] ) . '</strong></label><br>';
 		if ( 'textarea' === $alan[2] ) {
-			echo '<textarea class="widefat" rows="4" id="' . esc_attr( $anahtar ) . '" name="' . esc_attr( $anahtar ) . '">' . esc_textarea( $deger ) . '</textarea>';
+			echo '<textarea class="widefat" rows="4" id="' . $kimlik . '" name="' . $kimlik . '">' . esc_textarea( $deger ) . '</textarea>';
 		} else {
-			echo '<input class="widefat" type="text" id="' . esc_attr( $anahtar ) . '" name="' . esc_attr( $anahtar ) . '" value="' . esc_attr( $deger ) . '">';
+			echo '<input class="widefat" type="text" id="' . $kimlik . '" name="' . $kimlik . '" value="' . esc_attr( $deger ) . '">';
 		}
 		echo '<br><span class="description">' . esc_html( $alan[1] ) . '</span></p>';
 	}
@@ -148,11 +266,19 @@ function koi_meta_kaydet( $post_id ) {
 		return;
 	}
 	foreach ( koi_ek_alanlar( get_post_type( $post_id ) ) as $anahtar => $alan ) {
-		if ( ! isset( $_POST[ $anahtar ] ) ) {
-			continue;
+		/* Isaret kutulari isaretsizken hic gonderilmez; bos sayilir */
+		if ( 'checkbox' === $alan[2] ) {
+			$deger = empty( $_POST[ $anahtar ] ) ? '' : '1';
+		} elseif ( 'hizmetler' === $alan[2] ) {
+			$secili = isset( $_POST[ $anahtar ] ) ? (array) wp_unslash( $_POST[ $anahtar ] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$deger  = implode( ',', array_filter( array_map( 'sanitize_title', $secili ) ) );
+		} else {
+			if ( ! isset( $_POST[ $anahtar ] ) ) {
+				continue;
+			}
+			$ham   = wp_unslash( $_POST[ $anahtar ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$deger = 'textarea' === $alan[2] ? sanitize_textarea_field( $ham ) : sanitize_text_field( $ham );
 		}
-		$ham   = wp_unslash( $_POST[ $anahtar ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$deger = 'textarea' === $alan[2] ? sanitize_textarea_field( $ham ) : sanitize_text_field( $ham );
 		if ( '' === $deger ) {
 			delete_post_meta( $post_id, $anahtar );
 		} else {
@@ -161,3 +287,32 @@ function koi_meta_kaydet( $post_id ) {
 	}
 }
 add_action( 'save_post', 'koi_meta_kaydet' );
+
+/* ---------- Liste ekranlarinda kucuk gorsel ---------- */
+function koi_gorsel_sutunu( $sutunlar ) {
+	$yeni = array();
+	foreach ( $sutunlar as $anahtar => $baslik ) {
+		$yeni[ $anahtar ] = $baslik;
+		if ( 'cb' === $anahtar ) {
+			$yeni['koi_gorsel'] = 'Görsel';
+		}
+	}
+	return $yeni;
+}
+add_filter( 'manage_galeri_gorsel_posts_columns', 'koi_gorsel_sutunu' );
+add_filter( 'manage_uzman_posts_columns', 'koi_gorsel_sutunu' );
+
+function koi_gorsel_sutunu_icerigi( $sutun, $post_id ) {
+	if ( 'koi_gorsel' !== $sutun ) {
+		return;
+	}
+	if ( has_post_thumbnail( $post_id ) ) {
+		echo get_the_post_thumbnail( $post_id, array( 64, 64 ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	} elseif ( 'uzman' === get_post_type( $post_id ) ) {
+		echo esc_html( koi_bas_harfler( get_the_title( $post_id ) ) );
+	} else {
+		echo '<span class="description">Temsili görsel</span>';
+	}
+}
+add_action( 'manage_galeri_gorsel_posts_custom_column', 'koi_gorsel_sutunu_icerigi', 10, 2 );
+add_action( 'manage_uzman_posts_custom_column', 'koi_gorsel_sutunu_icerigi', 10, 2 );

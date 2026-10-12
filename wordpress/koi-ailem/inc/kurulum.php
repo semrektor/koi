@@ -80,6 +80,16 @@ function koi_kurulum_kayit( $kayit, $tur, $sira, $guncelle = false ) {
 			delete_post_meta( $kimlik, $anahtar );
 		}
 	}
+	/* Ture ozgu ek alanlar (uzmanlar vb.) */
+	if ( ! empty( $kayit['meta'] ) && is_array( $kayit['meta'] ) ) {
+		foreach ( $kayit['meta'] as $anahtar => $deger ) {
+			if ( '' !== (string) $deger ) {
+				update_post_meta( $kimlik, sanitize_key( $anahtar ), wp_slash( (string) $deger ) );
+			} else {
+				delete_post_meta( $kimlik, sanitize_key( $anahtar ) );
+			}
+		}
+	}
 	if ( ! empty( $kayit['one_cikan'] ) ) {
 		stick_post( $kimlik );
 	}
@@ -98,6 +108,8 @@ function koi_icerik_kur( $guncelle = false ) {
 		'hizmet'     => 0,
 		'atolye'     => 0,
 		'yazi'       => 0,
+		'uzman'      => 0,
+		'galeri'     => 0,
 		'guncelleme' => 0,
 		'kaldirilan' => 0,
 	);
@@ -150,6 +162,8 @@ function koi_icerik_kur( $guncelle = false ) {
 		'hizmetler' => array( 'hizmet', 'hizmet' ),
 		'atolyeler' => array( 'atolye', 'atolye' ),
 		'blog'      => array( 'post', 'yazi' ),
+		'uzmanlar'  => array( 'uzman', 'uzman' ),
+		'galeri'    => array( 'galeri_gorsel', 'galeri' ),
 	);
 	foreach ( $turler as $anahtar => $tur ) {
 		if ( empty( $veri[ $anahtar ] ) ) {
@@ -181,9 +195,12 @@ function koi_icerik_kur( $guncelle = false ) {
 		}
 	}
 
-	/* Genel ayarlar */
-	update_option( 'blogname', 'KOI Çocuk ve Aile Gelişim Merkezi' );
-	update_option( 'blogdescription', 'Çocukların, ebeveynlerin ve ailelerin iyi olma halini destekleyen bütüncül bir gelişim merkezi.' );
+	/* Genel ayarlar. Site adi yalnizca ilk kurulumda yazilir; sonradan panelden
+	   degistirilirse tekrar calistirmak onu geri almaz. */
+	if ( ! get_option( 'koi_kurulum_tamam' ) ) {
+		update_option( 'blogname', 'KOI Çocuk ve Aile Gelişim Merkezi' );
+		update_option( 'blogdescription', 'Çocukların, ebeveynlerin ve ailelerin iyi olma halini destekleyen bütüncül bir gelişim merkezi.' );
+	}
 	update_option( 'default_comment_status', 'closed' );
 	update_option( 'default_ping_status', 'closed' );
 	if ( ! get_option( 'timezone_string' ) ) {
@@ -232,11 +249,13 @@ function koi_kurulum_sayfasi() {
 	} elseif ( is_array( $sonuc ) ) {
 		echo '<div class="notice notice-success"><p>' . esc_html(
 			sprintf(
-				'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
+				'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı, %d uzman, %d galeri görseli eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
 				$sonuc['sayfa'],
 				$sonuc['hizmet'],
 				$sonuc['atolye'],
 				$sonuc['yazi'],
+				$sonuc['uzman'],
+				$sonuc['galeri'],
 				$sonuc['guncelleme'],
 				$sonuc['kaldirilan']
 			)
@@ -260,12 +279,12 @@ function koi_kurulum_sayfasi() {
 	wp_nonce_field( 'koi_kurulum' );
 
 	echo '<h2>İçerikleri Oluştur</h2>';
-	echo '<p>Eksik sayfaları, hizmetleri ve atölyeleri oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar. Var olan içeriğe dokunmaz, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
+	echo '<p>Eksik sayfaları, hizmetleri, atölyeleri, uzmanları ve galeri görsellerini oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar. Var olan içeriğe dokunmaz, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
 	submit_button( 'İçerikleri Oluştur', 'primary', 'koi_kur', false );
 
 	echo '<h2 style="margin-top:2.5em">İçerikleri Güncelle</h2>';
-	echo '<p>Hizmet ve atölyeleri temayla gelen son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
-	echo '<p><strong>Dikkat:</strong> Hizmet ve atölyelerde panelden yaptığınız metin değişikliklerinin üzerine yazılır. Kendi eklediğiniz hizmet, atölye ve yazılara dokunulmaz.</p>';
+	echo '<p>Hizmet, atölye, uzman ve galeri kayıtlarını temayla gelen son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
+	echo '<p><strong>Dikkat:</strong> Hizmet, atölye, uzman ve galeri kayıtlarında panelden yaptığınız değişikliklerin üzerine yazılır. Kendi eklediğiniz kayıtlara ve yazılara dokunulmaz.</p>';
 	echo '<p><label><input type="checkbox" name="koi_onay" value="1"> Panelden yapılan değişikliklerin üzerine yazılacağını anladım.</label></p>';
 	submit_button( 'İçerikleri Güncelle', 'secondary', 'koi_guncelle', false );
 	echo '</form>';

@@ -250,7 +250,14 @@ function koi_talep_isle() {
 		}
 	};
 	add_action( 'wp_mail_failed', $hata_yakala );
-	$gonderildi = wp_mail( $alici, '[KOI] Yeni talep: ' . $kim, implode( "\n", $satirlar ), $basliklar );
+	/* Konu satiri: "[KOI] Cocuk ve Ergen Danismanligi — Ayse Yilmaz" */
+	$ne = $turler[ $tur ];
+	if ( ! empty( $veri['konu'] ) ) {
+		$ne = $veri['konu'];
+	} elseif ( ! empty( $veri['grup'] ) ) {
+		$ne = $veri['grup'];
+	}
+	$gonderildi = wp_mail( $alici, '[KOI] ' . $ne . ' — ' . $kim, implode( "\n", $satirlar ), $basliklar );
 	remove_action( 'wp_mail_failed', $hata_yakala );
 
 	update_post_meta( $kimlik, 'koi_posta_alici', $alici );

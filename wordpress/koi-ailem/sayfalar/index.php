@@ -152,18 +152,7 @@
         <p class="lead">Danışmanlık yaklaşımını oyun ve gelişim deneyimiyle buluşturan kurucu ekibimiz. Uzman kadromuz açılış dönemiyle birlikte tanıtılacak.</p>
       </div>
       <div class="cards cards--4">
-        <article class="expert reveal">
-          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="EB"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-          <h3 class="expert__name">Elif Bilsel</h3>
-          <p class="expert__role">Psikolojik Danışman · Aile Danışmanı</p>
-          <p class="expert__text">Çocuk ve ergen gelişimi, aile ve ebeveyn danışmanlığı, çocuk merkezli oyun terapisi.</p>
-        </article>
-        <article class="expert reveal">
-          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="DŞ"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-          <h3 class="expert__name">Dilek Şevik</h3>
-          <p class="expert__role">Kurucu Ortak</p>
-          <p class="expert__text">Eğitim kurumlarında yöneticilik ve koordinatörlük; veli ilişkileri ve kurumsal iletişim.</p>
-        </article>
+<?php koi_kartlar( 'uzman-kartlari' ); ?>
       </div>
       <div style="margin-top:44px" class="reveal">
         <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Ekibimizi Tanıyın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
@@ -201,11 +190,7 @@
         <p class="lead">Mekânımızın ruhunu yansıtan temsili görseller. Merkezimiz açıldığında kendi fotoğraflarımızla güncellenecek.</p>
       </div>
       <div class="gallery reveal">
-        <div class="media media--span2 media--row2 has-img" data-label="Karşılama alanı"><img class="media__img" src="<?php koi_v(); ?>img/karsilama.jpg" srcset="<?php koi_v(); ?>img/karsilama-sm.jpg 900w, <?php koi_v(); ?>img/karsilama.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinin karşılama alanı" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <div class="media has-img" data-label="Oyun odası"><img class="media__img" src="<?php koi_v(); ?>img/oyun-odasi.jpg" srcset="<?php koi_v(); ?>img/oyun-odasi-sm.jpg 900w, <?php koi_v(); ?>img/oyun-odasi.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI oyun grubu odası" loading="lazy"></div>
-        <div class="media media--olive has-img" data-label="Danışmanlık odası"><img class="media__img" src="<?php koi_v(); ?>img/danismanlik.jpg" srcset="<?php koi_v(); ?>img/danismanlik-sm.jpg 900w, <?php koi_v(); ?>img/danismanlik.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI danışmanlık odası" loading="lazy"></div>
-        <div class="media media--olive has-img" data-label="Atölye"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy"></div>
-        <div class="media has-img" data-label="Bekleme alanı"><img class="media__img" src="<?php koi_v(); ?>img/karsilama.jpg" srcset="<?php koi_v(); ?>img/karsilama-sm.jpg 900w, <?php koi_v(); ?>img/karsilama.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinin karşılama alanı" loading="lazy"></div>
+<?php koi_kartlar( 'galeri-anasayfa' ); ?>
       </div>
       <div style="margin-top:34px" class="reveal">
         <a class="link-arrow" href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>">Tüm Galeri<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>

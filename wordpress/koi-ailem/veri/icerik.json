@@ -302,5 +302,149 @@
    "icerik": "<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Bu Buluşmada Ne Yapıyoruz?</h2>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph -->\n<p>Küçük bir grupla, doğum sonrası dönemin gerçekten nasıl geçtiğini konuşuyoruz. İdealize edilmiş anlatıların dışında, yaşananın kendisini.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Paylaşımın yanında; bebekle bağ kurma, uyku ve beslenme etrafındaki gerilimi azaltma ve annenin kendi ihtiyaçlarına alan açma üzerine çalışıyoruz.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Başlıklar</h2>\n<!-- /wp:heading -->\n\n<!-- wp:list -->\n<ul class=\"wp-block-list\"><!-- wp:list-item -->\n<li>Doğum sonrası duygu dalgalanmaları</li>\n<!-- /wp:list-item -->\n<!-- wp:list-item -->\n<li>Bebeğin sinyallerini okumak</li>\n<!-- /wp:list-item -->\n<!-- wp:list-item -->\n<li>Uyku ve beslenme etrafındaki baskıyı azaltmak</li>\n<!-- /wp:list-item -->\n<!-- wp:list-item -->\n<li>Eş ilişkisinde değişen denge</li>\n<!-- /wp:list-item -->\n<!-- wp:list-item -->\n<li>Destek istemek ve sınır koymak</li>\n<!-- /wp:list-item --></ul>\n<!-- /wp:list -->\n\n<!-- wp:quote -->\n<blockquote class=\"wp-block-quote\"><!-- wp:paragraph -->\n<p>Bakım veren de bakıma ihtiyaç duyar.</p>\n<!-- /wp:paragraph --></blockquote>\n<!-- /wp:quote -->"
   }
  ],
- "blog": []
+ "blog": [],
+ "uzmanlar": [
+  {
+   "slug": "elif-bilsel",
+   "baslik": "Elif Bilsel",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Elif Bilsel, psikolojik danışmanlık alanındaki çalışmalarını çocuk, ebeveyn ve aileyi birlikte ele alan bütüncül bir yaklaşımla sürdürmektedir. Eğitim hayatı ve mesleki deneyimi boyunca özellikle çocukların gelişimsel, sosyal-duygusal ve akademik ihtiyaçlarıyla çalışmış; ailelerle iş birliğini danışmanlık sürecinin önemli bir parçası olarak görmüştür.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>KOI'nin kuruluşunda, danışmanlık yaklaşımını oyun ve gelişim deneyimleriyle aynı çatı altında buluşturmayı amaçlamaktadır.</p>\n<!-- /wp:paragraph -->",
+   "meta": {
+    "koi_etiket": "Kurucu Ortak",
+    "koi_unvan": "Psikolojik Danışman · Aile Danışmanı · Çocuk Merkezli Oyun Terapisi Uygulayıcısı",
+    "koi_unvan_kisa": "Psikolojik Danışman · Aile Danışmanı",
+    "koi_kisa": "Çocuk ve ergen gelişimi, aile ve ebeveyn danışmanlığı, çocuk merkezli oyun terapisi.",
+    "koi_genis": "1",
+    "koi_alanlar": "Çocuk ve ergen gelişimi, aile ve ebeveyn danışmanlığı, çocuk merkezli oyun terapisi, eğitim ortamlarında psikolojik danışmanlık ve gelişim takibi.",
+    "koi_egitim": "Psikolojik Danışmanlık ve Rehberlik (PDR) lisans\nMarmara Üniversitesi Aile Danışmanlığı eğitimi\nAPT onaylı çocuk merkezli oyun terapisi eğitimi\nCinsel terapi eğitimi\nEğitim ve okul ortamında çocuklarla çalışma deneyimi",
+    "koi_hizmetler": "cocuk-ergen-danismanligi,oyun-terapisi,aile-ebeveyn-danismanligi,akademik-gelisim,seminer-workshop"
+   }
+  },
+  {
+   "slug": "dilek-sevik",
+   "baslik": "Dilek Şevik",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Dilek Şevik, eğitim sektöründe uzun yıllardır çocuklar, aileler ve eğitim kurumlarıyla birlikte çalışmaktadır. Türkiye'nin önde gelen eğitim kurumlarında yöneticilik ve koordinatörlük görevleri üstlenmiş; farklı eğitim modelleri ve kurum yapıları içinde kurum işleyişi, veli ilişkileri, ekip koordinasyonu ve kurumsal iletişim süreçlerinde aktif sorumluluk almıştır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Yıllar içinde binlerce veliyle birebir görüşerek, ailelerin çocukları için okul ve eğitim modeli seçerken yaşadığı zorlukları, beklentilerini ve karar süreçlerini yakından gözlemlemiş; çocuğun gelişim özellikleri, ilgi alanları, yetenekleri ve ihtiyaçları ile eğitim ortamının birbirini desteklemesi gerektiği üzerine çalışmıştır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Bu deneyimler ona, eğitimin yalnızca akademik bir süreç olmadığını; çocuğu, aileyi, eğitimciyi ve kurumu bir bütün olarak görmeyi gerektirdiğini öğretmiştir. Bu anlayışla KOI'yi; oyun, gelişim, danışmanlık ve atölye çalışmalarını bir araya getiren, çocuk ve aile odaklı bir merkez olarak hayata geçirmiştir.</p>\n<!-- /wp:paragraph -->",
+   "meta": {
+    "koi_etiket": "Kurucu Ortak",
+    "koi_unvan": "Kurucu Ortak",
+    "koi_unvan_kisa": "Kurucu Ortak",
+    "koi_kisa": "Eğitim kurumlarında yöneticilik ve koordinatörlük; veli ilişkileri ve kurumsal iletişim.",
+    "koi_genis": "1",
+    "koi_alanlar": "",
+    "koi_egitim": "",
+    "koi_hizmetler": ""
+   }
+  }
+ ],
+ "galeri": [
+  {
+   "slug": "karsilama-alani",
+   "baslik": "Karşılama alanı",
+   "kisa": "",
+   "icerik": "",
+   "cat": "mekan",
+   "terim": "Mekân",
+   "gorsel": "karsilama"
+  },
+  {
+   "slug": "oyun-odasi",
+   "baslik": "Oyun odası",
+   "kisa": "",
+   "icerik": "",
+   "cat": "mekan",
+   "terim": "Mekân",
+   "gorsel": "oyun-odasi"
+  },
+  {
+   "slug": "danismanlik-odasi",
+   "baslik": "Danışmanlık odası",
+   "kisa": "",
+   "icerik": "",
+   "cat": "mekan",
+   "terim": "Mekân",
+   "gorsel": "danismanlik"
+  },
+  {
+   "slug": "atolye-alani",
+   "baslik": "Atölye alanı",
+   "kisa": "",
+   "icerik": "",
+   "cat": "atolye",
+   "terim": "Atölyeler",
+   "gorsel": "atolye-masa"
+  },
+  {
+   "slug": "bekleme-alani",
+   "baslik": "Bekleme alanı",
+   "kisa": "",
+   "icerik": "",
+   "cat": "mekan",
+   "terim": "Mekân",
+   "gorsel": "karsilama"
+  },
+  {
+   "slug": "malzeme-detayi",
+   "baslik": "Malzeme detayı",
+   "kisa": "",
+   "icerik": "",
+   "cat": "atolye",
+   "terim": "Atölyeler",
+   "gorsel": "atolye-masa"
+  },
+  {
+   "slug": "atolye-ani",
+   "baslik": "Atölye anı",
+   "kisa": "",
+   "icerik": "",
+   "cat": "atolye",
+   "terim": "Atölyeler",
+   "gorsel": "atolye-masa"
+  },
+  {
+   "slug": "acilis-etkinligi",
+   "baslik": "Açılış etkinliği",
+   "kisa": "",
+   "icerik": "",
+   "cat": "etkinlik",
+   "terim": "Etkinlikler",
+   "gorsel": "hero-kemer"
+  },
+  {
+   "slug": "seminer",
+   "baslik": "Seminer",
+   "kisa": "",
+   "icerik": "",
+   "cat": "etkinlik",
+   "terim": "Etkinlikler",
+   "gorsel": "danismanlik"
+  },
+  {
+   "slug": "detay-bitki",
+   "baslik": "Detay — bitki",
+   "kisa": "",
+   "icerik": "",
+   "cat": "mekan",
+   "terim": "Mekân",
+   "gorsel": "yaprak"
+  },
+  {
+   "slug": "cocuk-aile-bulusmasi",
+   "baslik": "Çocuk-aile buluşması",
+   "kisa": "",
+   "icerik": "",
+   "cat": "etkinlik",
+   "terim": "Etkinlikler",
+   "gorsel": "oyun-odasi"
+  },
+  {
+   "slug": "mekan-genel-gorunum",
+   "baslik": "Mekân genel görünüm",
+   "kisa": "",
+   "icerik": "",
+   "cat": "mekan",
+   "terim": "Mekân",
+   "gorsel": "karsilama"
+  }
+ ]
 }
