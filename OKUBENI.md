@@ -208,6 +208,19 @@ node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPres
 
 **Henüz tema dosyasında duranlar:** Hakkımızda, Oyun Grupları, Uzmanlarımız, Galeri ve yasal metin sayfalarının gövdeleri. Müşteri formu geldiğinde metinler güncellenecek; uzmanlar ve galeri panelden yönetilebilir hale getirilecek.
 
-**Formlar:** harici eklenti yok. Gönderimler "Bilgi Talepleri" altına kaydedilir ve e-postayla bildirilir. Bal küpü alanı ve saatlik gönderim sınırı var.
+**Formlar:** harici form eklentisi yok. Gönderimler "Bilgi Talepleri" altına kaydedilir ve e-postayla bildirilir; her talepte bildirimin sonucu görünür. E-posta gönderimi WP Mail SMTP eklentisiyle `info@koiailem.com` kutusu üzerinden yapılır.
 
-**Deneme:** tema WordPress Playground üzerinde (WordPress 7.1, PHP 8.2) kurulup tüm sayfalar ve form akışı denendi. Gerçek sunucuda (Hostinger) henüz denenmedi.
+**Temadaki güvenlik önlemleri (`build/wp/inc/guvenlik.php`, `formlar.php`, `kvkk.php`):**
+
+| Konu | Önlem |
+|---|---|
+| Kullanıcı adı sızıntısı | Yazar arşivleri ve `?author=N` bloga yönlenir; site haritasında kullanıcılar ve oEmbed verisinde yazar adresi yok; REST kullanıcı listesi oturumsuz ziyaretçiye kapalı |
+| Başlıklar | HSTS, nosniff, Referrer-Policy (site, giriş, panel); X-Frame-Options ve Permissions-Policy (site); `X-Powered-By` kaldırılır |
+| İçerik güvenlik politikası | Yalnızca oturumsuz ziyaretçiye: `frame-ancestors`, `base-uri`, `object-src`, `form-action`, `frame-src` (Google Haritalar, YouTube, Vimeo). Betik kısıtı yok. İzinli çerçeveler `koi_izinli_cerceveler` filtresiyle değişir |
+| Form kötüye kullanımı | Bal küpü; aynı adresten saatte 5, site genelinde saatte 60 başvuru (`KOI_SAATLIK_TALEP`); günde 60 bildirim e-postası (`KOI_GUNLUK_BILDIRIM`), tavan dolunca başvuru yalnızca panele kaydedilir; açılır liste değerleri sayfadaki seçeneklerle sınırlı |
+| KVKK | Görünüm → Özelleştir → KOI Veri Saklama: başvurular için saklama süresi (varsayılan kapalı). Araçlar → Kişisel verileri dışa aktar / sil: e-posta adresine ait başvurular dahil edilir |
+| Diğer | XML-RPC kapalı, sürüm bilgisi gizli, panelden dosya düzenleme kapalı, giriş hatası kullanıcı adını ele vermez |
+
+Tema dışında: giriş denemesi sınırı için Limit Login Attempts Reloaded kurulu. İki adımlı doğrulama yayın öncesinde kurulacak.
+
+**Deneme:** tema her sürümde WordPress Playground üzerinde (PHP 8.2) kurulup sınanıyor. Playground çerçeveleme başlıklarını (X-Frame-Options, CSP) kendisi sildiği için bu ikisi yalnızca gerçek sunucuda doğrulanabilir.
