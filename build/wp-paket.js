@@ -1,6 +1,6 @@
 /**
- * wordpress/koi klasorunu WordPress'e yuklenebilir zip dosyasina cevirir.
- *   wordpress/koi/  ->  belgeler/koi-tema.zip
+ * wordpress/koi-ailem klasorunu WordPress'e yuklenebilir zip dosyasina cevirir.
+ *   wordpress/koi-ailem/  ->  belgeler/koi-tema.zip
  *
  * Kullanim:
  *   node build/wp-paket.js          zip uretir
@@ -12,7 +12,9 @@ const path = require("path");
 const zlib = require("zlib");
 
 const KOK = path.join(__dirname, "..");
-const TEMA = path.join(KOK, "wordpress", "koi");
+/* Klasor adi sitede temanin kimligidir; baska bir temayla ayni olmamalidir */
+const TEMA_ADI = "koi-ailem";
+const TEMA = path.join(KOK, "wordpress", TEMA_ADI);
 const ZIP = path.join(KOK, "belgeler", "koi-tema.zip");
 
 function dosyalar(d, onek, liste = []) {
@@ -33,7 +35,7 @@ function zipOlustur() {
   const zaman = 0;
   const tarih = ((2026 - 1980) << 9) | (1 << 5) | 1;
 
-  for (const [ad, tam] of dosyalar(TEMA, "koi")) {
+  for (const [ad, tam] of dosyalar(TEMA, TEMA_ADI)) {
     const veri = fs.readFileSync(tam);
     const adBuf = Buffer.from(ad, "utf8");
     const sikisik = zlib.deflateRawSync(veri, { level: 9 });
@@ -86,7 +88,7 @@ function zipOlustur() {
 }
 
 if (!fs.existsSync(TEMA)) {
-  console.error("wordpress/koi yok. Once: node build/wp-tema.js");
+  console.error("wordpress/" + TEMA_ADI + " yok. Once: node build/wp-tema.js");
   process.exit(1);
 }
 zipOlustur();

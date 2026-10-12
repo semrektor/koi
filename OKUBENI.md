@@ -181,12 +181,12 @@ Müşterinin doldurduğu içerik formu işlendi: slogan, vizyon/misyon, "KOI Ned
 
 **Alan adı ve barındırma:** `koiailem.com` · Hostinger Business paketi (müşterinin hesabı; ajans erişimi hesap paylaşımıyla). Günlük yedek, test ortamı ve kurumsal e-posta pakete dahil.
 
-### WordPress teması (`wordpress/koi/`)
+### WordPress teması (`wordpress/koi-ailem/`)
 
 Tema, taslakla aynı kaynaklardan üretilir; tasarım birebir aynıdır.
 
 ```bash
-node build/wp-tema.js      # wordpress/koi klasörünü üretir
+node build/wp-tema.js      # wordpress/koi-ailem klasörünü üretir
 node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPress'e yüklenecek dosya)
 ```
 
@@ -197,7 +197,9 @@ node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPres
 | `build/content/*.js` | `veri/icerik.json` (kurulum sihirbazı içeri aktarır) |
 | `build/wp/` | Elle yazılan PHP: içerik türleri, şablonlar, formlar, ayarlar |
 
-> `wordpress/koi/` üretilmiş çıktıdır. PHP değişiklikleri `build/wp/` altında, sayfa metinleri `build/pages/` altında yapılır.
+> Temanın klasör adı `koi-ailem`dir. Önceki ad olan `koi`, aynı adlı başka bir temayla (Patchstack kaydı: "Koi Theme <= 1.0") karıştığı için barındırma panelinde yanlış güvenlik uyarısı üretiyordu. Klasör adını başka bir temayla çakışmayacak şekilde tutun.
+>
+> `wordpress/koi-ailem/` üretilmiş çıktıdır. PHP değişiklikleri `build/wp/` altında, sayfa metinleri `build/pages/` altında yapılır.
 
 **Kurulum (WordPress panelinde):**
 1. Görünüm → Temalar → Yeni Ekle → Tema Yükle → `koi-tema.zip` → Etkinleştir

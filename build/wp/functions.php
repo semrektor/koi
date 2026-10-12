@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.3.0' );
+define( 'KOI_SURUM', '0.3.1' );
 /* Kurulumun olusturdugu icerigin surumu; veri/icerik.json degistiginde artirilir */
 define( 'KOI_ICERIK_SURUM', '0.2.0' );
 define( 'KOI_DIR', get_template_directory() );
@@ -22,6 +22,23 @@ require KOI_DIR . '/inc/formlar.php';
 require KOI_DIR . '/inc/guvenlik.php';
 require KOI_DIR . '/inc/kvkk.php';
 require KOI_DIR . '/inc/kurulum.php';
+
+/* ---------- Eski klasor adindan gecis ----------
+   Temanin klasoru once "koi" idi; ayni adli baska bir temayla karistigi icin
+   "koi-ailem" oldu. Ozellestirici ayarlari klasor adina bagli saklandigindan,
+   yeni tema ilk etkinlestirildiginde eski ayarlar buraya tasinir. */
+function koi_eski_ayarlari_tasi() {
+	$eski = get_option( 'theme_mods_koi' );
+	if ( 'koi' === get_stylesheet() || ! is_array( $eski ) ) {
+		return;
+	}
+	foreach ( $eski as $anahtar => $deger ) {
+		if ( 0 === strpos( (string) $anahtar, 'koi_' ) && null === get_theme_mod( $anahtar, null ) ) {
+			set_theme_mod( $anahtar, $deger );
+		}
+	}
+}
+add_action( 'after_switch_theme', 'koi_eski_ayarlari_tasi' );
 
 /* ---------- Temel destekler ---------- */
 function koi_tema_destekleri() {

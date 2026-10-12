@@ -1,6 +1,6 @@
 /**
  * Taslak siteden WordPress temasini uretir.
- *   build/partials + build/pages + build/content + build/wp  ->  wordpress/koi/
+ *   build/partials + build/pages + build/content + build/wp  ->  wordpress/koi-ailem/
  *
  * - build/wp/        : elle yazilan PHP dosyalari (aynen kopyalanir)
  * - header/footer    : build/partials'tan uretilir
@@ -16,7 +16,7 @@ const KOK = path.join(__dirname, "..");
 const PAGES = path.join(__dirname, "pages");
 const KAYNAK = path.join(__dirname, "wp");
 const SITE = path.join(KOK, "site");
-const CIKTI = path.join(KOK, "wordpress", "koi");
+const CIKTI = path.join(KOK, "wordpress", "koi-ailem");
 
 const hizmetler = require("./content/hizmetler");
 const atolyeler = require("./content/atolyeler");
@@ -254,13 +254,14 @@ yaz(
   "style.css",
   [
     "/*",
-    "Theme Name: KOI",
+    "Theme Name: KOI Çocuk ve Aile",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.3.0",
+    "Version: 0.3.1",
+    "Update URI: https://koiailem.com/",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
-    "Text Domain: koi",
+    "Text Domain: koi-ailem",
     "*/",
     "",
     "/* Tasarim sistemi assets/css/style.css icindedir. */",
@@ -366,7 +367,7 @@ let dosyaSayisi = 0;
   for (const f of fs.readdirSync(d, { withFileTypes: true })) f.isDirectory() ? say(path.join(d, f.name)) : dosyaSayisi++;
 })(CIKTI);
 
-console.log("wordpress/koi: " + dosyaSayisi + " dosya, " + SAYFALAR.length + " sayfa govdesi, " +
+console.log("wordpress/koi-ailem: " + dosyaSayisi + " dosya, " + SAYFALAR.length + " sayfa govdesi, " +
   hizmetler.length + " hizmet, " + atolyeler.length + " atolye, " + blog.length + " yazi" +
   (sorun ? "  |  " + sorun + " KALINTI" : "  |  kalinti yok"));
 if (sorun) process.exit(1);
