@@ -120,6 +120,49 @@ function koi_icerik_turleri() {
 		)
 	);
 
+	register_post_type(
+		'oyun_grubu',
+		array_merge(
+			$liste,
+			array(
+				'labels'        => array(
+					'name'          => 'Oyun Grupları',
+					'singular_name' => 'Oyun Grubu',
+					'add_new'       => 'Yeni Ekle',
+					'add_new_item'  => 'Yeni Grup Ekle',
+					'edit_item'     => 'Grubu Düzenle',
+					'all_items'     => 'Tüm Gruplar',
+					'search_items'  => 'Grup Ara',
+				),
+				'supports'      => array( 'title', 'thumbnail', 'page-attributes' ),
+				'menu_icon'     => 'dashicons-smiley',
+				'menu_position' => 25,
+			)
+		)
+	);
+
+	register_post_type(
+		'sss',
+		array_merge(
+			$liste,
+			array(
+				'labels'        => array(
+					'name'          => 'Sık Sorulan Sorular',
+					'singular_name' => 'Soru',
+					'menu_name'     => 'Sık Sorulanlar',
+					'add_new'       => 'Yeni Ekle',
+					'add_new_item'  => 'Yeni Soru Ekle',
+					'edit_item'     => 'Soruyu Düzenle',
+					'all_items'     => 'Tüm Sorular',
+					'search_items'  => 'Soru Ara',
+				),
+				'supports'      => array( 'title', 'editor', 'page-attributes' ),
+				'menu_icon'     => 'dashicons-editor-help',
+				'menu_position' => 26,
+			)
+		)
+	);
+
 	$taksonomi = array(
 		'hierarchical'      => true,
 		'public'            => false,
@@ -167,6 +210,19 @@ function koi_icerik_turleri() {
 			)
 		)
 	);
+	register_taxonomy(
+		'sss_bolum',
+		'sss',
+		array_merge(
+			$taksonomi,
+			array(
+				'labels' => array(
+					'name'          => 'Soru Bölümleri',
+					'singular_name' => 'Soru Bölümü',
+				),
+			)
+		)
+	);
 }
 add_action( 'init', 'koi_icerik_turleri' );
 
@@ -177,6 +233,12 @@ function koi_baslik_ipucu( $metin, $post ) {
 	}
 	if ( 'galeri_gorsel' === $post->post_type ) {
 		return 'Görselin kısa adı (örn. Oyun odası)';
+	}
+	if ( 'oyun_grubu' === $post->post_type ) {
+		return 'Grubun adı (örn. Minik Adımlar)';
+	}
+	if ( 'sss' === $post->post_type ) {
+		return 'Soru';
 	}
 	return $metin;
 }
@@ -210,11 +272,26 @@ function koi_ek_alanlar( $tur ) {
 		$alanlar['koi_egitim']     = array( 'Eğitim ve sertifikalar', 'Her satıra bir madde. Geniş profilde liste olarak görünür.', 'textarea' );
 		$alanlar['koi_hizmetler']  = array( 'Yürüttüğü hizmetler', 'Geniş profilde bağlantı olarak görünür.', 'hizmetler' );
 	}
+	if ( 'oyun_grubu' === $tur ) {
+		$alanlar['koi_yas']       = array( 'Yaş aralığı', 'Kartta, tabloda ve başvuru formunda görünür. Örn. "1–2 yaş".', 'text' );
+		$alanlar['koi_kisa']      = array( 'Kısa açıklama', 'Kartta görünen bir cümlelik tanıtım.', 'textarea' );
+		$alanlar['koi_gun_saat']  = array( 'Gün ve saat', 'Program tablosunda görünür. Örn. "Pazartesi ve Çarşamba 10:00".', 'text' );
+		$alanlar['koi_kontenjan'] = array( 'Kontenjan', 'Örn. "En fazla 6 çocuk".', 'text' );
+		$alanlar['koi_ebeveyn']   = array( 'Ebeveyn katılımı', 'Örn. "Ebeveyn katılımlı" ya da "Programın niteliğine göre".', 'text' );
+	}
+	if ( 'sss' === $tur ) {
+		$alanlar['koi_sss_hizmetler'] = array( 'Hizmetler sayfasında da göster', 'Soru, Hizmetler sayfasının altındaki kısa listede de yer alır.', 'checkbox' );
+		$alanlar['koi_sss_iletisim']  = array( 'İletişim sayfasında da göster', 'Soru, İletişim sayfasının altındaki kısa listede de yer alır.', 'checkbox' );
+	}
+	if ( 'page' === $tur ) {
+		$alanlar['koi_ust_baslik'] = array( 'Sayfa başlığı', 'Sayfanın en üstündeki büyük başlık. Alt satıra geçmek için Enter kullanın.', 'textarea' );
+		$alanlar['koi_ust_giris']  = array( 'Giriş metni', 'Başlığın yanındaki 1–2 cümlelik giriş.', 'textarea' );
+	}
 	return $alanlar;
 }
 
 function koi_meta_kutulari() {
-	foreach ( array( 'hizmet', 'atolye', 'post', 'uzman' ) as $tur ) {
+	foreach ( array( 'hizmet', 'atolye', 'post', 'uzman', 'oyun_grubu', 'sss', 'page' ) as $tur ) {
 		add_meta_box( 'koi_ayrintilar', 'KOI Sayfa Ayrıntıları', 'koi_meta_kutusu', $tur, 'normal', 'high' );
 	}
 }
@@ -224,6 +301,23 @@ function koi_meta_kutusu( $post ) {
 	wp_nonce_field( 'koi_meta_kaydet', 'koi_meta_nonce' );
 	if ( 'uzman' === $post->post_type ) {
 		echo '<p class="description">Biyografiyi yukarıdaki yazı alanına, portre fotoğrafını sağdaki "Portre fotoğrafı" kutusuna ekleyin. Fotoğraf yoksa baş harfler gösterilir. Sıralama için sağdaki "Sıra" alanını kullanın (küçük sayı önce görünür).</p>';
+	}
+	if ( 'oyun_grubu' === $post->post_type ) {
+		echo '<p class="description">Grubun görselini sağdaki "Öne çıkan görsel" kutusundan ekleyin; eklenmezse temsili görsel kullanılır. Sıralama için sağdaki "Sıra" alanını kullanın.</p>';
+	}
+	if ( 'sss' === $post->post_type ) {
+		echo '<p class="description">Soruyu en üstteki başlık alanına, cevabı yazı alanına yazın. Sorunun SSS sayfasında hangi başlık altında görüneceğini sağdaki "Soru Bölümleri" kutusundan seçin.</p>';
+	}
+
+	/* Sayfalar: ust bolumdeki baslik ve giris metni. Varsayilan metin gri olarak gosterilir. */
+	$ipucu = array();
+	if ( 'page' === $post->post_type ) {
+		$ipucu = koi_sayfa_ust_varsayilani( $post->post_name );
+		if ( ! $ipucu ) {
+			echo '<p class="description">Bu sayfanın metinleri temadan gelir; burada değiştirilecek bir alan yok.</p>';
+			return;
+		}
+		echo '<p class="description">Sayfanın en üstündeki başlık ve giriş metni. Boş bıraktığınız alanda, gri görünen varsayılan metin kullanılır.</p>';
 	}
 	foreach ( koi_ek_alanlar( $post->post_type ) as $anahtar => $alan ) {
 		$deger = (string) get_post_meta( $post->ID, $anahtar, true );
@@ -247,7 +341,9 @@ function koi_meta_kutusu( $post ) {
 
 		echo '<p><label for="' . $kimlik . '"><strong>' . esc_html( $alan[0] ) . '</strong></label><br>';
 		if ( 'textarea' === $alan[2] ) {
-			echo '<textarea class="widefat" rows="4" id="' . $kimlik . '" name="' . $kimlik . '">' . esc_textarea( $deger ) . '</textarea>';
+			$alan_adi   = str_replace( 'koi_ust_', '', $anahtar );
+			$yer_tutucu = isset( $ipucu[ $alan_adi ] ) ? (string) $ipucu[ $alan_adi ] : '';
+			echo '<textarea class="widefat" rows="4" id="' . $kimlik . '" name="' . $kimlik . '" placeholder="' . esc_attr( $yer_tutucu ) . '">' . esc_textarea( $deger ) . '</textarea>';
 		} else {
 			echo '<input class="widefat" type="text" id="' . $kimlik . '" name="' . $kimlik . '" value="' . esc_attr( $deger ) . '">';
 		}

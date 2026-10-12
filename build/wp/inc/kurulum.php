@@ -57,7 +57,14 @@ function koi_kurulum_kayit( $kayit, $tur, $sira, $guncelle = false ) {
 	if ( $taksonomi && ! empty( $kayit['cat'] ) ) {
 		$terim = term_exists( $kayit['cat'], $taksonomi );
 		if ( ! $terim ) {
-			$terim = wp_insert_term( $kayit['terim'], $taksonomi, array( 'slug' => $kayit['cat'] ) );
+			$terim = wp_insert_term(
+				$kayit['terim'],
+				$taksonomi,
+				array(
+					'slug'        => $kayit['cat'],
+					'description' => isset( $kayit['terim_aciklama'] ) ? $kayit['terim_aciklama'] : '',
+				)
+			);
 		}
 		if ( is_array( $terim ) ) {
 			wp_set_object_terms( $kimlik, (int) $terim['term_id'], $taksonomi );
@@ -110,6 +117,8 @@ function koi_icerik_kur( $guncelle = false ) {
 		'yazi'       => 0,
 		'uzman'      => 0,
 		'galeri'     => 0,
+		'grup'       => 0,
+		'sss'        => 0,
 		'guncelleme' => 0,
 		'kaldirilan' => 0,
 	);
@@ -164,6 +173,8 @@ function koi_icerik_kur( $guncelle = false ) {
 		'blog'      => array( 'post', 'yazi' ),
 		'uzmanlar'  => array( 'uzman', 'uzman' ),
 		'galeri'    => array( 'galeri_gorsel', 'galeri' ),
+		'gruplar'   => array( 'oyun_grubu', 'grup' ),
+		'sss'       => array( 'sss', 'sss' ),
 	);
 	foreach ( $turler as $anahtar => $tur ) {
 		if ( empty( $veri[ $anahtar ] ) ) {
@@ -249,13 +260,15 @@ function koi_kurulum_sayfasi() {
 	} elseif ( is_array( $sonuc ) ) {
 		echo '<div class="notice notice-success"><p>' . esc_html(
 			sprintf(
-				'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı, %d uzman, %d galeri görseli eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
+				'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı, %d uzman, %d galeri görseli, %d oyun grubu, %d soru eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
 				$sonuc['sayfa'],
 				$sonuc['hizmet'],
 				$sonuc['atolye'],
 				$sonuc['yazi'],
 				$sonuc['uzman'],
 				$sonuc['galeri'],
+				$sonuc['grup'],
+				$sonuc['sss'],
 				$sonuc['guncelleme'],
 				$sonuc['kaldirilan']
 			)
@@ -279,12 +292,12 @@ function koi_kurulum_sayfasi() {
 	wp_nonce_field( 'koi_kurulum' );
 
 	echo '<h2>İçerikleri Oluştur</h2>';
-	echo '<p>Eksik sayfaları, hizmetleri, atölyeleri, uzmanları ve galeri görsellerini oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar. Var olan içeriğe dokunmaz, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
+	echo '<p>Eksik sayfaları, hizmetleri, atölyeleri, uzmanları, galeri görsellerini, oyun gruplarını ve sık sorulan soruları oluşturur; site adını, anasayfayı ve kalıcı bağlantıları ayarlar. Var olan içeriğe dokunmaz, bu yüzden tekrar çalıştırmak güvenlidir.</p>';
 	submit_button( 'İçerikleri Oluştur', 'primary', 'koi_kur', false );
 
 	echo '<h2 style="margin-top:2.5em">İçerikleri Güncelle</h2>';
-	echo '<p>Hizmet, atölye, uzman ve galeri kayıtlarını temayla gelen son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
-	echo '<p><strong>Dikkat:</strong> Hizmet, atölye, uzman ve galeri kayıtlarında panelden yaptığınız değişikliklerin üzerine yazılır. Kendi eklediğiniz kayıtlara ve yazılara dokunulmaz.</p>';
+	echo '<p>Hizmet, atölye, uzman, galeri, oyun grubu ve soru kayıtlarını temayla gelen son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
+	echo '<p><strong>Dikkat:</strong> Bu kayıtlarda panelden yaptığınız değişikliklerin üzerine yazılır. Kendi eklediğiniz kayıtlara ve yazılara dokunulmaz.</p>';
 	echo '<p><label><input type="checkbox" name="koi_onay" value="1"> Panelden yapılan değişikliklerin üzerine yazılacağını anladım.</label></p>';
 	submit_button( 'İçerikleri Güncelle', 'secondary', 'koi_guncelle', false );
 	echo '</form>';

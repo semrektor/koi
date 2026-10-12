@@ -1,0 +1,50 @@
+{
+ "hakkimizda": {
+  "baslik": "Danışmanlık, Oyun ve Atölyeyi\nAynı Çatı Altında Buluşturuyoruz",
+  "giris": "KOI; çocukların gelişimini ve ailelerin ihtiyaçlarını birlikte ele alan, sıcak ama nitelikli bir gelişim merkezi olarak kuruldu."
+ },
+ "hizmetler": {
+  "baslik": "Her İhtiyaca\nUygun Bir Yol Var",
+  "giris": "Bireysel danışmanlıktan aile programlarına, oyun gruplarından seminerlere; ihtiyacınıza göre kurgulanan hizmetler."
+ },
+ "oyun-gruplari": {
+  "baslik": "Oyunun İçinde\nBüyüyen Gelişim",
+  "giris": "Haftanın 5 günü, günde 2 seans. Yaş ve gelişim dönemine göre ayrıştırılmış, seans başına en fazla 6 çocukla yürütülen küçük grup programları."
+ },
+ "atolyeler": {
+  "baslik": "Birlikte Üretmenin\nİyileştiren Hali",
+  "giris": "Çocuk, ebeveyn ve çocuk-aile katılımlı tematik atölyeler; hafta sonlarında düzenlenen seminer ve workshop programları."
+ },
+ "uzmanlarimiz": {
+  "baslik": "Yolculuğunuzda\nYanınızdaki Ekip",
+  "giris": "Çocuğu, ebeveyni ve aileyi birlikte ele alan; danışmanlık, oyun ve gelişim deneyimini aynı çatı altında buluşturan bir ekip."
+ },
+ "blog": {
+  "baslik": "Ailelere Notlar",
+  "giris": "Gelişim, ebeveynlik ve oyun üzerine uzmanlarımızın kaleminden; uygulanabilir, sade ve gerçekçi yazılar."
+ },
+ "iletisim": {
+  "baslik": "Bir Adım Atmak\nİçin Buradayız",
+  "giris": "Bilgi almak, ön başvuru yapmak veya aklınıza takılan bir soruyu iletmek için formu doldurabilir, dilerseniz doğrudan WhatsApp'tan yazabilirsiniz."
+ },
+ "galeri": {
+  "baslik": "Merkezimizden",
+  "giris": "Mekânımızın ruhunu yansıtan temsili görseller. Merkezimiz açıldığında kendi fotoğraflarımızla güncellenecektir."
+ },
+ "sss": {
+  "baslik": "Sık Sorulan\nSorular",
+  "giris": "KOI, hizmetlerimiz ve başvuru süreci hakkında en çok merak edilenler. Yanıtını bulamadığınız bir soru olursa bize yazabilirsiniz."
+ },
+ "kvkk": {
+  "baslik": "KVKK Aydınlatma Metni",
+  "giris": "6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında, kişisel verilerinizin nasıl işlendiğine dair bilgilendirme."
+ },
+ "gizlilik": {
+  "baslik": "Gizlilik Politikası",
+  "giris": "Merkezimizle paylaştığınız bilgilerin nasıl korunduğuna ve kullanıldığına dair açıklamalar."
+ },
+ "cerez": {
+  "baslik": "Çerez Politikası",
+  "giris": "Sitemizde kullanılan çerezler, ne işe yaradıkları ve tercihlerinizi nasıl yönetebileceğiniz."
+ }
+}

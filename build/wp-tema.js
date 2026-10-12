@@ -23,6 +23,8 @@ const atolyeler = require("./content/atolyeler");
 const blog = require("./content/blog");
 const uzmanlar = require("./content/uzmanlar");
 const galeri = require("./content/galeri");
+const oyunGruplari = require("./content/oyun-gruplari");
+const sss = require("./content/sss");
 
 /* WordPress sayfasi olacak govdeler: anahtar (taslak dosya adi) -> sayfa bilgisi */
 const SAYFALAR = [
@@ -85,6 +87,12 @@ const DEGISIMLER = [
   ['href="https://www.instagram.com/koiworld/"', "href=\"<?php echo esc_url( koi_ayar( 'instagram' ) ); ?>\""],
   ['data-harita="https://www.google.com/maps?q=41.026795,29.17093&amp;z=16&amp;hl=tr&amp;output=embed"', "data-harita=\"<?php echo esc_url( koi_ayar( 'harita_gomme' ) ); ?>\""],
   ['href="https://maps.app.goo.gl/dXk6ys7BLWuNJpgq5"', "href=\"<?php echo esc_url( koi_ayar( 'harita' ) ); ?>\""],
+  [">@koiworld<", "><?php echo esc_html( koi_instagram_adi() ); ?><"],
+  ["KOI Instagram sayfası (@koiworld)", "KOI Instagram sayfası"],
+  [
+    "Açık otopark mevcuttur. Necip Fazıl metro istasyonu 8–12 dakika, Dudullu metro istasyonu 10 dakika mesafededir.",
+    "<?php echo esc_html( koi_ayar( 'ulasim' ) ); ?>",
+  ],
   ["+90 (000) 000 00 00", "<?php echo esc_html( koi_ayar( 'telefon' ) ); ?>"],
   [">info@koiailem.com<", "><?php echo esc_html( koi_ayar( 'eposta' ) ); ?><"],
   ["E-posta: info@koiailem.com", "E-posta: <?php echo esc_html( koi_ayar( 'eposta' ) ); ?>"],
@@ -130,6 +138,20 @@ function phpLestir(html, anahtar) {
       "<?php koi_filtreler( 'galeri_kategori', '#galeri-listesi', 'Galeri filtresi' ); ?>"
     );
     if (html === filtreOnce) throw new Error("galeri: filtre bulunamadi");
+  }
+
+  const FILTRELER = {
+    hizmetler: ["hizmet_kategori", "hizmet-listesi", "Hizmet filtresi"],
+    atolyeler: ["atolye_turu", "atolye-listesi", "Atölye filtresi"],
+  };
+  if (FILTRELER[anahtar]) {
+    const [taksonomi, hedef, etiket] = FILTRELER[anahtar];
+    const filtreOnce = html;
+    html = html.replace(
+      new RegExp('[ \\t]*<div class="filters reveal" data-filter-group data-filter-target="#' + hedef + '"[\\s\\S]*?<\\/div>'),
+      "<?php koi_filtreler( '" + taksonomi + "', '#" + hedef + "', '" + etiket + "' ); ?>"
+    );
+    if (html === filtreOnce) throw new Error(anahtar + ": filtre bulunamadi");
   }
 
   /* Formlar: taslak isareti yerine gercek gonderim */
@@ -276,7 +298,7 @@ yaz(
     "Theme Name: KOI Çocuk ve Aile",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.4.0",
+    "Version: 0.5.0",
     "Update URI: https://koiailem.com/",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
@@ -316,13 +338,31 @@ if (!alt.includes("</body>")) throw new Error("foot.html: </body> bulunamadi");
 alt = phpLestir(alt, "footer").replace("</body>", "<?php wp_footer(); ?>\n</body>");
 yaz("footer.php", KORUMA + alt);
 
+/* Sayfa ust bolumundeki baslik ve giris metni, sayfa duzenleme ekranindan
+   degistirilebilir. Buradaki metin, alan bos birakildiginda gorunen varsayilandir. */
+const sayfaUst = {};
+function ustBolum(html, sayfa) {
+  const m = html.match(/(<section class="page-hero">[\s\S]*?<h1>)([\s\S]*?)(<\/h1>[\s\S]*?<p class="lead">)([\s\S]*?)(<\/p>)/);
+  if (!m) return html;
+  const duz = (t) => t.replace(/<br\s*\/?>/g, "\n").replace(/&amp;/g, "&").trim();
+  const baslik = duz(m[2]);
+  const giris = duz(m[4]);
+  /* Yalnizca duz metin: icinde etiket ya da PHP varsa dokunulmaz */
+  if (/[<>]/.test(baslik) || /[<>]/.test(giris)) return html;
+  sayfaUst[sayfa.slug] = { baslik, giris };
+  return html.replace(
+    m[0],
+    () => m[1] + "<?php koi_ust_metin( 'baslik', " + phpMetin(baslik) + " ); ?>" + m[3] + "<?php koi_ust_metin( 'giris', " + phpMetin(giris) + " ); ?>" + m[5]
+  );
+}
+
 /* 5. Sayfa govdeleri */
 const sayfaMeta = {};
 for (const s of SAYFALAR) {
   const dosya = s.anahtar + ".html";
   const ham = fs.readFileSync(path.join(PAGES, dosya), "utf8");
   sayfaMeta[s.anahtar] = { seo_baslik: meta(ham, "title", ""), aciklama: meta(ham, "desc", "") };
-  yaz("sayfalar/" + s.anahtar + ".php", KORUMA + phpLestir(govde(dosya), s.anahtar) + "\n");
+  yaz("sayfalar/" + s.anahtar + ".php", KORUMA + ustBolum(phpLestir(govde(dosya), s.anahtar), s) + "\n");
 }
 for (const anahtar of EK_GOVDELER) {
   const ham = fs.readFileSync(path.join(PAGES, anahtar + ".html"), "utf8");
@@ -346,6 +386,7 @@ yaz("veri/form-secenekleri.json", JSON.stringify(formSecenekleri, null, 1));
 
 /* 6. Veri */
 yaz("veri/sayfalar.json", JSON.stringify(sayfaMeta, null, 1));
+yaz("veri/sayfa-ust.json", JSON.stringify(sayfaUst, null, 1));
 yaz(
   "veri/icerik.json",
   JSON.stringify(
@@ -380,6 +421,33 @@ yaz(
         terim: galeri.kategoriler[g.cat],
         gorsel: g.gorsel,
       })),
+      gruplar: oyunGruplari.map((g) => ({
+        slug: g.slug,
+        baslik: g.ad,
+        kisa: "",
+        icerik: "",
+        gorsel: g.gorsel,
+        meta: {
+          koi_yas: g.yas,
+          koi_kisa: g.kisa,
+          koi_gun_saat: g.gunSaat,
+          koi_kontenjan: g.kontenjan,
+          koi_ebeveyn: g.ebeveyn,
+        },
+      })),
+      sss: sss.sorular.map((s) => {
+        const bolum = sss.bolumler.find((b) => b.slug === s.bolum);
+        return {
+          slug: s.slug,
+          baslik: s.soru,
+          kisa: "",
+          icerik: blokHtml([{ p: s.yanit }]),
+          cat: bolum.slug,
+          terim: bolum.baslik,
+          terim_aciklama: bolum.ustYazi,
+          meta: { koi_sss_hizmetler: s.hizmetler ? "1" : "", koi_sss_iletisim: s.iletisim ? "1" : "" },
+        };
+      }),
     },
     null,
     1

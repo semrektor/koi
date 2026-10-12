@@ -5,9 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Blog</span>
       </nav>
-      <h1>Ailelere Notlar</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Ailelere Notlar' ); ?></h1>
     </div>
-    <p class="lead">Gelişim, ebeveynlik ve oyun üzerine uzmanlarımızın kaleminden; uygulanabilir, sade ve gerçekçi yazılar.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Gelişim, ebeveynlik ve oyun üzerine uzmanlarımızın kaleminden; uygulanabilir, sade ve gerçekçi yazılar.' ); ?></p>
   </div>
 </section>
 

@@ -5,9 +5,10 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Oyun Grupları</span>
       </nav>
-      <h1>Oyunun İçinde<br>Büyüyen Gelişim</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Oyunun İçinde
+Büyüyen Gelişim' ); ?></h1>
     </div>
-    <p class="lead">Haftanın 5 günü, günde 2 seans. Yaş ve gelişim dönemine göre ayrıştırılmış, seans başına en fazla 6 çocukla yürütülen küçük grup programları.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Haftanın 5 günü, günde 2 seans. Yaş ve gelişim dönemine göre ayrıştırılmış, seans başına en fazla 6 çocukla yürütülen küçük grup programları.' ); ?></p>
   </div>
 </section>
 
@@ -45,42 +46,7 @@
       <p class="lead">Her grupta en fazla 6 çocuk yer alır. Gün ve saatler dönemsel takvime göre belirlenir.</p>
     </div>
     <div class="cards cards--4">
-      <article class="card reveal">
-        <div class="media media--ratio-4-5 has-img" data-label="Görsel"><img class="media__img" src="<?php koi_v(); ?>img/oyun-odasi.jpg" srcset="<?php koi_v(); ?>img/oyun-odasi-sm.jpg 900w, <?php koi_v(); ?>img/oyun-odasi.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI oyun grubu odası" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <div class="card__body">
-          <span class="card__meta">1 – 2 Yaş</span>
-          <h3 class="card__title">Minik Adımlar</h3>
-          <p class="card__text">Duyusal keşif, hareket ve ilk sosyal deneyimler.</p>
-          <span class="badge badge--olive">En fazla 6 çocuk</span>
-        </div>
-      </article>
-      <article class="card reveal">
-        <div class="media media--ratio-4-5 has-img" data-label="Görsel"><img class="media__img" src="<?php koi_v(); ?>img/danismanlik.jpg" srcset="<?php koi_v(); ?>img/danismanlik-sm.jpg 900w, <?php koi_v(); ?>img/danismanlik.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI danışmanlık odası" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <div class="card__body">
-          <span class="card__meta">2 – 3 Yaş</span>
-          <h3 class="card__title">Keşif Grubu</h3>
-          <p class="card__text">Paylaşma, sıra bekleme ve ayrışma sürecine yumuşak bir geçiş.</p>
-          <span class="badge badge--olive">En fazla 6 çocuk</span>
-        </div>
-      </article>
-      <article class="card reveal">
-        <div class="media media--ratio-4-5 has-img" data-label="Görsel"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <div class="card__body">
-          <span class="card__meta">3 – 5 Yaş</span>
-          <h3 class="card__title">Oyun Atölyesi</h3>
-          <p class="card__text">Sembolik oyun, yaratıcı ifade ve akran ilişkilerinin güçlendiği dönem.</p>
-          <span class="badge badge--olive">En fazla 6 çocuk</span>
-        </div>
-      </article>
-      <article class="card reveal">
-        <div class="media media--ratio-4-5 has-img" data-label="Görsel"><img class="media__img" src="<?php koi_v(); ?>img/blog-masa.jpg" srcset="<?php koi_v(); ?>img/blog-masa-sm.jpg 900w, <?php koi_v(); ?>img/blog-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Defter, kalem ve çay ile çalışma masası" loading="lazy"><svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg></div>
-        <div class="card__body">
-          <span class="card__meta">5 – 7 Yaş</span>
-          <h3 class="card__title">Sosyal Beceri</h3>
-          <p class="card__text">Duygu düzenleme, iş birliği ve okula hazırlık odaklı grup çalışması.</p>
-          <span class="badge badge--olive">En fazla 6 çocuk</span>
-        </div>
-      </article>
+<?php koi_kartlar( 'grup-kartlari' ); ?>
     </div>
   </div>
 </section>
@@ -100,34 +66,7 @@
           <tr><th>Grup</th><th>Yaş</th><th>Gün ve Saat</th><th>Kontenjan</th><th>Ebeveyn Katılımı</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-th="Grup">Minik Adımlar</td>
-            <td data-th="Yaş">1–2 yaş</td>
-            <td data-th="Gün ve saat">Takvime göre</td>
-            <td data-th="Kontenjan"><span class="badge">En fazla 6</span></td>
-            <td data-th="Ebeveyn katılımı">Programın niteliğine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Grup">Keşif Grubu</td>
-            <td data-th="Yaş">2–3 yaş</td>
-            <td data-th="Gün ve saat">Takvime göre</td>
-            <td data-th="Kontenjan"><span class="badge">En fazla 6</span></td>
-            <td data-th="Ebeveyn katılımı">Programın niteliğine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Grup">Oyun Atölyesi</td>
-            <td data-th="Yaş">3–5 yaş</td>
-            <td data-th="Gün ve saat">Takvime göre</td>
-            <td data-th="Kontenjan"><span class="badge">En fazla 6</span></td>
-            <td data-th="Ebeveyn katılımı">Programın niteliğine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Grup">Sosyal Beceri</td>
-            <td data-th="Yaş">5–7 yaş</td>
-            <td data-th="Gün ve saat">Takvime göre</td>
-            <td data-th="Kontenjan"><span class="badge">En fazla 6</span></td>
-            <td data-th="Ebeveyn katılımı">Programın niteliğine göre</td>
-          </tr>
+<?php koi_kartlar( 'grup-tablosu' ); ?>
         </tbody>
       </table>
     </div>
@@ -245,11 +184,7 @@
         <div class="field field--full">
           <label for="og-grup">İlgilenilen Grup</label>
           <select id="og-grup" name="grup">
-            <option>Minik Adımlar (1-2 yaş)</option>
-            <option>Keşif Grubu (2-3 yaş)</option>
-            <option>Oyun Atölyesi (3-5 yaş)</option>
-            <option>Sosyal Beceri (5-7 yaş)</option>
-            <option>Hangi grubun uygun olduğundan emin değilim</option>
+<?php koi_kartlar( 'grup-secenekleri' ); ?>
           </select>
         </div>
         <div class="field field--full">

@@ -5,9 +5,10 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Uzmanlarımız</span>
       </nav>
-      <h1>Yolculuğunuzda<br>Yanınızdaki Ekip</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Yolculuğunuzda
+Yanınızdaki Ekip' ); ?></h1>
     </div>
-    <p class="lead">Çocuğu, ebeveyni ve aileyi birlikte ele alan; danışmanlık, oyun ve gelişim deneyimini aynı çatı altında buluşturan bir ekip.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Çocuğu, ebeveyni ve aileyi birlikte ele alan; danışmanlık, oyun ve gelişim deneyimini aynı çatı altında buluşturan bir ekip.' ); ?></p>
   </div>
 </section>
 

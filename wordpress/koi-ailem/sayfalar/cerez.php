@@ -5,9 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Çerez Politikası</span>
       </nav>
-      <h1>Çerez Politikası</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Çerez Politikası' ); ?></h1>
     </div>
-    <p class="lead">Sitemizde kullanılan çerezler, ne işe yaradıkları ve tercihlerinizi nasıl yönetebileceğiniz.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Sitemizde kullanılan çerezler, ne işe yaradıkları ve tercihlerinizi nasıl yönetebileceğiniz.' ); ?></p>
   </div>
 </section>
 

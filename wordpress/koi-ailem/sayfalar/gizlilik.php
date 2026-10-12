@@ -5,9 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Gizlilik Politikası</span>
       </nav>
-      <h1>Gizlilik Politikası</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Gizlilik Politikası' ); ?></h1>
     </div>
-    <p class="lead">Merkezimizle paylaştığınız bilgilerin nasıl korunduğuna ve kullanıldığına dair açıklamalar.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Merkezimizle paylaştığınız bilgilerin nasıl korunduğuna ve kullanıldığına dair açıklamalar.' ); ?></p>
   </div>
 </section>
 

@@ -446,5 +446,221 @@
    "terim": "Mekân",
    "gorsel": "karsilama"
   }
+ ],
+ "gruplar": [
+  {
+   "slug": "minik-adimlar",
+   "baslik": "Minik Adımlar",
+   "kisa": "",
+   "icerik": "",
+   "gorsel": "oyun-odasi",
+   "meta": {
+    "koi_yas": "1–2 yaş",
+    "koi_kisa": "Duyusal keşif, hareket ve ilk sosyal deneyimler.",
+    "koi_gun_saat": "Takvime göre",
+    "koi_kontenjan": "En fazla 6 çocuk",
+    "koi_ebeveyn": "Programın niteliğine göre"
+   }
+  },
+  {
+   "slug": "kesif-grubu",
+   "baslik": "Keşif Grubu",
+   "kisa": "",
+   "icerik": "",
+   "gorsel": "danismanlik",
+   "meta": {
+    "koi_yas": "2–3 yaş",
+    "koi_kisa": "Paylaşma, sıra bekleme ve ayrışma sürecine yumuşak bir geçiş.",
+    "koi_gun_saat": "Takvime göre",
+    "koi_kontenjan": "En fazla 6 çocuk",
+    "koi_ebeveyn": "Programın niteliğine göre"
+   }
+  },
+  {
+   "slug": "oyun-atolyesi",
+   "baslik": "Oyun Atölyesi",
+   "kisa": "",
+   "icerik": "",
+   "gorsel": "atolye-masa",
+   "meta": {
+    "koi_yas": "3–5 yaş",
+    "koi_kisa": "Sembolik oyun, yaratıcı ifade ve akran ilişkilerinin güçlendiği dönem.",
+    "koi_gun_saat": "Takvime göre",
+    "koi_kontenjan": "En fazla 6 çocuk",
+    "koi_ebeveyn": "Programın niteliğine göre"
+   }
+  },
+  {
+   "slug": "sosyal-beceri",
+   "baslik": "Sosyal Beceri",
+   "kisa": "",
+   "icerik": "",
+   "gorsel": "blog-masa",
+   "meta": {
+    "koi_yas": "5–7 yaş",
+    "koi_kisa": "Duygu düzenleme, iş birliği ve okula hazırlık odaklı grup çalışması.",
+    "koi_gun_saat": "Takvime göre",
+    "koi_kontenjan": "En fazla 6 çocuk",
+    "koi_ebeveyn": "Programın niteliğine göre"
+   }
+  }
+ ],
+ "sss": [
+  {
+   "slug": "koi-nedir",
+   "baslik": "KOI nedir?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>KOI; çocukların, ebeveynlerin ve ailelerin ihtiyaçlarını birlikte ele alan; psikolojik danışmanlık, aile ve ebeveyn çalışmaları, oyun, gelişim programları ve atölyeleri aynı çatı altında buluşturan bir Çocuk ve Aile Gelişim Merkezidir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "merkezimiz",
+   "terim": "Merkezimiz",
+   "terim_aciklama": "KOI Hakkında",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "koi-neden-kuruldu",
+   "baslik": "KOI neden kuruldu?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>KOI, çocuklarla ve ailelerle yürütülen uzun yıllara dayanan çalışmaların sonucunda; çocuğu yalnızca bireysel olarak değil, ailesi, ilişkileri ve gelişimsel çevresiyle birlikte ele alan daha bütüncül bir alan oluşturma fikriyle şekillendi.</p>\n<!-- /wp:paragraph -->",
+   "cat": "merkezimiz",
+   "terim": "Merkezimiz",
+   "terim_aciklama": "KOI Hakkında",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "hangi-yas-gruplari",
+   "baslik": "Hangi yaş gruplarıyla çalışıyorsunuz?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>KOI'de çocukların gelişim dönemlerine göre farklı çalışmalar planlanmaktadır. Oyun grupları ve gelişim programları yaşa ve gelişimsel ihtiyaçlara göre yapılandırılır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Bunun yanında çocuk ve ergen danışmanlığı, ebeveyn ve aile danışmanlığı gibi hizmetler de sunulmaktadır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Her çocuk için uygun hizmet, yaşının yanı sıra gelişimsel ve bireysel ihtiyaçları değerlendirilerek belirlenir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "merkezimiz",
+   "terim": "Merkezimiz",
+   "terim_aciklama": "KOI Hakkında",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "oyun-grubu-oyun-terapisi-farki",
+   "baslik": "Oyun grubu ile oyun terapisi arasındaki fark nedir?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Oyun grupları, çocukların yaş ve gelişim özelliklerine uygun bir grup ortamında oyun oynama, keşfetme, iletişim kurma ve sosyal becerilerini destekleme amacı taşır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Oyun terapisi ise bireysel ihtiyaçlara göre yapılandırılan profesyonel bir danışmanlık/terapi sürecidir. Çocuğun duygusal ve davranışsal ihtiyaçları değerlendirilerek uzman tarafından planlanır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Kısacası, oyun grubu gelişimi destekleyen grup deneyimi; oyun terapisi ise çocuğun bireysel ihtiyaçlarına yönelik profesyonel bir süreçtir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "danismanlik",
+   "terim": "Danışmanlık ve İlk Görüşme",
+   "terim_aciklama": "Hizmetler ve Süreç",
+   "meta": {
+    "koi_sss_hizmetler": "1",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "hangisi-uygun",
+   "baslik": "Çocuğum için danışmanlık mı, oyun grubu mu, atölye mi uygun?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Bunu yalnızca yaşa bakarak belirlemek her zaman doğru değildir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Çocuğun gelişimsel özellikleri, ihtiyaçları, sosyal becerileri, duygusal durumu ve ailenin beklentileri birlikte değerlendirilir. Ön görüşme sonrasında çocuğunuz için danışmanlık, oyun terapisi, oyun grubu veya atölye seçeneklerinden hangisinin daha uygun olduğu konusunda yönlendirme yapılabilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Amacımız belirli bir hizmeti sunmak değil, çocuğun ihtiyacına uygun olan alanı belirlemektir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "danismanlik",
+   "terim": "Danışmanlık ve İlk Görüşme",
+   "terim_aciklama": "Hizmetler ve Süreç",
+   "meta": {
+    "koi_sss_hizmetler": "1",
+    "koi_sss_iletisim": "1"
+   }
+  },
+  {
+   "slug": "ilk-gorusme",
+   "baslik": "İlk görüşme nasıl ilerliyor?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>İlk görüşme, öncelikle çocuğunuzun ve ailenizin ihtiyaçlarını anlamaya yönelik bir ön değerlendirme ve tanışma süreci olarak ilerler.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Çocuğun gelişim öyküsü, mevcut ihtiyaçlar, aile ve okul yaşamı gibi konular ele alınır. İhtiyaca göre danışmanlık, oyun terapisi, oyun grubu veya farklı bir çalışma önerilebilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Amaç, her aileyi tek bir programa yönlendirmek değil; ihtiyaca uygun yolu birlikte belirlemektir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "danismanlik",
+   "terim": "Danışmanlık ve İlk Görüşme",
+   "terim_aciklama": "Hizmetler ve Süreç",
+   "meta": {
+    "koi_sss_hizmetler": "1",
+    "koi_sss_iletisim": "1"
+   }
+  },
+  {
+   "slug": "ebeveyn-gorusmeye-katilir-mi",
+   "baslik": "Ebeveyn görüşmeye katılır mı?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Sürecin niteliğine göre ebeveyn katılımı değişebilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Özellikle çocukla yürütülen danışmanlık ve oyun terapisi süreçlerinde ebeveyn görüşmeleri, çocuğun gelişimini ve süreci daha bütüncül değerlendirmek açısından önemli bir yer tutar.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Ebeveynle ne sıklıkta ve hangi kapsamda görüşüleceği, çocuğun ihtiyaçlarına ve yürütülen çalışmanın yapısına göre belirlenir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "danismanlik",
+   "terim": "Danışmanlık ve İlk Görüşme",
+   "terim_aciklama": "Hizmetler ve Süreç",
+   "meta": {
+    "koi_sss_hizmetler": "1",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "oyun-gruplarinda-ebeveynin-rolu",
+   "baslik": "Oyun gruplarında ebeveynin rolü nedir?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Oyun gruplarında ebeveynin rolü, programın yapısına göre değişebilir. Bazı programlarda ebeveyn sürecin aktif bir parçasıyken, bazı grup çalışmalarında çocukların bağımsız olarak grup deneyimi yaşamaları hedeflenebilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Ebeveynlere gerektiğinde çocuğun grup içerisindeki deneyimi ve gelişim süreci hakkında geri bildirim verilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Buradaki amaç, ebeveyni sürecin dışında bırakmak değil; çocuğun ihtiyacına uygun şekilde sürece dahil etmektir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "programlar",
+   "terim": "Oyun Grupları ve Atölyeler",
+   "terim_aciklama": "Programlar",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "grup-kontenjani",
+   "baslik": "Grup kontenjanı kaç kişi?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>KOI oyun grupları küçük grup prensibiyle planlanmaktadır. Mevcut program planlamamızda bir grupta en fazla 6 çocuk yer almaktadır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Kontenjanların sınırlı tutulmasının amacı, çocukların grup içerisindeki deneyimlerinin daha yakından takip edilebilmesi ve her çocuğa yeterli alan sağlanabilmesidir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "programlar",
+   "terim": "Oyun Grupları ve Atölyeler",
+   "terim_aciklama": "Programlar",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "atolyelere-tek-seferlik-katilim",
+   "baslik": "Atölyelere tek seferlik katılım mümkün mü?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Atölyenin içeriğine ve program yapısına göre değişebilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Bazı atölyeler tek oturumluk olarak planlanabilirken, bazı çalışmalar belirli bir programın parçası olarak birden fazla oturum şeklinde düzenlenebilir.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Her atölyenin katılım koşulları ve kayıt bilgileri ilgili etkinliğin duyurusunda belirtilir.</p>\n<!-- /wp:paragraph -->",
+   "cat": "programlar",
+   "terim": "Oyun Grupları ve Atölyeler",
+   "terim_aciklama": "Programlar",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": ""
+   }
+  },
+  {
+   "slug": "randevu-ve-on-basvuru",
+   "baslik": "Randevu ve ön başvuru nasıl yapılır?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>KOI'ye web sitesindeki iletişim/ön başvuru formu veya WhatsApp üzerinden ulaşabilirsiniz.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>İlk iletişimde çocuğunuzun yaşı, ihtiyaç alanı ve almak istediğiniz hizmet hakkında kısaca bilgi alınır. Ardından uygun uzman, hizmet ve görüşme zamanı konusunda yönlendirme yapılır.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Randevu oluşturulmadan önce ihtiyaç ve süreç hakkında bilgi almak için de bizimle iletişime geçebilirsiniz.</p>\n<!-- /wp:paragraph -->",
+   "cat": "basvuru",
+   "terim": "Bize Nasıl Ulaşırsınız?",
+   "terim_aciklama": "Başvuru",
+   "meta": {
+    "koi_sss_hizmetler": "",
+    "koi_sss_iletisim": "1"
+   }
+  },
+  {
+   "slug": "ucret-bilgisi",
+   "baslik": "Ücret bilgisi nasıl alabilirim?",
+   "kisa": "",
+   "icerik": "<!-- wp:paragraph -->\n<p>Ücretler hizmete, uzmana ve programa göre değiştiği için sitede sabit fiyat yayınlamıyoruz. Güncel bilgi için iletişim formunu doldurabilir veya bize ulaşabilirsiniz.</p>\n<!-- /wp:paragraph -->",
+   "cat": "basvuru",
+   "terim": "Bize Nasıl Ulaşırsınız?",
+   "terim_aciklama": "Başvuru",
+   "meta": {
+    "koi_sss_hizmetler": "1",
+    "koi_sss_iletisim": "1"
+   }
+  }
  ]
 }

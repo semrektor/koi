@@ -16,6 +16,8 @@ const atolyeler = require("./content/atolyeler");
 const blog = require("./content/blog");
 const uzmanlar = require("./content/uzmanlar");
 const galeri = require("./content/galeri");
+const oyunGruplari = require("./content/oyun-gruplari");
+const sss = require("./content/sss");
 
 const ALT = {
   karsilama: "KOI merkezinin karşılama alanı",
@@ -476,6 +478,110 @@ function galeriOgeleri(liste) {
     .join("\n");
 }
 
+/* ---------- Oyun gruplari ---------- */
+function oyunGrubuKartlari() {
+  return oyunGruplari
+    .map(
+      (g) =>
+        '      <article class="card reveal">\n' +
+        '        <div class="media media--ratio-4-5 has-img" data-label="Görsel">' + imgEtiket(g.gorsel) + yaprakIsareti + "</div>\n" +
+        '        <div class="card__body">\n' +
+        '          <span class="card__meta">' + g.yas + "</span>\n" +
+        '          <h3 class="card__title">' + g.ad + "</h3>\n" +
+        '          <p class="card__text">' + g.kisa + "</p>\n" +
+        '          <span class="badge badge--olive">' + g.kontenjan + "</span>\n" +
+        "        </div>\n      </article>"
+    )
+    .join("\n");
+}
+
+function oyunGrubuTablosu() {
+  return oyunGruplari
+    .map(
+      (g) =>
+        "          <tr>\n" +
+        '            <td data-th="Grup">' + g.ad + "</td>\n" +
+        '            <td data-th="Yaş">' + g.yas + "</td>\n" +
+        '            <td data-th="Gün ve saat">' + g.gunSaat + "</td>\n" +
+        '            <td data-th="Kontenjan"><span class="badge">' + g.kontenjan + "</span></td>\n" +
+        '            <td data-th="Ebeveyn katılımı">' + g.ebeveyn + "</td>\n" +
+        "          </tr>"
+    )
+    .join("\n");
+}
+
+const secenekler = (liste) => liste.map((t) => "            <option>" + t + "</option>").join("\n");
+
+/* Basvuru formundaki grup listesi */
+function grupSecenekleri() {
+  return secenekler(oyunGruplari.map((g) => g.ad + " (" + g.yas + ")").concat("Hangi grubun uygun olduğundan emin değilim"));
+}
+
+/* Iletisim formundaki "ilgilendiginiz hizmet" listesi */
+function konuSecenekleri() {
+  return secenekler(hizmetler.map((h) => h.baslik).concat(["Oyun Grupları", "Atölye / Seminer", "Diğer"]));
+}
+
+/* ---------- Atolye program tablosu ----------
+   Satirlar her atolyenin "bilgi" kutusundaki ayni adli satirlardan okunur. */
+function atolyeTablosu() {
+  const al = (x, etiket) => ((x.bilgi || []).find(([k]) => k === etiket) || ["", "—"])[1];
+  return atolyeler
+    .map(
+      (x) =>
+        "          <tr>\n" +
+        '            <td data-th="Atölye / seminer"><a href="' + x.slug + '.html">' + x.baslik + "</a></td>\n" +
+        '            <td data-th="Katılımcı">' + al(x, "Katılımcı") + "</td>\n" +
+        '            <td data-th="Tarih ve saat">' + al(x, "Tarih ve saat") + "</td>\n" +
+        '            <td data-th="Süre">' + al(x, "Süre") + "</td>\n" +
+        '            <td data-th="Kontenjan">' + al(x, "Kontenjan") + "</td>\n" +
+        "          </tr>"
+    )
+    .join("\n");
+}
+
+/* ---------- Sik sorulan sorular ---------- */
+const artiIsareti = '<svg aria-hidden="true"><use href="#i-plus"></use></svg>';
+
+function akordeon(sorular, ilkAcik) {
+  return (
+    '    <div class="accordion reveal">\n' +
+    sorular
+      .map((s, i) => {
+        const acik = ilkAcik && i === 0;
+        return (
+          '      <div class="accordion__item' + (acik ? " is-open" : "") + '">\n' +
+          '        <button class="accordion__trigger" type="button" aria-expanded="' + (acik ? "true" : "false") + '">' + s.soru + artiIsareti + "</button>\n" +
+          '        <div class="accordion__panel">' + s.yanit.map((y) => "<p>" + y + "</p>").join("") + "</div>\n" +
+          "      </div>"
+        );
+      })
+      .join("\n") +
+    "\n    </div>"
+  );
+}
+
+/* SSS sayfasi: bolum bolum */
+function sssBolumleri() {
+  return sss.bolumler
+    .map((b, i) => {
+      const sorular = sss.sorular.filter((s) => s.bolum === b.slug);
+      if (!sorular.length) return "";
+      return (
+        '<section class="section' + (i % 2 ? " section--cream" : "") + ' section--tight">\n' +
+        '  <div class="container container--wide">\n' +
+        '    <div class="section-head reveal">\n' +
+        '      <span class="eyebrow">' + b.ustYazi + "</span>\n" +
+        "      <h2>" + b.baslik + "</h2>\n" +
+        "    </div>\n" +
+        akordeon(sorular, false) + "\n" +
+        "  </div>\n</section>"
+      );
+    })
+    .filter(Boolean)
+    .join("\n\n");
+}
+
 /* ---------- Yazma ---------- */
 let yazilan = 0;
 hizmetler.forEach((x) => {
@@ -493,8 +599,24 @@ blog.forEach((x) => {
 
 /* Liste sayfalarindaki kart bloklarini degistir */
 const BLOKLAR = {
-  "hizmetler.html": { id: "hizmet-listesi", html: () => hizmetKartlari() + "\n\n" + grupKartlari() },
-  "atolyeler.html": { id: "atolye-listesi", html: atolyeKartlari },
+  "hizmetler.html": [
+    { id: "hizmet-listesi", html: () => hizmetKartlari() + "\n\n" + grupKartlari() },
+    { id: "sss-hizmetler", html: () => akordeon(sss.sorular.filter((s) => s.hizmetler), true) },
+  ],
+  "atolyeler.html": [
+    { id: "atolye-listesi", html: atolyeKartlari },
+    { id: "atolye-tablosu", html: atolyeTablosu },
+  ],
+  "oyun-gruplari.html": [
+    { id: "grup-kartlari", html: oyunGrubuKartlari },
+    { id: "grup-tablosu", html: oyunGrubuTablosu },
+    { id: "grup-secenekleri", html: grupSecenekleri },
+  ],
+  "iletisim.html": [
+    { id: "konu-secenekleri", html: konuSecenekleri },
+    { id: "sss-iletisim", html: () => akordeon(sss.sorular.filter((s) => s.iletisim), true) },
+  ],
+  "sss.html": { id: "sss-bolumleri", html: sssBolumleri },
   "blog.html": { id: "blog-listesi", html: () => blogKartlari("blog-yeni-baslangiclar") },
   "uzmanlarimiz.html": { id: "uzman-profilleri", html: uzmanProfilleri },
   "galeri.html": { id: "galeri-listesi", html: () => galeriOgeleri(galeri.gorseller) },

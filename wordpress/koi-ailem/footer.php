@@ -11,7 +11,7 @@
         </a>
         <p class="footer-about">Çocukların, ebeveynlerin ve ailelerin iyi olma halini destekleyen bütüncül bir gelişim merkezi.</p>
         <div class="socials">
-          <a href="<?php echo esc_url( koi_ayar( 'instagram' ) ); ?>" aria-label="KOI Instagram sayfası (@koiworld)" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"></use></svg></a>
+          <a href="<?php echo esc_url( koi_ayar( 'instagram' ) ); ?>" aria-label="KOI Instagram sayfası" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"></use></svg></a>
           <a href="<?php echo esc_url( koi_wa_url() ); ?>" aria-label="WhatsApp ile yazın"><svg aria-hidden="true"><use href="#i-wa"></use></svg></a>
           <a href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>" aria-label="E-posta gönderin"><svg aria-hidden="true"><use href="#i-mail"></use></svg></a>
         </div>

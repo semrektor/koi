@@ -28,6 +28,9 @@ function koi_form_secenekleri() {
 				$liste = $veri;
 			}
 		}
+		/* Hizmet ve grup listeleri panelden yonetilir: dosyadaki sabit liste yerine guncel kayitlar */
+		$liste['konu'] = koi_konu_secenek_listesi();
+		$liste['grup'] = koi_grup_secenek_listesi();
 	}
 	return $liste;
 }

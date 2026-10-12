@@ -66,6 +66,7 @@ function koi_taksonomi( $tur ) {
 		'hizmet' => 'hizmet_kategori',
 		'atolye' => 'atolye_turu',
 		'galeri_gorsel' => 'galeri_kategori',
+		'sss' => 'sss_bolum',
 		'post'   => 'category',
 	);
 	return isset( $harita[ $tur ] ) ? $harita[ $tur ] : '';
@@ -248,6 +249,38 @@ function koi_kartlar( $kimlik ) {
 				$cikti .= koi_kart( $kayit, 'media--ratio-4-5', false );
 				$sira++;
 			}
+			break;
+
+		case 'grup-kartlari':
+			$cikti .= koi_grup_kartlari();
+			break;
+
+		case 'grup-tablosu':
+			$cikti .= koi_grup_tablosu();
+			break;
+
+		case 'grup-secenekleri':
+			$cikti .= koi_secenek_etiketleri( koi_grup_secenek_listesi() );
+			break;
+
+		case 'konu-secenekleri':
+			$cikti .= koi_secenek_etiketleri( koi_konu_secenek_listesi() );
+			break;
+
+		case 'atolye-tablosu':
+			$cikti .= koi_atolye_tablosu();
+			break;
+
+		case 'sss-bolumleri':
+			$cikti .= koi_sss_bolumleri();
+			break;
+
+		case 'sss-hizmetler':
+			$cikti .= koi_akordeon( koi_sss_secili( 'hizmetler' ), true );
+			break;
+
+		case 'sss-iletisim':
+			$cikti .= koi_akordeon( koi_sss_secili( 'iletisim' ), true );
 			break;
 
 		case 'uzman-kartlari':

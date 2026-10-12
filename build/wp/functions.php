@@ -9,15 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.4.0' );
+define( 'KOI_SURUM', '0.5.0' );
 /* Kurulumun olusturdugu icerigin surumu; veri/icerik.json degistiginde artirilir */
-define( 'KOI_ICERIK_SURUM', '0.3.0' );
+define( 'KOI_ICERIK_SURUM', '0.4.0' );
 define( 'KOI_DIR', get_template_directory() );
 define( 'KOI_URI', get_template_directory_uri() );
 
 require KOI_DIR . '/inc/ayarlar.php';
 require KOI_DIR . '/inc/icerik-turleri.php';
 require KOI_DIR . '/inc/sablonlar.php';
+require KOI_DIR . '/inc/listeler.php';
 require KOI_DIR . '/inc/formlar.php';
 require KOI_DIR . '/inc/guvenlik.php';
 require KOI_DIR . '/inc/kvkk.php';

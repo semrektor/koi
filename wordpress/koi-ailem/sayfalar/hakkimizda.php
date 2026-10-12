@@ -5,9 +5,10 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Hakkımızda</span>
       </nav>
-      <h1>Danışmanlık, Oyun ve Atölyeyi<br>Aynı Çatı Altında Buluşturuyoruz</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Danışmanlık, Oyun ve Atölyeyi
+Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
     </div>
-    <p class="lead">KOI; çocukların gelişimini ve ailelerin ihtiyaçlarını birlikte ele alan, sıcak ama nitelikli bir gelişim merkezi olarak kuruldu.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'KOI; çocukların gelişimini ve ailelerin ihtiyaçlarını birlikte ele alan, sıcak ama nitelikli bir gelişim merkezi olarak kuruldu.' ); ?></p>
   </div>
 </section>
 

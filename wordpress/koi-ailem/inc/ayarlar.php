@@ -14,11 +14,12 @@ function koi_ayar_alanlari() {
 		'eposta'      => array( 'E-posta', 'info@koiailem.com', 'email', 'sanitize_email' ),
 		'adres'       => array( 'Kısa adres (alt bilgide görünür)', 'Necip Fazıl Mah. — Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
 		'acik_adres'  => array( 'Açık adres (İletişim ve KVKK sayfalarında görünür)', 'Necip Fazıl Mah. Hamza Yerlikaya Bulvarı, Narlı Bahçe Evleri Sitesi B Blok No: 70 BF, 34773 Ümraniye / İstanbul', 'text', 'sanitize_text_field' ),
+		'ulasim'      => array( 'Ulaşım ve otopark bilgisi (İletişim sayfasında görünür)', 'Açık otopark mevcuttur. Necip Fazıl metro istasyonu 8–12 dakika, Dudullu metro istasyonu 10 dakika mesafededir.', 'text', 'sanitize_text_field' ),
 		'harita'      => array( 'Google Haritalar bağlantısı (İletişim sayfasındaki "Haritada Aç")', 'https://maps.app.goo.gl/dXk6ys7BLWuNJpgq5', 'url', 'esc_url_raw' ),
 		'harita_gomme' => array( 'Gömülü harita adresi (İletişim sayfasında görünen harita; boş bırakmayın)', 'https://www.google.com/maps?q=41.026795,29.17093&z=16&hl=tr&output=embed', 'url', 'esc_url_raw' ),
 		'saat1'       => array( 'Çalışma saatleri (1. satır)', 'Hafta içi 09:00 – 19:00', 'text', 'sanitize_text_field' ),
 		'saat2'       => array( 'Çalışma saatleri (2. satır)', 'Hafta sonu: program ve randevu durumuna göre', 'text', 'sanitize_text_field' ),
-		'instagram'   => array( 'Instagram adresi', 'https://www.instagram.com/koiworld/', 'url', 'esc_url_raw' ),
+		'instagram'   => array( 'Instagram adresi (kullanıcı adı bu adresten okunur)', 'https://www.instagram.com/koiworld/', 'url', 'esc_url_raw' ),
 		'form_eposta' => array( 'Form başvurularının gideceği e-posta (boşsa site yöneticisi)', '', 'email', 'sanitize_email' ),
 	);
 }

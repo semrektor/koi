@@ -5,21 +5,16 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Atölyeler</span>
       </nav>
-      <h1>Birlikte Üretmenin<br>İyileştiren Hali</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Birlikte Üretmenin
+İyileştiren Hali' ); ?></h1>
     </div>
-    <p class="lead">Çocuk, ebeveyn ve çocuk-aile katılımlı tematik atölyeler; hafta sonlarında düzenlenen seminer ve workshop programları.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Çocuk, ebeveyn ve çocuk-aile katılımlı tematik atölyeler; hafta sonlarında düzenlenen seminer ve workshop programları.' ); ?></p>
   </div>
 </section>
 
 <section class="section">
   <div class="container container--wide">
-    <div class="filters reveal" data-filter-group data-filter-target="#atolye-listesi" role="group" aria-label="Atölye filtresi">
-      <button type="button" data-filter="all" class="is-active">Tümü</button>
-      <button type="button" data-filter="cocuk">Çocuk Atölyeleri</button>
-      <button type="button" data-filter="ebeveyn">Ebeveyn Atölyeleri</button>
-      <button type="button" data-filter="aile">Çocuk-Aile</button>
-      <button type="button" data-filter="seminer">Seminer</button>
-    </div>
+<?php koi_filtreler( 'atolye_turu', '#atolye-listesi', 'Atölye filtresi' ); ?>
 
     <div class="cards cards--3" id="atolye-listesi">
 <?php koi_kartlar( 'atolye-listesi' ); ?>
@@ -42,48 +37,7 @@
           <tr><th>Atölye / Seminer</th><th>Katılımcı</th><th>Tarih ve Saat</th><th>Süre</th><th>Kontenjan</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-th="Atölye / seminer">Duygularla Tanışmak</td>
-            <td data-th="Katılımcı">Çocuk · 4–7 yaş</td>
-            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
-            <td data-th="Süre">Programa göre</td>
-            <td data-th="Kontenjan">Program kapasitesine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Atölye / seminer">Sınırlar, Bağ ve Güven</td>
-            <td data-th="Katılımcı">Ebeveyn</td>
-            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
-            <td data-th="Süre">Programa göre</td>
-            <td data-th="Kontenjan">Program kapasitesine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Atölye / seminer">Birlikte Oyun, Birlikte Bağ</td>
-            <td data-th="Katılımcı">Çocuk + aile</td>
-            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
-            <td data-th="Süre">Programa göre</td>
-            <td data-th="Kontenjan">Program kapasitesine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Atölye / seminer">Hikâye, Hayal ve Yaratıcılık</td>
-            <td data-th="Katılımcı">Çocuk · 5–8 yaş</td>
-            <td data-th="Tarih ve saat">Açılış takvimine göre</td>
-            <td data-th="Süre">Programa göre</td>
-            <td data-th="Kontenjan">Program kapasitesine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Atölye / seminer">Okula Uyum ve Yeni Başlangıçlar</td>
-            <td data-th="Katılımcı">Ebeveyn</td>
-            <td data-th="Tarih ve saat">Dönemsel</td>
-            <td data-th="Süre">Programa göre</td>
-            <td data-th="Kontenjan">Program kapasitesine göre</td>
-          </tr>
-          <tr>
-            <td data-th="Atölye / seminer">İlk Yıl: Anne-Bebek Yolculuğu</td>
-            <td data-th="Katılımcı">Anne / ebeveyn</td>
-            <td data-th="Tarih ve saat">Dönemsel</td>
-            <td data-th="Süre">Programa göre</td>
-            <td data-th="Kontenjan">Program kapasitesine göre</td>
-          </tr>
+<?php koi_kartlar( 'atolye-tablosu' ); ?>
         </tbody>
       </table>
     </div>

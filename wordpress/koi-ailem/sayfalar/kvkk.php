@@ -5,9 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>KVKK Aydınlatma Metni</span>
       </nav>
-      <h1>KVKK Aydınlatma Metni</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'KVKK Aydınlatma Metni' ); ?></h1>
     </div>
-    <p class="lead">6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında, kişisel verilerinizin nasıl işlendiğine dair bilgilendirme.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', '6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında, kişisel verilerinizin nasıl işlendiğine dair bilgilendirme.' ); ?></p>
   </div>
 </section>
 

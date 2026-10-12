@@ -5,9 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Galeri</span>
       </nav>
-      <h1>Merkezimizden</h1>
+      <h1><?php koi_ust_metin( 'baslik', 'Merkezimizden' ); ?></h1>
     </div>
-    <p class="lead">Mekânımızın ruhunu yansıtan temsili görseller. Merkezimiz açıldığında kendi fotoğraflarımızla güncellenecektir.</p>
+    <p class="lead"><?php koi_ust_metin( 'giris', 'Mekânımızın ruhunu yansıtan temsili görseller. Merkezimiz açıldığında kendi fotoğraflarımızla güncellenecektir.' ); ?></p>
   </div>
 </section>
 
