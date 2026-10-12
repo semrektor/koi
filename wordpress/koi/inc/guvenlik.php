@@ -32,15 +32,35 @@ function koi_giris_hatasi() {
 }
 add_filter( 'login_errors', 'koi_giris_hatasi' );
 
-/* ?author=1 ile kullanici adi taramasini engelle */
-function koi_yazar_taramasi() {
+/* ---------- Kullanici adi sizintilari ----------
+   WordPress, yazar arsivi adresinde (/author/<kullanici-adi>/) giris adini
+   gosterir. Sitede yazar arsivi kullanilmadigi icin bu adresler bloga
+   yonlenir. Oncelik 1: WordPress'in kendi yonlendirmesinden (oncelik 10) once
+   calismali, yoksa "?author=1" adresi kullanici adini ele verir. */
+function koi_yazar_arsivini_kapat() {
+	if ( is_admin() ) {
+		return;
+	}
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	if ( ! is_admin() && isset( $_GET['author'] ) && ! is_user_logged_in() ) {
-		wp_safe_redirect( home_url( '/' ), 301 );
+	if ( isset( $_GET['author'] ) || is_author() ) {
+		wp_safe_redirect( koi_url( 'blog' ), 301 );
 		exit;
 	}
 }
-add_action( 'template_redirect', 'koi_yazar_taramasi' );
+add_action( 'template_redirect', 'koi_yazar_arsivini_kapat', 1 );
+
+/* Site haritasinda kullanici listesi yer almasin */
+function koi_site_haritasi_saglayicilari( $saglayici, $ad ) {
+	return 'users' === $ad ? false : $saglayici;
+}
+add_filter( 'wp_sitemaps_add_provider', 'koi_site_haritasi_saglayicilari', 10, 2 );
+
+/* Paylasim onizleme verisinde (oEmbed) yazar adresi yer almasin */
+function koi_oembed_yazari_gizle( $veri ) {
+	unset( $veri['author_name'], $veri['author_url'] );
+	return $veri;
+}
+add_filter( 'oembed_response_data', 'koi_oembed_yazari_gizle' );
 
 /* Giris yapmamis ziyaretciye kullanici listesini verme */
 function koi_rest_kullanicilar( $uclar ) {
@@ -56,14 +76,63 @@ if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
 	define( 'DISALLOW_FILE_EDIT', true );
 }
 
-/* Guvenlik basliklari */
+/* ---------- Guvenlik basliklari ---------- */
+
+/* Her sayfada (site, giris ekrani, panel) gonderilen basliklar */
+function koi_ortak_basliklar() {
+	if ( headers_sent() ) {
+		return;
+	}
+	header_remove( 'X-Powered-By' );
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	if ( is_ssl() ) {
+		/* Tarayici bir yil boyunca siteye yalnizca https ile baglanir */
+		header( 'Strict-Transport-Security: max-age=31536000' );
+	}
+}
+add_action( 'login_init', 'koi_ortak_basliklar' );
+add_action( 'admin_init', 'koi_ortak_basliklar' );
+
+/* Sitenin ziyaretciye acik sayfalarinda gonderilen basliklar */
 function koi_guvenlik_basliklari() {
 	if ( headers_sent() ) {
 		return;
 	}
-	header( 'X-Content-Type-Options: nosniff' );
+	koi_ortak_basliklar();
 	header( 'X-Frame-Options: SAMEORIGIN' );
-	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()' );
+
+	/* Icerik guvenlik politikasi: yalnizca giris yapmamis ziyaretciye.
+	   Betik kisiti icermez (WordPress ve eklentiler satir ici betik kullanir);
+	   cerceveleme, eklenti nesneleri ve form hedefleri sinirlanir.
+	   Yonetici oturumunda gonderilmez ki panel araclari etkilenmesin. */
+	if ( ! is_user_logged_in() ) {
+		header( 'Content-Security-Policy: ' . koi_icerik_politikasi() );
+	}
 }
 add_action( 'send_headers', 'koi_guvenlik_basliklari' );
+
+function koi_icerik_politikasi() {
+	/* Sayfalara gomulebilecek dis kaynaklar: harita ve blog yazilarindaki videolar */
+	$cerceveler = apply_filters(
+		'koi_izinli_cerceveler',
+		array(
+			'https://www.google.com',
+			'https://maps.google.com',
+			'https://www.youtube.com',
+			'https://www.youtube-nocookie.com',
+			'https://player.vimeo.com',
+		)
+	);
+	return implode(
+		'; ',
+		array(
+			"frame-ancestors 'self'",
+			"base-uri 'self'",
+			"object-src 'none'",
+			"form-action 'self'",
+			"frame-src 'self' " . implode( ' ', array_map( 'esc_url_raw', (array) $cerceveler ) ),
+		)
+	);
+}

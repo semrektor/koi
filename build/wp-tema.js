@@ -257,7 +257,7 @@ yaz(
     "Theme Name: KOI",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.2.5",
+    "Version: 0.3.0",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
     "Text Domain: koi",
@@ -309,6 +309,20 @@ for (const anahtar of EK_GOVDELER) {
   sayfaMeta[anahtar] = { seo_baslik: meta(ham, "title", ""), aciklama: "" };
   yaz("sayfalar/" + anahtar + ".php", KORUMA + phpLestir(govde(anahtar + ".html"), anahtar) + "\n");
 }
+
+/* Formlardaki acilir liste secenekleri: sunucu yalnizca bu degerleri kabul eder */
+const formSecenekleri = {};
+for (const s of SAYFALAR) {
+  const ham = fs.readFileSync(path.join(PAGES, s.anahtar + ".html"), "utf8");
+  for (const m of ham.matchAll(/<select[^>]*\sname="([a-z_]+)"[^>]*>([\s\S]*?)<\/select>/g)) {
+    const liste = (formSecenekleri[m[1]] = formSecenekleri[m[1]] || []);
+    for (const o of m[2].matchAll(/<option[^>]*>([^<]*)<\/option>/g)) {
+      const metin = o[1].replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+      if (metin && !liste.includes(metin)) liste.push(metin);
+    }
+  }
+}
+yaz("veri/form-secenekleri.json", JSON.stringify(formSecenekleri, null, 1));
 
 /* 6. Veri */
 yaz("veri/sayfalar.json", JSON.stringify(sayfaMeta, null, 1));

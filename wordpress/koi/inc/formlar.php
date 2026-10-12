@@ -8,6 +8,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/* Kotuye kullanim sinirlari (wp-config.php icinde tanimlanarak degistirilebilir) */
+if ( ! defined( 'KOI_SAATLIK_TALEP' ) ) {
+	define( 'KOI_SAATLIK_TALEP', 60 ); // Sitenin tamaminda bir saatte kabul edilen basvuru
+}
+if ( ! defined( 'KOI_GUNLUK_BILDIRIM' ) ) {
+	define( 'KOI_GUNLUK_BILDIRIM', 60 ); // Bir gunde gonderilen bildirim e-postasi
+}
+
+/* Formlardaki acilir listelerin secenekleri (veri/form-secenekleri.json, tema uretilirken yazilir) */
+function koi_form_secenekleri() {
+	static $liste = null;
+	if ( null === $liste ) {
+		$liste = array();
+		$dosya = KOI_DIR . '/veri/form-secenekleri.json';
+		if ( file_exists( $dosya ) ) {
+			$veri = json_decode( (string) file_get_contents( $dosya ), true );
+			if ( is_array( $veri ) ) {
+				$liste = $veri;
+			}
+		}
+	}
+	return $liste;
+}
+
 function koi_form_turleri() {
 	return array(
 		'iletisim'   => 'İletişim formu',
@@ -112,11 +136,15 @@ function koi_talep_isle() {
 		koi_talep_donus( 'hata' );
 	}
 
-	/* Hiz siniri: ayni adresten saatte en fazla 5 gonderim */
-	$ip      = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
-	$anahtar = 'koi_talep_' . md5( $ip . wp_salt() );
-	$sayi    = (int) get_transient( $anahtar );
-	if ( $sayi >= 5 ) {
+	/* Hiz siniri: ayni adresten saatte en fazla 5, sitenin tamaminda saatte en fazla
+	   KOI_SAATLIK_TALEP gonderim. Ikincisi, cok sayida adresten gelen bot saldirisinda
+	   veritabaninin dolmasini onler. */
+	$ip            = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	$anahtar       = 'koi_talep_' . md5( $ip . wp_salt() );
+	$sayi          = (int) get_transient( $anahtar );
+	$genel_anahtar = 'koi_talep_genel_' . gmdate( 'YmdH' );
+	$genel_sayi    = (int) get_transient( $genel_anahtar );
+	if ( $sayi >= 5 || $genel_sayi >= KOI_SAATLIK_TALEP ) {
 		koi_talep_donus( 'sinir' );
 	}
 
@@ -142,6 +170,13 @@ function koi_talep_isle() {
 	}
 	$kvkk = ! empty( $_POST['kvkk'] );
 	// phpcs:enable
+
+	/* Acilir liste alanlari yalnizca sayfadaki seceneklerden biri olabilir */
+	foreach ( koi_form_secenekleri() as $ad => $izinli ) {
+		if ( isset( $veri[ $ad ] ) && ! in_array( $veri[ $ad ], (array) $izinli, true ) ) {
+			unset( $veri[ $ad ] );
+		}
+	}
 
 	if ( 'bulten' === $tur ) {
 		$gecerli = ! empty( $veri['eposta'] ) && is_email( $veri['eposta'] );
@@ -172,6 +207,7 @@ function koi_talep_isle() {
 		update_post_meta( $kimlik, 'koi_f_' . $ad, wp_slash( $deger ) );
 	}
 	set_transient( $anahtar, $sayi + 1, HOUR_IN_SECONDS );
+	set_transient( $genel_anahtar, $genel_sayi + 1, HOUR_IN_SECONDS );
 
 	/* E-posta bildirimi */
 	$alici = koi_ayar( 'form_eposta' );
@@ -189,6 +225,21 @@ function koi_talep_isle() {
 	if ( ! empty( $veri['eposta'] ) && is_email( $veri['eposta'] ) ) {
 		$basliklar[] = 'Reply-To: ' . $veri['eposta'];
 	}
+	/* Gunluk bildirim tavani: posta kutusunun gunluk gonderim siniri tukenmesin.
+	   Tavan dolunca basvurular panele kaydedilmeye devam eder, yalnizca e-posta gitmez. */
+	$gun_anahtari = 'koi_posta_' . wp_date( 'Ymd' );
+	$bugun        = (int) get_transient( $gun_anahtari );
+	if ( $bugun >= KOI_GUNLUK_BILDIRIM ) {
+		update_post_meta( $kimlik, 'koi_posta_alici', $alici );
+		update_post_meta( $kimlik, 'koi_posta', 'tavan' );
+		koi_talep_donus( 'ok' );
+	}
+	if ( $bugun + 1 >= KOI_GUNLUK_BILDIRIM ) {
+		$satirlar[] = '';
+		$satirlar[] = 'Not: Bugünkü e-posta bildirimi sınırına ulaşıldı. Gün içinde gelecek diğer başvurular yalnızca panelde, Bilgi Talepleri altında görünecek.';
+	}
+	set_transient( $gun_anahtari, $bugun + 1, DAY_IN_SECONDS );
+
 	/* Bildirimin sonucu talebe yazilir; panelde "E-posta bildirimi" satirinda gorunur.
 	   Basarili sonuc, iletinin posta sunucusuna teslim edildigini gosterir;
 	   alicinin kutusuna ulastigini garanti etmez. */
@@ -290,6 +341,8 @@ function koi_talep_kutusu( $post ) {
 		echo '<tr><th scope="row">E-posta bildirimi</th><td>';
 		if ( 'teslim' === $posta ) {
 			echo esc_html( $alici . ' adresine gönderilmek üzere posta sunucusuna teslim edildi.' );
+		} elseif ( 'tavan' === $posta ) {
+			echo esc_html( 'Günlük bildirim sınırı dolduğu için e-posta gönderilmedi. Başvuru yalnızca panelde kayıtlı.' );
 		} else {
 			echo '<strong>' . esc_html( $alici . ' adresine gönderilemedi.' ) . '</strong><br>';
 			echo esc_html( 'Hata: ' . (string) get_post_meta( $post->ID, 'koi_posta_hatasi', true ) );

@@ -1,0 +1,26 @@
+{
+ "grup": [
+  "Minik Adımlar (1-2 yaş)",
+  "Keşif Grubu (2-3 yaş)",
+  "Oyun Atölyesi (3-5 yaş)",
+  "Sosyal Beceri (5-7 yaş)",
+  "Hangi grubun uygun olduğundan emin değilim"
+ ],
+ "konu": [
+  "Çocuk ve Ergen Danışmanlığı",
+  "Oyun Terapisi",
+  "Aile ve Ebeveyn Danışmanlığı",
+  "Anne, Hamilelik ve Yenidoğan Danışmanlığı",
+  "Eğitim ve Akademik Gelişim",
+  "Seminer ve Workshoplar",
+  "Kurum ve Okul İş Birlikleri",
+  "Oyun Grupları",
+  "Atölye / Seminer",
+  "Diğer"
+ ],
+ "yontem": [
+  "Telefon",
+  "WhatsApp",
+  "E-posta"
+ ]
+}

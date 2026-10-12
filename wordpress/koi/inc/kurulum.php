@@ -251,6 +251,11 @@ function koi_kurulum_sayfasi() {
 	}
 	echo '</p>';
 
+	/* Form gonderim siniri baglanti adresine gore uygulanir; sunucu bir ag gecidinin
+	   arkasindaysa tum ziyaretciler ayni adresle gorunebilir. Buradan kontrol edilir. */
+	$baglanti = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	echo '<p class="description">Tanılama — sunucunun gördüğü bağlantı adresiniz: <code>' . esc_html( $baglanti ) . '</code>. Bu, kendi IP adresinizle aynı olmalıdır; form gönderim sınırı bu adrese göre uygulanır.</p>';
+
 	echo '<form method="post">';
 	wp_nonce_field( 'koi_kurulum' );
 
