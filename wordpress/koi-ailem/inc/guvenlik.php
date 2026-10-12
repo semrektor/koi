@@ -93,6 +93,8 @@ function koi_ortak_basliklar() {
 }
 add_action( 'login_init', 'koi_ortak_basliklar' );
 add_action( 'admin_init', 'koi_ortak_basliklar' );
+/* REST yanitlari (/wp-json/) normal sayfa akisindan gecmez; basliklar burada eklenir */
+add_action( 'rest_api_init', 'koi_ortak_basliklar' );
 
 /* Sitenin ziyaretciye acik sayfalarinda gonderilen basliklar */
 function koi_guvenlik_basliklari() {
