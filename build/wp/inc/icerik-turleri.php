@@ -298,8 +298,20 @@ function koi_ek_alanlar( $tur ) {
 	return $alanlar;
 }
 
+/* Sitede "Sira" degerine gore dizilen turler (kucuk sayi once) */
+function koi_sirali_turler() {
+	return array( 'hizmet', 'atolye', 'uzman', 'galeri_gorsel', 'oyun_grubu', 'sss' );
+}
+
+/* Yeni kayit listenin sonuna gelsin diye onerilen sira: en buyuk sira + 1 */
+function koi_sonraki_sira( $tur ) {
+	global $wpdb;
+	$en_buyuk = $wpdb->get_var( $wpdb->prepare( "SELECT MAX(menu_order) FROM {$wpdb->posts} WHERE post_type = %s AND post_status = 'publish'", $tur ) );
+	return null === $en_buyuk ? 0 : (int) $en_buyuk + 1;
+}
+
 function koi_meta_kutulari() {
-	foreach ( array( 'hizmet', 'atolye', 'post', 'uzman', 'oyun_grubu', 'sss', 'page' ) as $tur ) {
+	foreach ( array( 'hizmet', 'atolye', 'post', 'uzman', 'galeri_gorsel', 'oyun_grubu', 'sss', 'page' ) as $tur ) {
 		add_meta_box( 'koi_ayrintilar', 'KOI Sayfa Ayrıntıları', 'koi_meta_kutusu', $tur, 'normal', 'high' );
 	}
 }
@@ -308,10 +320,13 @@ add_action( 'add_meta_boxes', 'koi_meta_kutulari' );
 function koi_meta_kutusu( $post ) {
 	wp_nonce_field( 'koi_meta_kaydet', 'koi_meta_nonce' );
 	if ( 'uzman' === $post->post_type ) {
-		echo '<p class="description">Biyografiyi yukarıdaki yazı alanına, portre fotoğrafını sağdaki "Portre fotoğrafı" kutusuna ekleyin. Fotoğraf yoksa baş harfler gösterilir. Sıralama için sağdaki "Sıra" alanını kullanın (küçük sayı önce görünür). Her uzmanın kendi sayfası vardır: sitedeki kartına tıklanınca biyografi, uzmanlık alanları, eğitim ve yürüttüğü hizmetler o sayfada açılır.</p>';
+		echo '<p class="description">Biyografiyi yukarıdaki yazı alanına, portre fotoğrafını sağdaki "Portre fotoğrafı" kutusuna ekleyin. Fotoğraf yoksa baş harfler gösterilir. Her uzmanın kendi sayfası vardır: sitedeki kartına tıklanınca biyografi, uzmanlık alanları, eğitim ve yürüttüğü hizmetler o sayfada açılır.</p>';
 	}
 	if ( 'oyun_grubu' === $post->post_type ) {
-		echo '<p class="description">Grubun görselini sağdaki "Öne çıkan görsel" kutusundan ekleyin; eklenmezse temsili görsel kullanılır. Sıralama için sağdaki "Sıra" alanını kullanın.</p>';
+		echo '<p class="description">Grubun görselini sağdaki "Öne çıkan görsel" kutusundan ekleyin; eklenmezse temsili görsel kullanılır.</p>';
+	}
+	if ( 'galeri_gorsel' === $post->post_type ) {
+		echo '<p class="description">Fotoğrafı sağdaki "Fotoğraf" kutusundan ekleyin, kategorisini "Galeri Kategorileri" kutusundan seçin.</p>';
 	}
 	if ( 'sss' === $post->post_type ) {
 		echo '<p class="description">Soruyu en üstteki başlık alanına, cevabı yazı alanına yazın. Sorunun SSS sayfasında hangi başlık altında görüneceğini sağdaki "Soru Bölümleri" kutusundan seçin.</p>';
@@ -357,7 +372,29 @@ function koi_meta_kutusu( $post ) {
 		}
 		echo '<br><span class="description">' . esc_html( $alan[1] ) . '</span></p>';
 	}
+
+	/* Sira: kaydin sitedeki listede kacinci gorunecegi */
+	if ( in_array( $post->post_type, koi_sirali_turler(), true ) ) {
+		$sira = 'auto-draft' === $post->post_status ? koi_sonraki_sira( $post->post_type ) : (int) $post->menu_order;
+		echo '<p><label for="koi_sira"><strong>Sıra</strong></label><br>';
+		echo '<input type="number" min="0" step="1" style="width:90px" id="koi_sira" name="koi_sira" value="' . esc_attr( (string) $sira ) . '">';
+		echo '<br><span class="description">Sitedeki listede kaçıncı görüneceği. Küçük sayı önce gelir (0 en başta); aynı sayıyı taşıyanlar ada göre dizilir.</span></p>';
+	}
 }
+
+/* "Sira" alani kaydin menu_order degerine yazilir */
+function koi_sira_kaydet( $veri, $gelen ) {
+	if ( ! isset( $_POST['koi_sira'], $_POST['koi_meta_nonce'], $_POST['post_ID'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['koi_meta_nonce'] ) ), 'koi_meta_kaydet' ) ) {
+		return $veri;
+	}
+	/* Yalnizca duzenlenen kaydin kendisi; ayni istekte kaydedilen baska kayitlar degil */
+	if ( empty( $gelen['ID'] ) || (int) $gelen['ID'] !== (int) $_POST['post_ID'] || ! in_array( $veri['post_type'], koi_sirali_turler(), true ) ) {
+		return $veri;
+	}
+	$veri['menu_order'] = max( 0, (int) wp_unslash( $_POST['koi_sira'] ) );
+	return $veri;
+}
+add_filter( 'wp_insert_post_data', 'koi_sira_kaydet', 10, 2 );
 
 function koi_meta_kaydet( $post_id ) {
 	if ( ! isset( $_POST['koi_meta_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['koi_meta_nonce'] ) ), 'koi_meta_kaydet' ) ) {
@@ -420,3 +457,42 @@ function koi_gorsel_sutunu_icerigi( $sutun, $post_id ) {
 }
 add_action( 'manage_galeri_gorsel_posts_custom_column', 'koi_gorsel_sutunu_icerigi', 10, 2 );
 add_action( 'manage_uzman_posts_custom_column', 'koi_gorsel_sutunu_icerigi', 10, 2 );
+
+/* ---------- Liste ekranlarinda sira ----------
+   Sirali turlerin listesi sitedeki sirayla gelir ve "Sira" sutunu gosterir. */
+function koi_sira_sutunu( $sutunlar ) {
+	$yeni = array();
+	foreach ( $sutunlar as $anahtar => $baslik ) {
+		if ( 'date' === $anahtar ) {
+			$yeni['koi_sira'] = 'Sıra';
+		}
+		$yeni[ $anahtar ] = $baslik;
+	}
+	if ( ! isset( $yeni['koi_sira'] ) ) {
+		$yeni['koi_sira'] = 'Sıra';
+	}
+	return $yeni;
+}
+
+function koi_sira_sutunu_icerigi( $sutun, $post_id ) {
+	if ( 'koi_sira' === $sutun ) {
+		echo (int) get_post_field( 'menu_order', $post_id );
+	}
+}
+
+foreach ( koi_sirali_turler() as $koi_tur ) {
+	add_filter( 'manage_' . $koi_tur . '_posts_columns', 'koi_sira_sutunu' );
+	add_action( 'manage_' . $koi_tur . '_posts_custom_column', 'koi_sira_sutunu_icerigi', 10, 2 );
+}
+unset( $koi_tur );
+
+function koi_liste_sirasi( $sorgu ) {
+	if ( ! is_admin() || ! $sorgu->is_main_query() || $sorgu->get( 'orderby' ) ) {
+		return;
+	}
+	if ( in_array( $sorgu->get( 'post_type' ), koi_sirali_turler(), true ) ) {
+		$sorgu->set( 'orderby', 'menu_order title' );
+		$sorgu->set( 'order', 'ASC' );
+	}
+}
+add_action( 'pre_get_posts', 'koi_liste_sirasi' );

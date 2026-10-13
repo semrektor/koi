@@ -4,12 +4,27 @@
  *
  * "Icerikleri Olustur"  : eksik sayfalari, hizmetleri ve atolyeleri olusturur;
  *                         var olan icerige dokunmaz, guvenle tekrar calistirilabilir.
- * "Icerikleri Guncelle" : temayla gelen icerigi var olan kayitlarin uzerine yazar,
- *                         adresi degisen kayitlari yeniden adlandirir ve artik
- *                         kullanilmayan ornek yazilari cop kutusuna tasir.
+ * "Icerikleri Guncelle" : temayla gelen icerigi, kurulumdan beri panelden
+ *                         degistirilmemis kayitlarin uzerine yazar; adresi degisen
+ *                         kayitlari yeniden adlandirir ve artik kullanilmayan ornek
+ *                         yazilari cop kutusuna tasir. Panelden degistirilen
+ *                         kayitlar ancak ayrica istenirse sifirlanir.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+/* Kurulum bir kaydi yazdiginda o andaki degisiklik zamanini kayda damgalar.
+   Kayit panelden kaydedilince bu zaman degisir ve damga artik tutmaz; guncelleme
+   boyle kayitlari atlar. Damgasi olmayan (0.6.1 oncesinde olusturulmus) kayitlar
+   da degistirilmis sayilir: emin olunamayan yerde uzerine yazilmaz. */
+function koi_kurulum_damgala( $kimlik ) {
+	update_post_meta( $kimlik, '_koi_kurulum', (string) get_post_field( 'post_modified_gmt', $kimlik ) );
+}
+
+function koi_kurulum_degismis( $kayit ) {
+	$damga = (string) get_post_meta( $kayit->ID, '_koi_kurulum', true );
+	return '' === $damga || $damga !== (string) $kayit->post_modified_gmt;
 }
 
 /* Kaydi yeni ya da onceki adresinden bulur */
@@ -21,11 +36,14 @@ function koi_kurulum_bul( $kayit, $tur ) {
 	return $var;
 }
 
-/* Donus: 'eklendi', 'guncellendi' ya da '' (dokunulmadi) */
-function koi_kurulum_kayit( $kayit, $tur, $sira, $guncelle = false ) {
+/* Donus: 'eklendi', 'guncellendi', 'atlandi' (panelden degistirilmis) ya da '' (dokunulmadi) */
+function koi_kurulum_kayit( $kayit, $tur, $sira, $guncelle = false, $zorla = false ) {
 	$var = koi_kurulum_bul( $kayit, $tur );
 	if ( $var && ! $guncelle ) {
 		return '';
+	}
+	if ( $var && ! $zorla && koi_kurulum_degismis( $var ) ) {
+		return 'atlandi';
 	}
 
 	$dizi = array(
@@ -100,10 +118,11 @@ function koi_kurulum_kayit( $kayit, $tur, $sira, $guncelle = false ) {
 	if ( ! empty( $kayit['one_cikan'] ) ) {
 		stick_post( $kimlik );
 	}
+	koi_kurulum_damgala( $kimlik );
 	return $var ? 'guncellendi' : 'eklendi';
 }
 
-function koi_icerik_kur( $guncelle = false ) {
+function koi_icerik_kur( $guncelle = false, $zorla = false ) {
 	$dosya = KOI_DIR . '/veri/icerik.json';
 	$veri  = file_exists( $dosya ) ? json_decode( (string) file_get_contents( $dosya ), true ) : null;
 	if ( ! is_array( $veri ) || empty( $veri['sayfalar'] ) ) {
@@ -120,6 +139,7 @@ function koi_icerik_kur( $guncelle = false ) {
 		'grup'       => 0,
 		'sss'        => 0,
 		'guncelleme' => 0,
+		'atlanan'    => 0,
 		'kaldirilan' => 0,
 	);
 
@@ -182,11 +202,13 @@ function koi_icerik_kur( $guncelle = false ) {
 		}
 		$sira = 0;
 		foreach ( $veri[ $anahtar ] as $kayit ) {
-			$sonuc = koi_kurulum_kayit( $kayit, $tur[0], $sira++, $guncelle );
+			$sonuc = koi_kurulum_kayit( $kayit, $tur[0], $sira++, $guncelle, $zorla );
 			if ( 'eklendi' === $sonuc ) {
 				$rapor[ $tur[1] ]++;
 			} elseif ( 'guncellendi' === $sonuc ) {
 				$rapor['guncelleme']++;
+			} elseif ( 'atlandi' === $sonuc ) {
+				$rapor['atlanan']++;
 			}
 		}
 	}
@@ -249,30 +271,28 @@ function koi_kurulum_sayfasi() {
 	if ( isset( $_POST['koi_kur'] ) && check_admin_referer( 'koi_kurulum' ) ) {
 		$sonuc = koi_icerik_kur( false );
 	} elseif ( isset( $_POST['koi_guncelle'] ) && check_admin_referer( 'koi_kurulum' ) ) {
-		if ( empty( $_POST['koi_onay'] ) ) {
-			echo '<div class="notice notice-warning"><p>Güncelleme için onay kutusunu işaretleyin.</p></div>';
-		} else {
-			$sonuc = koi_icerik_kur( true );
-		}
+		$sonuc = koi_icerik_kur( true, ! empty( $_POST['koi_zorla'] ) );
 	}
 	if ( is_wp_error( $sonuc ) ) {
 		echo '<div class="notice notice-error"><p>' . esc_html( $sonuc->get_error_message() ) . '</p></div>';
 	} elseif ( is_array( $sonuc ) ) {
-		echo '<div class="notice notice-success"><p>' . esc_html(
-			sprintf(
-				'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı, %d uzman, %d galeri görseli, %d oyun grubu, %d soru eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
-				$sonuc['sayfa'],
-				$sonuc['hizmet'],
-				$sonuc['atolye'],
-				$sonuc['yazi'],
-				$sonuc['uzman'],
-				$sonuc['galeri'],
-				$sonuc['grup'],
-				$sonuc['sss'],
-				$sonuc['guncelleme'],
-				$sonuc['kaldirilan']
-			)
-		) . '</p></div>';
+		$mesaj = sprintf(
+			'Tamamlandı: %d sayfa, %d hizmet, %d atölye, %d blog yazısı, %d uzman, %d galeri görseli, %d oyun grubu, %d soru eklendi; %d kayıt güncellendi; %d örnek kayıt çöp kutusuna taşındı.',
+			$sonuc['sayfa'],
+			$sonuc['hizmet'],
+			$sonuc['atolye'],
+			$sonuc['yazi'],
+			$sonuc['uzman'],
+			$sonuc['galeri'],
+			$sonuc['grup'],
+			$sonuc['sss'],
+			$sonuc['guncelleme'],
+			$sonuc['kaldirilan']
+		);
+		if ( $sonuc['atlanan'] ) {
+			$mesaj .= sprintf( ' %d kayıt panelden değiştirildiği için olduğu gibi bırakıldı.', $sonuc['atlanan'] );
+		}
+		echo '<div class="notice notice-success"><p>' . esc_html( $mesaj ) . '</p></div>';
 	}
 
 	echo '<p>Tema sürümü: <strong>' . esc_html( KOI_SURUM ) . '</strong>';
@@ -296,10 +316,13 @@ function koi_kurulum_sayfasi() {
 	submit_button( 'İçerikleri Oluştur', 'primary', 'koi_kur', false );
 
 	echo '<h2 style="margin-top:2.5em">İçerikleri Güncelle</h2>';
-	echo '<p>Hizmet, atölye, uzman, galeri, oyun grubu ve soru kayıtlarını temayla gelen son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
-	echo '<p><strong>Dikkat:</strong> Bu kayıtlarda panelden yaptığınız değişikliklerin üzerine yazılır. Kendi eklediğiniz kayıtlara ve yazılara dokunulmaz.</p>';
-	echo '<p><label><input type="checkbox" name="koi_onay" value="1"> Panelden yapılan değişikliklerin üzerine yazılacağını anladım.</label></p>';
+	echo '<p>Temayla gelen hizmet, atölye, uzman, galeri, oyun grubu ve soru kayıtlarını temadaki son haline getirir, adresi değişenleri yeniden adlandırır ve artık kullanılmayan örnek blog yazılarını çöp kutusuna taşır.</p>';
+	echo '<p>Panelden değiştirdiğiniz kayıtlara, kendi eklediğiniz kayıtlara ve yazılara dokunulmaz. Tema güncellemesinden sonra bu düğmeye basmak gerekmez; yalnızca temayla yeni içerik geldiğinde kullanılır.</p>';
 	submit_button( 'İçerikleri Güncelle', 'secondary', 'koi_guncelle', false );
+	echo '<details style="margin-top:1.5em"><summary>Gelişmiş: panelden değiştirilen kayıtları da sıfırla</summary>';
+	echo '<p><strong>Dikkat:</strong> Aşağıdaki kutu işaretliyken "İçerikleri Güncelle", temayla gelen kayıtlarda panelden yapılmış bütün değişiklikleri (metin, bilgi alanları, sıra, kategori) siler ve kayıtları temadaki ilk haline döndürür. Geri alınamaz.</p>';
+	echo '<p><label><input type="checkbox" name="koi_zorla" value="1"> Panelden değiştirilen kayıtların da üzerine yaz.</label></p>';
+	echo '</details>';
 	echo '</form>';
 
 	echo '<p style="margin-top:2.5em">İletişim bilgileri: <a href="' . esc_url( admin_url( 'customize.php?autofocus[section]=koi_iletisim' ) ) . '">Görünüm → Özelleştir → KOI İletişim Bilgileri</a></p>';

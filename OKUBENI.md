@@ -210,6 +210,10 @@ node build/wp-paket.js     # belgeler/koi-tema.zip dosyasını üretir (WordPres
 
 Atölyeler sayfasındaki program tablosu her atölyenin "Kısa bilgi kutusu" alanındaki `Katılımcı`, `Tarih ve saat`, `Süre` ve `Kontenjan` satırlarından üretilir. İletişim formundaki hizmet listesi hizmet kayıtlarından, filtre düğmeleri kategorilerden gelir. İçerik ya da ayar değiştiğinde LiteSpeed sayfa önbelleği kendiliğinden temizlenir.
 
+Hizmet, atölye, uzman, galeri, oyun grubu ve soru kayıtlarının sitedeki sırası, düzenleme ekranındaki "KOI Sayfa Ayrıntıları → Sıra" alanından belirlenir (küçük sayı önce; yeni kayıt listenin sonuna önerilir). Panel listeleri de aynı sırayla gelir ve "Sıra" sütunu gösterir.
+
+KOI Kurulum'daki "İçerikleri Güncelle", yalnızca kurulumdan beri panelden değiştirilmemiş kayıtları temadaki haline getirir; panelden değiştirilen kayıtları atlar. 0.6.1 öncesinde oluşturulmuş kayıtlar da değiştirilmiş sayılır. Hepsini sıfırlamak için aynı ekrandaki "Gelişmiş" bölümündeki kutu işaretlenir (panelde yapılan değişiklikler silinir).
+
 Uzman ve galeri kayıtları taslakta `build/content/uzmanlar.js` ve `build/content/galeri.js` dosyalarından üretilir; WordPress'te kurulum bu kayıtları bir kez oluşturur, sonrası panelden yönetilir.
 
 **Tema dosyasında duranlar:** Ana sayfa ve Hakkımızda metinleri, yasal metinler, Oyun Grupları sayfasındaki "Neden Küçük Gruplar?" ve "Seans İçinde Neler Oluyor?" bölümleri, başvuru adımları, bölüm başlıkları ve üst menü. Bunlar `build/pages/` altında değiştirilip tema yeniden üretilerek güncellenir.
