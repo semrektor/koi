@@ -41,19 +41,21 @@ function koi_eski_ayarlari_tasi() {
 }
 add_action( 'after_switch_theme', 'koi_eski_ayarlari_tasi' );
 
-/* ---------- Adres kurallari ----------
+/* ---------- Tema guncellemesi sonrasi ----------
    Bir tema guncellemesi icerik turlerinin adreslerini degistirebilir (or. uzman
    sayfalari 0.6.0 ile geldi). WordPress adres kurallarini kayitli tuttugu icin
    yeni adresler, kurallar yeniden uretilene kadar "bulunamadi" verir. Tema surumu
-   degistiginde kurallar bir kez tazelenir. */
-function koi_adres_kurallarini_tazele() {
+   degistiginde kurallar bir kez tazelenir; sayfalarin eski hali ziyaretciye
+   gitmesin diye sayfa onbellegi de temizlenir. */
+function koi_surum_degisti() {
 	if ( KOI_SURUM === get_option( 'koi_kural_surumu' ) ) {
 		return;
 	}
 	flush_rewrite_rules( false );
+	koi_onbellegi_temizle();
 	update_option( 'koi_kural_surumu', KOI_SURUM );
 }
-add_action( 'init', 'koi_adres_kurallarini_tazele', 99 );
+add_action( 'init', 'koi_surum_degisti', 99 );
 
 /* ---------- Temel destekler ---------- */
 function koi_tema_destekleri() {
