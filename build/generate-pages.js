@@ -394,10 +394,85 @@ function uzmanKarti(u) {
   return (
         '        <article class="expert reveal">\n' +
         '          <div class="media media--ratio-3-4 media--mono" data-label="Fotoğraf çekim sonrası eklenecek" data-mono="' + basHarfler(u.ad) + '">' + yaprakIsareti + "</div>\n" +
-        '          <h3 class="expert__name">' + u.ad + "</h3>\n" +
+        '          <h3 class="expert__name"><a href="uzman-' + u.slug + '.html">' + u.ad + "</a></h3>\n" +
         '          <p class="expert__role">' + (u.unvanKisa || u.unvan) + "</p>\n" +
         '          <p class="expert__text">' + u.kisa + "</p>\n" +
+        '          <span class="link-arrow" aria-hidden="true">Profili İncele' + arrow + "</span>\n" +
         "        </article>"
+  );
+}
+
+/* Uzmanlik alanlari, egitim ve yuruttugu hizmetler; ardindan "Bilgi Al" dugmesi.
+   dugme false ise dugme yalnizca yuruttugu hizmet varsa gosterilir. */
+function uzmanAyrintilari(u, dugme) {
+  let out = "";
+  const ek = [];
+  if (u.alanlar) ek.push("        <h3>Uzmanlık Alanları</h3>\n        <p>" + u.alanlar + "</p>");
+  if (u.egitim.length) {
+    ek.push("        <h3>Eğitim ve Sertifikalar</h3>\n        <ul>\n" + u.egitim.map((e) => "          <li>" + e + "</li>").join("\n") + "\n        </ul>");
+  }
+  if (u.hizmetler.length) {
+    ek.push(
+      "        <h3>Yürüttüğü Hizmetler</h3>\n        <ul>\n" +
+        u.hizmetler.map((s) => '          <li><a href="' + s + '.html">' + INDEX[s].baslik + "</a></li>").join("\n") +
+        "\n        </ul>"
+    );
+  }
+  if (ek.length) out += '      <div class="prose">\n' + ek.join("\n") + "\n      </div>\n";
+  if (dugme || u.hizmetler.length) {
+    out += '      <div style="margin-top:30px">\n        <a class="btn btn--primary" href="iletisim.html">Bilgi Al' + arrow + "</a>\n      </div>\n";
+  }
+  return out;
+}
+
+/* Uzman sayfasi: kartina tiklaninca acilir */
+function uzmanSayfasi(u) {
+  let govde = "";
+  if (u.unvan && u.unvan !== u.etiket) govde += '      <p class="expert__role" style="margin-bottom:20px">' + u.unvan + "</p>\n";
+  u.bio.forEach((t) => (govde += "      <p>" + t + "</p>\n"));
+  govde += uzmanAyrintilari(u, true);
+
+  const diger = uzmanlar.filter((x) => x.slug !== u.slug).slice(0, 4);
+  const digerBolum = diger.length
+    ? '\n<section class="section section--cream">\n' +
+      '  <div class="container container--wide">\n' +
+      '    <div class="section-head section-head--split reveal">\n' +
+      "      <div>\n" +
+      '        <span class="eyebrow">Kadromuz</span>\n' +
+      "        <h2>Diğer Uzmanlarımız</h2>\n" +
+      "      </div>\n" +
+      '      <a class="link-arrow" style="justify-self:end" href="uzmanlarimiz.html">Tüm Ekip' + arrow + "</a>\n" +
+      "    </div>\n" +
+      '    <div class="cards cards--4">\n' + diger.map(uzmanKarti).join("\n") + "\n    </div>\n" +
+      "  </div>\n</section>\n"
+    : "";
+
+  return (
+    "<!--title: " + u.ad + " | KOI Çocuk ve Aile Gelişim Merkezi-->\n" +
+    "<!--desc: " + u.kisa + "-->\n" +
+    "<!--nav: uzmanlarimiz-->\n\n" +
+    '<section class="page-hero">\n' +
+    '  <div class="container container--wide page-hero__grid">\n' +
+    "    <div>\n" +
+    '      <nav class="breadcrumb" aria-label="Sayfa yolu">\n' +
+    '        <a href="index.html">Anasayfa</a><span>/</span><a href="uzmanlarimiz.html">Uzmanlarımız</a><span>/</span><span>' +
+    u.ad + "</span>\n" +
+    "      </nav>\n" +
+    (u.etiket ? '      <span class="eyebrow">' + u.etiket + "</span>\n" : "") +
+    "      <h1>" + u.ad + "</h1>\n" +
+    "    </div>\n" +
+    (u.kisa ? '    <p class="lead">' + u.kisa + "</p>\n" : "") +
+    "  </div>\n" +
+    "</section>\n\n" +
+    '<section class="section section--tight">\n' +
+    '  <div class="container container--wide split">\n' +
+    '    <div class="split__media reveal">\n' +
+    '      <div class="media media--arch media--tall media--mono" data-label="Portre — çekim sonrası eklenecek" data-mono="' + basHarfler(u.ad) + '">\n' +
+    "        " + yaprakIsareti + "\n      </div>\n" +
+    "    </div>\n" +
+    '    <div class="split__body reveal">\n' + govde + "    </div>\n" +
+    "  </div>\n</section>\n" +
+    digerBolum
   );
 }
 
@@ -415,23 +490,7 @@ function uzmanProfilleri() {
     let govde = '      <span class="eyebrow">' + u.etiket + "</span>\n      <h2>" + u.ad + "</h2>\n";
     if (u.unvan && u.unvan !== u.etiket) govde += '      <p class="expert__role" style="margin-bottom:20px">' + u.unvan + "</p>\n";
     u.bio.forEach((t) => (govde += "      <p>" + t + "</p>\n"));
-
-    const ek = [];
-    if (u.alanlar) ek.push("        <h3>Uzmanlık Alanları</h3>\n        <p>" + u.alanlar + "</p>");
-    if (u.egitim.length) {
-      ek.push("        <h3>Eğitim ve Sertifikalar</h3>\n        <ul>\n" + u.egitim.map((e) => "          <li>" + e + "</li>").join("\n") + "\n        </ul>");
-    }
-    if (u.hizmetler.length) {
-      ek.push(
-        "        <h3>Yürüttüğü Hizmetler</h3>\n        <ul>\n" +
-          u.hizmetler.map((s) => '          <li><a href="' + s + '.html">' + INDEX[s].baslik + "</a></li>").join("\n") +
-          "\n        </ul>"
-      );
-    }
-    if (ek.length) govde += '      <div class="prose">\n' + ek.join("\n") + "\n      </div>\n";
-    if (u.hizmetler.length) {
-      govde += '      <div style="margin-top:30px">\n        <a class="btn btn--primary" href="iletisim.html">Bilgi Al' + arrow + "</a>\n      </div>\n";
-    }
+    govde += uzmanAyrintilari(u, false);
 
     return (
       '<section class="section' + (tek ? " section--cream" : "") + '">\n' +
@@ -594,6 +653,10 @@ atolyeler.forEach((x) => {
 });
 blog.forEach((x) => {
   fs.writeFileSync(path.join(PAGES, x.slug + ".html"), GENERATED_MARK + blogSayfasi(x), "utf8");
+  yazilan++;
+});
+uzmanlar.forEach((u) => {
+  fs.writeFileSync(path.join(PAGES, "uzman-" + u.slug + ".html"), GENERATED_MARK + uzmanSayfasi(u), "utf8");
   yazilan++;
 });
 

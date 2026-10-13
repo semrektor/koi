@@ -4,6 +4,8 @@
  *
  * genis: true  -> Uzmanlarimiz sayfasinda genis profil (gorsel + biyografi)
  * genis: false -> ayni sayfada kart olarak listelenir
+ *
+ * Her uzmanin kendi sayfasi da uretilir (uzman-<slug>.html); kartlar oraya baglanir.
  */
 module.exports = [
   {

@@ -376,57 +376,31 @@ function koi_uzman_karti( $uzman ) {
 	$kisa   = (string) get_post_meta( $uzman->ID, 'koi_kisa', true );
 	$cikti  = '<article class="expert reveal">';
 	$cikti .= koi_portre( $uzman, 'media--ratio-3-4', 'Fotoğraf çekim sonrası eklenecek' );
-	$cikti .= '<h3 class="expert__name">' . esc_html( get_the_title( $uzman ) ) . '</h3>';
+	$cikti .= '<h3 class="expert__name"><a href="' . esc_url( get_permalink( $uzman ) ) . '">' . esc_html( get_the_title( $uzman ) ) . '</a></h3>';
 	if ( '' !== $unvan ) {
 		$cikti .= '<p class="expert__role">' . esc_html( $unvan ) . '</p>';
 	}
 	if ( '' !== $kisa ) {
 		$cikti .= '<p class="expert__text">' . esc_html( $kisa ) . '</p>';
 	}
+	/* Baglanti adin uzerindedir ve kartin tamamini kaplar; bu satir yalnizca gorsel ipucu */
+	$cikti .= '<span class="link-arrow" aria-hidden="true">Profili İncele' . koi_ok() . '</span>';
 	return $cikti . '</article>';
 }
 
-/* Uzmanlarimiz sayfasi: genis profiller, ardindan diger uzmanlarin kartlari */
-function koi_uzman_profilleri() {
-	$genis = array();
-	$diger = array();
-	foreach ( koi_kayitlar( 'uzman' ) as $uzman ) {
-		if ( '1' === (string) get_post_meta( $uzman->ID, 'koi_genis', true ) ) {
-			$genis[] = $uzman;
-		} else {
-			$diger[] = $uzman;
+/* Uzmanlik alanlari, egitim ve yuruttugu hizmetler; ardindan "Bilgi Al" dugmesi.
+   $dugme false ise dugme yalnizca yuruttugu hizmet varsa gosterilir. */
+function koi_uzman_ayrintilari( $uzman, $dugme = false ) {
+	$alanlar   = (string) get_post_meta( $uzman->ID, 'koi_alanlar', true );
+	$egitim    = array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', (string) get_post_meta( $uzman->ID, 'koi_egitim', true ) ) ) );
+	$hizmetler = array();
+	foreach ( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $uzman->ID, 'koi_hizmetler', true ) ) ) ) as $adres ) {
+		$hizmet = get_page_by_path( sanitize_title( $adres ), OBJECT, 'hizmet' );
+		if ( $hizmet && 'publish' === $hizmet->post_status ) {
+			$hizmetler[] = $hizmet;
 		}
 	}
-
-	$sira = 0;
-	foreach ( $genis as $uzman ) {
-		$tek      = ( 1 === $sira % 2 );
-		$etiket   = (string) get_post_meta( $uzman->ID, 'koi_etiket', true );
-		$unvan    = (string) get_post_meta( $uzman->ID, 'koi_unvan', true );
-		$alanlar  = (string) get_post_meta( $uzman->ID, 'koi_alanlar', true );
-		$egitim   = array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', (string) get_post_meta( $uzman->ID, 'koi_egitim', true ) ) ) );
-		$hizmetler = array();
-		foreach ( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $uzman->ID, 'koi_hizmetler', true ) ) ) ) as $adres ) {
-			$hizmet = get_page_by_path( sanitize_title( $adres ), OBJECT, 'hizmet' );
-			if ( $hizmet && 'publish' === $hizmet->post_status ) {
-				$hizmetler[] = $hizmet;
-			}
-		}
-		?>
-<section class="section<?php echo $tek ? ' section--cream' : ''; ?>">
-	<div class="container container--wide split<?php echo $tek ? ' split--reverse' : ''; ?>">
-		<div class="split__media reveal">
-			<?php echo koi_portre( $uzman, 'media--arch media--tall', 'Portre — çekim sonrası eklenecek' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		</div>
-		<div class="split__body reveal">
-			<?php if ( '' !== $etiket ) : ?>
-				<span class="eyebrow"><?php echo esc_html( $etiket ); ?></span>
-			<?php endif; ?>
-			<h2><?php echo esc_html( get_the_title( $uzman ) ); ?></h2>
-			<?php if ( '' !== $unvan && $unvan !== $etiket ) : ?>
-				<p class="expert__role" style="margin-bottom:20px"><?php echo esc_html( $unvan ); ?></p>
-			<?php endif; ?>
-			<?php echo apply_filters( 'the_content', $uzman->post_content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the_content filtresinden gecti. ?>
+	?>
 			<?php if ( '' !== $alanlar || $egitim || $hizmetler ) : ?>
 			<div class="prose">
 				<?php if ( '' !== $alanlar ) : ?>
@@ -451,11 +425,47 @@ function koi_uzman_profilleri() {
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>
-			<?php if ( $hizmetler ) : ?>
+			<?php if ( $dugme || $hizmetler ) : ?>
 			<div style="margin-top:30px">
 				<a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Al<?php echo koi_ok(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 			</div>
 			<?php endif; ?>
+	<?php
+}
+
+/* Uzmanlarimiz sayfasi: genis profiller, ardindan diger uzmanlarin kartlari */
+function koi_uzman_profilleri() {
+	$genis = array();
+	$diger = array();
+	foreach ( koi_kayitlar( 'uzman' ) as $uzman ) {
+		if ( '1' === (string) get_post_meta( $uzman->ID, 'koi_genis', true ) ) {
+			$genis[] = $uzman;
+		} else {
+			$diger[] = $uzman;
+		}
+	}
+
+	$sira = 0;
+	foreach ( $genis as $uzman ) {
+		$tek      = ( 1 === $sira % 2 );
+		$etiket   = (string) get_post_meta( $uzman->ID, 'koi_etiket', true );
+		$unvan    = (string) get_post_meta( $uzman->ID, 'koi_unvan', true );
+		?>
+<section class="section<?php echo $tek ? ' section--cream' : ''; ?>">
+	<div class="container container--wide split<?php echo $tek ? ' split--reverse' : ''; ?>">
+		<div class="split__media reveal">
+			<?php echo koi_portre( $uzman, 'media--arch media--tall', 'Portre — çekim sonrası eklenecek' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</div>
+		<div class="split__body reveal">
+			<?php if ( '' !== $etiket ) : ?>
+				<span class="eyebrow"><?php echo esc_html( $etiket ); ?></span>
+			<?php endif; ?>
+			<h2><?php echo esc_html( get_the_title( $uzman ) ); ?></h2>
+			<?php if ( '' !== $unvan && $unvan !== $etiket ) : ?>
+				<p class="expert__role" style="margin-bottom:20px"><?php echo esc_html( $unvan ); ?></p>
+			<?php endif; ?>
+			<?php echo apply_filters( 'the_content', $uzman->post_content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the_content filtresinden gecti. ?>
+			<?php koi_uzman_ayrintilari( $uzman ); ?>
 		</div>
 	</div>
 </section>
@@ -794,6 +804,63 @@ function koi_yazi_sayfasi( $post ) {
 
 	<?php
 	koi_ilgili_kartlar( $post, 'Devamı', 'İlgili Yazılar' );
+}
+
+/* Uzman sayfasi: kartina tiklaninca acilir */
+function koi_uzman_sayfasi( $post ) {
+	$etiket = (string) get_post_meta( $post->ID, 'koi_etiket', true );
+	$unvan  = (string) get_post_meta( $post->ID, 'koi_unvan', true );
+	$kisa   = (string) get_post_meta( $post->ID, 'koi_kisa', true );
+	$diger  = array();
+	foreach ( koi_kayitlar( 'uzman' ) as $kayit ) {
+		if ( $kayit->ID !== $post->ID && count( $diger ) < 4 ) {
+			$diger[] = $kayit;
+		}
+	}
+	?>
+<section class="page-hero">
+	<div class="container container--wide page-hero__grid">
+		<div>
+			<?php koi_sayfa_yolu( 'Uzmanlarımız', koi_url( 'uzmanlarimiz' ), get_the_title( $post ) ); ?>
+			<?php if ( '' !== $etiket ) : ?>
+				<span class="eyebrow"><?php echo esc_html( $etiket ); ?></span>
+			<?php endif; ?>
+			<h1><?php echo esc_html( get_the_title( $post ) ); ?></h1>
+		</div>
+		<?php if ( '' !== $kisa ) : ?>
+			<p class="lead"><?php echo esc_html( $kisa ); ?></p>
+		<?php endif; ?>
+	</div>
+</section>
+
+<section class="section section--tight">
+	<div class="container container--wide split">
+		<div class="split__media reveal">
+			<?php echo koi_portre( $post, 'media--arch media--tall', 'Portre — çekim sonrası eklenecek' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</div>
+		<div class="split__body reveal">
+			<?php if ( '' !== $unvan && $unvan !== $etiket ) : ?>
+				<p class="expert__role" style="margin-bottom:20px"><?php echo esc_html( $unvan ); ?></p>
+			<?php endif; ?>
+			<?php echo apply_filters( 'the_content', $post->post_content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the_content filtresinden gecti. ?>
+			<?php koi_uzman_ayrintilari( $post, true ); ?>
+		</div>
+	</div>
+</section>
+
+	<?php
+	if ( ! $diger ) {
+		return;
+	}
+	echo '<section class="section section--cream"><div class="container container--wide">';
+	echo '<div class="section-head section-head--split reveal"><div>';
+	echo '<span class="eyebrow">Kadromuz</span><h2>Diğer Uzmanlarımız</h2></div>';
+	echo '<a class="link-arrow" style="justify-self:end" href="' . esc_url( koi_url( 'uzmanlarimiz' ) ) . '">Tüm Ekip' . koi_ok() . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo '</div><div class="cards cards--4">';
+	foreach ( $diger as $kayit ) {
+		echo koi_uzman_karti( $kayit ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+	echo '</div></div></section>';
 }
 
 /* Sablonu olmayan sayfalar ve arsivler icin sade ust bolum */

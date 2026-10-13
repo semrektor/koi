@@ -437,11 +437,21 @@ p:last-child{ margin-bottom:0; }
 .program-band__media{ min-height:420px; }
 
 /* ---------- 13. Uzmanlar ---------- */
-.expert{ text-align:left; }
-.expert .media{ margin-bottom:18px; }
+.expert{ text-align:left; position:relative; }
+.expert .media{ margin-bottom:18px; transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
 .expert__name{ font-size:1.25rem; margin-bottom:.25em; }
+.expert__name a{ color:inherit; transition:color .3s var(--ease); }
+/* Kartin tamami uzmanin sayfasina goturur */
+.expert__name a::after{ content:""; position:absolute; inset:0; z-index:1; border-radius:var(--radius-m); }
+.expert__name a:focus-visible{ outline:none; }
+.expert__name a:focus-visible::after{ outline:2px solid var(--koi-terra); outline-offset:6px; }
 .expert__role{ font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--koi-terra); }
 .expert__text{ font-size:.88rem; color:var(--koi-muted); margin-top:12px; }
+.expert .link-arrow{ margin-top:16px; }
+.expert:hover .media{ transform:translateY(-6px); box-shadow:var(--shadow-card); }
+.expert:hover .expert__name a{ color:var(--koi-terra); }
+.expert:hover .link-arrow{ border-color:var(--koi-linen); color:var(--koi-terra); }
+.expert:hover .link-arrow svg{ transform:translateX(5px); }
 
 /* ---------- 14. Referanslar ---------- */
 .testimonials{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2vw,26px); }

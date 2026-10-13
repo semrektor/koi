@@ -72,17 +72,25 @@ function koi_icerik_turleri() {
 		'rewrite'             => false,
 	);
 
+	/* Uzmanlar hem Uzmanlarimiz sayfasinda listelenir hem de kendi sayfalari vardir
+	   (/uzmanlarimiz/ad-soyad/); kartlar o sayfaya baglanir. */
 	register_post_type(
 		'uzman',
 		array_merge(
 			$liste,
 			array(
+				'public'        => true,
+				'rewrite'       => array(
+					'slug'       => 'uzmanlarimiz',
+					'with_front' => false,
+				),
 				'labels'        => array(
 					'name'                  => 'Uzmanlar',
 					'singular_name'         => 'Uzman',
 					'add_new'               => 'Yeni Ekle',
 					'add_new_item'          => 'Yeni Uzman Ekle',
 					'edit_item'             => 'Uzmanı Düzenle',
+					'view_item'             => 'Uzmanın Sayfasını Gör',
 					'all_items'             => 'Tüm Uzmanlar',
 					'search_items'          => 'Uzman Ara',
 					'featured_image'        => 'Portre fotoğrafı',
@@ -266,11 +274,11 @@ function koi_ek_alanlar( $tur ) {
 		$alanlar['koi_etiket']     = array( 'Üst etiket', 'Adın üstünde görünen kısa etiket. Örn. "Kurucu Ortak", "Uzman".', 'text' );
 		$alanlar['koi_unvan']      = array( 'Unvan', 'Örn. "Psikolojik Danışman · Aile Danışmanı".', 'text' );
 		$alanlar['koi_unvan_kisa'] = array( 'Kısa unvan', 'Kartlarda görünür. Boşsa unvan kullanılır.', 'text' );
-		$alanlar['koi_kisa']       = array( 'Kısa tanıtım', 'Kartlarda görünen bir cümlelik tanıtım.', 'textarea' );
-		$alanlar['koi_genis']      = array( 'Geniş profil', 'Uzmanlarımız sayfasında fotoğraf ve biyografiyle geniş profil olarak göster. İşaretli değilse kart olarak listelenir.', 'checkbox' );
-		$alanlar['koi_alanlar']    = array( 'Uzmanlık alanları', 'Geniş profilde görünür.', 'textarea' );
-		$alanlar['koi_egitim']     = array( 'Eğitim ve sertifikalar', 'Her satıra bir madde. Geniş profilde liste olarak görünür.', 'textarea' );
-		$alanlar['koi_hizmetler']  = array( 'Yürüttüğü hizmetler', 'Geniş profilde bağlantı olarak görünür.', 'hizmetler' );
+		$alanlar['koi_kisa']       = array( 'Kısa tanıtım', 'Kartlarda ve uzmanın kendi sayfasının üstünde görünen bir cümlelik tanıtım.', 'textarea' );
+		$alanlar['koi_genis']      = array( 'Geniş profil', 'Uzmanlarımız sayfasında fotoğraf ve biyografiyle geniş profil olarak göster. İşaretli değilse kart olarak listelenir; karta tıklayan ziyaretçi uzmanın kendi sayfasını görür.', 'checkbox' );
+		$alanlar['koi_alanlar']    = array( 'Uzmanlık alanları', 'Uzmanın kendi sayfasında ve geniş profilde görünür.', 'textarea' );
+		$alanlar['koi_egitim']     = array( 'Eğitim ve sertifikalar', 'Her satıra bir madde. Uzmanın kendi sayfasında ve geniş profilde liste olarak görünür.', 'textarea' );
+		$alanlar['koi_hizmetler']  = array( 'Yürüttüğü hizmetler', 'Uzmanın kendi sayfasında ve geniş profilde bağlantı olarak görünür.', 'hizmetler' );
 	}
 	if ( 'oyun_grubu' === $tur ) {
 		$alanlar['koi_yas']       = array( 'Yaş aralığı', 'Kartta, tabloda ve başvuru formunda görünür. Örn. "1–2 yaş".', 'text' );
@@ -300,7 +308,7 @@ add_action( 'add_meta_boxes', 'koi_meta_kutulari' );
 function koi_meta_kutusu( $post ) {
 	wp_nonce_field( 'koi_meta_kaydet', 'koi_meta_nonce' );
 	if ( 'uzman' === $post->post_type ) {
-		echo '<p class="description">Biyografiyi yukarıdaki yazı alanına, portre fotoğrafını sağdaki "Portre fotoğrafı" kutusuna ekleyin. Fotoğraf yoksa baş harfler gösterilir. Sıralama için sağdaki "Sıra" alanını kullanın (küçük sayı önce görünür).</p>';
+		echo '<p class="description">Biyografiyi yukarıdaki yazı alanına, portre fotoğrafını sağdaki "Portre fotoğrafı" kutusuna ekleyin. Fotoğraf yoksa baş harfler gösterilir. Sıralama için sağdaki "Sıra" alanını kullanın (küçük sayı önce görünür). Her uzmanın kendi sayfası vardır: sitedeki kartına tıklanınca biyografi, uzmanlık alanları, eğitim ve yürüttüğü hizmetler o sayfada açılır.</p>';
 	}
 	if ( 'oyun_grubu' === $post->post_type ) {
 		echo '<p class="description">Grubun görselini sağdaki "Öne çıkan görsel" kutusundan ekleyin; eklenmezse temsili görsel kullanılır. Sıralama için sağdaki "Sıra" alanını kullanın.</p>';

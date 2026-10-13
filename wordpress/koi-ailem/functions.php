@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.5.1' );
+define( 'KOI_SURUM', '0.6.0' );
 /* Kurulumun olusturdugu icerigin surumu; veri/icerik.json degistiginde artirilir */
 define( 'KOI_ICERIK_SURUM', '0.4.0' );
 define( 'KOI_DIR', get_template_directory() );
@@ -40,6 +40,20 @@ function koi_eski_ayarlari_tasi() {
 	}
 }
 add_action( 'after_switch_theme', 'koi_eski_ayarlari_tasi' );
+
+/* ---------- Adres kurallari ----------
+   Bir tema guncellemesi icerik turlerinin adreslerini degistirebilir (or. uzman
+   sayfalari 0.6.0 ile geldi). WordPress adres kurallarini kayitli tuttugu icin
+   yeni adresler, kurallar yeniden uretilene kadar "bulunamadi" verir. Tema surumu
+   degistiginde kurallar bir kez tazelenir. */
+function koi_adres_kurallarini_tazele() {
+	if ( KOI_SURUM === get_option( 'koi_kural_surumu' ) ) {
+		return;
+	}
+	flush_rewrite_rules( false );
+	update_option( 'koi_kural_surumu', KOI_SURUM );
+}
+add_action( 'init', 'koi_adres_kurallarini_tazele', 99 );
 
 /* ---------- Temel destekler ---------- */
 function koi_tema_destekleri() {
@@ -97,6 +111,7 @@ function koi_url( $anahtar ) {
 	$onekler = array(
 		'hizmet-' => 'hizmetler',
 		'atolye-' => 'atolyeler',
+		'uzman-'  => 'uzmanlarimiz',
 		'blog-'   => 'blog',
 	);
 	foreach ( $onekler as $onek => $taban ) {
@@ -139,6 +154,9 @@ function koi_nav_anahtari() {
 	}
 	if ( is_singular( 'atolye' ) || is_tax( 'atolye_turu' ) ) {
 		return 'atolyeler';
+	}
+	if ( is_singular( 'uzman' ) ) {
+		return 'uzmanlarimiz';
 	}
 	if ( is_home() || is_singular( 'post' ) || is_category() || is_tag() || is_date() || is_author() ) {
 		return 'blog';
@@ -216,6 +234,9 @@ function koi_meta_aciklama() {
 	}
 	$meta     = koi_sayfa_meta();
 	$aciklama = ! empty( $meta['aciklama'] ) ? $meta['aciklama'] : '';
+	if ( ! $aciklama && is_singular( 'uzman' ) ) {
+		$aciklama = get_post_meta( get_queried_object_id(), 'koi_kisa', true );
+	}
 	if ( ! $aciklama && is_singular() ) {
 		$aciklama = get_the_excerpt( get_queried_object_id() );
 	}
