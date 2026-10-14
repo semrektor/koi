@@ -11,6 +11,7 @@
  */
 const fs = require("fs");
 const path = require("path");
+const { alanlariCikar, metniAyir } = require("./wp-alanlar");
 
 const KOK = path.join(__dirname, "..");
 const PAGES = path.join(__dirname, "pages");
@@ -44,6 +45,8 @@ const SAYFALAR = [
 ];
 /* Sayfasi olmayan ama govdesi kullanilan sablonlar */
 const EK_GOVDELER = ["404"];
+/* Govdesi sayfa duzenleyicisinden yonetilen yasal metin sayfalari */
+const METIN_SAYFALARI = ["kvkk", "gizlilik", "cerez"];
 
 /* Sayfadaki formun turu (inc/formlar.php ile ayni anahtarlar) */
 const FORM_TURU = { iletisim: "iletisim", "oyun-gruplari": "oyun-grubu" };
@@ -178,6 +181,14 @@ function phpLestir(html, anahtar) {
   html = html.replace(/(?<=["\s,(])assets\/(?=(?:img|css|js)\/)/g, "<?php koi_v(); ?>");
 
   for (const [eski, yeni] of DEGISIMLER) html = html.split(eski).join(yeni);
+
+  /* Panelden duzenlenen alanlar (build/wp-alanlar.js yer tutuculari) */
+  html = html
+    .replace(/⟦I:([a-z0-9-]+)⟧/g, "<?php koi_isaret( '$1' ); ?>")
+    .replace(/⟦A:([a-z0-9-]+)⟧/g, "<?php koi_alan( '$1' ); ?>")
+    .replace(/⟦L:([a-z0-9-]+)⟧/g, "<?php koi_liste( '$1' ); ?>")
+    .replace(/⟦G:([a-z0-9-]+)⟧/g, "<?php koi_gorsel( '$1' ); ?>")
+    .replace(/⟦M:([a-z0-9-]+)⟧/g, "<?php koi_sayfa_metni( '$1' ); ?>");
   return html;
 }
 
@@ -298,7 +309,7 @@ yaz(
     "Theme Name: KOI Çocuk ve Aile",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.6.1",
+    "Version: 0.7.0",
     "Update URI: https://koiailem.com/",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
@@ -338,22 +349,29 @@ if (!alt.includes("</body>")) throw new Error("foot.html: </body> bulunamadi");
 alt = phpLestir(alt, "footer").replace("</body>", "<?php wp_footer(); ?>\n</body>");
 yaz("footer.php", KORUMA + alt);
 
-/* Sayfa ust bolumundeki baslik ve giris metni, sayfa duzenleme ekranindan
-   degistirilebilir. Buradaki metin, alan bos birakildiginda gorunen varsayilandir. */
-const sayfaUst = {};
-function ustBolum(html, sayfa) {
-  const m = html.match(/(<section class="page-hero">[\s\S]*?<h1>)([\s\S]*?)(<\/h1>[\s\S]*?<p class="lead">)([\s\S]*?)(<\/p>)/);
-  if (!m) return html;
-  const duz = (t) => t.replace(/<br\s*\/?>/g, "\n").replace(/&amp;/g, "&").trim();
-  const baslik = duz(m[2]);
-  const giris = duz(m[4]);
-  /* Yalnizca duz metin: icinde etiket ya da PHP varsa dokunulmaz */
-  if (/[<>]/.test(baslik) || /[<>]/.test(giris)) return html;
-  sayfaUst[sayfa.slug] = { baslik, giris };
-  return html.replace(
-    m[0],
-    () => m[1] + "<?php koi_ust_metin( 'baslik', " + phpMetin(baslik) + " ); ?>" + m[3] + "<?php koi_ust_metin( 'giris', " + phpMetin(giris) + " ); ?>" + m[5]
-  );
+/* Sayfa metinleri ve gorselleri Ozellestir ekranindan, yasal metinlerin govdesi
+   sayfa duzenleyicisinden degistirilir (build/wp-alanlar.js, inc/alanlar.php).
+   Iletisim bilgisi iceren metinler alan olmaz; onlar KOI Iletisim Bilgileri'nden gelir. */
+const alanVerisi = { sayfalar: [], ust: {}, metinler: {} };
+const KORUNAN = DEGISIMLER.map(([eski]) => eski)
+  .filter((e) => !/^(href|data-[a-z-]+)=/.test(e))
+  .map((e) => e.replace(/^>|<$/g, ""));
+
+function alanli(anahtar, baslik, slug) {
+  let html = govde(anahtar + ".html");
+  if (METIN_SAYFALARI.includes(anahtar)) {
+    const m = metniAyir(html, anahtar);
+    html = m.html;
+    alanVerisi.metinler[anahtar] = m.bloklar;
+  }
+  const sonuc = alanlariCikar(html, anahtar, {
+    korunan: KORUNAN,
+    /* Blogdaki ornek "one cikan yazi" PHP ile degistirilir */
+    haric: (d, siniflar) => anahtar === "blog" && d.ad === "article" && siniflar.includes("split"),
+  });
+  alanVerisi.sayfalar.push({ anahtar, slug, baslik, bolumler: sonuc.bolumler });
+  if (sonuc.ust && (sonuc.ust.baslik || sonuc.ust.giris)) alanVerisi.ust[anahtar] = sonuc.ust;
+  return sonuc.html;
 }
 
 /* 5. Sayfa govdeleri */
@@ -362,12 +380,12 @@ for (const s of SAYFALAR) {
   const dosya = s.anahtar + ".html";
   const ham = fs.readFileSync(path.join(PAGES, dosya), "utf8");
   sayfaMeta[s.anahtar] = { seo_baslik: meta(ham, "title", ""), aciklama: meta(ham, "desc", "") };
-  yaz("sayfalar/" + s.anahtar + ".php", KORUMA + ustBolum(phpLestir(govde(dosya), s.anahtar), s) + "\n");
+  yaz("sayfalar/" + s.anahtar + ".php", KORUMA + phpLestir(alanli(s.anahtar, s.baslik, s.slug), s.anahtar) + "\n");
 }
 for (const anahtar of EK_GOVDELER) {
   const ham = fs.readFileSync(path.join(PAGES, anahtar + ".html"), "utf8");
   sayfaMeta[anahtar] = { seo_baslik: meta(ham, "title", ""), aciklama: "" };
-  yaz("sayfalar/" + anahtar + ".php", KORUMA + phpLestir(govde(anahtar + ".html"), anahtar) + "\n");
+  yaz("sayfalar/" + anahtar + ".php", KORUMA + phpLestir(alanli(anahtar, "Bulunamadı Sayfası (404)", ""), anahtar) + "\n");
 }
 
 /* Formlardaki acilir liste secenekleri: sunucu yalnizca bu degerleri kabul eder */
@@ -386,7 +404,7 @@ yaz("veri/form-secenekleri.json", JSON.stringify(formSecenekleri, null, 1));
 
 /* 6. Veri */
 yaz("veri/sayfalar.json", JSON.stringify(sayfaMeta, null, 1));
-yaz("veri/sayfa-ust.json", JSON.stringify(sayfaUst, null, 1));
+yaz("veri/alanlar.json", JSON.stringify(alanVerisi));
 yaz(
   "veri/icerik.json",
   JSON.stringify(
@@ -455,7 +473,7 @@ yaz(
 );
 
 /* 7. Kontrol: PHP'ye cevrilmemis taslak kalintisi kalmasin */
-const KALINTI = [/\.html["#]/, /EGER:/, /data-demo-form/, /Taslak önizleme/, /wa\.me\/90/, /["\s,(]assets\/(img|css|js)\//, /CARDS:/];
+const KALINTI = [/\.html["#]/, /EGER:/, /data-demo-form/, /Taslak önizleme/, /wa\.me\/90/, /["\s,(]assets\/(img|css|js)\//, /CARDS:/, /[⟦⟧]/];
 let sorun = 0;
 (function tara(d) {
   for (const f of fs.readdirSync(d, { withFileTypes: true })) {

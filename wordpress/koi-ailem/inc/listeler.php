@@ -188,35 +188,6 @@ function koi_sss_bolumleri() {
 	return $cikti;
 }
 
-/* ---------- Sayfa ust bolumu (baslik ve giris metni) ----------
-   Sayfa duzenleme ekranindaki "KOI Sayfa Ayrintilari" kutusundan degistirilir;
-   bos birakilirsa temadaki varsayilan metin gorunur. */
-function koi_sayfa_ust_varsayilani( $adres ) {
-	static $liste = null;
-	if ( null === $liste ) {
-		$liste = array();
-		$dosya = KOI_DIR . '/veri/sayfa-ust.json';
-		if ( file_exists( $dosya ) ) {
-			$veri = json_decode( (string) file_get_contents( $dosya ), true );
-			if ( is_array( $veri ) ) {
-				$liste = $veri;
-			}
-		}
-	}
-	return isset( $liste[ $adres ] ) ? $liste[ $adres ] : array();
-}
-
-function koi_ust_metin( $alan, $varsayilan ) {
-	$kimlik = 0;
-	if ( is_home() ) {
-		$kimlik = (int) get_option( 'page_for_posts' );
-	} elseif ( is_page() ) {
-		$kimlik = (int) get_queried_object_id();
-	}
-	$deger = $kimlik ? trim( (string) get_post_meta( $kimlik, 'koi_ust_' . $alan, true ) ) : '';
-	echo nl2br( esc_html( '' !== $deger ? $deger : $varsayilan ) );
-}
-
 /* Instagram adresinden kullanici adi: https://www.instagram.com/koiworld/ -> @koiworld */
 function koi_instagram_adi() {
 	$yol = trim( (string) wp_parse_url( koi_ayar( 'instagram' ), PHP_URL_PATH ), '/' );

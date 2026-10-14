@@ -5,10 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Uzmanlarımız</span>
       </nav>
-      <h1><?php koi_ust_metin( 'baslik', 'Yolculuğunuzda
-Yanınızdaki Ekip' ); ?></h1>
+      <h1<?php koi_isaret( 'uzmanlarimiz-1-baslik1' ); ?>><?php koi_alan( 'uzmanlarimiz-1-baslik1' ); ?></h1>
     </div>
-    <p class="lead"><?php koi_ust_metin( 'giris', 'Çocuğu, ebeveyni ve aileyi birlikte ele alan; danışmanlık, oyun ve gelişim deneyimini aynı çatı altında buluşturan bir ekip.' ); ?></p>
+    <p class="lead"<?php koi_isaret( 'uzmanlarimiz-1-giris1' ); ?>><?php koi_alan( 'uzmanlarimiz-1-giris1' ); ?></p>
   </div>
 </section>
 
@@ -17,46 +16,44 @@ Yanınızdaki Ekip' ); ?></h1>
 <section class="section section--cream">
   <div class="container container--wide">
     <div class="section-head center reveal">
-      <span class="eyebrow eyebrow--center">Çalışma İlkelerimiz</span>
-      <h2>Nasıl Çalışıyoruz?</h2>
+      <span class="eyebrow eyebrow--center"<?php koi_isaret( 'uzmanlarimiz-2-ust1' ); ?>><?php koi_alan( 'uzmanlarimiz-2-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'uzmanlarimiz-2-baslik1' ); ?>><?php koi_alan( 'uzmanlarimiz-2-baslik1' ); ?></h2>
     </div>
     <div class="values">
       <div class="value reveal">
         <span class="value__num">01</span>
-        <h3>Gizlilik</h3>
-        <p>Tüm görüşmeler mesleki etik ilkeler ve gizlilik esasları çerçevesinde yürütülür.</p>
+        <h3<?php koi_isaret( 'uzmanlarimiz-2-ara1' ); ?>><?php koi_alan( 'uzmanlarimiz-2-ara1' ); ?></h3>
+        <p<?php koi_isaret( 'uzmanlarimiz-2-paragraf1' ); ?>><?php koi_alan( 'uzmanlarimiz-2-paragraf1' ); ?></p>
       </div>
       <div class="value reveal">
         <span class="value__num">02</span>
-        <h3>Süpervizyon</h3>
-        <p>Süreçler ekip içi değerlendirme ve süpervizyon ile desteklenir.</p>
+        <h3<?php koi_isaret( 'uzmanlarimiz-2-ara2' ); ?>><?php koi_alan( 'uzmanlarimiz-2-ara2' ); ?></h3>
+        <p<?php koi_isaret( 'uzmanlarimiz-2-paragraf2' ); ?>><?php koi_alan( 'uzmanlarimiz-2-paragraf2' ); ?></p>
       </div>
       <div class="value reveal">
         <span class="value__num">03</span>
-        <h3>Aile Katılımı</h3>
-        <p>Çocukla yürütülen hiçbir süreç aileden bağımsız ilerlemez.</p>
+        <h3<?php koi_isaret( 'uzmanlarimiz-2-ara3' ); ?>><?php koi_alan( 'uzmanlarimiz-2-ara3' ); ?></h3>
+        <p<?php koi_isaret( 'uzmanlarimiz-2-paragraf3' ); ?>><?php koi_alan( 'uzmanlarimiz-2-paragraf3' ); ?></p>
       </div>
       <div class="value reveal">
         <span class="value__num">04</span>
-        <h3>Sürekli Eğitim</h3>
-        <p>Uzmanlarımız alanlarındaki güncel eğitim ve gelişmeleri takip eder.</p>
+        <h3<?php koi_isaret( 'uzmanlarimiz-2-ara4' ); ?>><?php koi_alan( 'uzmanlarimiz-2-ara4' ); ?></h3>
+        <p<?php koi_isaret( 'uzmanlarimiz-2-paragraf4' ); ?>><?php koi_alan( 'uzmanlarimiz-2-paragraf4' ); ?></p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="cta-band">
-  <div class="media media--olive cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy"></div>
+  <?php koi_gorsel( 'uzmanlarimiz-3-gorsel1' ); ?>
   <div class="cta-band__inner reveal">
-    <span class="eyebrow">Ekibimize Katılın</span>
-    <h2>Birlikte Çalışmak İster misiniz?</h2>
-    <p class="lead">Alanında uzman psikolojik danışman, çocuk gelişim uzmanı ve atölye eğitmenlerinin başvurularını bekliyoruz.</p>
+    <span class="eyebrow"<?php koi_isaret( 'uzmanlarimiz-3-ust1' ); ?>><?php koi_alan( 'uzmanlarimiz-3-ust1' ); ?></span>
+    <h2<?php koi_isaret( 'uzmanlarimiz-3-baslik1' ); ?>><?php koi_alan( 'uzmanlarimiz-3-baslik1' ); ?></h2>
+    <p class="lead"<?php koi_isaret( 'uzmanlarimiz-3-giris1' ); ?>><?php koi_alan( 'uzmanlarimiz-3-giris1' ); ?></p>
     <div class="cta-band__row">
-      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Başvuru Gönderin<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'uzmanlarimiz-3-dugme1' ); ?>><?php koi_alan( 'uzmanlarimiz-3-dugme1' ); ?></a>
       <a class="link-arrow" href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>"><?php echo esc_html( koi_ayar( 'eposta' ) ); ?><svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
     </div>
   </div>
-  <div class="media cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy">
-    <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-  </div>
+  <?php koi_gorsel( 'uzmanlarimiz-3-gorsel2' ); ?>
 </section>

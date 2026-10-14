@@ -5,10 +5,9 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Atölyeler</span>
       </nav>
-      <h1><?php koi_ust_metin( 'baslik', 'Birlikte Üretmenin
-İyileştiren Hali' ); ?></h1>
+      <h1<?php koi_isaret( 'atolyeler-1-baslik1' ); ?>><?php koi_alan( 'atolyeler-1-baslik1' ); ?></h1>
     </div>
-    <p class="lead"><?php koi_ust_metin( 'giris', 'Çocuk, ebeveyn ve çocuk-aile katılımlı tematik atölyeler; hafta sonlarında düzenlenen seminer ve workshop programları.' ); ?></p>
+    <p class="lead"<?php koi_isaret( 'atolyeler-1-giris1' ); ?>><?php koi_alan( 'atolyeler-1-giris1' ); ?></p>
   </div>
 </section>
 
@@ -26,10 +25,10 @@
   <div class="container container--wide">
     <div class="section-head section-head--split reveal">
       <div>
-        <span class="eyebrow">Program</span>
-        <h2>Açılış Dönemi Atölye ve Seminerleri</h2>
+        <span class="eyebrow"<?php koi_isaret( 'atolyeler-3-ust1' ); ?>><?php koi_alan( 'atolyeler-3-ust1' ); ?></span>
+        <h2<?php koi_isaret( 'atolyeler-3-baslik1' ); ?>><?php koi_alan( 'atolyeler-3-baslik1' ); ?></h2>
       </div>
-      <p class="lead">Tarihler açılış takvimiyle birlikte duyurulacaktır.</p>
+      <p class="lead"<?php koi_isaret( 'atolyeler-3-giris1' ); ?>><?php koi_alan( 'atolyeler-3-giris1' ); ?></p>
     </div>
     <div class="reveal" style="overflow-x:auto">
       <table class="schedule">
@@ -48,64 +47,62 @@
   <div class="container container--wide">
     <div class="section-head section-head--split reveal">
       <div>
-        <span class="eyebrow">Başvuru</span>
-        <h2>Başvuru Nasıl Yapılır?</h2>
+        <span class="eyebrow"<?php koi_isaret( 'atolyeler-4-ust1' ); ?>><?php koi_alan( 'atolyeler-4-ust1' ); ?></span>
+        <h2<?php koi_isaret( 'atolyeler-4-baslik1' ); ?>><?php koi_alan( 'atolyeler-4-baslik1' ); ?></h2>
       </div>
-      <p class="lead">İlk bilgi talebinden kayda kadar süreç beş adımda ilerler.</p>
+      <p class="lead"<?php koi_isaret( 'atolyeler-4-giris1' ); ?>><?php koi_alan( 'atolyeler-4-giris1' ); ?></p>
     </div>
     <div class="timeline">
       <div class="timeline__item reveal">
         <div class="timeline__when">01</div>
         <div class="timeline__what">
-          <h3>Bilgi Talebi</h3>
-          <p>Hizmet, oyun grubu veya atölye için form ya da WhatsApp üzerinden bilgi talep edersiniz.</p>
+          <h3<?php koi_isaret( 'atolyeler-4-ara1' ); ?>><?php koi_alan( 'atolyeler-4-ara1' ); ?></h3>
+          <p<?php koi_isaret( 'atolyeler-4-paragraf1' ); ?>><?php koi_alan( 'atolyeler-4-paragraf1' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">02</div>
         <div class="timeline__what">
-          <h3>İhtiyacın Netleşmesi</h3>
-          <p>KOI ekibi ihtiyacı ve uygun programı sizinle birlikte netleştirir.</p>
+          <h3<?php koi_isaret( 'atolyeler-4-ara2' ); ?>><?php koi_alan( 'atolyeler-4-ara2' ); ?></h3>
+          <p<?php koi_isaret( 'atolyeler-4-paragraf2' ); ?>><?php koi_alan( 'atolyeler-4-paragraf2' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">03</div>
         <div class="timeline__what">
-          <h3>Gün, Saat ve Kontenjan</h3>
-          <p>Uygun gün, saat ve kontenjan kesinleştirilir.</p>
+          <h3<?php koi_isaret( 'atolyeler-4-ara3' ); ?>><?php koi_alan( 'atolyeler-4-ara3' ); ?></h3>
+          <p<?php koi_isaret( 'atolyeler-4-paragraf3' ); ?>><?php koi_alan( 'atolyeler-4-paragraf3' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">04</div>
         <div class="timeline__what">
-          <h3>Ön Görüşme</h3>
-          <p>Gerekli bir ön görüşme ya da değerlendirme varsa planlanır.</p>
+          <h3<?php koi_isaret( 'atolyeler-4-ara4' ); ?>><?php koi_alan( 'atolyeler-4-ara4' ); ?></h3>
+          <p<?php koi_isaret( 'atolyeler-4-paragraf4' ); ?>><?php koi_alan( 'atolyeler-4-paragraf4' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">05</div>
         <div class="timeline__what">
-          <h3>Kayıt</h3>
-          <p>Kayıt ve ödeme bilgileri KOI tarafından sizinle paylaşılır.</p>
+          <h3<?php koi_isaret( 'atolyeler-4-ara5' ); ?>><?php koi_alan( 'atolyeler-4-ara5' ); ?></h3>
+          <p<?php koi_isaret( 'atolyeler-4-paragraf5' ); ?>><?php koi_alan( 'atolyeler-4-paragraf5' ); ?></p>
         </div>
       </div>
     </div>
-    <p class="muted reveal" style="margin-top:22px;font-size:.86rem">Danışmanlık hizmetlerinde ilk görüşme öncesinde ihtiyaç değerlendirmesi yapılabilir.</p>
+    <p class="muted reveal" style="margin-top:22px;font-size:.86rem"<?php koi_isaret( 'atolyeler-4-not1' ); ?>><?php koi_alan( 'atolyeler-4-not1' ); ?></p>
   </div>
 </section>
 
 <section class="cta-band">
-  <div class="media media--olive cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy"></div>
+  <?php koi_gorsel( 'atolyeler-5-gorsel1' ); ?>
   <div class="cta-band__inner reveal">
-    <span class="eyebrow">Atölye Başvurusu</span>
-    <h2>Bir Sonraki Buluşmada Yerinizi Ayırtın</h2>
-    <p class="lead">Kontenjanlar sınırlı olduğu için başvurular sırayla değerlendirilir.</p>
+    <span class="eyebrow"<?php koi_isaret( 'atolyeler-5-ust1' ); ?>><?php koi_alan( 'atolyeler-5-ust1' ); ?></span>
+    <h2<?php koi_isaret( 'atolyeler-5-baslik1' ); ?>><?php koi_alan( 'atolyeler-5-baslik1' ); ?></h2>
+    <p class="lead"<?php koi_isaret( 'atolyeler-5-giris1' ); ?>><?php koi_alan( 'atolyeler-5-giris1' ); ?></p>
     <div class="cta-band__row">
-      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Atölye Başvurusu<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-      <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>">WhatsApp'tan Sorun<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'atolyeler-5-dugme1' ); ?>><?php koi_alan( 'atolyeler-5-dugme1' ); ?></a>
+      <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>"<?php koi_isaret( 'atolyeler-5-baglanti1' ); ?>><?php koi_alan( 'atolyeler-5-baglanti1' ); ?></a>
     </div>
   </div>
-  <div class="media cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy">
-    <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-  </div>
+  <?php koi_gorsel( 'atolyeler-5-gorsel2' ); ?>
 </section>

@@ -291,10 +291,6 @@ function koi_ek_alanlar( $tur ) {
 		$alanlar['koi_sss_hizmetler'] = array( 'Hizmetler sayfasında da göster', 'Soru, Hizmetler sayfasının altındaki kısa listede de yer alır.', 'checkbox' );
 		$alanlar['koi_sss_iletisim']  = array( 'İletişim sayfasında da göster', 'Soru, İletişim sayfasının altındaki kısa listede de yer alır.', 'checkbox' );
 	}
-	if ( 'page' === $tur ) {
-		$alanlar['koi_ust_baslik'] = array( 'Sayfa başlığı', 'Sayfanın en üstündeki büyük başlık. Alt satıra geçmek için Enter kullanın.', 'textarea' );
-		$alanlar['koi_ust_giris']  = array( 'Giriş metni', 'Başlığın yanındaki 1–2 cümlelik giriş.', 'textarea' );
-	}
 	return $alanlar;
 }
 
@@ -332,15 +328,20 @@ function koi_meta_kutusu( $post ) {
 		echo '<p class="description">Soruyu en üstteki başlık alanına, cevabı yazı alanına yazın. Sorunun SSS sayfasında hangi başlık altında görüneceğini sağdaki "Soru Bölümleri" kutusundan seçin.</p>';
 	}
 
-	/* Sayfalar: ust bolumdeki baslik ve giris metni. Varsayilan metin gri olarak gosterilir. */
-	$ipucu = array();
+	/* Sayfalar: metinler ve gorseller Ozellestir ekranindan, canli onizlemeyle duzenlenir */
 	if ( 'page' === $post->post_type ) {
-		$ipucu = koi_sayfa_ust_varsayilani( $post->post_name );
-		if ( ! $ipucu ) {
-			echo '<p class="description">Bu sayfanın metinleri temadan gelir; burada değiştirilecek bir alan yok.</p>';
+		$adres = koi_sayfa_ozellestir_adresi( $post );
+		if ( '' === $adres ) {
+			echo '<p class="description">Bu sayfanın içeriği yukarıdaki düzenleyiciden gelir.</p>';
 			return;
 		}
-		echo '<p class="description">Sayfanın en üstündeki başlık ve giriş metni. Boş bıraktığınız alanda, gri görünen varsayılan metin kullanılır.</p>';
+		if ( koi_metin_sayfasi_mi( koi_sayfa_anahtari_bul( $post ) ) ) {
+			echo '<p>Metnin kendisini yukarıdaki düzenleyicide değiştirin. Sayfanın en üstündeki başlık, giriş metni ve yan kutular canlı önizlemeyle Özelleştir ekranından düzenlenir.</p>';
+		} else {
+			echo '<p>Bu sayfanın metinleri ve görselleri canlı önizlemeyle Özelleştir ekranından düzenlenir. Önizlemede bir metnin yanındaki kalem simgesine tıklayınca ilgili alan açılır.</p>';
+		}
+		echo '<p><a class="button button-primary" href="' . esc_url( $adres ) . '">Sayfa metinlerini düzenle</a></p>';
+		return;
 	}
 	foreach ( koi_ek_alanlar( $post->post_type ) as $anahtar => $alan ) {
 		$deger = (string) get_post_meta( $post->ID, $anahtar, true );
@@ -364,9 +365,7 @@ function koi_meta_kutusu( $post ) {
 
 		echo '<p><label for="' . $kimlik . '"><strong>' . esc_html( $alan[0] ) . '</strong></label><br>';
 		if ( 'textarea' === $alan[2] ) {
-			$alan_adi   = str_replace( 'koi_ust_', '', $anahtar );
-			$yer_tutucu = isset( $ipucu[ $alan_adi ] ) ? (string) $ipucu[ $alan_adi ] : '';
-			echo '<textarea class="widefat" rows="4" id="' . $kimlik . '" name="' . $kimlik . '" placeholder="' . esc_attr( $yer_tutucu ) . '">' . esc_textarea( $deger ) . '</textarea>';
+			echo '<textarea class="widefat" rows="4" id="' . $kimlik . '" name="' . $kimlik . '">' . esc_textarea( $deger ) . '</textarea>';
 		} else {
 			echo '<input class="widefat" type="text" id="' . $kimlik . '" name="' . $kimlik . '" value="' . esc_attr( $deger ) . '">';
 		}

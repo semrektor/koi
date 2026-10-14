@@ -433,6 +433,7 @@ p:last-child{ margin-bottom:0; }
   border-bottom:1px solid rgba(244,239,230,.14);
 }
 .program-band__list li:last-child{ border-bottom:0; }
+.program-band__list strong{ font-weight:400; color:#F4EFE6; }
 .program-band__list svg{ width:18px; height:18px; color:var(--koi-terra-soft); flex:none; margin-top:3px; }
 .program-band__media{ min-height:420px; }
 

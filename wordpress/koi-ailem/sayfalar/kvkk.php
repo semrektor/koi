@@ -5,69 +5,21 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>KVKK Aydınlatma Metni</span>
       </nav>
-      <h1><?php koi_ust_metin( 'baslik', 'KVKK Aydınlatma Metni' ); ?></h1>
+      <h1<?php koi_isaret( 'kvkk-1-baslik1' ); ?>><?php koi_alan( 'kvkk-1-baslik1' ); ?></h1>
     </div>
-    <p class="lead"><?php koi_ust_metin( 'giris', '6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında, kişisel verilerinizin nasıl işlendiğine dair bilgilendirme.' ); ?></p>
+    <p class="lead"<?php koi_isaret( 'kvkk-1-giris1' ); ?>><?php koi_alan( 'kvkk-1-giris1' ); ?></p>
   </div>
 </section>
 
 <section class="section">
   <div class="container container--wide with-sidebar">
     <div class="prose reveal">
-      <div class="quote-card" style="margin-bottom:2.5em">
-        <p style="font-family:var(--font-body);font-style:normal;font-size:.92rem;color:var(--koi-muted)"><strong style="font-weight:400;color:var(--koi-olive)">Taslak metin.</strong> Bu metin hukuk danışmanı incelemesinden sonra kesinleşecektir.</p>
-      </div>
-
-      <h2>1. Veri Sorumlusu</h2>
-      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca kişisel verileriniz; veri sorumlusu sıfatıyla KOİ Çocuk ve Aile Gelişim Merkezi Ltd. Şti. ("KOI") tarafından aşağıda açıklanan kapsamda işlenmektedir.</p>
-      <ul>
-        <li>Unvan: KOİ Çocuk ve Aile Gelişim Merkezi Ltd. Şti.</li>
-        <li>MERSİS No: 0195096650500001</li>
-        <li>Adres: <?php echo esc_html( koi_ayar( 'acik_adres' ) ); ?></li>
-        <li>E-posta: <?php echo esc_html( koi_ayar( 'eposta' ) ); ?></li>
-      </ul>
-
-      <h2>2. İşlenen Kişisel Veriler</h2>
-      <p>Merkezimizle iletişime geçmeniz, randevu talebi oluşturmanız veya programlarımıza başvurmanız durumunda aşağıdaki veriler işlenebilmektedir:</p>
-      <ul>
-        <li>Kimlik bilgileri: ad, soyad</li>
-        <li>İletişim bilgileri: telefon / WhatsApp numarası, e-posta adresi</li>
-        <li>Başvuru bilgileri: ilgilenilen hizmet veya program, tercih edilen iletişim yöntemi, uygun gün ve saat</li>
-        <li>Danışmanlık süreçleri kapsamında paylaşmayı tercih ettiğiniz bilgiler</li>
-        <li>İşlem güvenliği bilgileri: site kullanımına ilişkin teknik kayıtlar</li>
-      </ul>
-      <p>Formlarımızda yalnızca başvurunuzun değerlendirilmesi için gerekli olan veriler talep edilir.</p>
-
-      <h2>3. Kişisel Verilerin İşlenme Amaçları</h2>
-      <ul>
-        <li>Randevu ve başvuru taleplerinin değerlendirilmesi ve size dönüş yapılması</li>
-        <li>Danışmanlık, oyun grubu ve atölye hizmetlerinin planlanması ve yürütülmesi</li>
-        <li>Talep, soru ve önerilerinizin yanıtlanması</li>
-        <li>Hizmet kalitesinin geliştirilmesi</li>
-        <li>Yasal yükümlülüklerin yerine getirilmesi</li>
-      </ul>
-
-      <h2>4. Hukuki Sebep</h2>
-      <p>Kişisel verileriniz; KVKK'nın 5. maddesinde belirtilen "bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması", "veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi" ve "ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla veri sorumlusunun meşru menfaati" hukuki sebeplerine dayanılarak; gerekli hallerde ise açık rızanıza istinaden işlenmektedir.</p>
-
-      <h2>5. Verilerin Aktarımı</h2>
-      <p>Kişisel verileriniz, yasal yükümlülükler dışında üçüncü kişilerle paylaşılmaz. Hizmetin yürütülmesi için gerekli olduğu ölçüde, gizlilik yükümlülüğü altındaki hizmet sağlayıcılarla (ör. barındırma ve e-posta altyapısı) sınırlı biçimde paylaşılabilir.</p>
-      <p>Web sitemiz ve kurumsal e-posta altyapımız, sunucuları yurt dışında bulunan bir barındırma hizmeti üzerinde çalışmaktadır. Bu nedenle site üzerindeki formlar aracılığıyla ilettiğiniz veriler, KVKK'nın 9. maddesi kapsamında yalnızca barındırma amacıyla yurt dışındaki sunucularda saklanır.</p>
-
-      <h2>6. Çocuklara İlişkin Veriler</h2>
-      <p>Çocuklara ait bilgiler yalnızca ebeveyn veya yasal temsilcinin bilgisi ve onayıyla işlenir. Çocuklara ait görseller, yalnızca ayrıca alınan açık yayın izinleri kapsamında kullanılır.</p>
-
-      <h2>7. Saklama Süresi</h2>
-      <p>Kişisel verileriniz, işlenme amacının gerektirdiği süre boyunca ve ilgili mevzuatta öngörülen zamanaşımı süreleri kadar saklanır; sürenin sonunda silinir, yok edilir veya anonim hale getirilir.</p>
-
-      <h2>8. İlgili Kişinin Hakları</h2>
-      <p>KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme amacını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini isteme, silinmesini veya yok edilmesini isteme ve işlenmesine itiraz etme haklarına sahipsiniz.</p>
-      <p>Taleplerinizi <a href="<?php echo esc_url( 'mailto:' . koi_ayar( 'eposta' ) ); ?>"><?php echo esc_html( koi_ayar( 'eposta' ) ); ?></a> adresine iletebilirsiniz.</p>
+<?php koi_sayfa_metni( 'kvkk' ); ?>
     </div>
 
     <aside>
       <div class="sidebar-card reveal">
-        <h3>Yasal Metinler</h3>
+        <h3<?php koi_isaret( 'kvkk-2-ara1' ); ?>><?php koi_alan( 'kvkk-2-ara1' ); ?></h3>
         <ul>
           <li><a href="<?php echo esc_url( koi_url( 'kvkk' ) ); ?>">KVKK Aydınlatma Metni</a></li>
           <li><a href="<?php echo esc_url( koi_url( 'gizlilik' ) ); ?>">Gizlilik Politikası</a></li>
@@ -75,10 +27,10 @@
         </ul>
       </div>
       <div class="sidebar-card sidebar-card--dark reveal">
-        <h3>Sorunuz mu Var?</h3>
-        <p>Kişisel verilerinize ilişkin taleplerinizi bize iletebilirsiniz.</p>
+        <h3<?php koi_isaret( 'kvkk-2-ara2' ); ?>><?php koi_alan( 'kvkk-2-ara2' ); ?></h3>
+        <p<?php koi_isaret( 'kvkk-2-paragraf1' ); ?>><?php koi_alan( 'kvkk-2-paragraf1' ); ?></p>
         <div style="margin-top:20px">
-          <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">İletişime Geçin<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'kvkk-2-dugme1' ); ?>><?php koi_alan( 'kvkk-2-dugme1' ); ?></a>
         </div>
       </div>
     </aside>

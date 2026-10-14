@@ -5,28 +5,25 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Hakkımızda</span>
       </nav>
-      <h1><?php koi_ust_metin( 'baslik', 'Danışmanlık, Oyun ve Atölyeyi
-Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
+      <h1<?php koi_isaret( 'hakkimizda-1-baslik1' ); ?>><?php koi_alan( 'hakkimizda-1-baslik1' ); ?></h1>
     </div>
-    <p class="lead"><?php koi_ust_metin( 'giris', 'KOI; çocukların gelişimini ve ailelerin ihtiyaçlarını birlikte ele alan, sıcak ama nitelikli bir gelişim merkezi olarak kuruldu.' ); ?></p>
+    <p class="lead"<?php koi_isaret( 'hakkimizda-1-giris1' ); ?>><?php koi_alan( 'hakkimizda-1-giris1' ); ?></p>
   </div>
 </section>
 
 <section class="section">
   <div class="container container--wide split">
     <div class="split__media reveal">
-      <div class="media media--arch media--tall has-img" data-label="Merkez iç mekân — çekim yapılacak"><img class="media__img" src="<?php koi_v(); ?>img/hero-kemer.jpg" srcset="<?php koi_v(); ?>img/hero-kemer-sm.jpg 900w, <?php koi_v(); ?>img/hero-kemer.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinde kemerli dinlenme alanı" loading="lazy">
-        <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-      </div>
+      <?php koi_gorsel( 'hakkimizda-2-gorsel1' ); ?>
     </div>
     <div class="split__body reveal">
-      <span class="eyebrow">Hikâyemiz</span>
-      <h2>KOI Nasıl Doğdu?</h2>
-      <p class="lead">KOI, çocukların ve ailelerin gelişim yolculuğuna farklı bir yerden bakma fikriyle ortaya çıktı.</p>
-      <p>Yıllar boyunca çocuklarla, ailelerle ve eğitim kurumlarıyla çalışırken aynı ihtiyacı farklı şekillerde gözlemledik: Bir çocuğu anlamak, yalnızca çocuğa bakmakla mümkün değildi. Çocuğun gelişimi; ailesi, ilişkileri, eğitim ortamı, duygusal dünyası ve içinde bulunduğu koşullarla birlikte ele alındığında anlam kazanıyordu.</p>
-      <p>Bir tarafta çocukların gelişimini destekleyen oyun ve deneyim alanlarına, diğer tarafta ebeveynlerin danışmanlık ve rehberliğe duyduğu ihtiyaç vardı. Biz bu iki alanın birbirinden ayrı düşünülmemesi gerektiğine inandık.</p>
-      <p><em>KOI böyle doğdu.</em></p>
-      <p>KOI; psikolojik danışmanlık, aile ve ebeveyn çalışmaları, oyun, gelişim programları ve atölyeleri aynı çatı altında buluşturan çocuk ve aile odaklı bir gelişim merkezidir.</p>
+      <span class="eyebrow"<?php koi_isaret( 'hakkimizda-2-ust1' ); ?>><?php koi_alan( 'hakkimizda-2-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'hakkimizda-2-baslik1' ); ?>><?php koi_alan( 'hakkimizda-2-baslik1' ); ?></h2>
+      <p class="lead"<?php koi_isaret( 'hakkimizda-2-giris1' ); ?>><?php koi_alan( 'hakkimizda-2-giris1' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-2-paragraf1' ); ?>><?php koi_alan( 'hakkimizda-2-paragraf1' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-2-paragraf2' ); ?>><?php koi_alan( 'hakkimizda-2-paragraf2' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-2-paragraf3' ); ?>><?php koi_alan( 'hakkimizda-2-paragraf3' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-2-paragraf4' ); ?>><?php koi_alan( 'hakkimizda-2-paragraf4' ); ?></p>
     </div>
   </div>
 </section>
@@ -34,21 +31,17 @@ Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
 <section class="section" style="padding-top:0">
   <div class="container container--wide koi-about">
     <div class="reveal">
-      <span class="eyebrow">İsmimiz</span>
-      <h2>KOI Nedir?</h2>
-      <p class="lead">KOI ismini seçerken bu yaklaşımın sembolünden ilham aldık. Koi balığı; akıntının yönüne rağmen ilerlemesi, dönüşüm ve dayanıklılıkla ilişkilendirilen güçlü bir sembol.</p>
-      <p>Ancak bizim için mesele yalnızca akıntıya karşı yüzmek değil. Bazen ilerlemek, önce durup ne olduğunu anlamaktır. Bazen değişim, başka bir yerden bakmakla başlar.</p>
-      <p>Bu nedenle KOI'de her çocuğu, her ebeveyni ve her aileyi kendi ihtiyaçları ve ritmi içinde ele alıyoruz. Hazır kalıplar sunmak yerine; dinlemeye, anlamaya ve ihtiyaca uygun alanı birlikte oluşturmaya önem veriyoruz.</p>
-      <p>Çünkü bizim için gelişim tek bir doğruya ulaşmak değil; kişinin kendisini, ilişkilerini ve ihtiyaçlarını daha iyi tanıyabilmesine alan açmak.</p>
-      <p>KOI; çocuğun, ailenin ve profesyonelin aynı yerde buluşabildiği; danışmanlık, oyun ve deneyimin birbirini tamamladığı bir alan. Ve bu alanın temelinde tek bir inanç var:</p>
+      <span class="eyebrow"<?php koi_isaret( 'hakkimizda-3-ust1' ); ?>><?php koi_alan( 'hakkimizda-3-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'hakkimizda-3-baslik1' ); ?>><?php koi_alan( 'hakkimizda-3-baslik1' ); ?></h2>
+      <p class="lead"<?php koi_isaret( 'hakkimizda-3-giris1' ); ?>><?php koi_alan( 'hakkimizda-3-giris1' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-3-paragraf1' ); ?>><?php koi_alan( 'hakkimizda-3-paragraf1' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-3-paragraf2' ); ?>><?php koi_alan( 'hakkimizda-3-paragraf2' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-3-paragraf3' ); ?>><?php koi_alan( 'hakkimizda-3-paragraf3' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-3-paragraf4' ); ?>><?php koi_alan( 'hakkimizda-3-paragraf4' ); ?></p>
       <div class="quote-card" style="margin:28px 0">
-        <blockquote>Her çocuğun kendi ritmi vardır. Her ailenin kendi hikâyesi. Bizim işimiz, onları gerçekten görebilecek alanı açmak.</blockquote>
+        <blockquote<?php koi_isaret( 'hakkimizda-3-alinti1' ); ?>><?php koi_alan( 'hakkimizda-3-alinti1' ); ?></blockquote>
       </div>
-      <ul class="tagline-stack">
-        <li>Denge</li>
-        <li>Bağlantı</li>
-        <li>Gelişim</li>
-      </ul>
+      <ul class="tagline-stack"<?php koi_isaret( 'hakkimizda-3-liste1' ); ?>><?php koi_liste( 'hakkimizda-3-liste1' ); ?></ul>
     </div>
     <div class="koi-about__art reveal">
       <img src="<?php koi_v(); ?>img/koi-isaret.webp" alt="KOI logosundaki koi balığı işareti" width="762" height="1074" loading="lazy">
@@ -59,12 +52,12 @@ Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
 <section class="section" style="padding-top:0">
   <div class="container container--wide vm-grid">
     <article class="vm-card reveal">
-      <span class="eyebrow">Vizyonumuz</span>
-      <p class="vm-card__text">Çocukların kendi ritimlerinde büyüyebildiği, ebeveynlerin bu yolculukta yalnız bırakılmadığı; danışmanlık, oyun ve deneyimi aynı çatı altında buluşturan, güven veren ve çağdaş bir çocuk ve aile gelişim merkezi olmak.</p>
+      <span class="eyebrow"<?php koi_isaret( 'hakkimizda-4-ust1' ); ?>><?php koi_alan( 'hakkimizda-4-ust1' ); ?></span>
+      <p class="vm-card__text"<?php koi_isaret( 'hakkimizda-4-paragraf1' ); ?>><?php koi_alan( 'hakkimizda-4-paragraf1' ); ?></p>
     </article>
     <article class="vm-card reveal">
-      <span class="eyebrow">Misyonumuz</span>
-      <p class="vm-card__text">KOI; çocukların duygusal, sosyal ve gelişimsel ihtiyaçlarını, ebeveynlerin ihtiyaçları ve aile içindeki ilişkilerle birlikte ele alır. Bilimsel temelli danışmanlık yaklaşımını oyun, atölye ve gelişim deneyimleriyle bir araya getirerek her aile için güvenli, nitelikli ve özenli bir alan oluşturur.</p>
+      <span class="eyebrow"<?php koi_isaret( 'hakkimizda-4-ust2' ); ?>><?php koi_alan( 'hakkimizda-4-ust2' ); ?></span>
+      <p class="vm-card__text"<?php koi_isaret( 'hakkimizda-4-paragraf2' ); ?>><?php koi_alan( 'hakkimizda-4-paragraf2' ); ?></p>
     </article>
   </div>
 </section>
@@ -72,30 +65,30 @@ Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
 <section class="section section--cream">
   <div class="container container--wide">
     <div class="section-head center reveal">
-      <span class="eyebrow eyebrow--center">Değerlerimiz</span>
-      <h2>Bizi Biz Yapan İlkeler</h2>
-      <p class="lead">Her süreci, her programı ve her karşılaşmayı bu ilkeler üzerinden kuruyoruz.</p>
+      <span class="eyebrow eyebrow--center"<?php koi_isaret( 'hakkimizda-5-ust1' ); ?>><?php koi_alan( 'hakkimizda-5-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'hakkimizda-5-baslik1' ); ?>><?php koi_alan( 'hakkimizda-5-baslik1' ); ?></h2>
+      <p class="lead"<?php koi_isaret( 'hakkimizda-5-giris1' ); ?>><?php koi_alan( 'hakkimizda-5-giris1' ); ?></p>
     </div>
     <div class="values">
       <div class="value reveal">
         <span class="value__num">01</span>
-        <h3>Bütünsellik</h3>
-        <p>Çocuğu ailesi, okulu ve çevresiyle birlikte ele alan bir bakış açısı.</p>
+        <h3<?php koi_isaret( 'hakkimizda-5-ara1' ); ?>><?php koi_alan( 'hakkimizda-5-ara1' ); ?></h3>
+        <p<?php koi_isaret( 'hakkimizda-5-paragraf1' ); ?>><?php koi_alan( 'hakkimizda-5-paragraf1' ); ?></p>
       </div>
       <div class="value reveal">
         <span class="value__num">02</span>
-        <h3>Güven</h3>
-        <p>Gizlilik, şeffaflık ve etik ilkeler üzerine kurulu bir çalışma ilişkisi.</p>
+        <h3<?php koi_isaret( 'hakkimizda-5-ara2' ); ?>><?php koi_alan( 'hakkimizda-5-ara2' ); ?></h3>
+        <p<?php koi_isaret( 'hakkimizda-5-paragraf2' ); ?>><?php koi_alan( 'hakkimizda-5-paragraf2' ); ?></p>
       </div>
       <div class="value reveal">
         <span class="value__num">03</span>
-        <h3>Nitelik</h3>
-        <p>Küçük gruplar, hazırlıklı programlar ve alanında eğitimli uzmanlar.</p>
+        <h3<?php koi_isaret( 'hakkimizda-5-ara3' ); ?>><?php koi_alan( 'hakkimizda-5-ara3' ); ?></h3>
+        <p<?php koi_isaret( 'hakkimizda-5-paragraf3' ); ?>><?php koi_alan( 'hakkimizda-5-paragraf3' ); ?></p>
       </div>
       <div class="value reveal">
         <span class="value__num">04</span>
-        <h3>Sıcaklık</h3>
-        <p>Klinik bir soğukluk değil; ailenin kendini evinde hissettiği bir ortam.</p>
+        <h3<?php koi_isaret( 'hakkimizda-5-ara4' ); ?>><?php koi_alan( 'hakkimizda-5-ara4' ); ?></h3>
+        <p<?php koi_isaret( 'hakkimizda-5-paragraf4' ); ?>><?php koi_alan( 'hakkimizda-5-paragraf4' ); ?></p>
       </div>
     </div>
   </div>
@@ -105,38 +98,38 @@ Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
   <div class="container container--wide">
     <div class="section-head section-head--split reveal">
       <div>
-        <span class="eyebrow">Süreç</span>
-        <h2>KOI'de Bir Yolculuk<br>Nasıl İlerler?</h2>
+        <span class="eyebrow"<?php koi_isaret( 'hakkimizda-6-ust1' ); ?>><?php koi_alan( 'hakkimizda-6-ust1' ); ?></span>
+        <h2<?php koi_isaret( 'hakkimizda-6-baslik1' ); ?>><?php koi_alan( 'hakkimizda-6-baslik1' ); ?></h2>
       </div>
-      <p class="lead">İlk temastan programın tamamlanmasına kadar her adımda yanınızdayız.</p>
+      <p class="lead"<?php koi_isaret( 'hakkimizda-6-giris1' ); ?>><?php koi_alan( 'hakkimizda-6-giris1' ); ?></p>
     </div>
     <div class="timeline">
       <div class="timeline__item reveal">
         <div class="timeline__when">01</div>
         <div class="timeline__what">
-          <h3>İlk Görüşme ve Ön Başvuru</h3>
-          <p>Telefon, WhatsApp veya site üzerinden ilettiğiniz talebi dinler, ihtiyacınıza uygun uzman ve programı birlikte belirleriz.</p>
+          <h3<?php koi_isaret( 'hakkimizda-6-ara1' ); ?>><?php koi_alan( 'hakkimizda-6-ara1' ); ?></h3>
+          <p<?php koi_isaret( 'hakkimizda-6-paragraf1' ); ?>><?php koi_alan( 'hakkimizda-6-paragraf1' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">02</div>
         <div class="timeline__what">
-          <h3>Tanışma ve Değerlendirme</h3>
-          <p>Çocuğun gelişim dönemi, ailenin beklentileri ve mevcut süreçler değerlendirilir; bütüncül bir resim oluşturulur.</p>
+          <h3<?php koi_isaret( 'hakkimizda-6-ara2' ); ?>><?php koi_alan( 'hakkimizda-6-ara2' ); ?></h3>
+          <p<?php koi_isaret( 'hakkimizda-6-paragraf2' ); ?>><?php koi_alan( 'hakkimizda-6-paragraf2' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">03</div>
         <div class="timeline__what">
-          <h3>Programın Planlanması</h3>
-          <p>Bireysel danışmanlık, oyun grubu veya atölye; hangi kombinasyonun uygun olduğu planlanır ve takvimlendirilir.</p>
+          <h3<?php koi_isaret( 'hakkimizda-6-ara3' ); ?>><?php koi_alan( 'hakkimizda-6-ara3' ); ?></h3>
+          <p<?php koi_isaret( 'hakkimizda-6-paragraf3' ); ?>><?php koi_alan( 'hakkimizda-6-paragraf3' ); ?></p>
         </div>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__when">04</div>
         <div class="timeline__what">
-          <h3>Süreç ve Aile Geri Bildirimi</h3>
-          <p>Süreç boyunca aileyle düzenli geri bildirim görüşmeleri yapılır; gerektiğinde program yeniden şekillendirilir.</p>
+          <h3<?php koi_isaret( 'hakkimizda-6-ara4' ); ?>><?php koi_alan( 'hakkimizda-6-ara4' ); ?></h3>
+          <p<?php koi_isaret( 'hakkimizda-6-paragraf4' ); ?>><?php koi_alan( 'hakkimizda-6-paragraf4' ); ?></p>
         </div>
       </div>
     </div>
@@ -144,21 +137,14 @@ Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
 </section>
 
 <section class="program-band">
-  <div class="media media--olive program-band__media has-img" data-label="Danışmanlık odası — çekim yapılacak"><img class="media__img" src="<?php koi_v(); ?>img/danismanlik.jpg" srcset="<?php koi_v(); ?>img/danismanlik-sm.jpg 900w, <?php koi_v(); ?>img/danismanlik.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI danışmanlık odası" loading="lazy">
-    <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-  </div>
+  <?php koi_gorsel( 'hakkimizda-7-gorsel1' ); ?>
   <div class="program-band__copy reveal">
-    <span class="eyebrow">Mekânımız</span>
-    <h2>Sıcak, Sakin<br>ve Nitelikli Bir Alan</h2>
-    <p class="lead">Doğal malzemeler, yumuşak ışık ve çocuğun kendini güvende hissedeceği bir düzen.</p>
-    <ul class="program-band__list">
-      <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Yaş gruplarına göre düzenlenmiş oyun ve atölye alanları</span></li>
-      <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Bireysel görüşmeler için sessiz danışmanlık odaları</span></li>
-      <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Ebeveynler için rahat bir bekleme ve paylaşım alanı</span></li>
-      <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Necip Fazıl ve Dudullu metro istasyonlarına yakın konum, açık otopark</span></li>
-    </ul>
+    <span class="eyebrow"<?php koi_isaret( 'hakkimizda-7-ust1' ); ?>><?php koi_alan( 'hakkimizda-7-ust1' ); ?></span>
+    <h2<?php koi_isaret( 'hakkimizda-7-baslik1' ); ?>><?php koi_alan( 'hakkimizda-7-baslik1' ); ?></h2>
+    <p class="lead"<?php koi_isaret( 'hakkimizda-7-giris1' ); ?>><?php koi_alan( 'hakkimizda-7-giris1' ); ?></p>
+    <ul class="program-band__list"<?php koi_isaret( 'hakkimizda-7-liste1' ); ?>><?php koi_liste( 'hakkimizda-7-liste1' ); ?></ul>
     <div style="margin-top:34px">
-      <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>">Galeriyi Gör<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>"<?php koi_isaret( 'hakkimizda-7-dugme1' ); ?>><?php koi_alan( 'hakkimizda-7-dugme1' ); ?></a>
     </div>
   </div>
 </section>
@@ -166,35 +152,31 @@ Aynı Çatı Altında Buluşturuyoruz' ); ?></h1>
 <section class="section section--cream">
   <div class="container container--wide split split--reverse">
     <div class="split__media reveal">
-      <div class="media media--soft media--ratio-4-5" data-label="Ekip portresi">
-        <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-      </div>
+      <?php koi_gorsel( 'hakkimizda-8-gorsel1' ); ?>
     </div>
     <div class="split__body reveal">
-      <span class="eyebrow">Ekibimiz</span>
-      <h2>Arkasında Uzmanlık<br>Olan Bir Yaklaşım</h2>
-      <p>Kurucu ekibimiz; psikolojik danışmanlık, aile danışmanlığı ve çocuk merkezli oyun terapisi alanındaki uzmanlığı, eğitim kurumlarında uzun yıllara dayanan yöneticilik deneyimiyle bir araya getiriyor.</p>
-      <p>Her uzmanımız kendi alanında çalışırken, süreçler ekip içinde birlikte değerlendirilir. Böylece ailenin gördüğü tek bir bütüncül plan olur.</p>
+      <span class="eyebrow"<?php koi_isaret( 'hakkimizda-8-ust1' ); ?>><?php koi_alan( 'hakkimizda-8-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'hakkimizda-8-baslik1' ); ?>><?php koi_alan( 'hakkimizda-8-baslik1' ); ?></h2>
+      <p<?php koi_isaret( 'hakkimizda-8-paragraf1' ); ?>><?php koi_alan( 'hakkimizda-8-paragraf1' ); ?></p>
+      <p<?php koi_isaret( 'hakkimizda-8-paragraf2' ); ?>><?php koi_alan( 'hakkimizda-8-paragraf2' ); ?></p>
       <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Ekibimizi Tanıyın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-        <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bize Ulaşın</a>
+        <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>"<?php koi_isaret( 'hakkimizda-8-dugme1' ); ?>><?php koi_alan( 'hakkimizda-8-dugme1' ); ?></a>
+        <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'hakkimizda-8-dugme2' ); ?>><?php koi_alan( 'hakkimizda-8-dugme2' ); ?></a>
       </div>
     </div>
   </div>
 </section>
 
 <section class="cta-band">
-  <div class="media media--olive cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy"></div>
+  <?php koi_gorsel( 'hakkimizda-9-gorsel1' ); ?>
   <div class="cta-band__inner reveal">
-    <span class="eyebrow">Tanışalım</span>
-    <h2>Merkezi Yakından Görmek İster misiniz?</h2>
-    <p class="lead">Merkezimizi gezmek ve uzmanlarımızla tanışmak için bize ulaşabilirsiniz.</p>
+    <span class="eyebrow"<?php koi_isaret( 'hakkimizda-9-ust1' ); ?>><?php koi_alan( 'hakkimizda-9-ust1' ); ?></span>
+    <h2<?php koi_isaret( 'hakkimizda-9-baslik1' ); ?>><?php koi_alan( 'hakkimizda-9-baslik1' ); ?></h2>
+    <p class="lead"<?php koi_isaret( 'hakkimizda-9-giris1' ); ?>><?php koi_alan( 'hakkimizda-9-giris1' ); ?></p>
     <div class="cta-band__row">
-      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Alın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-      <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>">WhatsApp'tan Yazın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'hakkimizda-9-dugme1' ); ?>><?php koi_alan( 'hakkimizda-9-dugme1' ); ?></a>
+      <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>"<?php koi_isaret( 'hakkimizda-9-baglanti1' ); ?>><?php koi_alan( 'hakkimizda-9-baglanti1' ); ?></a>
     </div>
   </div>
-  <div class="media cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy">
-    <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-  </div>
+  <?php koi_gorsel( 'hakkimizda-9-gorsel2' ); ?>
 </section>

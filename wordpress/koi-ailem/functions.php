@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KOI_SURUM', '0.6.1' );
+define( 'KOI_SURUM', '0.7.0' );
 /* Kurulumun olusturdugu icerigin surumu; veri/icerik.json degistiginde artirilir */
 define( 'KOI_ICERIK_SURUM', '0.4.0' );
 define( 'KOI_DIR', get_template_directory() );
@@ -19,6 +19,7 @@ require KOI_DIR . '/inc/ayarlar.php';
 require KOI_DIR . '/inc/icerik-turleri.php';
 require KOI_DIR . '/inc/sablonlar.php';
 require KOI_DIR . '/inc/listeler.php';
+require KOI_DIR . '/inc/alanlar.php';
 require KOI_DIR . '/inc/formlar.php';
 require KOI_DIR . '/inc/guvenlik.php';
 require KOI_DIR . '/inc/kvkk.php';
@@ -52,6 +53,9 @@ function koi_surum_degisti() {
 		return;
 	}
 	flush_rewrite_rules( false );
+	/* 0.7.0: sayfa ust metinleri Ozellestir'e tasindi, yasal metinler sayfa duzenleyicisine */
+	koi_ust_metinlerini_tasi();
+	koi_metin_sayfalarini_doldur();
 	koi_onbellegi_temizle();
 	update_option( 'koi_kural_surumu', KOI_SURUM );
 }

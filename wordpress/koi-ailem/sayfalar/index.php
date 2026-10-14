@@ -3,26 +3,24 @@
   <section class="hero">
     <div class="container container--wide hero__grid">
       <div class="hero__copy">
-        <span class="eyebrow">KOI · Çocuk ve Aile Gelişim Merkezi</span>
-        <h1 class="hero__title">İyi İnsanlar,<br>İyi Hikâyeler <em>Büyütür.</em></h1>
-        <p class="lead">Çocukların, ebeveynlerin ve ailelerin iyi olma halini destekleyen bütüncül bir gelişim merkezi. Danışmanlık, oyun ve atölye deneyimini aynı çatı altında buluşturuyoruz.</p>
+        <span class="eyebrow"<?php koi_isaret( 'index-1-ust1' ); ?>><?php koi_alan( 'index-1-ust1' ); ?></span>
+        <h1 class="hero__title"<?php koi_isaret( 'index-1-baslik1' ); ?>><?php koi_alan( 'index-1-baslik1' ); ?></h1>
+        <p class="lead"<?php koi_isaret( 'index-1-giris1' ); ?>><?php koi_alan( 'index-1-giris1' ); ?></p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'hakkimizda' ) ); ?>">KOI'yi Keşfet<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Al</a>
+          <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'hakkimizda' ) ); ?>"<?php koi_isaret( 'index-1-dugme1' ); ?>><?php koi_alan( 'index-1-dugme1' ); ?></a>
+          <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'index-1-dugme2' ); ?>><?php koi_alan( 'index-1-dugme2' ); ?></a>
         </div>
-        <p class="hero__note">Ümraniye · İstanbul</p>
+        <p class="hero__note"<?php koi_isaret( 'index-1-not1' ); ?>><?php koi_alan( 'index-1-not1' ); ?></p>
       </div>
       <div class="hero__visual">
-        <div class="media media--arch hero__media has-img" data-label="Merkez karşılama alanı — çekim yapılacak"><img class="media__img" src="<?php koi_v(); ?>img/hero-kemer.jpg" srcset="<?php koi_v(); ?>img/hero-kemer-sm.jpg 900w, <?php koi_v(); ?>img/hero-kemer.jpg 1400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI merkezinde kemerli dinlenme alanı" loading="lazy">
-          <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-        </div>
+        <?php koi_gorsel( 'index-1-gorsel1' ); ?>
         <ul class="hero__tags">
-          <li>Oyun</li>
-          <li>Danışmanlık</li>
-          <li>Atölye</li>
-          <li>Gelişim</li>
-          <li>Birliktelik</li>
-          <li class="hero__script script">iyi insan<br>iyi gelecek</li>
+          <li<?php koi_isaret( 'index-1-madde1' ); ?>><?php koi_alan( 'index-1-madde1' ); ?></li>
+          <li<?php koi_isaret( 'index-1-madde2' ); ?>><?php koi_alan( 'index-1-madde2' ); ?></li>
+          <li<?php koi_isaret( 'index-1-madde3' ); ?>><?php koi_alan( 'index-1-madde3' ); ?></li>
+          <li<?php koi_isaret( 'index-1-madde4' ); ?>><?php koi_alan( 'index-1-madde4' ); ?></li>
+          <li<?php koi_isaret( 'index-1-madde5' ); ?>><?php koi_alan( 'index-1-madde5' ); ?></li>
+          <li class="hero__script script"<?php koi_isaret( 'index-1-madde6' ); ?>><?php koi_alan( 'index-1-madde6' ); ?></li>
         </ul>
       </div>
     </div>
@@ -32,11 +30,11 @@
   <section class="pillars">
     <div class="container container--wide">
       <ul class="pillars__grid">
-        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-lotus"></use></svg><span>Çocuk<br>Gelişimi</span></li>
-        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-leaf"></use></svg><span>Aile<br>Danışmanlığı</span></li>
-        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-sun"></use></svg><span>Atölye ve<br>Workshoplar</span></li>
-        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-arch"></use></svg><span>Ebeveyn<br>Destek Programları</span></li>
-        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-sprout"></use></svg><span>Akademik ve<br>Sosyal Gelişim</span></li>
+        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-lotus"></use></svg><span<?php koi_isaret( 'index-2-madde1' ); ?>><?php koi_alan( 'index-2-madde1' ); ?></span></li>
+        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-leaf"></use></svg><span<?php koi_isaret( 'index-2-madde2' ); ?>><?php koi_alan( 'index-2-madde2' ); ?></span></li>
+        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-sun"></use></svg><span<?php koi_isaret( 'index-2-madde3' ); ?>><?php koi_alan( 'index-2-madde3' ); ?></span></li>
+        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-arch"></use></svg><span<?php koi_isaret( 'index-2-madde4' ); ?>><?php koi_alan( 'index-2-madde4' ); ?></span></li>
+        <li class="pillar reveal"><svg aria-hidden="true"><use href="#i-sprout"></use></svg><span<?php koi_isaret( 'index-2-madde5' ); ?>><?php koi_alan( 'index-2-madde5' ); ?></span></li>
       </ul>
     </div>
   </section>
@@ -46,25 +44,19 @@
     <div class="container container--wide split split--narrow">
       <div class="split__media reveal">
         <div class="quote-card">
-          <blockquote>"Her çocuğun kendi ritmi vardır. Her ailenin kendi hikâyesi."</blockquote>
-          <cite>KOI Yaklaşımı</cite>
+          <blockquote<?php koi_isaret( 'index-3-alinti1' ); ?>><?php koi_alan( 'index-3-alinti1' ); ?></blockquote>
+          <cite<?php koi_isaret( 'index-3-kaynak1' ); ?>><?php koi_alan( 'index-3-kaynak1' ); ?></cite>
         </div>
-        <div class="media media--soft media--ratio-3-2 has-img" style="margin-top:22px" data-label="Atölye / çalışma alanı"><img class="media__img" src="<?php koi_v(); ?>img/atolye-masa.jpg" srcset="<?php koi_v(); ?>img/atolye-masa-sm.jpg 900w, <?php koi_v(); ?>img/atolye-masa.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI atölye çalışma masası" loading="lazy">
-          <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-        </div>
+        <?php koi_gorsel( 'index-3-gorsel1' ); ?>
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">Hakkımızda</span>
-        <h2>KOI Nedir?</h2>
-        <p>KOI; psikolojik danışmanlık, aile ve ebeveyn çalışmaları, oyun, gelişim programları ve atölyeleri aynı çatı altında buluşturan çocuk ve aile odaklı bir gelişim merkezidir.</p>
-        <p>Her çocuğu, her ebeveyni ve her aileyi kendi ihtiyaçları ve ritmi içinde ele alıyoruz. Hazır kalıplar sunmak yerine; dinlemeye, anlamaya ve ihtiyaca uygun alanı birlikte oluşturmaya önem veriyoruz.</p>
-        <ul class="tagline-stack">
-          <li>Denge</li>
-          <li>Bağlantı</li>
-          <li>Gelişim</li>
-        </ul>
+        <span class="eyebrow"<?php koi_isaret( 'index-3-ust1' ); ?>><?php koi_alan( 'index-3-ust1' ); ?></span>
+        <h2<?php koi_isaret( 'index-3-baslik1' ); ?>><?php koi_alan( 'index-3-baslik1' ); ?></h2>
+        <p<?php koi_isaret( 'index-3-paragraf1' ); ?>><?php koi_alan( 'index-3-paragraf1' ); ?></p>
+        <p<?php koi_isaret( 'index-3-paragraf2' ); ?>><?php koi_alan( 'index-3-paragraf2' ); ?></p>
+        <ul class="tagline-stack"<?php koi_isaret( 'index-3-liste1' ); ?>><?php koi_liste( 'index-3-liste1' ); ?></ul>
         <div style="margin-top:32px">
-          <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'hakkimizda' ) ); ?>">Hikâyemiz<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'hakkimizda' ) ); ?>"<?php koi_isaret( 'index-3-dugme1' ); ?>><?php koi_alan( 'index-3-dugme1' ); ?></a>
         </div>
       </div>
     </div>
@@ -75,10 +67,10 @@
     <div class="container container--wide">
       <div class="section-head section-head--split reveal">
         <div>
-          <span class="eyebrow">Hizmetlerimiz</span>
-          <h2>Sizin İçin<br>Neler Sunuyoruz?</h2>
+          <span class="eyebrow"<?php koi_isaret( 'index-4-ust1' ); ?>><?php koi_alan( 'index-4-ust1' ); ?></span>
+          <h2<?php koi_isaret( 'index-4-baslik1' ); ?>><?php koi_alan( 'index-4-baslik1' ); ?></h2>
         </div>
-        <p class="lead">Her bireyin ve ailenin kendine özgü ihtiyaçlarına uygun, uzmanlıkla tasarlanmış hizmetler.</p>
+        <p class="lead"<?php koi_isaret( 'index-4-giris1' ); ?>><?php koi_alan( 'index-4-giris1' ); ?></p>
       </div>
       <div class="cards cards--5" id="hizmet-kartlari">
 <?php koi_kartlar( 'hizmet-kartlari' ); ?>
@@ -90,30 +82,30 @@
   <section class="section">
     <div class="container container--wide">
       <div class="section-head center reveal">
-        <span class="eyebrow eyebrow--center">Yaklaşımımız</span>
-        <h2>Neden KOI?</h2>
-        <p class="lead">Ailelerin kendilerini güvende hissedeceği, çocukların özgürce keşfedebileceği nitelikli bir alan.</p>
+        <span class="eyebrow eyebrow--center"<?php koi_isaret( 'index-5-ust1' ); ?>><?php koi_alan( 'index-5-ust1' ); ?></span>
+        <h2<?php koi_isaret( 'index-5-baslik1' ); ?>><?php koi_alan( 'index-5-baslik1' ); ?></h2>
+        <p class="lead"<?php koi_isaret( 'index-5-giris1' ); ?>><?php koi_alan( 'index-5-giris1' ); ?></p>
       </div>
       <div class="values">
         <div class="value reveal">
           <span class="value__num">01</span>
-          <h3>Bütüncül Bakış</h3>
-          <p>Çocuğu tek başına değil; ailesi, okulu ve çevresiyle birlikte ele alırız.</p>
+          <h3<?php koi_isaret( 'index-5-ara1' ); ?>><?php koi_alan( 'index-5-ara1' ); ?></h3>
+          <p<?php koi_isaret( 'index-5-paragraf1' ); ?>><?php koi_alan( 'index-5-paragraf1' ); ?></p>
         </div>
         <div class="value reveal">
           <span class="value__num">02</span>
-          <h3>Oyun Temelli</h3>
-          <p>Oyunu bir yöntem olarak kullanır, gelişimi çocuğun kendi dilinden destekleriz.</p>
+          <h3<?php koi_isaret( 'index-5-ara2' ); ?>><?php koi_alan( 'index-5-ara2' ); ?></h3>
+          <p<?php koi_isaret( 'index-5-paragraf2' ); ?>><?php koi_alan( 'index-5-paragraf2' ); ?></p>
         </div>
         <div class="value reveal">
           <span class="value__num">03</span>
-          <h3>Küçük Gruplar</h3>
-          <p>Seans başına en fazla 6 çocuk ile her katılımcıya yeterli alan ve ilgi.</p>
+          <h3<?php koi_isaret( 'index-5-ara3' ); ?>><?php koi_alan( 'index-5-ara3' ); ?></h3>
+          <p<?php koi_isaret( 'index-5-paragraf3' ); ?>><?php koi_alan( 'index-5-paragraf3' ); ?></p>
         </div>
         <div class="value reveal">
           <span class="value__num">04</span>
-          <h3>Uzman Kadro</h3>
-          <p>Alanında eğitimli psikolojik danışman ve uzmanlarla yürütülen süreçler.</p>
+          <h3<?php koi_isaret( 'index-5-ara4' ); ?>><?php koi_alan( 'index-5-ara4' ); ?></h3>
+          <p<?php koi_isaret( 'index-5-paragraf4' ); ?>><?php koi_alan( 'index-5-paragraf4' ); ?></p>
         </div>
       </div>
     </div>
@@ -122,23 +114,16 @@
   <!-- ============ PROGRAM BANDI ============ -->
   <section class="program-band">
     <div class="program-band__copy reveal">
-      <span class="eyebrow">Oyun Grupları</span>
-      <h2>Oyunun İçinde<br>Büyüyen Gelişim</h2>
-      <p class="lead">Haftanın 5 günü, günde 2 seans olarak planlanan oyun gruplarımız; yaş ve gelişim dönemine göre ayrıştırılır.</p>
-      <ul class="program-band__list">
-        <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Seans başına en fazla 6 çocuk ile küçük grup çalışması</span></li>
-        <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Yaş gruplarına göre ayrıştırılmış program akışı</span></li>
-        <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Çocuk, ebeveyn ve çocuk-aile katılımlı tematik atölyeler</span></li>
-        <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Hafta sonu seminer ve workshop programları</span></li>
-      </ul>
+      <span class="eyebrow"<?php koi_isaret( 'index-6-ust1' ); ?>><?php koi_alan( 'index-6-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'index-6-baslik1' ); ?>><?php koi_alan( 'index-6-baslik1' ); ?></h2>
+      <p class="lead"<?php koi_isaret( 'index-6-giris1' ); ?>><?php koi_alan( 'index-6-giris1' ); ?></p>
+      <ul class="program-band__list"<?php koi_isaret( 'index-6-liste1' ); ?>><?php koi_liste( 'index-6-liste1' ); ?></ul>
       <div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'oyun-gruplari' ) ); ?>">Programları İncele<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-        <a class="btn btn--light" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Ön Başvuru</a>
+        <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'oyun-gruplari' ) ); ?>"<?php koi_isaret( 'index-6-dugme1' ); ?>><?php koi_alan( 'index-6-dugme1' ); ?></a>
+        <a class="btn btn--light" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'index-6-dugme2' ); ?>><?php koi_alan( 'index-6-dugme2' ); ?></a>
       </div>
     </div>
-    <div class="media media--olive program-band__media has-img" data-label="Oyun odası — çekim yapılacak"><img class="media__img" src="<?php koi_v(); ?>img/oyun-odasi.jpg" srcset="<?php koi_v(); ?>img/oyun-odasi-sm.jpg 900w, <?php koi_v(); ?>img/oyun-odasi.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="KOI oyun grubu odası" loading="lazy">
-      <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-    </div>
+    <?php koi_gorsel( 'index-6-gorsel1' ); ?>
   </section>
 
   <!-- ============ UZMANLAR ============ -->
@@ -146,16 +131,16 @@
     <div class="container container--wide">
       <div class="section-head section-head--split reveal">
         <div>
-          <span class="eyebrow">Ekibimiz</span>
-          <h2>Yolculuğunuzda<br>Yanınızdayız</h2>
+          <span class="eyebrow"<?php koi_isaret( 'index-7-ust1' ); ?>><?php koi_alan( 'index-7-ust1' ); ?></span>
+          <h2<?php koi_isaret( 'index-7-baslik1' ); ?>><?php koi_alan( 'index-7-baslik1' ); ?></h2>
         </div>
-        <p class="lead">Danışmanlık yaklaşımını oyun ve gelişim deneyimiyle buluşturan kurucu ekibimiz. Uzman kadromuz açılış dönemiyle birlikte tanıtılacak.</p>
+        <p class="lead"<?php koi_isaret( 'index-7-giris1' ); ?>><?php koi_alan( 'index-7-giris1' ); ?></p>
       </div>
       <div class="cards cards--4">
 <?php koi_kartlar( 'uzman-kartlari' ); ?>
       </div>
       <div style="margin-top:44px" class="reveal">
-        <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>">Ekibimizi Tanıyın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn--ghost" href="<?php echo esc_url( koi_url( 'uzmanlarimiz' ) ); ?>"<?php koi_isaret( 'index-7-dugme1' ); ?>><?php koi_alan( 'index-7-dugme1' ); ?></a>
       </div>
     </div>
   </section>
@@ -167,10 +152,10 @@
     <div class="container container--wide">
       <div class="section-head section-head--split reveal">
         <div>
-          <span class="eyebrow">Blog</span>
-          <h2>Ailelere Notlar</h2>
+          <span class="eyebrow"<?php koi_isaret( 'index-8-ust1' ); ?>><?php koi_alan( 'index-8-ust1' ); ?></span>
+          <h2<?php koi_isaret( 'index-8-baslik1' ); ?>><?php koi_alan( 'index-8-baslik1' ); ?></h2>
         </div>
-        <p class="lead">Gelişim, ebeveynlik ve oyun üzerine uzmanlarımızın kaleminden yazılar.</p>
+        <p class="lead"<?php koi_isaret( 'index-8-giris1' ); ?>><?php koi_alan( 'index-8-giris1' ); ?></p>
       </div>
       <div class="cards cards--3" id="blog-kartlari">
 <?php koi_kartlar( 'blog-kartlari' ); ?>
@@ -184,33 +169,31 @@
     <div class="container container--wide">
       <div class="section-head section-head--split reveal">
         <div>
-          <span class="eyebrow">Galeri</span>
-          <h2>Merkezimizden</h2>
+          <span class="eyebrow"<?php koi_isaret( 'index-9-ust1' ); ?>><?php koi_alan( 'index-9-ust1' ); ?></span>
+          <h2<?php koi_isaret( 'index-9-baslik1' ); ?>><?php koi_alan( 'index-9-baslik1' ); ?></h2>
         </div>
-        <p class="lead">Mekânımızın ruhunu yansıtan temsili görseller. Merkezimiz açıldığında kendi fotoğraflarımızla güncellenecek.</p>
+        <p class="lead"<?php koi_isaret( 'index-9-giris1' ); ?>><?php koi_alan( 'index-9-giris1' ); ?></p>
       </div>
       <div class="gallery reveal">
 <?php koi_kartlar( 'galeri-anasayfa' ); ?>
       </div>
       <div style="margin-top:34px" class="reveal">
-        <a class="link-arrow" href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>">Tüm Galeri<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="link-arrow" href="<?php echo esc_url( koi_url( 'galeri' ) ); ?>"<?php koi_isaret( 'index-9-baglanti1' ); ?>><?php koi_alan( 'index-9-baglanti1' ); ?></a>
       </div>
     </div>
   </section>
 
   <!-- ============ CTA ============ -->
   <section class="cta-band">
-    <div class="media media--olive cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy"></div>
+    <?php koi_gorsel( 'index-10-gorsel1' ); ?>
     <div class="cta-band__inner reveal">
-      <span class="eyebrow">Bilgi Al</span>
-      <h2>İyi Bir Gelecek İçin Buradayız.</h2>
-      <p class="lead">Siz de KOI yolculuğunun bir parçası olun. Ön başvuru formunu doldurun, uzmanlarımız sizinle iletişime geçsin.</p>
+      <span class="eyebrow"<?php koi_isaret( 'index-10-ust1' ); ?>><?php koi_alan( 'index-10-ust1' ); ?></span>
+      <h2<?php koi_isaret( 'index-10-baslik1' ); ?>><?php koi_alan( 'index-10-baslik1' ); ?></h2>
+      <p class="lead"<?php koi_isaret( 'index-10-giris1' ); ?>><?php koi_alan( 'index-10-giris1' ); ?></p>
       <div class="cta-band__row">
-        <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">Bilgi Alın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-        <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>">WhatsApp'tan Yazın<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn--primary" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'index-10-dugme1' ); ?>><?php koi_alan( 'index-10-dugme1' ); ?></a>
+        <a class="link-arrow" href="<?php echo esc_url( koi_wa_url() ); ?>"<?php koi_isaret( 'index-10-baglanti1' ); ?>><?php koi_alan( 'index-10-baglanti1' ); ?></a>
       </div>
     </div>
-    <div class="media cta-band__media has-img" data-label="Detay görsel"><img class="media__img" src="<?php koi_v(); ?>img/yaprak.jpg" srcset="<?php koi_v(); ?>img/yaprak-sm.jpg 900w, <?php koi_v(); ?>img/yaprak.jpg 2200w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 45vw" alt="Duvara vuran yaprak gölgeleri" loading="lazy">
-      <svg class="media__mark" aria-hidden="true"><use href="#i-koi-leaf"></use></svg>
-    </div>
+    <?php koi_gorsel( 'index-10-gorsel2' ); ?>
   </section>

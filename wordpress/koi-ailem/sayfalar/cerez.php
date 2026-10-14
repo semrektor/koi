@@ -5,52 +5,21 @@
       <nav class="breadcrumb" aria-label="Sayfa yolu">
         <a href="<?php echo esc_url( koi_url( 'index' ) ); ?>">Anasayfa</a><span>/</span><span>Çerez Politikası</span>
       </nav>
-      <h1><?php koi_ust_metin( 'baslik', 'Çerez Politikası' ); ?></h1>
+      <h1<?php koi_isaret( 'cerez-1-baslik1' ); ?>><?php koi_alan( 'cerez-1-baslik1' ); ?></h1>
     </div>
-    <p class="lead"><?php koi_ust_metin( 'giris', 'Sitemizde kullanılan çerezler, ne işe yaradıkları ve tercihlerinizi nasıl yönetebileceğiniz.' ); ?></p>
+    <p class="lead"<?php koi_isaret( 'cerez-1-giris1' ); ?>><?php koi_alan( 'cerez-1-giris1' ); ?></p>
   </div>
 </section>
 
 <section class="section">
   <div class="container container--wide with-sidebar">
     <div class="prose reveal">
-      <div class="quote-card" style="margin-bottom:2.5em">
-        <p style="font-family:var(--font-body);font-style:normal;font-size:.92rem;color:var(--koi-muted)"><strong style="font-weight:400;color:var(--koi-olive)">Taslak metin.</strong> Kullanılan çerezlerin kesin listesi, site yayına alındıktan ve analitik araçları kurulduktan sonra güncellenecektir.</p>
-      </div>
-
-      <h2>Çerez Nedir?</h2>
-      <p>Çerezler, bir web sitesini ziyaret ettiğinizde tarayıcınıza kaydedilen küçük metin dosyalarıdır. Sitenin düzgün çalışmasını sağlar ve ziyaret deneyiminizi iyileştirir.</p>
-
-      <h2>Hangi Çerezleri Kullanıyoruz?</h2>
-      <h3>Zorunlu çerezler</h3>
-      <p>Sitenin temel işlevleri için gereklidir; form gönderimi ve güvenlik gibi işlemlerin çalışmasını sağlar. Bu çerezler devre dışı bırakılamaz.</p>
-
-      <h3>Tercih çerezleri</h3>
-      <p>Dil ve görüntüleme tercihleriniz gibi seçimlerinizi hatırlar; siteyi her ziyaretinizde aynı ayarları yeniden yapmanızı gerektirmez.</p>
-
-      <h3>Analitik çerezler</h3>
-      <p>Ziyaretçilerin siteyi nasıl kullandığını anlamamıza yardımcı olur (hangi sayfalar görüntüleniyor, ne kadar süre kalınıyor). Bu veriler toplu ve anonim olarak değerlendirilir; Google Analytics bu kapsamda kullanılabilir.</p>
-
-      <h3>Üçüncü taraf çerezleri</h3>
-      <p>Google Maps ile gömülü harita veya sosyal medya içerikleri görüntülendiğinde, ilgili sağlayıcılar kendi çerezlerini yerleştirebilir.</p>
-
-      <h2>Çerezleri Nasıl Yönetebilirsiniz?</h2>
-      <ul>
-        <li>Siteye ilk girişinizde gösterilen çerez bildirimi üzerinden tercihinizi belirleyebilirsiniz</li>
-        <li>Tarayıcınızın ayarlarından çerezleri silebilir veya engelleyebilirsiniz</li>
-        <li>Zorunlu çerezlerin engellenmesi, sitenin bazı bölümlerinin çalışmamasına neden olabilir</li>
-      </ul>
-
-      <h2>Saklama Süresi</h2>
-      <p>Oturum çerezleri tarayıcınızı kapattığınızda silinir. Kalıcı çerezler, türlerine göre belirlenen süre boyunca veya siz silene kadar cihazınızda kalır.</p>
-
-      <h2>Güncellemeler</h2>
-      <p>Bu politika, sitede kullanılan araçlar değiştikçe güncellenir. Güncel sürüm her zaman bu sayfada yayınlanır.</p>
+<?php koi_sayfa_metni( 'cerez' ); ?>
     </div>
 
     <aside>
       <div class="sidebar-card reveal">
-        <h3>Yasal Metinler</h3>
+        <h3<?php koi_isaret( 'cerez-2-ara1' ); ?>><?php koi_alan( 'cerez-2-ara1' ); ?></h3>
         <ul>
           <li><a href="<?php echo esc_url( koi_url( 'kvkk' ) ); ?>">KVKK Aydınlatma Metni</a></li>
           <li><a href="<?php echo esc_url( koi_url( 'gizlilik' ) ); ?>">Gizlilik Politikası</a></li>
@@ -58,10 +27,10 @@
         </ul>
       </div>
       <div class="sidebar-card sidebar-card--dark reveal">
-        <h3>Sorunuz mu Var?</h3>
-        <p>Çerez kullanımına ilişkin sorularınızı bize iletebilirsiniz.</p>
+        <h3<?php koi_isaret( 'cerez-2-ara2' ); ?>><?php koi_alan( 'cerez-2-ara2' ); ?></h3>
+        <p<?php koi_isaret( 'cerez-2-paragraf1' ); ?>><?php koi_alan( 'cerez-2-paragraf1' ); ?></p>
         <div style="margin-top:20px">
-          <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>">İletişime Geçin<svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--terra" href="<?php echo esc_url( koi_url( 'iletisim' ) ); ?>"<?php koi_isaret( 'cerez-2-dugme1' ); ?>><?php koi_alan( 'cerez-2-dugme1' ); ?></a>
         </div>
       </div>
     </aside>

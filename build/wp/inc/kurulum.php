@@ -228,6 +228,9 @@ function koi_icerik_kur( $guncelle = false, $zorla = false ) {
 		}
 	}
 
+	/* Yasal metin sayfalarinin govdesi bossa temadaki taslak metin yazilir */
+	koi_metin_sayfalarini_doldur();
+
 	/* Genel ayarlar. Site adi yalnizca ilk kurulumda yazilir; sonradan panelden
 	   degistirilirse tekrar calistirmak onu geri almaz. */
 	if ( ! get_option( 'koi_kurulum_tamam' ) ) {
