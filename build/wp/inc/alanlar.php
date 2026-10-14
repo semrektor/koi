@@ -316,13 +316,20 @@ function koi_sayfa_metni( $anahtar ) {
 	echo apply_filters( 'the_content', $icerik ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- the_content filtresinden gecti.
 }
 
-/* Yasal metin sayfalarinin govdesi bossa temadaki taslak metin yazilir; boylece
-   duzenleyici bos acilmaz. Dolu sayfaya dokunulmaz. */
+/* Yasal metin sayfalarinin govdesi bossa temadaki metin yazilir; boylece duzenleyici
+   bos acilmaz. Sayfada temanin onceki bir surumunun metni degistirilmeden duruyorsa
+   o da yenisiyle degistirilir. Panelden degistirilmis sayfaya dokunulmaz. */
 function koi_metin_sayfalarini_doldur() {
+	$veri = koi_alan_verisi();
 	$sayi = 0;
-	foreach ( koi_alan_verisi()['metinler'] as $anahtar => $icerik ) {
+	foreach ( $veri['metinler'] as $anahtar => $icerik ) {
 		$sayfa = koi_tema_sayfasi( $anahtar );
-		if ( ! $sayfa || '' !== trim( (string) $sayfa->post_content ) ) {
+		if ( ! $sayfa ) {
+			continue;
+		}
+		$mevcut = trim( (string) $sayfa->post_content );
+		$eski   = isset( $veri['eskiMetinler'][ $anahtar ] ) ? (array) $veri['eskiMetinler'][ $anahtar ] : array();
+		if ( '' !== $mevcut && ( md5( $mevcut ) === md5( trim( (string) $icerik ) ) || ! in_array( md5( $mevcut ), $eski, true ) ) ) {
 			continue;
 		}
 		/* Metin temadan gelir ve guvenilirdir; ziyaretci isteginde calisabildigi icin

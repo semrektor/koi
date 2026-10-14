@@ -289,6 +289,9 @@ function kayit(x, tur, terimAdlari) {
 }
 
 /* ---------- Uretim ---------- */
+/* Onceki uretimdeki yasal metinler: sitede degistirilmeden duruyorlarsa yenisiyle degistirilebilsin diye */
+const ONCEKI_ALANLAR = path.join(CIKTI, "veri", "alanlar.json");
+const oncekiMetinler = fs.existsSync(ONCEKI_ALANLAR) ? JSON.parse(fs.readFileSync(ONCEKI_ALANLAR, "utf8")).metinler || {} : {};
 fs.rmSync(CIKTI, { recursive: true, force: true });
 fs.mkdirSync(CIKTI, { recursive: true });
 
@@ -309,7 +312,7 @@ yaz(
     "Theme Name: KOI Çocuk ve Aile",
     "Theme URI: https://koiailem.com",
     "Description: KOI | Çocuk ve Aile Gelişim Merkezi için sıfırdan tasarlanmış özel tema.",
-    "Version: 0.7.0",
+    "Version: 0.7.1",
     "Update URI: https://koiailem.com/",
     "Requires at least: 6.4",
     "Requires PHP: 7.4",
@@ -404,6 +407,19 @@ yaz("veri/form-secenekleri.json", JSON.stringify(formSecenekleri, null, 1));
 
 /* 6. Veri */
 yaz("veri/sayfalar.json", JSON.stringify(sayfaMeta, null, 1));
+/* Yasal metinlerin onceki varsayilanlari (md5). Sitedeki sayfa bunlardan biriyle
+   birebir ayniysa (yani panelden degistirilmemisse) tema guncellemesinde yeni metin
+   yazilir; degistirilmis sayfaya dokunulmaz. Liste build/wp-eski-metinler.json'da birikir. */
+const ESKI_METINLER = path.join(__dirname, "wp-eski-metinler.json");
+const eskiMetinler = fs.existsSync(ESKI_METINLER) ? JSON.parse(fs.readFileSync(ESKI_METINLER, "utf8")) : {};
+const ozet = (t) => require("crypto").createHash("md5").update(String(t).trim(), "utf8").digest("hex");
+for (const [anahtar, metin] of Object.entries(alanVerisi.metinler)) {
+  const liste = (eskiMetinler[anahtar] = eskiMetinler[anahtar] || []);
+  const onceki = oncekiMetinler[anahtar];
+  if (onceki && ozet(onceki) !== ozet(metin) && !liste.includes(ozet(onceki))) liste.push(ozet(onceki));
+}
+fs.writeFileSync(ESKI_METINLER, JSON.stringify(eskiMetinler, null, 1) + "\n");
+alanVerisi.eskiMetinler = eskiMetinler;
 yaz("veri/alanlar.json", JSON.stringify(alanVerisi));
 yaz(
   "veri/icerik.json",
